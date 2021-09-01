@@ -28,7 +28,7 @@
 <meta property="og:description" content="Docker  Info1234容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”Cgroups技术是用来制造约束的主要手段Namespace技术则是用来修改进程试图的主要方法">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-09-01T01:49:58.000Z">
-<meta property="article:modified_time" content="2021-09-01T07:27:20.098Z">
+<meta property="article:modified_time" content="2021-09-01T09:54:27.627Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Dockerfile">
@@ -148,7 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Info"><span class="nav-number">1.</span> <span class="nav-text">Docker  Info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Tips"><span class="nav-number">2.</span> <span class="nav-text">Docker Tips</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Info"><span class="nav-number">1.</span> <span class="nav-text">Docker  Info</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Docker-Tips"><span class="nav-number">2.</span> <span class="nav-text">Docker Tips</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Have-a-Fun"><span class="nav-number">3.</span> <span class="nav-text">Have a Fun</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -249,7 +249,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2021-09-01 09:49:58 / Modified: 15:27:20" itemprop="dateCreated datePublished" datetime="2021-09-01T09:49:58+08:00">2021-09-01</time>
+      <time title="Created: 2021-09-01 09:49:58 / Modified: 17:54:27" itemprop="dateCreated datePublished" datetime="2021-09-01T09:49:58+08:00">2021-09-01</time>
     </span>
 
   
@@ -259,6 +259,21 @@
       </span>
       <span class="post-meta-item-text">Views: </span>
       <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>8k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>7 mins.</span>
     </span>
 </div>
 
@@ -332,6 +347,30 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">.dockerignore: ignore certain files and folders from your Docker images</span><br><span class="line">  .git</span><br><span class="line">  .dockerignore</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>Docker Tip #12</strong>: Manage Docker without sudo on Linux</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Add a docker group and then add your user to it:</span><br><span class="line">$ sudo groupadd docker</span><br><span class="line">$ docker usermod -aG docker $USER</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #13</strong>: Measure Docker Container’s Resources</p>
+<blockquote>
+<p>How much resources containers are using</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">$ docker stats</span><br><span class="line">CONTAINER ID   NAME                                                                                         CPU %     MEM USAGE / LIMIT     MEM %     NET I/O     BLOCK I/O         PIDS</span><br><span class="line">298d90f942e1   k8s_POD_kafka-zookeeper-0_default_a243d677-101b-493b-a076-d94f46785f22_0                     0.00%     724KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">1d92a13e4a6f   k8s_POD_kafka-0_default_f7374645-9904-436c-bc8d-43ed415833c1_0                               0.00%     872KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">b638c1bbd855   k8s_POD_postgres-postgresql-0_infrastructure_d9067ee1-6874-4018-a008-09362ad9330d_16         0.00%     868KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">0fdc76799b4e   k8s_kube-flannel_kube-flannel-ds-nk6tj_kube-system_0a186e7a-c0d7-4282-9f5d-65ee20d0e13a_12   0.07%     15.4MiB / 50MiB       30.80%    0B / 0B     33.1MB / 0B       11</span><br><span class="line">4c3705247efa   k8s_kube-proxy_kube-proxy-xwfvl_kube-system_f46216cb-d018-4d82-b510-9be5e01cefca_12          0.00%     23.36MiB / 3.704GiB   0.62%     0B / 0B     43.7MB / 12.3kB   8</span><br><span class="line">16d5db1e7447   k8s_POD_kube-proxy-xwfvl_kube-system_f46216cb-d018-4d82-b510-9be5e01cefca_13                 0.00%     1.996MiB / 3.704GiB   0.05%     0B / 0B     487kB / 0B        1</span><br><span class="line">496aacf5fddf   k8s_POD_kube-flannel-ds-nk6tj_kube-system_0a186e7a-c0d7-4282-9f5d-65ee20d0e13a_13            0.00%     768KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">1e328afeb116   dapr_zipkin                                                                                  0.17%     250.2MiB / 3.704GiB   6.60%     18MB / 0B   60MB / 0B         55</span><br><span class="line">27872f88cae3   dapr_placement                                                                               0.11%     5.992MiB / 3.704GiB   0.16%     18MB / 0B   13.6MB / 0B       10</span><br><span class="line">27c1f6daa81c   dapr_redis                                                                                   0.35%     5.633MiB / 3.704GiB   0.15%     18MB / 0B   10.7MB / 0B       5</span><br><span class="line"></span><br><span class="line">$ docker stats --format &quot;table &#123;&#123;.Container&#125;&#125;\t&#123;&#123;.CPUPerc&#125;&#125;\t&#123;&#123;.MemUsage&#125;&#125;&quot;</span><br><span class="line">CONTAINER      CPU %     MEM USAGE / LIMIT</span><br><span class="line">298d90f942e1   0.00%     724KiB / 3.704GiB</span><br><span class="line">1d92a13e4a6f   0.00%     872KiB / 3.704GiB</span><br><span class="line">b638c1bbd855   0.00%     868KiB / 3.704GiB</span><br><span class="line">0fdc76799b4e   2.37%     15.42MiB / 50MiB</span><br><span class="line">4c3705247efa   0.00%     23.36MiB / 3.704GiB</span><br><span class="line">16d5db1e7447   0.00%     1.996MiB / 3.704GiB</span><br><span class="line">496aacf5fddf   0.00%     768KiB / 3.704GiB</span><br><span class="line">1e328afeb116   0.21%     250.2MiB / 3.704GiB</span><br><span class="line">27872f88cae3   0.12%     5.992MiB / 3.704GiB</span><br><span class="line">27c1f6daa81c   0.34%     5.633MiB / 3.704GiB</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #14</strong>: Docker Compose vs Docker Stack</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"># Docker Compose: is an official tool that helps you manage your Docker containers by letting you define everything through a docker-compose.yml file.</span><br><span class="line"></span><br><span class="line"># docker stack: is a command that&#x27;s embedded into the Docker CLI. Lets you manage a cluster of Docker containers through Docker Swarm.</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #15</strong>: Metadata Docker Images with Labels</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># Dockerfile example of adding 2 labels with 1 LABEL instruction:</span><br><span class="line">LABEL &lt;key&gt;=&lt;value&gt;</span><br><span class="line">LABEL version=&quot;1.0&quot; maintainer=&quot;chyi &lt;nick.chyi@gmail.com&gt;&quot;</span><br><span class="line"></span><br><span class="line"># Docker build example to add dynamic labels to your Docker images:</span><br><span class="line">$ docker build . --label &quot;version=1.0&quot; --label &quot;maintaner=chyi &lt;nick.chyi@gmail.com&gt;&quot;</span><br><span class="line"></span><br><span class="line"># docker inspect images</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #16</strong>: Named Volumes vs Path Based Volumes</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Named volumes</span><br><span class="line">  postgres:/var/lib/postgresql/data</span><br><span class="line"></span><br><span class="line">  docker-compose automatically create the postgres volume, if not you could running __$ docker volume create postgres__.</span><br><span class="line">  On Linux, the volume will get saved to /var/lib/docker/volumes/postgres/_data</span><br><span class="line"></span><br><span class="line"># Path based volumes</span><br><span class="line">  ./postgres:/var/lib/postgresql/data</span><br><span class="line"></span><br><span class="line">  postgres/ directory would get created in the current directory on the Docker host.</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #17</strong>: The Volume or Mount Flag</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># Setting up a volume the old way with docker run:</span><br><span class="line">$ docker container run … -v &quot;$(pwd)&quot;:/myapp</span><br><span class="line"></span><br><span class="line"># Setting up the same volumes using the mount flag with docker run:</span><br><span class="line">$ docker container run … --mount type=bind,source=&quot;$(pwd)&quot;,target=/myapp</span><br><span class="line"></span><br><span class="line"># Docker compose</span><br><span class="line">volumes:</span><br><span class="line">  - type: &quot;bind&quot;</span><br><span class="line">    source: &quot;.&quot;</span><br><span class="line">    target: &quot;/myapp&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #18</strong>: Connect to a Service Running on Docker Host</p>
+<blockquote>
+<p>Implementation of connecting to Docker host over a custom network with a static IP address.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># Create a custom bridge Docker network</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 mynet</span><br><span class="line">0330b879fcc8fb23eeb092cb66fd86f1796e7f0abe37df4978903cf8fd07217b</span><br><span class="line"></span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ ifconfig</span><br><span class="line">br-0330b879fcc8: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.0.1  netmask 255.255.255.0  broadcast 192.168.0.255</span><br><span class="line">        ether 02:42:16:0c:c0:51  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"># Start the Alpine container and drop into a Shell prompt.</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker container run --rm -it alpine sh</span><br><span class="line"></span><br><span class="line"># Install the ping utility.</span><br><span class="line">/ # apk update &amp;&amp; apk add iputils</span><br><span class="line">fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/aarch64/APKINDEX.tar.gz</span><br><span class="line">fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/aarch64/APKINDEX.tar.gz</span><br><span class="line">v3.14.2-5-gd4163d4c6c [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]</span><br><span class="line">v3.14.2-4-ga15b4dc067 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]</span><br><span class="line">OK: 14810 distinct packages available</span><br><span class="line">(1/2) Installing libcap (2.50-r0)</span><br><span class="line">(2/2) Installing iputils (20210202-r0)</span><br><span class="line">Executing busybox-1.33.1-r3.trigger</span><br><span class="line">OK: 6 MiB in 16 packages</span><br><span class="line"></span><br><span class="line"># Ping the custom IP address we set up.</span><br><span class="line">/ # ping 192.168.0.1</span><br><span class="line"></span><br><span class="line"># You should see this output (hit CTRL+C to stop it)</span><br><span class="line">PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.336 ms</span><br><span class="line">64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.293 ms</span><br><span class="line">^C</span><br><span class="line">--- 192.168.0.1 ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1013ms</span><br><span class="line">rtt min/avg/max/mdev = 0.293/0.314/0.336/0.021 ms</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Have-a-Fun"><a href="#Have-a-Fun" class="headerlink" title="Have a Fun"></a>Have a Fun</h2><ul>
+<li>Run the First Edition of Unix (1972) with Docker<blockquote>
+<p>Run a PDP-11 simulator through Docker to interact with Unix as it was back in 1972</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ docker run --rm -it bahamat/unix-1st-ed</span><br></pre></td></tr></table></figure></li>
 </ul>
 
     </div>
@@ -381,6 +420,20 @@
     <i class="fa fa-heart"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">chyi</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Symbols count total">9k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">8 mins.</span>
+  </span>
 </div>
 <div class="busuanzi-count">
     <span class="post-meta-item" id="busuanzi_container_site_uv">

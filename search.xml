@@ -1,41 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>micro-services</title>
-    <url>/2021/09/01/micro-services/</url>
-    <content><![CDATA[<p>介绍微服务架构设计</p>
-<span id="more"></span>
-
-<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
-      <categories>
-        <category>计算机科学</category>
-      </categories>
-      <tags>
-        <tag>微服务</tag>
-        <tag>DDD</tag>
-        <tag>分布式</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo-next-gitalk</title>
-    <url>/2021/09/01/hexo-next-gitalk/</url>
-    <content><![CDATA[<h3 id="站点搭建过程"><a href="#站点搭建过程" class="headerlink" title="站点搭建过程"></a>站点搭建过程</h3><ul>
-<li><a href="https://hexo.io/zh-cn/">hexo</a> : 快速、简洁且高校的博客框架</li>
-<li><a href="https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/README.md">next</a> : Hexo主题</li>
-<li><a href="https://github.com/gitalk/gitalk">gitalk</a> : 依靠GitHub issue的评论系统</li>
-</ul>
-<span id="more"></span>
-
-<h3 id="Settings-amp-Tips"><a href="#Settings-amp-Tips" class="headerlink" title="Settings &amp; Tips"></a>Settings &amp; Tips</h3><ul>
-<li><strong>Show descripion</strong><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改themes/next/_config.yml</span><br><span class="line">excerpt_description: true</span><br><span class="line"></span><br><span class="line"># 文章截断</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker Tips &amp; Tricks</title>
     <url>/2021/09/01/docker/</url>
     <content><![CDATA[<h2 id="Docker-Info"><a href="#Docker-Info" class="headerlink" title="Docker  Info"></a>Docker  Info</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”</span><br><span class="line"></span><br><span class="line">Cgroups技术是用来制造约束的主要手段</span><br><span class="line">Namespace技术则是用来修改进程试图的主要方法</span><br></pre></td></tr></table></figure>
@@ -101,11 +66,73 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">.dockerignore: ignore certain files and folders from your Docker images</span><br><span class="line">  .git</span><br><span class="line">  .dockerignore</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>Docker Tip #12</strong>: Manage Docker without sudo on Linux</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Add a docker group and then add your user to it:</span><br><span class="line">$ sudo groupadd docker</span><br><span class="line">$ docker usermod -aG docker $USER</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #13</strong>: Measure Docker Container’s Resources</p>
+<blockquote>
+<p>How much resources containers are using</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ docker stats</span><br><span class="line">CONTAINER ID   NAME                                                                                         CPU %     MEM USAGE / LIMIT     MEM %     NET I/O     BLOCK I/O         PIDS</span><br><span class="line">298d90f942e1   k8s_POD_kafka-zookeeper-0_default_a243d677-101b-493b-a076-d94f46785f22_0                     0.00%     724KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">1d92a13e4a6f   k8s_POD_kafka-0_default_f7374645-9904-436c-bc8d-43ed415833c1_0                               0.00%     872KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">b638c1bbd855   k8s_POD_postgres-postgresql-0_infrastructure_d9067ee1-6874-4018-a008-09362ad9330d_16         0.00%     868KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">0fdc76799b4e   k8s_kube-flannel_kube-flannel-ds-nk6tj_kube-system_0a186e7a-c0d7-4282-9f5d-65ee20d0e13a_12   0.07%     15.4MiB / 50MiB       30.80%    0B / 0B     33.1MB / 0B       11</span><br><span class="line">4c3705247efa   k8s_kube-proxy_kube-proxy-xwfvl_kube-system_f46216cb-d018-4d82-b510-9be5e01cefca_12          0.00%     23.36MiB / 3.704GiB   0.62%     0B / 0B     43.7MB / 12.3kB   8</span><br><span class="line">16d5db1e7447   k8s_POD_kube-proxy-xwfvl_kube-system_f46216cb-d018-4d82-b510-9be5e01cefca_13                 0.00%     1.996MiB / 3.704GiB   0.05%     0B / 0B     487kB / 0B        1</span><br><span class="line">496aacf5fddf   k8s_POD_kube-flannel-ds-nk6tj_kube-system_0a186e7a-c0d7-4282-9f5d-65ee20d0e13a_13            0.00%     768KiB / 3.704GiB     0.02%     0B / 0B     0B / 0B           1</span><br><span class="line">1e328afeb116   dapr_zipkin                                                                                  0.17%     250.2MiB / 3.704GiB   6.60%     18MB / 0B   60MB / 0B         55</span><br><span class="line">27872f88cae3   dapr_placement                                                                               0.11%     5.992MiB / 3.704GiB   0.16%     18MB / 0B   13.6MB / 0B       10</span><br><span class="line">27c1f6daa81c   dapr_redis                                                                                   0.35%     5.633MiB / 3.704GiB   0.15%     18MB / 0B   10.7MB / 0B       5</span><br><span class="line"></span><br><span class="line">$ docker stats --format &quot;table &#123;&#123;.Container&#125;&#125;\t&#123;&#123;.CPUPerc&#125;&#125;\t&#123;&#123;.MemUsage&#125;&#125;&quot;</span><br><span class="line">CONTAINER      CPU %     MEM USAGE / LIMIT</span><br><span class="line">298d90f942e1   0.00%     724KiB / 3.704GiB</span><br><span class="line">1d92a13e4a6f   0.00%     872KiB / 3.704GiB</span><br><span class="line">b638c1bbd855   0.00%     868KiB / 3.704GiB</span><br><span class="line">0fdc76799b4e   2.37%     15.42MiB / 50MiB</span><br><span class="line">4c3705247efa   0.00%     23.36MiB / 3.704GiB</span><br><span class="line">16d5db1e7447   0.00%     1.996MiB / 3.704GiB</span><br><span class="line">496aacf5fddf   0.00%     768KiB / 3.704GiB</span><br><span class="line">1e328afeb116   0.21%     250.2MiB / 3.704GiB</span><br><span class="line">27872f88cae3   0.12%     5.992MiB / 3.704GiB</span><br><span class="line">27c1f6daa81c   0.34%     5.633MiB / 3.704GiB</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #14</strong>: Docker Compose vs Docker Stack</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Docker Compose: is an official tool that helps you manage your Docker containers by letting you define everything through a docker-compose.yml file.</span><br><span class="line"></span><br><span class="line"># docker stack: is a command that&#x27;s embedded into the Docker CLI. Lets you manage a cluster of Docker containers through Docker Swarm.</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #15</strong>: Metadata Docker Images with Labels</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Dockerfile example of adding 2 labels with 1 LABEL instruction:</span><br><span class="line">LABEL &lt;key&gt;=&lt;value&gt;</span><br><span class="line">LABEL version=&quot;1.0&quot; maintainer=&quot;chyi &lt;nick.chyi@gmail.com&gt;&quot;</span><br><span class="line"></span><br><span class="line"># Docker build example to add dynamic labels to your Docker images:</span><br><span class="line">$ docker build . --label &quot;version=1.0&quot; --label &quot;maintaner=chyi &lt;nick.chyi@gmail.com&gt;&quot;</span><br><span class="line"></span><br><span class="line"># docker inspect images</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #16</strong>: Named Volumes vs Path Based Volumes</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Named volumes</span><br><span class="line">  postgres:/var/lib/postgresql/data</span><br><span class="line"></span><br><span class="line">  docker-compose automatically create the postgres volume, if not you could running __$ docker volume create postgres__.</span><br><span class="line">  On Linux, the volume will get saved to /var/lib/docker/volumes/postgres/_data</span><br><span class="line"></span><br><span class="line"># Path based volumes</span><br><span class="line">  ./postgres:/var/lib/postgresql/data</span><br><span class="line"></span><br><span class="line">  postgres/ directory would get created in the current directory on the Docker host.</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #17</strong>: The Volume or Mount Flag</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Setting up a volume the old way with docker run:</span><br><span class="line">$ docker container run … -v &quot;$(pwd)&quot;:/myapp</span><br><span class="line"></span><br><span class="line"># Setting up the same volumes using the mount flag with docker run:</span><br><span class="line">$ docker container run … --mount type=bind,source=&quot;$(pwd)&quot;,target=/myapp</span><br><span class="line"></span><br><span class="line"># Docker compose</span><br><span class="line">volumes:</span><br><span class="line">  - type: &quot;bind&quot;</span><br><span class="line">    source: &quot;.&quot;</span><br><span class="line">    target: &quot;/myapp&quot;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #18</strong>: Connect to a Service Running on Docker Host</p>
+<blockquote>
+<p>Implementation of connecting to Docker host over a custom network with a static IP address.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Create a custom bridge Docker network</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 mynet</span><br><span class="line">0330b879fcc8fb23eeb092cb66fd86f1796e7f0abe37df4978903cf8fd07217b</span><br><span class="line"></span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ ifconfig</span><br><span class="line">br-0330b879fcc8: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.0.1  netmask 255.255.255.0  broadcast 192.168.0.255</span><br><span class="line">        ether 02:42:16:0c:c0:51  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"># Start the Alpine container and drop into a Shell prompt.</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker container run --rm -it alpine sh</span><br><span class="line"></span><br><span class="line"># Install the ping utility.</span><br><span class="line">/ # apk update &amp;&amp; apk add iputils</span><br><span class="line">fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/aarch64/APKINDEX.tar.gz</span><br><span class="line">fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/aarch64/APKINDEX.tar.gz</span><br><span class="line">v3.14.2-5-gd4163d4c6c [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]</span><br><span class="line">v3.14.2-4-ga15b4dc067 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]</span><br><span class="line">OK: 14810 distinct packages available</span><br><span class="line">(1/2) Installing libcap (2.50-r0)</span><br><span class="line">(2/2) Installing iputils (20210202-r0)</span><br><span class="line">Executing busybox-1.33.1-r3.trigger</span><br><span class="line">OK: 6 MiB in 16 packages</span><br><span class="line"></span><br><span class="line"># Ping the custom IP address we set up.</span><br><span class="line">/ # ping 192.168.0.1</span><br><span class="line"></span><br><span class="line"># You should see this output (hit CTRL+C to stop it)</span><br><span class="line">PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.336 ms</span><br><span class="line">64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.293 ms</span><br><span class="line">^C</span><br><span class="line">--- 192.168.0.1 ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1013ms</span><br><span class="line">rtt min/avg/max/mdev = 0.293/0.314/0.336/0.021 ms</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Have-a-Fun"><a href="#Have-a-Fun" class="headerlink" title="Have a Fun"></a>Have a Fun</h2><ul>
+<li>Run the First Edition of Unix (1972) with Docker<blockquote>
+<p>Run a PDP-11 simulator through Docker to interact with Unix as it was back in 1972</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ docker run --rm -it bahamat/unix-1st-ed</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
       <tags>
         <tag>Docker</tag>
         <tag>Dockerfile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo-next-gitalk</title>
+    <url>/2021/09/01/hexo-next-gitalk/</url>
+    <content><![CDATA[<h3 id="站点搭建过程"><a href="#站点搭建过程" class="headerlink" title="站点搭建过程"></a>站点搭建过程</h3><ul>
+<li><a href="https://hexo.io/zh-cn/">hexo</a> : 快速、简洁且高校的博客框架</li>
+<li><a href="https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/README.md">next</a> : Hexo主题</li>
+<li><a href="https://github.com/gitalk/gitalk">gitalk</a> : 依靠GitHub issue的评论系统</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Settings-amp-Tips"><a href="#Settings-amp-Tips" class="headerlink" title="Settings &amp; Tips"></a>Settings &amp; Tips</h3><ul>
+<li><p><strong>Show descripion</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改themes/next/_config.yml</span><br><span class="line">excerpt_description: true</span><br><span class="line"></span><br><span class="line"># 文章截断</span><br><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>字数统计</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 安装插件 hexo-symbols-count-time</span><br><span class="line">$ npm install hexo-symbols-count-time</span><br><span class="line"></span><br><span class="line"># 修改hexo配置文件_config.yml</span><br><span class="line">  # Symbols count and time to read of articles for Hexo.</span><br><span class="line">  symbols_count_time:</span><br><span class="line">      symbols: true</span><br><span class="line">      time: true</span><br><span class="line">      total_symbols: true</span><br><span class="line">      total_time: true</span><br><span class="line"></span><br><span class="line"># 修改Next配置文件</span><br><span class="line">  # Post wordcount display settings</span><br><span class="line">  # Dependencies: https://github.com/next-theme/hexo-word-counter</span><br><span class="line">  symbols_count_time:</span><br><span class="line">    separated_meta: true</span><br><span class="line">    item_text_post: true</span><br><span class="line">    item_text_total: false</span><br><span class="line">    awl: 4</span><br><span class="line">    wpm: 275</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>micro-services</title>
+    <url>/2021/09/01/micro-services/</url>
+    <content><![CDATA[<p>介绍微服务架构设计</p>
+<span id="more"></span>
+
+<figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>计算机科学</category>
+      </categories>
+      <tags>
+        <tag>微服务</tag>
+        <tag>DDD</tag>
+        <tag>分布式</tag>
       </tags>
   </entry>
 </search>
