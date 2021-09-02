@@ -6,6 +6,12 @@
     <content><![CDATA[<h2 id="Docker-Info"><a href="#Docker-Info" class="headerlink" title="Docker  Info"></a>Docker  Info</h2><figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”</span><br><span class="line"></span><br><span class="line">Cgroups技术是用来制造约束的主要手段</span><br><span class="line">Namespace技术则是用来修改进程试图的主要方法</span><br></pre></td></tr></table></figure>
 <span id="more"></span>
 
+<h2 id="Docker-architecture"><a href="#Docker-architecture" class="headerlink" title="Docker architecture"></a>Docker architecture</h2><blockquote>
+<p>Docker uses a client-server architecture.</p>
+</blockquote>
+<p><img src="/misc/images/architecture.svg" alt="docker architecture"></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Docker 仓库操作</span><br><span class="line">  docker pull/push</span><br><span class="line"></span><br><span class="line"># Docker 镜像管理</span><br><span class="line">  docker images/rmi/build</span><br><span class="line"></span><br><span class="line"># Docker 生命周期管理</span><br><span class="line">  docker run/start/stop/rm</span><br><span class="line"></span><br><span class="line"># to delete all containers including its volumes use,</span><br><span class="line">$ docker rm -vf $(docker ps -a -q)</span><br><span class="line"></span><br><span class="line"># to delete all the images</span><br><span class="line">$ docker rmi -f $(docker images -a -q)</span><br></pre></td></tr></table></figure>
+
 <h2 id="Docker-Tips"><a href="#Docker-Tips" class="headerlink" title="Docker Tips"></a>Docker Tips</h2><ul>
 <li><p><strong>Docker Tip #1</strong>: Docker 容器进程</p>
 <blockquote>
@@ -88,11 +94,8 @@
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker system df</span><br><span class="line">TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE</span><br><span class="line">Images          3         2         203.9MB   198.5MB (97%)</span><br><span class="line">Containers      3         1         2.524MB   0B (0%)</span><br><span class="line">Local Volumes   1         0         0B        0B</span><br><span class="line">Build Cache     0         0         0B        0B</span><br><span class="line"></span><br><span class="line"># -v flag (verbose) - will show the unique image size for each image</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker system df -v</span><br><span class="line">Images space usage:</span><br><span class="line"></span><br><span class="line">REPOSITORY            TAG       IMAGE ID       CREATED       SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS</span><br><span class="line">alpine                latest    bb3de5531c18   4 days ago    5.337MB   0B            5.337MB       2</span><br><span class="line">hello-world           latest    bc11b176a293   7 weeks ago   9.136kB   0B            9.136kB       1</span><br><span class="line">bahamat/unix-1st-ed   latest    37aa142d2113   5 years ago   198.5MB   0B            198.5MB       0</span><br><span class="line"></span><br><span class="line">Containers space usage:</span><br><span class="line"></span><br><span class="line">CONTAINER ID   IMAGE         COMMAND            LOCAL VOLUMES   SIZE      CREATED       STATUS                   NAMES</span><br><span class="line">9023720cdee7   alpine        &quot;sh&quot;               0               2.52MB    5 hours ago   Up 5 hours               upbeat_kepler</span><br><span class="line">9e272ab58362   alpine        &quot;sh -c &#x27;exit 1&#x27;&quot;   0               0B        6 hours ago   Exited (1) 6 hours ago   naughty_blackburn</span><br><span class="line">d95cc7e19d43   hello-world   &quot;/hello&quot;           0               0B        7 weeks ago   Exited (0) 7 weeks ago   nifty_hellman</span><br><span class="line"></span><br><span class="line">Local Volumes space usage:</span><br><span class="line"></span><br><span class="line">VOLUME NAME   LINKS     SIZE</span><br><span class="line">user_my-db    0         0B</span><br><span class="line"></span><br><span class="line">Build cache usage: 0B</span><br><span class="line"></span><br><span class="line">CACHE ID   CACHE TYPE   SIZE      CREATED   LAST USED   USAGE     SHARED</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>Docker Tip #20</strong>: Docker Compose Stop vs Down</p>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># docker-compose stop</span><br><span class="line">&gt; stop container, but it won&#x27;t remove them</span><br><span class="line"></span><br><span class="line"># docker-compose down</span><br><span class="line">&gt; stop container, removes the stopped containers as well as any networks that were created.</span><br><span class="line"></span><br><span class="line"># docker-compose down -v</span><br><span class="line">&gt; add remove all volumes too.</span><br></pre></td></tr></table></figure></li>
-<li><p><strong>Docker Tip #21</strong>: Using WORKDIR to Cleanup Dockerfile</p>
-<blockquote>
-<p>The WORKDIR instruction allows you to set a specific path in one spot, and then most instructions (RUN and COPY to name a few) will execute in the context of thet WORDIR.</p>
-</blockquote>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #21</strong>: Difference between Docker Create, Start and Run</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Create:</span><br><span class="line">  adds a writeable container on top of your image and sets it up for running whatever command you specified in you CMD. The container ID is reported back but it&#x27;s not started.</span><br><span class="line"></span><br><span class="line"># Start:</span><br><span class="line">  will start any stopped container.</span><br><span class="line"></span><br><span class="line"># Run:</span><br><span class="line">  combination of create and start, It creates the container and starts it.</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Have-a-Fun"><a href="#Have-a-Fun" class="headerlink" title="Have a Fun"></a>Have a Fun</h2><ul>
 <li>Run the First Edition of Unix (1972) with Docker<blockquote>
@@ -152,6 +155,8 @@
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ go run main.go</span><br><span class="line"></span><br><span class="line">   ____    __</span><br><span class="line">  / __/___/ /  ___</span><br><span class="line"> / _// __/ _ \/ _ \</span><br><span class="line">/___/\__/_//_/\___/ v4.5.0</span><br><span class="line">High performance, minimalist Go web framework</span><br><span class="line">https://echo.labstack.com</span><br><span class="line">____________________________________O/_______</span><br><span class="line">                                    O\</span><br><span class="line">⇨ http server started on [::]:8080</span><br></pre></td></tr></table></figure>
 
+<span id="more"></span>
+
 <h2 id="功能概述"><a href="#功能概述" class="headerlink" title="功能概述"></a>功能概述</h2><ul>
 <li>Optimized HTTP router which smartly prioritize routes</li>
 <li>Build robust and scalable RESTful APIs</li>
@@ -167,7 +172,6 @@
 <li>Automatic TLS via Let’s Encrypt</li>
 <li>HTTP/2 support</li>
 </ul>
-<span id="more"></span>
 ]]></content>
       <tags>
         <tag>框架</tag>
