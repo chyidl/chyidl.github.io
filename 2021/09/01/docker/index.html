@@ -28,7 +28,7 @@
 <meta property="og:description" content="Docker  Info1234容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”Cgroups技术是用来制造约束的主要手段Namespace技术则是用来修改进程试图的主要方法">
 <meta property="og:locale">
 <meta property="article:published_time" content="2021-09-01T01:49:58.000Z">
-<meta property="article:modified_time" content="2021-09-01T09:54:27.627Z">
+<meta property="article:modified_time" content="2021-09-01T23:32:32.872Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="Docker">
 <meta property="article:tag" content="Dockerfile">
@@ -164,7 +164,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -173,7 +173,7 @@
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -247,10 +247,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-09-01 09:49:58 / Modified: 17:54:27" itemprop="dateCreated datePublished" datetime="2021-09-01T09:49:58+08:00">2021-09-01</time>
+      <time title="Created: 2021-09-01 09:49:58" itemprop="dateCreated datePublished" datetime="2021-09-01T09:49:58+08:00">2021-09-01</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-02 07:32:32" itemprop="dateModified" datetime="2021-09-02T07:32:32+08:00">2021-09-02</time>
+      </span>
 
   
     <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
@@ -266,14 +272,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>8k</span>
+      <span>9.5k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>7 mins.</span>
+      <span>9 mins.</span>
     </span>
 </div>
 
@@ -365,6 +371,15 @@
 <p>Implementation of connecting to Docker host over a custom network with a static IP address.</p>
 </blockquote>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"># Create a custom bridge Docker network</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker network create -d bridge --subnet 192.168.0.0/24 --gateway 192.168.0.1 mynet</span><br><span class="line">0330b879fcc8fb23eeb092cb66fd86f1796e7f0abe37df4978903cf8fd07217b</span><br><span class="line"></span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ ifconfig</span><br><span class="line">br-0330b879fcc8: flags=4099&lt;UP,BROADCAST,MULTICAST&gt;  mtu 1500</span><br><span class="line">        inet 192.168.0.1  netmask 255.255.255.0  broadcast 192.168.0.255</span><br><span class="line">        ether 02:42:16:0c:c0:51  txqueuelen 0  (Ethernet)</span><br><span class="line">        RX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        RX errors 0  dropped 0  overruns 0  frame 0</span><br><span class="line">        TX packets 0  bytes 0 (0.0 B)</span><br><span class="line">        TX errors 0  dropped 0 overruns 0  carrier 0  collisions 0</span><br><span class="line"></span><br><span class="line"># Start the Alpine container and drop into a Shell prompt.</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker container run --rm -it alpine sh</span><br><span class="line"></span><br><span class="line"># Install the ping utility.</span><br><span class="line">/ # apk update &amp;&amp; apk add iputils</span><br><span class="line">fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/aarch64/APKINDEX.tar.gz</span><br><span class="line">fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/aarch64/APKINDEX.tar.gz</span><br><span class="line">v3.14.2-5-gd4163d4c6c [https://dl-cdn.alpinelinux.org/alpine/v3.14/main]</span><br><span class="line">v3.14.2-4-ga15b4dc067 [https://dl-cdn.alpinelinux.org/alpine/v3.14/community]</span><br><span class="line">OK: 14810 distinct packages available</span><br><span class="line">(1/2) Installing libcap (2.50-r0)</span><br><span class="line">(2/2) Installing iputils (20210202-r0)</span><br><span class="line">Executing busybox-1.33.1-r3.trigger</span><br><span class="line">OK: 6 MiB in 16 packages</span><br><span class="line"></span><br><span class="line"># Ping the custom IP address we set up.</span><br><span class="line">/ # ping 192.168.0.1</span><br><span class="line"></span><br><span class="line"># You should see this output (hit CTRL+C to stop it)</span><br><span class="line">PING 192.168.0.1 (192.168.0.1) 56(84) bytes of data.</span><br><span class="line">64 bytes from 192.168.0.1: icmp_seq=1 ttl=64 time=0.336 ms</span><br><span class="line">64 bytes from 192.168.0.1: icmp_seq=2 ttl=64 time=0.293 ms</span><br><span class="line">^C</span><br><span class="line">--- 192.168.0.1 ping statistics ---</span><br><span class="line">2 packets transmitted, 2 received, 0% packet loss, time 1013ms</span><br><span class="line">rtt min/avg/max/mdev = 0.293/0.314/0.336/0.021 ms</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #19</strong>: Show Total Disk Space Used by Docker</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker system df</span><br><span class="line">TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE</span><br><span class="line">Images          3         2         203.9MB   198.5MB (97%)</span><br><span class="line">Containers      3         1         2.524MB   0B (0%)</span><br><span class="line">Local Volumes   1         0         0B        0B</span><br><span class="line">Build Cache     0         0         0B        0B</span><br><span class="line"></span><br><span class="line"># -v flag (verbose) - will show the unique image size for each image</span><br><span class="line">ubuntu in ~ at 3BPlus</span><br><span class="line">➜ docker system df -v</span><br><span class="line">Images space usage:</span><br><span class="line"></span><br><span class="line">REPOSITORY            TAG       IMAGE ID       CREATED       SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS</span><br><span class="line">alpine                latest    bb3de5531c18   4 days ago    5.337MB   0B            5.337MB       2</span><br><span class="line">hello-world           latest    bc11b176a293   7 weeks ago   9.136kB   0B            9.136kB       1</span><br><span class="line">bahamat/unix-1st-ed   latest    37aa142d2113   5 years ago   198.5MB   0B            198.5MB       0</span><br><span class="line"></span><br><span class="line">Containers space usage:</span><br><span class="line"></span><br><span class="line">CONTAINER ID   IMAGE         COMMAND            LOCAL VOLUMES   SIZE      CREATED       STATUS                   NAMES</span><br><span class="line">9023720cdee7   alpine        &quot;sh&quot;               0               2.52MB    5 hours ago   Up 5 hours               upbeat_kepler</span><br><span class="line">9e272ab58362   alpine        &quot;sh -c &#x27;exit 1&#x27;&quot;   0               0B        6 hours ago   Exited (1) 6 hours ago   naughty_blackburn</span><br><span class="line">d95cc7e19d43   hello-world   &quot;/hello&quot;           0               0B        7 weeks ago   Exited (0) 7 weeks ago   nifty_hellman</span><br><span class="line"></span><br><span class="line">Local Volumes space usage:</span><br><span class="line"></span><br><span class="line">VOLUME NAME   LINKS     SIZE</span><br><span class="line">user_my-db    0         0B</span><br><span class="line"></span><br><span class="line">Build cache usage: 0B</span><br><span class="line"></span><br><span class="line">CACHE ID   CACHE TYPE   SIZE      CREATED   LAST USED   USAGE     SHARED</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #20</strong>: Docker Compose Stop vs Down</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># docker-compose stop</span><br><span class="line">&gt; stop container, but it won&#x27;t remove them</span><br><span class="line"></span><br><span class="line"># docker-compose down</span><br><span class="line">&gt; stop container, removes the stopped containers as well as any networks that were created.</span><br><span class="line"></span><br><span class="line"># docker-compose down -v</span><br><span class="line">&gt; add remove all volumes too.</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #21</strong>: Using WORKDIR to Cleanup Dockerfile</p>
+<blockquote>
+<p>The WORKDIR instruction allows you to set a specific path in one spot, and then most instructions (RUN and COPY to name a few) will execute in the context of thet WORDIR.</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Have-a-Fun"><a href="#Have-a-Fun" class="headerlink" title="Have a Fun"></a>Have a Fun</h2><ul>
 <li>Run the First Edition of Unix (1972) with Docker<blockquote>
@@ -394,6 +409,9 @@
                 </a>
             </div>
             <div class="post-nav-item">
+                <a href="/2021/09/02/echo-go-web-framework/" rel="next" title="echo-go-web-framework">
+                  echo-go-web-framework <i class="fa fa-chevron-right"></i>
+                </a>
             </div>
           </div>
     </footer>
@@ -426,13 +444,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">9k</span>
+    <span title="Symbols count total">11k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">8 mins.</span>
+    <span title="Reading time total">10 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">

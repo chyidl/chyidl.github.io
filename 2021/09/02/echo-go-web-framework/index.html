@@ -20,25 +20,29 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="🦷🦷 Blog">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Stay Hungry Stay Foolish">
-<meta property="og:url" content="http://chyidl.github.io/archives/2021/09/">
+<meta name="description" content="Echo 高性能、可扩展、精简的Go Web框架  1234567891011➜ go run main.go   ____    __  &#x2F; __&#x2F;___&#x2F; &#x2F;  ___ &#x2F; _&#x2F;&#x2F; __&#x2F; _ \&#x2F; _ \&#x2F;___&#x2F;\__&#x2F;_&#x2F;&#x2F;_&#x2F;\___&#x2F; v4.5.0High performance, minimalist Go web frameworkhttps:&#x2F;&#x2F;echo.labstack.co">
+<meta property="og:type" content="article">
+<meta property="og:title" content="echo-go-web-framework">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/02/echo-go-web-framework/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="🦷🦷 Blog">
+<meta property="og:description" content="Echo 高性能、可扩展、精简的Go Web框架  1234567891011➜ go run main.go   ____    __  &#x2F; __&#x2F;___&#x2F; &#x2F;  ___ &#x2F; _&#x2F;&#x2F; __&#x2F; _ \&#x2F; _ \&#x2F;___&#x2F;\__&#x2F;_&#x2F;&#x2F;_&#x2F;\___&#x2F; v4.5.0High performance, minimalist Go web frameworkhttps:&#x2F;&#x2F;echo.labstack.co">
 <meta property="og:locale">
+<meta property="article:published_time" content="2021-09-01T23:33:07.000Z">
+<meta property="article:modified_time" content="2021-09-02T00:15:40.590Z">
 <meta property="article:author" content="chyi">
+<meta property="article:tag" content="框架">
+<meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/archives/2021/09/">
+<link rel="canonical" href="http://chyidl.github.io/2021/09/02/echo-go-web-framework/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh","comments":"","permalink":"","path":"archives/2021/09/index.html","title":""}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://chyidl.github.io/2021/09/02/echo-go-web-framework/","path":"2021/09/02/echo-go-web-framework/","title":"echo-go-web-framework"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Archive | Stay Hungry Stay Foolish</title>
+<title>echo-go-web-framework | Stay Hungry Stay Foolish</title>
   
 
 
@@ -131,7 +135,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -144,6 +148,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Echo"><span class="nav-number">1.</span> <span class="nav-text">Echo</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8A%9F%E8%83%BD%E6%A6%82%E8%BF%B0"><span class="nav-number">1.1.</span> <span class="nav-text">功能概述</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,110 +213,132 @@
 </noscript>
 
 
-    <div class="main-inner archive posts-collapse">
+    <div class="main-inner post posts-expand">
 
 
   
-  
-  
-  <div class="post-block">
-    <div class="post-content">
-      <div class="collection-title">
-        <span class="collection-header">Um..! 4 posts in total. Keep on posting.</span>
-      </div>
 
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/echo-go-web-framework/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          echo-go-web-framework
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+
+      <time title="Created: 2021-09-02 07:33:07 / Modified: 08:15:40" itemprop="dateCreated datePublished" datetime="2021-09-02T07:33:07+08:00">2021-09-02</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>635</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Echo"><a href="#Echo" class="headerlink" title="Echo"></a>Echo</h1><blockquote>
+<p>高性能、可扩展、精简的Go Web框架</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">➜ go run main.go</span><br><span class="line"></span><br><span class="line">   ____    __</span><br><span class="line">  / __/___/ /  ___</span><br><span class="line"> / _// __/ _ \/ _ \</span><br><span class="line">/___/\__/_//_/\___/ v4.5.0</span><br><span class="line">High performance, minimalist Go web framework</span><br><span class="line">https://echo.labstack.com</span><br><span class="line">____________________________________O/_______</span><br><span class="line">                                    O\</span><br><span class="line">⇨ http server started on [::]:8080</span><br></pre></td></tr></table></figure>
+
+<h2 id="功能概述"><a href="#功能概述" class="headerlink" title="功能概述"></a>功能概述</h2><ul>
+<li>Optimized HTTP router which smartly prioritize routes</li>
+<li>Build robust and scalable RESTful APIs</li>
+<li>Group APIs</li>
+<li>Extensible middleware framework</li>
+<li>Define middleware at root, group or route level</li>
+<li>Data binding for JSON, XML and form payload</li>
+<li>Handy functions to send variety of HTTP response</li>
+<li>Centralized HTTP error handling</li>
+<li>Template rendering with any template engine</li>
+<li>Define your format for the logger</li>
+<li>Highly customizable</li>
+<li>Automatic TLS via Let’s Encrypt</li>
+<li>HTTP/2 support</li>
+</ul>
+<span id="more"></span>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-02T07:33:07+08:00"
-              content="2021-09-02">
-          09-02
-        </time>
-      </div>
+    
+    
+    
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/02/echo-go-web-framework/" itemprop="url">
-            <span itemprop="name">echo-go-web-framework</span>
-          </a>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%A1%86%E6%9E%B6/" rel="tag"># 框架</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
+          </div>
 
-      
-    </header>
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/01/docker/" rel="prev" title="Docker Tips & Tricks">
+                  <i class="fa fa-chevron-left"></i> Docker Tips & Tricks
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
   </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-01T09:49:58+08:00"
-              content="2021-09-01">
-          09-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/01/docker/" itemprop="url">
-            <span itemprop="name">Docker Tips & Tricks</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-01T09:12:54+08:00"
-              content="2021-09-01">
-          09-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/01/hexo-next-gitalk/" itemprop="url">
-            <span itemprop="name">hexo-next-gitalk</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
-
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-      <div class="post-meta-container">
-        <time itemprop="dateCreated"
-              datetime="2021-09-01T07:12:02+08:00"
-              content="2021-09-01">
-          09-01
-        </time>
-      </div>
-
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/09/01/micro-services/" itemprop="url">
-            <span itemprop="name">micro-services</span>
-          </a>
-      </div>
-
-      
-    </header>
-  </article>
+</div>
 
 
-    </div>
-  </div>
-  
-  
-  
 
+
+
+
+    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -383,7 +410,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"0fa9a941085868d6126261e85b27144f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"42806d7dfd899fc2811aedf1ede047ca"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
