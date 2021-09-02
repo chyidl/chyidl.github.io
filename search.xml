@@ -178,4 +178,37 @@
         <tag>Golang</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Distributed ID Generator</title>
+    <url>/2021/09/02/Distributed-ID-Generator/</url>
+    <content><![CDATA[<h1 id="Distributed-ID-Generator"><a href="#Distributed-ID-Generator" class="headerlink" title="Distributed ID Generator"></a>Distributed ID Generator</h1><ul>
+<li>UUID<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">  &quot;testing&quot;</span><br><span class="line"></span><br><span class="line">  &quot;github.com/google/uuid&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func BenchmarkUUID(t *testing.B) &#123;</span><br><span class="line">  for i := 0; i &lt; t.N; i++ &#123;</span><br><span class="line">    _ = uuid.New()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~/Downloads/uuid_demo via 🐹 v1.17 took 13s</span><br><span class="line">➜ go test -bench=.</span><br><span class="line">goos: darwin</span><br><span class="line">goarch: amd64</span><br><span class="line">pkg: uuid_demo</span><br><span class="line">cpu: Intel(R) Core(TM) i5-5257U CPU @ 2.70GHz</span><br><span class="line">BenchmarkUUID-4   	 1390710	       844.7 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok  	uuid_demo	2.351s</span><br><span class="line"></span><br><span class="line"># UUIDs are 128-bit hexadecimal numbers that are globally unique</span><br><span class="line"></span><br><span class="line"># 优点:</span><br><span class="line">  1. 生成足够简单，本地生成无网络消耗，具有唯一性</span><br><span class="line"># 缺点:</span><br><span class="line">  1. 无序的字符串，不具备趋势自增特性</span><br><span class="line">  2. 没有具体的业务含义</span><br><span class="line">  3. 长度过长16字节128位,36位长度的字符串,存储以及查询数据库性能消耗较大,数据库建议主键尽量越短越好，作为数据库主键UUID的无序性会导致数据位置频繁变动，严重影响性能</span><br></pre></td></tr></table></figure></li>
+<li>基于数据库自增ID<blockquote>
+<p>基于数据库的auto_increment自增ID完成可以充当分布式ID</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 创建数据表</span><br><span class="line">mysql&gt; CREATE TABLE SEQUENCE_ID (id bigint(20) unsigned NOT NULL auto_increment, value char(10) NOT NULL default &#x27;&#x27;, PRIMARY KEY (id)) ENGINE=MyISAM;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.08 sec)</span><br><span class="line"></span><br><span class="line"># MySQL使用存储过程插入数据</span><br><span class="line">delimiter $$</span><br><span class="line">create procedure bench_insert(count int unsigned)</span><br><span class="line">BEGIN</span><br><span class="line">  declare num int unsigned default 1;</span><br><span class="line">  declare c char(10) default repeat(&#x27;c&#x27;,10); </span><br><span class="line">  START TRANSACTION;</span><br><span class="line">  while num &lt;= count DO </span><br><span class="line">    insert into SEQUENCE_ID(`value`) values(c); </span><br><span class="line">    set num=num+1;</span><br><span class="line">  end while;</span><br><span class="line">COMMIT;</span><br><span class="line">END$$ delimiter ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CALL bench_insert(10000);</span><br><span class="line"></span><br><span class="line">drop PROCEDURE bench_insert;</span><br><span class="line"></span><br><span class="line"># 当需要ID的时候，向表中插入记录返回主键ID.</span><br><span class="line"></span><br><span class="line"># 优点:</span><br><span class="line">  1. 实现简单、ID单调自增、数值类型查询速度快</span><br><span class="line"></span><br><span class="line">缺点:</span><br><span class="line">  1. DB单点存在宕机风险，无法扛住高并发场景</span><br></pre></td></tr></table></figure></li>
+<li>基于数据库的号段模式<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li>twitter snowflake<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>分布式</tag>
+        <tag>ID Generator</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Kafka Tips &amp; Tracks</title>
+    <url>/2021/09/02/Kafka-Tips-Tracks/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>MySQL Tips &amp; Tracks</title>
+    <url>/2021/09/02/MySQL-Tips-Tracks/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>Redis Tips &amp; Tracks</title>
+    <url>/2021/09/02/Redis-Tips-Tracks/</url>
+    <content><![CDATA[]]></content>
+  </entry>
 </search>
