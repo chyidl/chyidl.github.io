@@ -159,7 +159,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">8</span>
+          <span class="site-state-item-count">9</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -168,7 +168,7 @@
         <span class="site-state-item-name">categories</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">14</span>
         <span class="site-state-item-name">tags</span>
       </div>
   </nav>
@@ -218,6 +218,85 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/03/Dev-Ops-Tips-Tracks/" class="post-title-link" itemprop="url">Dev-Ops Tips & Tracks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2021-09-03 08:01:55" itemprop="dateCreated datePublished" datetime="2021-09-03T08:01:55+08:00">2021-09-03</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Symbols count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Symbols count in article: </span>
+      <span>51</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1. Programming</span><br><span class="line">2. Software Testing</span><br><span class="line">3. Operations</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -244,6 +323,13 @@
 
       <time title="Created: 2021-09-02 21:55:16" itemprop="dateCreated datePublished" datetime="2021-09-02T21:55:16+08:00">2021-09-02</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-03 17:08:01" itemprop="dateModified" datetime="2021-09-03T17:08:01+08:00">2021-09-03</time>
+      </span>
 
   
     <span class="post-meta-break"></span>
@@ -252,7 +338,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>0</span>
+      <span>1.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -270,7 +356,22 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><blockquote>
+<p>Redis 持久化主要两大机制: AOF (Append Only File) 日志和RDB 快照</p>
+</blockquote>
+<ul>
+<li><p>AOF - Append Only File</p>
+<blockquote>
+<p>AOF日志是Redis执行完命令，把数据写入内存，然后才记录日志,记录的是Redis收到的每一条命令</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"># 写后日志这种方式，先让系统执行命令，只有命令执行成功，才会被记录到日志中，避免出现记录错误命令的情况</span><br><span class="line"># AOF 是在命令执行后才记录日志，不会阻塞当前写操作</span><br><span class="line"></span><br><span class="line"># 写回磁盘策略 appendfsync</span><br><span class="line">  1. Always: 同步写回, 每个写命令执行完，立马同步将日志写回磁盘</span><br><span class="line">    &gt; 落盘操作属于慢速，回影响主线程性能</span><br><span class="line">  2. Everysec: 每秒写回,每个写命令执行完，先把日志写到AOF文件的内存缓冲区，每隔一秒把缓冲区中的内容写入磁盘</span><br><span class="line">    &gt; 在避免影响主线程和避免数据丢失两者之间trade-off方式</span><br><span class="line">  3. No: 操作系统控制写回，每个写命令执行完，只是先把日志写到AOF文件的内存缓冲区，由操作系统决定何时将缓冲区内容写回磁盘</span><br><span class="line">    &gt; 落盘时机交给操作系统，只要AOF记录没有写回磁盘，宕机对应的数据就丢失</span><br><span class="line"></span><br><span class="line"># 解决AOF文件过大的性能问题: AOF 重写</span><br><span class="line"></span><br><span class="line">  问题:</span><br><span class="line">    1. 文件系统本身对文件大小有限制，无法保存过大的文件</span><br><span class="line">    2. 文件过大，追加命令记录效率变低</span><br><span class="line">    3. 发生宕机，AOF记录命令要被重新执行，故障恢复比较缓慢，会影响Redis正常使用</span><br><span class="line"></span><br><span class="line">  AOF重写:</span><br><span class="line">    &gt; 重写机制可以将旧日志文件中的多条命令，在重写后的新日志中变成一条命令</span><br><span class="line">    &gt; AOF重写过程是由后台子进程bgrewriteaof完成，避免阻塞主线程，导致性能下降</span><br><span class="line">    &gt; 每次AOF重写时，Redis会执行一个内存拷贝，用于重写，然后使用两个日志保证重写过程中，新写入的数据不会丢失，而且，Redis采用额外的线程进行数据重写，过程不会阻塞主线程</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><p>RDB - 内存快照</p>
+<blockquote>
+<p>内存快照：指内存中的数据在某一个时刻的状态记录</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Redis两种命令生成RDB文件</span><br><span class="line">  1. save: 在主线程执行，会导致阻塞</span><br><span class="line">  2. bgsave: 创建子进程，专门用于写入RDB文件，避免主线程阻塞</span><br><span class="line">    &gt; bgsave子进程由主线程fork生成，共享主线程的所有内存数据，bgsave子进程运行后，开始读取主线程的内存数据，并把数据写入RDB文件</span><br><span class="line"></span><br><span class="line"># 增量快照:</span><br><span class="line">&gt; 做一次全量快照后，后续的快照支队修改的数据进行快照记录，可以避免每次全量快照的开销</span><br><span class="line"></span><br><span class="line"># 混合使用AOF日志和内存快照</span><br><span class="line">&gt; 内存快照以一定的频率执行，两次快照之间，使用AOF日志记录这期间的所有命令操作</span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
 
@@ -397,10 +498,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-09-02 21:54:37 / Modified: 21:54:38" itemprop="dateCreated datePublished" datetime="2021-09-02T21:54:37+08:00">2021-09-02</time>
+      <time title="Created: 2021-09-02 21:54:37" itemprop="dateCreated datePublished" datetime="2021-09-02T21:54:37+08:00">2021-09-02</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-03 12:09:33" itemprop="dateModified" datetime="2021-09-03T12:09:33+08:00">2021-09-03</time>
+      </span>
 
   
     <span class="post-meta-break"></span>
@@ -409,7 +516,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>0</span>
+      <span>31</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -427,7 +534,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          
+          <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
+<li>重做日志 - redo log<blockquote>
+<p>记录修改后的数据</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+
       
     </div>
 
@@ -476,10 +589,16 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-09-02 21:40:20 / Modified: 23:42:48" itemprop="dateCreated datePublished" datetime="2021-09-02T21:40:20+08:00">2021-09-02</time>
+      <time title="Created: 2021-09-02 21:40:20" itemprop="dateCreated datePublished" datetime="2021-09-02T21:40:20+08:00">2021-09-02</time>
     </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">Edited on</span>
+        <time title="Modified: 2021-09-03 17:08:01" itemprop="dateModified" datetime="2021-09-03T17:08:01+08:00">2021-09-03</time>
+      </span>
 
   
     <span class="post-meta-break"></span>
@@ -488,14 +607,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>1.3k</span>
+      <span>3.6k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>3 mins.</span>
     </span>
 </div>
 
@@ -511,9 +630,23 @@
 <li>基于数据库自增ID<blockquote>
 <p>基于数据库的auto_increment自增ID完成可以充当分布式ID</p>
 </blockquote>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># 创建数据表</span><br><span class="line">mysql&gt; CREATE TABLE SEQUENCE_ID (id bigint(20) unsigned NOT NULL auto_increment, value char(10) NOT NULL default &#x27;&#x27;, PRIMARY KEY (id)) ENGINE=MyISAM;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.08 sec)</span><br><span class="line"></span><br><span class="line"># MySQL使用存储过程插入数据</span><br><span class="line">delimiter $$</span><br><span class="line">create procedure bench_insert(count int unsigned)</span><br><span class="line">BEGIN</span><br><span class="line">  declare num int unsigned default 1;</span><br><span class="line">  declare c char(10) default repeat(&#x27;c&#x27;,10); </span><br><span class="line">  START TRANSACTION;</span><br><span class="line">  while num &lt;= count DO </span><br><span class="line">    insert into SEQUENCE_ID(`value`) values(c); </span><br><span class="line">    set num=num+1;</span><br><span class="line">  end while;</span><br><span class="line">COMMIT;</span><br><span class="line">END$$ delimiter ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CALL bench_insert(10000);</span><br><span class="line"></span><br><span class="line">drop PROCEDURE bench_insert;</span><br><span class="line"></span><br><span class="line"># 当需要ID的时候，向表中插入记录返回主键ID.</span><br><span class="line"></span><br><span class="line"># 优点:</span><br><span class="line">  1. 实现简单、ID单调自增、数值类型查询速度快</span><br><span class="line"></span><br><span class="line">缺点:</span><br><span class="line">  1. DB单点存在宕机风险，无法扛住高并发场景</span><br></pre></td></tr></table></figure></li>
-<li>基于数据库的号段模式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-<li>twitter snowflake<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># 创建数据表</span><br><span class="line">mysql&gt; CREATE TABLE SEQUENCE_ID (id bigint(20) unsigned NOT NULL auto_increment, value char(10) NOT NULL default &#x27;&#x27;, PRIMARY KEY (id)) ENGINE=MyISAM;</span><br><span class="line">Query OK, 0 rows affected, 1 warning (0.08 sec)</span><br><span class="line"></span><br><span class="line"># MySQL使用存储过程插入数据</span><br><span class="line">delimiter $$</span><br><span class="line">create procedure bench_insert(count int unsigned)</span><br><span class="line">BEGIN</span><br><span class="line">  declare num int unsigned default 1;</span><br><span class="line">  declare c char(10) default repeat(&#x27;c&#x27;,10);</span><br><span class="line">  START TRANSACTION;</span><br><span class="line">  while num &lt;= count DO</span><br><span class="line">    insert into SEQUENCE_ID(`value`) values(c);</span><br><span class="line">    set num=num+1;</span><br><span class="line">  end while;</span><br><span class="line">COMMIT;</span><br><span class="line">END$$ delimiter ;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">CALL bench_insert(10000);</span><br><span class="line"></span><br><span class="line">drop PROCEDURE bench_insert;</span><br><span class="line"></span><br><span class="line"># 当需要ID的时候，向表中插入记录返回主键ID.</span><br><span class="line"></span><br><span class="line"># 优点:</span><br><span class="line">  1. 实现简单、ID单调自增、数值类型查询速度快</span><br><span class="line"></span><br><span class="line">缺点:</span><br><span class="line">  1. DB单点存在宕机风险，无法扛住高并发场景</span><br></pre></td></tr></table></figure></li>
+<li>基于数据库集群模式<blockquote>
+<p>多数据库实例单独生产自增ID</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 设置启始值和自增布长</span><br><span class="line">  DB1:</span><br><span class="line">    set @@auto_increment_offset = 1; -- 起始值</span><br><span class="line">    set @@auto_increment_increment = 2; -- 步长</span><br><span class="line">  DB2:</span><br><span class="line">    set @@auto_increment_offset = 2; -- 起始值</span><br><span class="line">    set @@auto_increment_increment = 2; -- 步长</span><br><span class="line"></span><br><span class="line"># 优点:</span><br><span class="line">  解决DB单点问题</span><br><span class="line"></span><br><span class="line"># 缺点:</span><br><span class="line">  不利于后续扩容，而且实际上单个数据库自身压力还是很大，依旧无法满足高并发场景</span><br></pre></td></tr></table></figure></li>
+<li>基于数据库的号段模式<blockquote>
+<p>号段模式是分布式ID生成器主流实现方式之一，批量获取自增ID，每次从数据库取出一个号段范围，具体业务服务将本号段生成的自增ID加载内存</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  mysql&gt; CREATE TABLE id_generator (id int(10) NOT NULL, max_id bigint(20) NOT NULL COMMENT &#x27;当前最大id&#x27;, step int(20) NOT NULL COMMENT &#x27;号段的布长&#x27;, biz_type int(20) NOT NULL COMMENT &#x27;业务类型&#x27;, version int(20) NOT NULL COMMENT &#x27;版本号&#x27;, PRIMARY KEY(`id`));</span><br><span class="line">Query OK, 0 rows affected, 5 warnings (0.11 sec)</span><br><span class="line"></span><br><span class="line">  mysql&gt; describe id_generator;</span><br><span class="line">  +----------+--------+------+-----+---------+-------+</span><br><span class="line">  | Field    | Type   | Null | Key | Default | Extra |</span><br><span class="line">  +----------+--------+------+-----+---------+-------+</span><br><span class="line">  | id       | int    | NO   | PRI | NULL    |       |</span><br><span class="line">  | max_id   | bigint | NO   |     | NULL    |       |  -- 当前最大的可用id</span><br><span class="line">  | step     | int    | NO   |     | NULL    |       |  -- 代表号段的长度</span><br><span class="line">  | biz_type | int    | NO   |     | NULL    |       |  -- 不同业务类型</span><br><span class="line">  | version  | int    | NO   |     | NULL    |       |  -- 乐观锁，每次都更新version，保证并发时数据的正确性</span><br><span class="line">  +----------+--------+------+-----+---------+-------+</span><br><span class="line">  5 rows in set (0.04 sec)</span><br><span class="line"></span><br><span class="line">  update id_generator set max_id = #&#123;max_id+step&#125;, version = version + 1 where version = # &#123;version&#125; and biz_type = XXX</span><br></pre></td></tr></table></figure></li>
+<li>基于Redis模式<blockquote>
+<p>利用redis Incr 原子性自增</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  172.30.1.23:6002&gt; set seq_id 1</span><br><span class="line">  OK</span><br><span class="line">  172.30.1.23:6002&gt; incr seq_id</span><br><span class="line">  (integer) 2</span><br><span class="line">  172.30.1.23:6002&gt; get seq_id</span><br><span class="line">  &quot;2&quot;</span><br><span class="line">  172.30.1.23:6002&gt;</span><br><span class="line"></span><br><span class="line"># Benchmark</span><br><span class="line">ubuntu in ~ at 3BPlus took 4s</span><br><span class="line">➜ redis-benchmark -n 1000000 -t set,get,incr -P 16 -q -h 127.0.0.1 -p 6001 --cluster</span><br><span class="line">Cluster has 3 master nodes:</span><br><span class="line"></span><br><span class="line">Master 0: a733c21d3b735b9d026eb4d462ef6b367d8ebb98 172.30.1.23:6002</span><br><span class="line">Master 1: 9c35a4e211f6534861ed768dba592e85539b1377 172.30.1.23:6003</span><br><span class="line">Master 2: a901e497cb72819cf0765e9e4eb16c36399c437b 172.30.1.23:6001</span><br><span class="line"></span><br><span class="line">SET: 47001.32 requests per second, p50=15.199 msec</span><br><span class="line">GET: 101936.80 requests per second, p50=5.679 msec</span><br><span class="line">INCR: 46496.49 requests per second, p50=13.879 msec   -- 并发5万/s</span><br></pre></td></tr></table></figure></li>
+<li>twitter snowflake<blockquote>
+<p>雪花算法 (Snowflake) Twitter内部分布式采用的ID生成算法</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># The default Twitter format shown below.</span><br><span class="line">+--------------------------------------------------------------------------+</span><br><span class="line">| 1 Bit Unused | 41 Bit Timestamp |  10 Bit NodeID  |   12 Bit Sequence ID |</span><br><span class="line">+--------------------------------------------------------------------------+</span><br><span class="line"></span><br><span class="line">41 bits: store a timestamp with millisecond precision</span><br><span class="line">10 bits: store a node id - a range from 0 through 1023</span><br><span class="line">12 bits: store a sequence number - a range from 0 through 4095</span><br></pre></td></tr></table></figure></li>
 </ul>
 
       
@@ -924,13 +1057,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Symbols count total">13k</span>
+    <span title="Symbols count total">16k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">11 mins.</span>
+    <span title="Reading time total">15 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">
