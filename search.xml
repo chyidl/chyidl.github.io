@@ -235,7 +235,12 @@
   <entry>
     <title>Redis Tips &amp; Tracks</title>
     <url>/2021/09/02/Redis-Tips-Tracks/</url>
-    <content><![CDATA[<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><blockquote>
+    <content><![CDATA[<h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><blockquote>
+<p>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="持久化"><a href="#持久化" class="headerlink" title="持久化"></a>持久化</h2><blockquote>
 <p>Redis 持久化主要两大机制: AOF (Append Only File) 日志和RDB 快照</p>
 </blockquote>
 <ul>
@@ -263,6 +268,274 @@
 ]]></content>
       <tags>
         <tag>DevOps</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Distribute Scraping for Gophers</title>
+    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
+    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
+<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
+<li>nats<blockquote>
+<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>分布式</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Elasticsearch Tips &amp; Tracks</title>
+    <url>/2021/09/03/Elasticsearch-Tips-Tracks/</url>
+    <content><![CDATA[<h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><blockquote>
+<p>Elasticsearch是一个开源的分布式搜索与分析引擎，提供近实时搜索和聚合功能<br>Elastic Stack主要应用于：搜索、日志管理、安全分析、指标分析、业务分析、应用性能监控等多个领域<br>“Search is something that any application should have.”</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Elastic-Stack-生态圈"><a href="#Elastic-Stack-生态圈" class="headerlink" title="Elastic Stack 生态圈"></a>Elastic Stack 生态圈</h2><ul>
+<li><p>解决方案:</p>
+<ul>
+<li>搜索</li>
+<li>日志分析</li>
+<li>指标分析</li>
+<li>安全分析</li>
+</ul>
+</li>
+<li><p>可视化:</p>
+<ul>
+<li>Kibana: 可视化分析</li>
+</ul>
+</li>
+<li><p>存储/计算:</p>
+<ul>
+<li>Elasticsearch: 核心引擎,提供数据存储、搜索和聚合的能力</li>
+</ul>
+</li>
+<li><p>数据抓取:</p>
+<ul>
+<li>Logstash<blockquote>
+<p>开源的服务器端数据处理管道，支持从不同来源采集数据，转换数据，并将数据发送到不同的存储库中</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 特性:</span><br><span class="line">  1. 实时解析和转换数据</span><br><span class="line">    &gt; 从IP地址破译地理位置</span><br><span class="line">    &gt; 从PII数据匿名化，排除敏感字段</span><br><span class="line">  2. 可扩展</span><br><span class="line">  3. 可靠性安全性</span><br><span class="line">    &gt; Logstash 通过持久化队列保证至少将运行中的事件送达一次</span><br><span class="line">    &gt; 数据传输加密</span><br><span class="line">  4. 加密</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Beats<blockquote>
+<p>轻量级别数据采集器</p>
+</blockquote>
+</li>
+</ul>
+</li>
+<li><p>X-Pack: 商业化套件</p>
+</li>
+</ul>
+<blockquote>
+<p>Elasticsearch与数据库的集成</p>
+</blockquote>
+<p><img src="/misc/images/Elastichsearch.png" alt="Elastichsearch"></p>
+<blockquote>
+<p>指标分析/日志分析</p>
+</blockquote>
+<ul>
+<li>Data Collection(beats) -&gt; Buffering(redis,Kafkak) -&gt; Data Aggregation &amp; Processing(logstash) -&gt; Indexing &amp; storage(elasticsearch) -&gt; Analysis &amp; visualization(Kbana)</li>
+</ul>
+<h2 id="Elasticsearch-1"><a href="#Elasticsearch-1" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><ul>
+<li><p>Elasticsearch 目录结构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ubuntu in ~/elasticsearch-7.14.1 at k8s-node1 took 45s</span><br><span class="line">➜ tree -L 1</span><br><span class="line">.</span><br><span class="line">├── bin                 -- 脚本文件，包括启动elasticsearch,安装插件，运行统计数据</span><br><span class="line">├── config              -- elasticsearch.yml 集群配置文件，user, role based 相关配置</span><br><span class="line">├── jdk                 -- Java 运行环境</span><br><span class="line">├── lib                 -- Java 类库</span><br><span class="line">├── LICENSE.txt</span><br><span class="line">├── logs                -- path.log 日志文件</span><br><span class="line">├── modules             -- 包含所有ES模块</span><br><span class="line">├── NOTICE.txt</span><br><span class="line">├── plugins             -- 包含所有已安装插件</span><br><span class="line">└── README.asciidoc</span><br></pre></td></tr></table></figure></li>
+<li><p>JVM 配置</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 修改JVM - config/jvm.options</span><br><span class="line">  -Xms和Xms 最小最大内存设置成一样</span><br><span class="line">  -Xmx不超过机器内存的50%</span><br></pre></td></tr></table></figure></li>
+<li><p>Run</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ bin/elasticsearch</span><br><span class="line">~ took 11m 31s</span><br><span class="line">➜ curl http://localhost:9200</span><br><span class="line">&#123;</span><br><span class="line">  &quot;name&quot; : &quot;a714f28827d5&quot;,</span><br><span class="line">  &quot;cluster_name&quot; : &quot;docker-cluster&quot;,</span><br><span class="line">  &quot;cluster_uuid&quot; : &quot;96jmRuNUQxqFsGeWJjIo6g&quot;,</span><br><span class="line">  &quot;version&quot; : &#123;</span><br><span class="line">    &quot;number&quot; : &quot;7.14.1&quot;,</span><br><span class="line">    &quot;build_flavor&quot; : &quot;default&quot;,</span><br><span class="line">    &quot;build_type&quot; : &quot;docker&quot;,</span><br><span class="line">    &quot;build_hash&quot; : &quot;66b55ebfa59c92c15db3f69a335d500018b3331e&quot;,</span><br><span class="line">    &quot;build_date&quot; : &quot;2021-08-26T09:01:05.390870785Z&quot;,</span><br><span class="line">    &quot;build_snapshot&quot; : false,</span><br><span class="line">    &quot;lucene_version&quot; : &quot;8.9.0&quot;,</span><br><span class="line">    &quot;minimum_wire_compatibility_version&quot; : &quot;6.8.0&quot;,</span><br><span class="line">    &quot;minimum_index_compatibility_version&quot; : &quot;6.0.0-beta1&quot;</span><br><span class="line">  &#125;,</span><br><span class="line">  &quot;tagline&quot; : &quot;You Know, for Search&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Plugin 机制对系统扩展</p>
+<blockquote>
+<p>Discovery Plugin<br>Analysis Plugin<br>Security Plugin<br>Management Plugin<br>Ingest Plugin<br>Mapper Plugin<br>Backup Plugin</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">ubuntu in ~ at k8s-node1 via 🐍 3.8.6</span><br><span class="line">➜ elasticsearch-plugin install analysis-icu  # 分词插件</span><br><span class="line">-&gt; Installing analysis-icu</span><br><span class="line">-&gt; Downloading analysis-icu from elastic</span><br><span class="line">[=================================================] 100%</span><br><span class="line">-&gt; Installed analysis-icu</span><br><span class="line">-&gt; Please restart Elasticsearch to activate any plugins installed</span><br><span class="line"></span><br><span class="line">ubuntu in ~ at k8s-node1 via 🐍 3.8.6 took 23s</span><br><span class="line">➜ elasticsearch-plugin list</span><br><span class="line">analysis-icu</span><br><span class="line"></span><br><span class="line">ubuntu in ~ at k8s-node1 via 🐍 3.8.6</span><br><span class="line">➜ curl http://localhost:9200/_cat/plugins</span><br><span class="line">k8s-node1 analysis-icu 7.14.1</span><br></pre></td></tr></table></figure></li>
+<li><p>多集群<br><a href="/misc/code/elasticsearch/docker-compose.yml">docker-compose.yml</a></p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">➜ curl -X GET &quot;localhost:9200/_cat/nodes?v=true&amp;pretty&quot;</span><br><span class="line">ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role   master name</span><br><span class="line">172.24.0.2           41          97  85    4.28    1.24     0.43 cdfhilmrstw -      es01</span><br><span class="line">172.24.0.3           56          97  85    4.28    1.24     0.43 cdfhilmrstw -      es03</span><br><span class="line">172.24.0.4           27          97  85    4.28    1.24     0.43 cdfhilmrstw *      es02</span><br></pre></td></tr></table></figure></li>
+<li><p>Kibana:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ curl http://localhost:5601</span><br><span class="line"></span><br><span class="line"># Kibana Plugins 插件</span><br><span class="line">$ kibana-plugin install</span><br><span class="line">$ kibana-plugin list</span><br><span class="line">$ kibana remove</span><br></pre></td></tr></table></figure></li>
+<li><p>Logstash:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Elasticsearch-基本概念"><a href="#Elasticsearch-基本概念" class="headerlink" title="Elasticsearch 基本概念"></a>Elasticsearch 基本概念</h2><ul>
+<li><p>文档 Document</p>
+<blockquote>
+<p>Elasticsearch 是面向文档的，文档是所有可搜索数据的最小单位<br>文档会被序列化成JSON格式，保存在Elasticsearch中<br>每个文档都有一个Unique ID</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 文档元数据Metadata - 标注文档的相关信息</span><br><span class="line">  _index - 文档所属的索引名</span><br><span class="line">  _type  - 文档所属类型名</span><br><span class="line">  _id    - 文档唯一ID</span><br><span class="line">  _source - 文档原始JSON数据</span><br><span class="line">  _version - 文档的版本信息 -- 解决并发读写冲突</span><br><span class="line">  _score  - 相关性打分</span><br></pre></td></tr></table></figure></li>
+<li><p>索引 Index</p>
+<blockquote>
+<p>将文档写入Elasticsearch的过程叫索引indexing</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Mapping: 定义包含的文档的字段名和字段类型</span><br><span class="line">Setting: 定义不同数据分布</span><br><span class="line">Shard: 索引中的数据分散在Shards上</span><br></pre></td></tr></table></figure></li>
+<li><p>节点 Node</p>
+<blockquote>
+<p>节点是Elasticsearch 实例</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">-E node.name=node1</span><br><span class="line">每个节点启动后，会分配一个UID，保存在data目录下</span><br><span class="line"></span><br><span class="line"># Master-eligible nodes 和 Master Node</span><br><span class="line">  1. 节点启动默认是一个Master-eligible节点, -E node.master:false 禁止</span><br><span class="line">  2. Master-eligible节点可以参加选主流程，称为Master节点</span><br><span class="line">  3. 每个节点都保存集群状态，只有master节点才能修改集群状态</span><br><span class="line"></span><br><span class="line"># 集群状态 Cluster State</span><br><span class="line">  1. 所有节点信息</span><br><span class="line">  2. 所有的索引和相关Mapping 与 Setting信息</span><br><span class="line">  3. 分片的路由信息</span><br><span class="line"></span><br><span class="line"># Data Node &amp; Coordinating Node</span><br><span class="line">  1. Data Node: 可以保存数据的节点，保存分片数据</span><br><span class="line">  2. Coordinating Node: 负责接受Client请求，将请求分发到合适的节点，最终把结果汇集到一起</span><br><span class="line"></span><br><span class="line"># Hot &amp; Warm Node</span><br><span class="line"># Machine Learning Node</span><br><span class="line"># Tribe Node</span><br></pre></td></tr></table></figure></li>
+<li><p>分片 Primary Shard &amp; Replica Shard</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">#主分片: 解决数据水平扩展的问题</span><br><span class="line">  1. 一个分片是一个运行的Lucene的实例</span><br><span class="line">  2. 主分片在索引创建时指定，后续不允许修改,使用 Reindex修改</span><br><span class="line"></span><br><span class="line">#副本: 解决数据高可用的问题</span><br><span class="line">  1. 副本分片数，可以动态调整</span><br><span class="line">  2. 增加副本数，可以在一定程度上提高服务的可用性 (读取的吞吐)</span><br><span class="line"></span><br><span class="line">#分片设定-容量规划</span><br><span class="line">  1. 分片数设置过小:</span><br><span class="line">    a. 后续无法增加节点实现水平扩展</span><br><span class="line">    b. 单个分片的数据量过大，导致数据重新分配耗时</span><br><span class="line">  2. 分片设置过大:</span><br><span class="line">    a. 影响搜索结果的相关性打分，影响统计结果准确性</span><br><span class="line"></span><br><span class="line"># 查看集群状态</span><br><span class="line">  Green: 主分片和副片正常</span><br><span class="line">  Yellow: 主分片正常，副片不正常</span><br><span class="line">  Red: 主分片未能分配</span><br></pre></td></tr></table></figure></li>
+<li><p>Elasticsearch vs 关系型数据库 抽象与类比</p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">RDBMS</th>
+<th align="left">Elasticsearch</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Table</td>
+<td align="left">Index</td>
+</tr>
+<tr>
+<td align="left">Row</td>
+<td align="left">Document</td>
+</tr>
+<tr>
+<td align="left">Column</td>
+<td align="left">Field</td>
+</tr>
+<tr>
+<td align="left">Schema</td>
+<td align="left">Mapping</td>
+</tr>
+<tr>
+<td align="left">SQL</td>
+<td align="left">DSL</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>文档Document CRUD</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//create document. 自动生成_id</span><br><span class="line">POST users/_doc</span><br><span class="line">&#123;</span><br><span class="line">  &quot;user&quot;: &quot;Mike&quot;,</span><br><span class="line">  &quot;message&quot;: &quot;trying out Kibana&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//create document. 指定Id, 如果ID已经存在，报错</span><br><span class="line">PUT users/_doc/1?op_type=create</span><br><span class="line">&#123;</span><br><span class="line">  &quot;user&quot;: &quot;Jack&quot;,</span><br><span class="line">  &quot;message&quot;: &quot;trying out Elasticsearch&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//create document. 指定Id, 如果ID已经存在，报错</span><br><span class="line">PUT users/_create/1</span><br><span class="line">&#123;</span><br><span class="line">  &quot;user&quot;: &quot;Jack&quot;,</span><br><span class="line">  &quot;message&quot;: &quot;trying out Elasticsearch&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Get the document by ID</span><br><span class="line">GET users/_doc/1</span><br><span class="line"></span><br><span class="line">// Index</span><br><span class="line">PUT users/_doc/1</span><br><span class="line">&#123;</span><br><span class="line">  &quot;user&quot;: &quot;Mike&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Update 在原文档上增加字段</span><br><span class="line">POST users/_update/1/</span><br><span class="line">&#123;</span><br><span class="line">  &quot;doc&quot;:&#123;</span><br><span class="line">    &quot;message&quot;: &quot;trying out Elasticsearch 3&quot;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><ul>
+<li>Bulk API<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 支持在一次API调用中，对不同的索引进行操作</span><br><span class="line">2. 支持四种类型操作:</span><br><span class="line">  Index</span><br><span class="line">  Create</span><br><span class="line">  Update</span><br><span class="line">  Delete</span><br><span class="line">3. 操作单条操作失败，不会影响其他操作</span><br><span class="line">4. 返回结果包括每一条操作的执行结果</span><br><span class="line"></span><br><span class="line">//Bulk操作</span><br><span class="line">POST _bulk</span><br><span class="line">&#123;&quot;index&quot;: &#123;&quot;_index&quot;: &quot;test&quot;, &quot;_id&quot;: &quot;1&quot;&#125;&#125;</span><br><span class="line">&#123;&quot;field1&quot;: &quot;value1&quot;&#125;</span><br><span class="line">&#123;&quot;delete&quot;: &#123;&quot;_index&quot;: &quot;test&quot;, &quot;_id&quot;: &quot;2&quot;&#125;&#125;</span><br><span class="line">&#123;&quot;create&quot;: &#123;&quot;_index&quot;: &quot;test2&quot;, &quot;_id&quot;: &quot;3&quot;&#125;&#125;</span><br><span class="line">&#123;&quot;field1&quot;: &quot;value3&quot;&#125;</span><br><span class="line">&#123;&quot;update&quot;: &#123;&quot;_id&quot;:&quot;1&quot;, &quot;_index&quot;: &quot;test&quot;&#125;&#125;</span><br><span class="line">&#123;&quot;doc&quot;: &#123;&quot;field2&quot;: &quot;value2&quot;&#125;&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>mget</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">//mget -- 批量读取</span><br><span class="line">//可以减少网络连接，提高性能</span><br><span class="line">GET _mget</span><br><span class="line">&#123;</span><br><span class="line">  &quot;docs&quot;: [</span><br><span class="line">    &#123;&quot;_index&quot;: &quot;users&quot;, &quot;_id&quot;:1&#125;,</span><br><span class="line">    &#123;&quot;_index&quot;: &quot;comment&quot;, &quot;_id&quot;:1&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Elasticsearch-原理"><a href="#Elasticsearch-原理" class="headerlink" title="Elasticsearch 原理"></a>Elasticsearch 原理</h2><ul>
+<li>图书和搜索引擎类比</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Type</th>
+<th align="left">正排索引</th>
+<th align="left">倒排索引</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">图书</td>
+<td align="left">目录页</td>
+<td align="left">索引页</td>
+</tr>
+<tr>
+<td align="left">搜索引擎</td>
+<td align="left">文档ID-&gt;文档内容和单词的关联</td>
+<td align="left">单词到文档ID的关系</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Elasticsearch 倒排索引</p>
+<blockquote>
+<p>Elasticsearch的JSON文档中每个字段，都有自己的倒排索引</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 单词词典(Term Dictionary)</span><br><span class="line">&gt; 记录所有文档的单词，记录单词到倒排列表的关联关系</span><br><span class="line">&gt; 通过B+树或哈希链表实现，满足高性能的插入与查询</span><br><span class="line"></span><br><span class="line"># 倒排列表(Posting List)</span><br><span class="line">&gt; 记录单词对应的文档结合</span><br><span class="line">  - 倒排索引项(Posting)</span><br><span class="line">    - 文档ID</span><br><span class="line">    - 词频TF - 单词在文档出现的次数</span><br><span class="line">    - 位置Position - 单词在文档中分词的位置，用于语句搜索 phrase query</span><br><span class="line">    - 偏移Offset - 记录单词的开始结束位置，实现高量显示</span><br></pre></td></tr></table></figure></li>
+<li><p>Elasticsearch 分词器</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># Analysis</span><br><span class="line">  - Analysis: 文本分析是把全文本转换一系列单词 term/token的过程</span><br><span class="line">  - Analysis是通过Analyzer实现</span><br><span class="line"></span><br><span class="line"># Analyzer:</span><br><span class="line">  - Character Filters: 针对原始文本处理</span><br><span class="line">    - HTML strip - 去除html标签</span><br><span class="line">    - Mapping - 字符串替换</span><br><span class="line">    - Pattern repalce - 正则匹配替换</span><br><span class="line"></span><br><span class="line">  - Tokenizer: 将原始的文本按照一定的规则，切分为词 term or token</span><br><span class="line">    - whitespace</span><br><span class="line">    - standard</span><br><span class="line">    - uax_url_email</span><br><span class="line">    - pattern</span><br><span class="line">    - keyward</span><br><span class="line">    - path hierarchy</span><br><span class="line"></span><br><span class="line">  - Token Filter: 将切分的单词进行加工，小写，删除stopwords,增加同义词</span><br><span class="line">    - Lowercase</span><br><span class="line">    - stop</span><br><span class="line"></span><br><span class="line"># Elasticsearch内置分词器</span><br><span class="line">//默认分词器 standard</span><br><span class="line">// 按词切分，小写处理</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;standard&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Simple Analyzer</span><br><span class="line">// 按照非字母切分，非字母被去除</span><br><span class="line">// 小写处理</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;simple&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Whitespace Analyzer</span><br><span class="line">// 按照空格切分</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;whitespace&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// Stop Analyzer</span><br><span class="line">// stop filter: 去除the, a, is 修饰性词</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;stop&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//Keyward Analyzer</span><br><span class="line">//不分词，直接将输入当输出</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;keyword&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//正则表达式进行分词</span><br><span class="line">//默认非字符的符号进行分隔</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;pattern&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">//english</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;english&quot;,</span><br><span class="line">  &quot;text&quot;: &quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// analysis_icu</span><br><span class="line">// elasticsearch-plugin install analysis_icu</span><br><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">  &quot;analyzer&quot;: &quot;icu_analyzer&quot;,</span><br><span class="line">  &quot;text&quot;:&quot;他说的确实在理&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Search API</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># URI Search - 通过URI query实现搜索</span><br><span class="line">  q: 指定查询语句, 使用Query String Syntax</span><br><span class="line">  df: 默认字段, 不指定会对所有字段进行查询</span><br><span class="line">  Sort: 排序/from 和 size 用于分页</span><br><span class="line">  Profile: 查看查询是如何被执行</span><br><span class="line"></span><br><span class="line">  1. 指定字段 vs. 泛查询</span><br><span class="line">  //带profile 普通查询</span><br><span class="line">  GET /movies/_search?q=2012&amp;df=title</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;profile&quot;: &quot;true&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //带profile 泛查询</span><br><span class="line">  GET /movies/_search?q=2012</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;profile&quot;: &quot;true&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //带profile 指定字段</span><br><span class="line">  GET /movies/_search?q=title:2012</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;profile&quot;: &quot;true&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  2. Term vs. Phrase</span><br><span class="line">    # Term: Beautiful Mind 等效于 Beautiful OR Mind</span><br><span class="line">    # Phrase: &quot;Beautifuk Mind&quot; 等效于 Beautiful And Mind, 前后顺序保持一致</span><br><span class="line">  //使用引号 查询</span><br><span class="line">  GET /movies/_search?q=title:&quot;Beautiful Mind&quot;</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;profile&quot;:&quot;true&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //使用引号 Mind 泛 查询</span><br><span class="line">  GET /movies/_search?q=title:Beautiful Mind</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;profile&quot;:&quot;true&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  //使用引号 Bool 泛 查询</span><br><span class="line">  GET /movies/_search?q=title:(Beautiful Mind)</span><br><span class="line">  &#123;</span><br><span class="line">    &quot;profile&quot;:&quot;true&quot;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  3. 布尔操作</span><br><span class="line">    AND / OR / NOT 或者 &amp;&amp; / || / !</span><br><span class="line">    title:(matrix NOT reloaded)</span><br><span class="line"></span><br><span class="line">  4. 分组</span><br><span class="line">    + 表示 must</span><br><span class="line">    - 表示 must_not</span><br><span class="line">    title:(+matrix -reloaded)</span><br><span class="line"></span><br><span class="line">  5. 范围查询</span><br><span class="line">    []闭区间 &#123;&#125;开区间</span><br><span class="line"></span><br><span class="line">  6. 算数符号</span><br><span class="line">    year:&gt;2010</span><br><span class="line"></span><br><span class="line">  7. 通配符查询(通配符查询效率低，占用内存大，不建议使用)</span><br><span class="line">    ? 代表1个字符</span><br><span class="line">    * 代表0或多个字符</span><br><span class="line"></span><br><span class="line">  8. 正则表达式</span><br><span class="line">    title:[bt]oy</span><br><span class="line"></span><br><span class="line">  9. 模糊匹配与近似查询</span><br><span class="line">    title:befutifl~1</span><br><span class="line"></span><br><span class="line"># Request Body Search</span><br><span class="line">  1. 分页:</span><br><span class="line">    from, size</span><br><span class="line"></span><br><span class="line">  2. sort:</span><br><span class="line"></span><br><span class="line">  3. _source filtering: 如果_source没有存储，就只返回匹配的文档的元数据</span><br><span class="line"></span><br><span class="line">  4. 脚本字段:</span><br><span class="line"></span><br><span class="line">  5. 查询表达式 - Match</span><br><span class="line"></span><br><span class="line">  6. Match</span><br><span class="line"></span><br><span class="line"># Page Rank算法</span><br><span class="line">  1. 衡量相关性 Information Retrieval</span><br><span class="line">    a. Precision (查准率) - 尽可能返回较少的无关文档</span><br><span class="line">    b. Recall(查全率)     - 尽量返回较多的相关文档</span><br><span class="line">    c. Ranking            - 是否能够按照相关度进行排序</span><br></pre></td></tr></table></figure></li>
+<li><p>Mapping</p>
+<blockquote>
+<p>类似数据库中的scehma定义</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 定义索引中的字段名称</span><br><span class="line">2. 定义字段的数据类型</span><br><span class="line">Mapping 把JSON文档映射成Lucene所需要的扁平格式</span><br><span class="line">一个Mapping属于一个索引的type</span><br><span class="line"></span><br><span class="line"># 四种不同级别的Index Options - 控制倒排索引记录的内容</span><br><span class="line">  docs - 记录doc id</span><br><span class="line">  freqs - 记录 doc id 和 term frequencies</span><br><span class="line">  positions - 记录 doc id/term frequencies/term position</span><br><span class="line">  offsets - 记录 doc id/term frequencies/term position/character offsets</span><br></pre></td></tr></table></figure></li>
+<li><p>数据类型<br>JSON -&gt; Elasticsearch类型</p>
+<table>
+<thead>
+<tr>
+<th align="left">JSON类型</th>
+<th align="left">Elasticsearch 类型</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">字符串</td>
+<td align="left">匹配日期格式 -&gt; Date</td>
+</tr>
+<tr>
+<td align="left">布尔值</td>
+<td align="left">boolean</td>
+</tr>
+<tr>
+<td align="left">浮点数</td>
+<td align="left">float</td>
+</tr>
+<tr>
+<td align="left">整数</td>
+<td align="left">long</td>
+</tr>
+<tr>
+<td align="left">对象</td>
+<td align="left">Object</td>
+</tr>
+<tr>
+<td align="left">数组</td>
+<td align="left">由第一个非空数值的类型所决定</td>
+</tr>
+<tr>
+<td align="left">空值</td>
+<td align="left">忽略</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+  <figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line"># 简单类型:</span><br><span class="line">  1. Text/Keyword</span><br><span class="line">  2. Date</span><br><span class="line">  3. Integer / Floating</span><br><span class="line">  4. Boolean</span><br><span class="line">  5. IPv4 &amp; IPv6</span><br><span class="line"></span><br><span class="line"># 复杂类型 - 对象和嵌套对象</span><br><span class="line">  对象类型/嵌套类型</span><br><span class="line"></span><br><span class="line"># 特殊类型</span><br><span class="line">  geo_point &amp; geo_shape / percolator</span><br></pre></td></tr></table></figure>
+
+<h2 id="Elasticsearch-聚合-Aggregation"><a href="#Elasticsearch-聚合-Aggregation" class="headerlink" title="Elasticsearch 聚合 (Aggregation)"></a>Elasticsearch 聚合 (Aggregation)</h2><blockquote>
+<p>Elasticsearch 除了搜索以外还提供针对ES数据进行统计分析</p>
+</blockquote>
+<ul>
+<li>集合分类<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. Bucket Aggregation: 满足特定条件的文档集合</span><br><span class="line">  group by</span><br><span class="line"></span><br><span class="line">2. Metric Aggregation: 数学运算，对文档字段统计分析</span><br><span class="line">  min/max/sum/avg/cardinality</span><br><span class="line"></span><br><span class="line">3. Pipeline Aggregation: 对聚合结果进行二次聚合</span><br><span class="line">4. Matrix Aggregation: 支持多个字段的操作并提供结果矩阵</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Elasticsearch-分布式结构"><a href="#Elasticsearch-分布式结构" class="headerlink" title="Elasticsearch 分布式结构"></a>Elasticsearch 分布式结构</h2><ul>
+<li><p>高可用</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 服务可用性 - 允许有节点停止服务</span><br><span class="line">2. 数据可用性 - 部分节点丢失，不会丢失数据</span><br></pre></td></tr></table></figure></li>
+<li><p>可扩展性</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 请求量提升/数据不断增加(将数据分布到所有节点上)</span><br></pre></td></tr></table></figure></li>
+<li><p>Elasticsearch分布式架构</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">1. 不同的集群通过不同的名字区分，-E cluster.name=geektime</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="ELK-大数据分析"><a href="#ELK-大数据分析" class="headerlink" title="ELK 大数据分析"></a>ELK 大数据分析</h2>]]></content>
+      <tags>
+        <tag>搜索引擎</tag>
+        <tag>ES</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>golang pkg Tips &amp; Tracks</title>
+    <url>/2021/09/03/golang-pkg-Tips-Tracks/</url>
+    <content><![CDATA[<h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><span id="more"></span>
+
+<h2 id="Golang-Tips-amp-Tracks"><a href="#Golang-Tips-amp-Tracks" class="headerlink" title="Golang Tips &amp; Tracks"></a>Golang Tips &amp; Tracks</h2><ul>
+<li><strong>负载均衡算法对比</strong><blockquote>
+<p>负载均衡最重要的就是均衡</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">  &quot;fmt&quot;</span><br><span class="line">  &quot;math/rand&quot;</span><br><span class="line">  &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func init() &#123;</span><br><span class="line">  rand.Seed(time.Now().UnixNano())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func normal_shuffle(slice []int) &#123;</span><br><span class="line">  for i := 0; i &lt; len(slice); i++ &#123;</span><br><span class="line">    a := rand.Intn(len(slice))</span><br><span class="line">    b := rand.Intn(len(slice))</span><br><span class="line">    slice[a], slice[b] = slice[b], slice[a]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func shuffle(indexes []int) &#123;</span><br><span class="line">  for i := len(indexes); i &gt; 0; i-- &#123;</span><br><span class="line">    lastIdx := i - 1</span><br><span class="line">    idx := rand.Intn(i)</span><br><span class="line">    indexes[lastIdx], indexes[idx] = indexes[idx], indexes[lastIdx]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">  var cnt1 = map[int]int&#123;&#125;</span><br><span class="line">  for i := 0; i &lt; 1000000; i++ &#123;</span><br><span class="line">    var sl = []int&#123;0, 1, 2, 3, 4, 5, 6&#125;</span><br><span class="line">    normal_shuffle(sl)</span><br><span class="line">    cnt1[sl[0]]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var cnt2 = map[int]int&#123;&#125;</span><br><span class="line">  for i := 0; i &lt; 1000000; i++ &#123;</span><br><span class="line">    var sl = []int&#123;0, 1, 2, 3, 4, 5, 6&#125;</span><br><span class="line">    shuffle(sl)</span><br><span class="line">    cnt2[sl[0]]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Println(&quot;normal shuffle: &quot;, cnt1)</span><br><span class="line">  fmt.Println(&quot;fisher yates  : &quot;, cnt2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">chyi/go-awesome-prj/shuffle via 🐹 v1.17 took 38s</span><br><span class="line">➜ go run main.go</span><br><span class="line">normal shuffle:  map[0:224558 1:128887 2:129201 3:129493 4:129487 5:129202 6:129172]</span><br><span class="line">fisher yates  :  map[0:142974 1:143116 2:142768 3:142660 4:142930 5:142505 6:143047]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Golang</tag>
       </tags>
   </entry>
 </search>

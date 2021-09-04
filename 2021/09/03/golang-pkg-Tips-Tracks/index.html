@@ -20,30 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="介绍微服务架构设计">
+<meta name="description" content="Golang">
 <meta property="og:type" content="article">
-<meta property="og:title" content="micro-services">
-<meta property="og:url" content="http://chyidl.github.io/2021/09/01/micro-services/">
+<meta property="og:title" content="golang pkg Tips &amp; Tracks">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="介绍微服务架构设计">
+<meta property="og:description" content="Golang">
 <meta property="og:locale">
-<meta property="article:published_time" content="2021-08-31T23:12:02.000Z">
-<meta property="article:modified_time" content="2021-09-01T07:13:12.770Z">
+<meta property="article:published_time" content="2021-09-03T09:24:01.000Z">
+<meta property="article:modified_time" content="2021-09-03T09:24:01.000Z">
 <meta property="article:author" content="chyi">
-<meta property="article:tag" content="微服务">
-<meta property="article:tag" content="DDD">
-<meta property="article:tag" content="分布式">
+<meta property="article:tag" content="Golang">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/2021/09/01/micro-services/">
+<link rel="canonical" href="http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://chyidl.github.io/2021/09/01/micro-services/","path":"2021/09/01/micro-services/","title":"micro-services"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh","comments":true,"permalink":"http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/","path":"2021/09/03/golang-pkg-Tips-Tracks/","title":"golang pkg Tips & Tracks"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>micro-services | Stay Hungry Stay Foolish</title>
+<title>golang pkg Tips & Tracks | Stay Hungry Stay Foolish</title>
   
 
 
@@ -136,7 +134,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           Table of Contents
@@ -149,6 +147,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Golang"><span class="nav-number">1.</span> <span class="nav-text">Golang</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Tips-amp-Tracks"><span class="nav-number">1.1.</span> <span class="nav-text">Golang Tips &amp; Tracks</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -224,7 +223,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/01/micro-services/">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -237,7 +236,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          micro-services
+          golang pkg Tips & Tracks
         </h1>
 
         <div class="post-meta-container">
@@ -247,18 +246,8 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
-      
 
-      <time title="Created: 2021-09-01 07:12:02 / Modified: 15:13:12" itemprop="dateCreated datePublished" datetime="2021-09-01T07:12:02+08:00">2021-09-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">计算机科学</span></a>
-        </span>
+      <time title="Created: 2021-09-03 17:24:01" itemprop="dateCreated datePublished" datetime="2021-09-03T17:24:01+08:00">2021-09-03</time>
     </span>
 
   
@@ -275,7 +264,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Symbols count in article: </span>
-      <span>107</span>
+      <span>1.2k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -293,10 +282,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <p>介绍微服务架构设计</p>
-<span id="more"></span>
+        <h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><span id="more"></span>
 
-<figure class="highlight golang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Golang-Tips-amp-Tracks"><a href="#Golang-Tips-amp-Tracks" class="headerlink" title="Golang Tips &amp; Tracks"></a>Golang Tips &amp; Tracks</h2><ul>
+<li><strong>负载均衡算法对比</strong><blockquote>
+<p>负载均衡最重要的就是均衡</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">  &quot;fmt&quot;</span><br><span class="line">  &quot;math/rand&quot;</span><br><span class="line">  &quot;time&quot;</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func init() &#123;</span><br><span class="line">  rand.Seed(time.Now().UnixNano())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func normal_shuffle(slice []int) &#123;</span><br><span class="line">  for i := 0; i &lt; len(slice); i++ &#123;</span><br><span class="line">    a := rand.Intn(len(slice))</span><br><span class="line">    b := rand.Intn(len(slice))</span><br><span class="line">    slice[a], slice[b] = slice[b], slice[a]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func shuffle(indexes []int) &#123;</span><br><span class="line">  for i := len(indexes); i &gt; 0; i-- &#123;</span><br><span class="line">    lastIdx := i - 1</span><br><span class="line">    idx := rand.Intn(i)</span><br><span class="line">    indexes[lastIdx], indexes[idx] = indexes[idx], indexes[lastIdx]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">  var cnt1 = map[int]int&#123;&#125;</span><br><span class="line">  for i := 0; i &lt; 1000000; i++ &#123;</span><br><span class="line">    var sl = []int&#123;0, 1, 2, 3, 4, 5, 6&#125;</span><br><span class="line">    normal_shuffle(sl)</span><br><span class="line">    cnt1[sl[0]]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  var cnt2 = map[int]int&#123;&#125;</span><br><span class="line">  for i := 0; i &lt; 1000000; i++ &#123;</span><br><span class="line">    var sl = []int&#123;0, 1, 2, 3, 4, 5, 6&#125;</span><br><span class="line">    shuffle(sl)</span><br><span class="line">    cnt2[sl[0]]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Println(&quot;normal shuffle: &quot;, cnt1)</span><br><span class="line">  fmt.Println(&quot;fisher yates  : &quot;, cnt2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">chyi/go-awesome-prj/shuffle via 🐹 v1.17 took 38s</span><br><span class="line">➜ go run main.go</span><br><span class="line">normal shuffle:  map[0:224558 1:128887 2:129201 3:129493 4:129487 5:129202 6:129172]</span><br><span class="line">fisher yates  :  map[0:142974 1:143116 2:142768 3:142660 4:142930 5:142505 6:143047]</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
 
     </div>
 
@@ -306,19 +299,20 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" rel="tag"># 微服务</a>
-              <a href="/tags/DDD/" rel="tag"># DDD</a>
-              <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F/" rel="tag"># 分布式</a>
+              <a href="/tags/Golang/" rel="tag"># Golang</a>
           </div>
 
         
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2021/09/03/Elasticsearch-Tips-Tracks/" rel="prev" title="Elasticsearch Tips & Tracks">
+                  <i class="fa fa-chevron-left"></i> Elasticsearch Tips & Tracks
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/01/hexo-next-gitalk/" rel="next" title="hexo-next-gitalk">
-                  hexo-next-gitalk <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/03/Distribute-Scraping-for-Gophers/" rel="next" title="Distribute Scraping for Gophers">
+                  Distribute Scraping for Gophers <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -403,7 +397,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"64501ddd566c5a2fc2ca529650459974"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"5debb81aa8c895c206d4122a7d806f15"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
