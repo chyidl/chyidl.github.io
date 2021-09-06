@@ -20,29 +20,25 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="MySQL数据库日志 重做日志 - redo log 记录修改后的数据  1">
-<meta property="og:type" content="article">
-<meta property="og:title" content="MySQL Tips &amp; Tracks">
-<meta property="og:url" content="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/">
+<meta name="description" content="🦷🦷 Blog">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Stay Hungry Stay Foolish">
+<meta property="og:url" content="http://chyidl.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="MySQL数据库日志 重做日志 - redo log 记录修改后的数据  1">
+<meta property="og:description" content="🦷🦷 Blog">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-02T13:54:37.000Z">
-<meta property="article:modified_time" content="2021-09-04T09:12:08.765Z">
 <meta property="article:author" content="chyi">
-<meta property="article:tag" content="数据库">
-<meta property="article:tag" content="MySQL">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/">
+<link rel="canonical" href="http://chyidl.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/","path":"2021/09/02/MySQL-Tips-Tracks/","title":"MySQL Tips & Tracks"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"zh-CN","comments":"","permalink":"","path":"tags/中间件/index.html","title":""}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>MySQL Tips & Tracks | Stay Hungry Stay Foolish</title>
+<title>标签: 中间件 | Stay Hungry Stay Foolish</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -139,7 +135,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+    <div class="sidebar-inner sidebar-overview-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -152,7 +148,6 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97"><span class="nav-number">1.1.</span> <span class="nav-text">数据库日志</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,131 +215,51 @@
 </noscript>
 
 
-    <div class="main-inner post posts-expand">
+    <div class="main-inner tag posts-collapse">
 
 
   
-
-
-<div class="post-block">
   
   
+  <div class="post-block">
+    <div class="post-content">
+      <div class="collection-title">
+        <h2 class="collection-header">中间件
+          <small>标签</small>
+        </h2>
+      </div>
 
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="chyi">
-      <meta itemprop="description" content="🦷🦷 Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay Hungry Stay Foolish">
-    </span>
-      <header class="post-header">
-        <h1 class="post-title" itemprop="name headline">
-          MySQL Tips & Tracks
-        </h1>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-02 21:54:37" itemprop="dateCreated datePublished" datetime="2021-09-02T21:54:37+08:00">2021-09-02</time>
-    </span>
-      <span class="post-meta-item">
-        <span class="post-meta-item-icon">
-          <i class="far fa-calendar-check"></i>
-        </span>
-        <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-04 17:12:08" itemprop="dateModified" datetime="2021-09-04T17:12:08+08:00">2021-09-04</time>
-      </span>
-
-  
-    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
-      <span class="post-meta-item-icon">
-        <i class="far fa-eye"></i>
-      </span>
-      <span class="post-meta-item-text">阅读次数：</span>
-      <span id="busuanzi_value_page_pv"></span>
-    </span>
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>31</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-        <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
-<li>重做日志 - redo log<blockquote>
-<p>记录修改后的数据</p>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-
+      
+    <div class="collection-year">
+      <span class="collection-header">2021</span>
     </div>
 
-    
-    
-    
+  <article itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <div class="post-meta-container">
+        <time itemprop="dateCreated"
+              datetime="2021-09-06T08:36:13+08:00"
+              content="2021-09-06">
+          09-06
+        </time>
+      </div>
 
-    <footer class="post-footer">
-          <div class="post-tags">
-              <a href="/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/" rel="tag"># 数据库</a>
-              <a href="/tags/MySQL/" rel="tag"># MySQL</a>
-          </div>
+      <div class="post-title">
+          <a class="post-title-link" href="/2021/09/06/Middleware-Tips-Tracks/" itemprop="url">
+            <span itemprop="name">Middleware Tips & Tracks</span>
+          </a>
+      </div>
 
-        
-  <div class="post-widgets">
-    <div class="wp_rating">
-      <div id="wpac-rating"></div>
+      
+    </header>
+  </article>
+
     </div>
   </div>
+  
+  
+  
 
-          <div class="post-nav">
-            <div class="post-nav-item">
-                <a href="/2021/09/02/Distributed-ID-Generator/" rel="prev" title="Distributed ID Generator">
-                  <i class="fa fa-chevron-left"></i> Distributed ID Generator
-                </a>
-            </div>
-            <div class="post-nav-item">
-                <a href="/2021/09/02/Kafka-Tips-Tracks/" rel="next" title="Kafka Tips & Tracks">
-                  Kafka Tips & Tracks <i class="fa fa-chevron-right"></i>
-                </a>
-            </div>
-          </div>
-    </footer>
-  </article>
-</div>
-
-
-
-
-
-
-    <div class="comments gitalk-container"></div>
 </div>
   </main>
 
@@ -419,7 +334,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"b74547847343d020f441a8a094567229"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"8a50af7b2f4602f33ab00335d166f949"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
