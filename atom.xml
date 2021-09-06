@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-09-06T00:36:13.000Z</updated>
+  <updated>2021-09-06T02:29:50.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CS - Time</title>
+    <link href="http://chyidl.github.io/2021/09/06/CS-Time/"/>
+    <id>http://chyidl.github.io/2021/09/06/CS-Time/</id>
+    <published>2021-09-06T02:29:50.000Z</published>
+    <updated>2021-09-06T02:29:50.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
+
+&lt;h2 id=&quot;Time-时间&quot;&gt;&lt;a href=&quot;#Time-时间&quot; class=&quot;headerlink&quot; title=&quot;Time 时间&quot;&gt;&lt;/a&gt;Time 时间&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Universal Time:</summary>
+        
+      
+    
+    
+    
+    
+    <category term="计算机" scheme="http://chyidl.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>Middleware Tips &amp; Tracks</title>
@@ -74,36 +100,9 @@
     
     
     <summary type="html">&lt;h2 id=&quot;Golang&quot;&gt;&lt;a href=&quot;#Golang&quot; class=&quot;headerlink&quot; title=&quot;Golang&quot;&gt;&lt;/a&gt;Golang&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Goals&lt;/p&gt;
-&lt;blockquote&gt;
+&lt;li&gt;Goals&lt;blockquote&gt;
 &lt;p&gt;The efficientcy of a statically-typed compiled language with the ease of programming of a dynamic language.&lt;br&gt;Safety: type-safe and memory-safe&lt;br&gt;Good support for concurrency and communication.&lt;br&gt;Efficient, latency-free garbage collection.&lt;br&gt;High-speed compilation.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Design principles&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Keep concept orthogonal(正交).&lt;br&gt;Keep the grammar regular and simple.&lt;br&gt;Reduce typing. Let the language work things out.&lt;br&gt;Reduce typing. Keep the type system clear.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;The Big Picture&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Fundamentals:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;Clean, concise syntax.&lt;/li&gt;
-&lt;li&gt;Lightweight type system.&lt;/li&gt;
-&lt;li&gt;No implicit conversions: keep things explicit.&lt;/li&gt;
-&lt;li&gt;Untyped unsized constants:&lt;/li&gt;
-&lt;li&gt;Strict separation of interface and implementation.&lt;blockquote&gt;
-&lt;p&gt;Run-time:&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;li&gt;Garbage collection.&lt;/li&gt;
-&lt;li&gt;Strings, maps, communication channels&lt;/li&gt;
-&lt;li&gt;Concurrency.&lt;blockquote&gt;
-&lt;p&gt;Package model:&lt;br&gt;Explicit dependencies to enable faster builds.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;</summary>
     
@@ -163,7 +162,7 @@
     <link href="http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/"/>
     <id>http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/</id>
     <published>2021-09-02T13:55:16.000Z</published>
-    <updated>2021-09-06T00:30:10.057Z</updated>
+    <updated>2021-09-06T11:53:13.282Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Redis&quot;&gt;&lt;a href=&quot;#Redis&quot; class=&quot;headerlink&quot; title=&quot;Redis&quot;&gt;&lt;/a&gt;Redis&lt;/h1&gt;&lt;blockquote&gt;
@@ -271,7 +270,7 @@
     <link href="http://chyidl.github.io/2021/09/01/docker/"/>
     <id>http://chyidl.github.io/2021/09/01/docker/</id>
     <published>2021-09-01T01:49:58.000Z</published>
-    <updated>2021-09-04T09:12:08.709Z</updated>
+    <updated>2021-09-06T11:53:13.206Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Docker-Info&quot;&gt;&lt;a href=&quot;#Docker-Info&quot; class=&quot;headerlink&quot; title=&quot;Docker  Info&quot;&gt;&lt;/a&gt;Docker  Info&lt;/h2&gt;&lt;figure class=&quot;highlight oxygene&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Cgroups技术是用来制造约束的主要手段&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Namespace&lt;/span&gt;技术则是用来修改进程试图的主要方法&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
@@ -311,7 +310,7 @@
     <link href="http://chyidl.github.io/2021/09/01/micro-services/"/>
     <id>http://chyidl.github.io/2021/09/01/micro-services/</id>
     <published>2021-08-31T23:12:02.000Z</published>
-    <updated>2021-09-06T00:30:10.005Z</updated>
+    <updated>2021-09-06T11:53:13.230Z</updated>
     
     
       
@@ -321,7 +320,8 @@
     <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
 
 &lt;h2 id=&quot;项目工程化&quot;&gt;&lt;a href=&quot;#项目工程化&quot; class=&quot;headerlink&quot; title=&quot;项目工程化&quot;&gt;&lt;/a&gt;项目工程化&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;开源规范&lt;figure</summary>
+&lt;li&gt;&lt;p&gt;开源规范&lt;/p&gt;
+&lt;figure</summary>
         
       
     
