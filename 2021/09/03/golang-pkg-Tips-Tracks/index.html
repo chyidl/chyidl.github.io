@@ -19,18 +19,18 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
-<script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Muse","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Golang">
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Golang Goals  The efficientcy of a statically-typed compiled language with the ease of programming of a dynamic language.Safety: type-safe and memory-safeGood support for concurrency and communication">
 <meta property="og:type" content="article">
 <meta property="og:title" content="golang pkg Tips &amp; Tracks">
 <meta property="og:url" content="http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="Golang">
+<meta property="og:description" content="Golang Goals  The efficientcy of a statically-typed compiled language with the ease of programming of a dynamic language.Safety: type-safe and memory-safeGood support for concurrency and communication">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-03T09:24:01.000Z">
 <meta property="article:modified_time" content="2021-09-03T09:24:01.000Z">
 <meta property="article:author" content="chyi">
-<meta property="article:tag" content="Golang">
+<meta property="article:tag" content="Go">
 <meta name="twitter:card" content="summary">
 
 
@@ -44,6 +44,8 @@
 <title>golang pkg Tips & Tracks | Stay Hungry Stay Foolish</title>
   
 
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?516e4e6590bcf7090ded728a1abdd5aa"></script>
 
 
 
@@ -149,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Golang"><span class="nav-number">1.</span> <span class="nav-text">Golang</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Tips-amp-Tracks"><span class="nav-number">1.1.</span> <span class="nav-text">Golang Tips &amp; Tracks</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang"><span class="nav-number">1.</span> <span class="nav-text">Golang</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Frequently-Asked-Questions-FAQ"><span class="nav-number">2.</span> <span class="nav-text">Golang Frequently Asked Questions (FAQ)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Tips-amp-Tracks"><span class="nav-number">3.</span> <span class="nav-text">Golang Tips &amp; Tracks</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -174,7 +176,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-count">19</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -188,6 +190,9 @@
       </span>
       <span class="links-of-author-item">
         <a href="https://twitter.com/ChyiYaqing" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;ChyiYaqing" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fas fa-rss fa-fw"></i>RSS</a>
       </span>
   </div>
 
@@ -266,14 +271,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.2k</span>
+      <span>3.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -284,8 +289,65 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><span id="more"></span>
+        <h2 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h2><ul>
+<li><p>Goals</p>
+<blockquote>
+<p>The efficientcy of a statically-typed compiled language with the ease of programming of a dynamic language.<br>Safety: type-safe and memory-safe<br>Good support for concurrency and communication.<br>Efficient, latency-free garbage collection.<br>High-speed compilation.</p>
+</blockquote>
+</li>
+<li><p>Design principles</p>
+<blockquote>
+<p>Keep concept orthogonal(正交).<br>Keep the grammar regular and simple.<br>Reduce typing. Let the language work things out.<br>Reduce typing. Keep the type system clear.</p>
+</blockquote>
+</li>
+<li><p>The Big Picture</p>
+<blockquote>
+<p>Fundamentals:</p>
+</blockquote>
+<ul>
+<li>Clean, concise syntax.</li>
+<li>Lightweight type system.</li>
+<li>No implicit conversions: keep things explicit.</li>
+<li>Untyped unsized constants:</li>
+<li>Strict separation of interface and implementation.<blockquote>
+<p>Run-time:</p>
+</blockquote>
+</li>
+<li>Garbage collection.</li>
+<li>Strings, maps, communication channels</li>
+<li>Concurrency.<blockquote>
+<p>Package model:<br>Explicit dependencies to enable faster builds.</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
 
+<h2 id="Golang-Frequently-Asked-Questions-FAQ"><a href="#Golang-Frequently-Asked-Questions-FAQ" class="headerlink" title="Golang Frequently Asked Questions (FAQ)"></a>Golang Frequently Asked Questions (FAQ)</h2><ul>
+<li><p>Map access is unsafe only when updates are occurring.</p>
+</li>
+<li><p>How can I gurantee my type satisfies an interface?</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> I <span class="keyword">interface</span> &#123;</span><br><span class="line">    Say(<span class="keyword">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *T)</span> <span class="title">Say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    fmt.Println(s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ask the compiler to check that the type T implements the interface I by</span></span><br><span class="line"><span class="keyword">var</span> _ I = (*T)(<span class="literal">nil</span>) <span class="comment">// Verify that *T implements I.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    t := T&#123;&#125;</span><br><span class="line">    t.Say(<span class="string">&quot;Say Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>Should I define methods on values or pointers?</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func (s *MyStruct) pointerMethod() &#123;&#125;   // <span class="keyword">method</span> <span class="keyword">on</span> pointer</span><br><span class="line">func (s MyStruct) valueMethod() &#123;&#125;      // <span class="keyword">method</span> <span class="keyword">on</span> <span class="keyword">value</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="keyword">When</span> defining a <span class="keyword">method</span> <span class="keyword">on</span> a <span class="keyword">type</span>, the receiver behaves exactly <span class="keyword">as</span> <span class="keyword">if</span> it were an argument <span class="keyword">to</span> the <span class="keyword">method</span>. Whether <span class="keyword">to</span> define the receiver <span class="keyword">as</span> a <span class="keyword">value</span> <span class="keyword">or</span> <span class="keyword">as</span> a pointer <span class="keyword">is</span> the same question, <span class="keyword">then</span>, <span class="keyword">as</span> whether a <span class="keyword">function</span> argument should be a <span class="keyword">value</span> <span class="keyword">or</span> poiner.</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> First, <span class="keyword">and</span> most important, does the <span class="keyword">method</span> need <span class="keyword">to</span> modify the receiver?</span><br><span class="line"><span class="number">2.</span> Second <span class="keyword">is</span> the consideration <span class="keyword">of</span> efficiency. <span class="keyword">If</span> the receiver <span class="keyword">is</span> <span class="keyword">large</span>, a big struct <span class="keyword">for</span> instance, it will be much cheaper <span class="keyword">to</span> use a pointer receiver.</span><br></pre></td></tr></table></figure></li>
+<li><p>What operations are atomic? What about mutexes?</p>
+<blockquote>
+<p>Do not communicate by sharing memory. Instead, share memory by communicating.</p>
+</blockquote>
+</li>
+<li><p>How can I control the number of CPUs?</p>
+<figure class="highlight smali"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The runtime can allocate more threads than the value of GOMAXPROCS to service multiple outstanding I/O requests. GOMAXPROCS only affects how many goroutines can actually<span class="built_in"> execute </span>at once; arbitrarily more may be blocked in<span class="keyword"> system</span> calls.</span><br></pre></td></tr></table></figure></li>
+<li><p>Who do I write a unit test?</p>
+<figure class="highlight reasonml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> Create a <span class="keyword">new</span> file ending <span class="keyword">in</span> <span class="module-access"><span class="module"><span class="identifier">_test</span>.</span></span>go <span class="keyword">in</span> the same directory <span class="keyword">as</span> your package sources. Inside that file, import <span class="string">&quot;testing&quot;</span> <span class="keyword">and</span> write functions <span class="keyword">of</span> the form</span><br><span class="line"></span><br><span class="line">func <span class="constructor">TestFoo(<span class="params">t</span> <span class="operator">*</span><span class="params">testing</span>.T)</span> &#123;</span><br><span class="line">  …</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<li><p>What compiler technology is used to build the compilers?</p>
+<blockquote>
+<p>The default compiler, gc, was originally written in C, but since the Go 1.5 release the compiler has been a Go program.</p>
+</blockquote>
+</li>
+<li><p>Why do garbage collection? Won’t it be too expensive?</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The current implementation is <span class="selector-tag">a</span> <span class="selector-tag">mark</span>-and-sweep collector. </span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="Golang-Tips-amp-Tracks"><a href="#Golang-Tips-amp-Tracks" class="headerlink" title="Golang Tips &amp; Tracks"></a>Golang Tips &amp; Tracks</h2><ul>
 <li><strong>负载均衡算法对比</strong><blockquote>
 <p>负载均衡最重要的就是均衡</p>
@@ -301,7 +363,7 @@
 
     <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/Golang/" rel="tag"># Golang</a>
+              <a href="/tags/Go/" rel="tag"># Go</a>
           </div>
 
         
@@ -346,20 +408,20 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">chyi</span>
+  <span class="author" itemprop="copyrightHolder">chyidl</span>
 </div>
 <div class="wordcount">
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">28k</span>
+    <span title="站点总字数">35k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">25 分钟</span>
+    <span title="站点阅读时长">32 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">
@@ -380,7 +442,7 @@
       </span>
     </span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/muse/" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
 
     </div>
@@ -388,7 +450,7 @@
 
   
   <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
-<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/next-boot.js"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
   <script src="https://embed.widgetpack.com/widget.js" async></script>
