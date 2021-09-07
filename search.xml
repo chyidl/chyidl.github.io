@@ -133,7 +133,10 @@
   <entry>
     <title>micro-services</title>
     <url>/2021/09/01/micro-services/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<blockquote>
+<p>项目工程化、微服务相关介绍</p>
+</blockquote>
+<span id="more"></span>
 
 <h2 id="项目工程化"><a href="#项目工程化" class="headerlink" title="项目工程化"></a>项目工程化</h2><ul>
 <li><p>开源规范</p>
@@ -151,10 +154,11 @@
 <li><p>工作流设计</p>
 <figure class="highlight crmsh"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 集中式工作流</span></span><br><span class="line">  &gt; 适用于团队人数少、开发不频繁、不需要同时维护多个版本的小项目</span><br><span class="line"></span><br><span class="line"><span class="comment"># 功能分支工作流</span></span><br><span class="line">  &gt; 不同功能在不同的分支进行开发，最后合并到<span class="literal">master</span>分支</span><br><span class="line">  Merge pull request:</span><br><span class="line">    <span class="number">1</span>. Create a merge commit: git merge --no-ff. feature分支上所有的commit都会加到<span class="literal">master</span>分支上，并且会生成一个merge commit。</span><br><span class="line">    <span class="number">2</span>. Squash <span class="keyword">and</span> merge: git merge --squash. feature分支上所有的commit都合并成一个commit.然后加到<span class="literal">master</span>分支,原来的commit历史会丢失</span><br><span class="line">    <span class="number">3</span>. Rebase <span class="keyword">and</span> merge: git rebase. 将pull request上所有提交历史按照原有顺序依次添加到<span class="literal">master</span>分支的头部HEAD.</span><br><span class="line"></span><br><span class="line"><span class="comment"># Git Flow工作流</span></span><br><span class="line">  &gt; 比较适合大型的项目或者迭代速度快的项目</span><br><span class="line">  <span class="literal">master</span>: 该分支最新代码是发布状态，不能直接在该分支上开发，<span class="literal">master</span>分支每合并一个hotfix/release分支，都会打一个版本标签</span><br><span class="line">  develop: 该分支是开发中的最新代码，该分支只做合并操作，不能直接在该分支上开发</span><br><span class="line">  feature: 功能开发,基于develop分支新建一个feature分支，feature分支合并之前先pull一下develop分支，</span><br><span class="line">  release: 在发布阶段作为版本发布的预发布分支，基于develop分支创建, 测试通过后，将release分支合并到<span class="literal">master</span>和develop，并在<span class="literal">master</span>分支上版本标签，最后删除release版本分支</span><br><span class="line">  hotfix: 在维护阶段做紧急Bug修复分支，hotfix分支合并到<span class="literal">master</span>和develop分支，并在<span class="literal">master</span>分支打上修复后的版本标签,最后删除hotfix分支</span><br><span class="line"></span><br><span class="line"><span class="comment"># Forking 工作流</span></span><br><span class="line">  项目远程仓库和开发者远程仓库完全独立，开发者通过Pull Request的方式给远程仓库贡献代码，项目维护者选择性地接收任何开发者的提交，通过这种方式，可以避免开发者项目远程仓库的权限,从而提高项目远程仓库的安全性</span><br></pre></td></tr></table></figure></li>
 <li><p>研发流程</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 需求阶段</span></span><br><span class="line"><span class="bullet">  1.</span> 市场调研 - PDM(Product Manager) 产品经理</span><br><span class="line"><span class="bullet">  2.</span> 需求分析 - PM(Project Manager) 项目经理</span><br><span class="line"><span class="bullet">  3.</span> 需求文档 - 最终产物</span><br><span class="line"><span class="bullet">  4.</span> 需求评审</span><br><span class="line"></span><br><span class="line"><span class="section"># 设计阶段</span></span><br><span class="line"><span class="bullet">  1.</span> 交互设计 - UX(User Experience) 交互设计师</span><br><span class="line"><span class="bullet">  2.</span> 视觉设计 - UI(User Interface) 视觉设计师</span><br><span class="line"><span class="bullet">  3.</span> 技术设计</span><br><span class="line"><span class="bullet">  4.</span> 技术评审 - 最终产物</span><br><span class="line"><span class="bullet">  5.</span> 需求排期</span><br><span class="line"></span><br><span class="line"><span class="section"># 开发阶段</span></span><br><span class="line"><span class="bullet">  -</span> 开发 - Makefile - RD(Research and Development engineer) 研发工程师</span><br><span class="line"><span class="bullet">    1.</span> Git Flow工作流</span><br><span class="line"><span class="bullet">    2.</span> 生成代码 -- 尽可能自动生成代码</span><br><span class="line"><span class="bullet">    3.</span> 版权检查</span><br><span class="line"><span class="bullet">    4.</span> 静态代码检查</span><br><span class="line"><span class="bullet">    5.</span> 单元测试</span><br><span class="line"><span class="bullet">    6.</span> 编译</span><br><span class="line"><span class="bullet">    7.</span> 自测</span><br><span class="line"><span class="bullet">    8.</span> Code Review</span><br><span class="line"><span class="bullet">    9.</span> Merge</span><br><span class="line"><span class="bullet">  -</span> 构建 - CI/CD</span><br><span class="line"><span class="bullet">    1.</span> 代码扫描</span><br><span class="line"><span class="bullet">    2.</span> 单元测试</span><br><span class="line"><span class="bullet">    3.</span> 编译打包</span><br><span class="line"><span class="bullet">    4.</span> 归档[镜像仓库]</span><br><span class="line"></span><br><span class="line"><span class="section"># 测试阶段</span></span><br><span class="line">  &gt; 测试阶段为了不阻塞测试，确保项目按时发布，研发人员应该优先解决测试同学的Bug,至少是阻塞类的Bug</span><br><span class="line"><span class="bullet">  1.</span> 功能测试 - QA(Quality Assurance) 质量管理工程师</span><br><span class="line"><span class="bullet">  2.</span> 性能测试 - QE(Quality Engineering) 质量工程师</span><br><span class="line"><span class="bullet">  3.</span> 集成测试</span><br><span class="line"><span class="bullet">  4.</span> 系统测试</span><br><span class="line"></span><br><span class="line"><span class="section"># 发布阶段</span></span><br><span class="line"><span class="bullet">  -</span> 代码发布</span><br><span class="line"><span class="bullet">    1.</span> 合并到主干 - Master分支</span><br><span class="line"><span class="bullet">    2.</span> 生成版本号</span><br><span class="line"><span class="bullet">    3.</span> 打标签</span><br><span class="line"><span class="bullet">    4.</span> 代码扫描</span><br><span class="line"><span class="bullet">    5.</span> 单元测试</span><br><span class="line"><span class="bullet">    6.</span> 编译</span><br><span class="line"><span class="bullet">    7.</span> 发布构建产物</span><br><span class="line"><span class="bullet">  -</span> 发布审批</span><br><span class="line"><span class="bullet">    1.</span> 资源申请</span><br><span class="line"><span class="bullet">    2.</span> 创建发布计划</span><br><span class="line"><span class="bullet">    3.</span> 创建发布单</span><br><span class="line"><span class="bullet">    4.</span> 发布单审批</span><br><span class="line"><span class="bullet">  -</span> 服务发布</span><br><span class="line"><span class="bullet">    1.</span> 预发部署</span><br><span class="line"><span class="bullet">    2.</span> 预发验证</span><br><span class="line"><span class="bullet">    3.</span> 现网部署</span><br><span class="line"><span class="bullet">    4.</span> 现网验证</span><br><span class="line"></span><br><span class="line"><span class="section"># 运营阶段</span></span><br><span class="line"><span class="bullet">  -</span> 产品运营</span><br><span class="line"><span class="bullet">    1.</span> 技术沙龙</span><br><span class="line"><span class="bullet">    2.</span> 技术推文</span><br><span class="line"><span class="bullet">  -</span> 运维运营 - OP(Operation) 运维工程师</span><br><span class="line"><span class="bullet">    1.</span> 运维工具</span><br><span class="line"><span class="bullet">    2.</span> 日志系统</span><br><span class="line"><span class="bullet">    3.</span> 监控告警</span><br></pre></td></tr></table></figure></li>
+<li><p>应用生命周期管理</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 研发模式</span></span><br><span class="line"><span class="bullet">  -</span> 瀑布模式</span><br><span class="line"><span class="bullet">    -</span> 优点:</span><br><span class="line"><span class="bullet">      1.</span> 严格按照研发阶段推进研发进度，流程清晰，适合按项目交付的应用</span><br><span class="line"><span class="bullet">    -</span> 缺点:</span><br><span class="line"><span class="bullet">      1.</span> 变更困难</span><br><span class="line"><span class="bullet">      2.</span> 研发周期长</span><br><span class="line"><span class="bullet">  -</span> 迭代模式</span><br><span class="line"><span class="code">    &gt; 不要求每个阶段的任务做到最完美，而是先把主要功能搭建起来，然后通过客户的反馈信息不断完善</span></span><br><span class="line"><span class="code">  - 敏捷模式</span></span><br><span class="line"><span class="code">    &gt; 敏捷模式把一个大的需求分成多个、可分阶段完成的小迭代，每个迭代交付的都是一个可使用的软件，开发过程中，软件要一致处于可使用状态</span></span><br><span class="line"><span class="code">    - Scrum开发模式</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># CI/CD</span></span><br><span class="line">  CI: Continuous Integration, 持续集成</span><br><span class="line">  CD: Continous Delivery, 持续交付</span><br><span class="line">  CD: Continous Deployment, 持续部署</span><br><span class="line"></span><br><span class="line"><span class="section"># DevOps: 研发运维一体化</span></span><br><span class="line"><span class="bullet">  -</span> AIOps: 职能运维</span><br><span class="line"><span class="bullet">  -</span> ChatOps: 通过聊天窗口的机器人Bot出发任务</span><br><span class="line"><span class="bullet">  -</span> GitOps:</span><br><span class="line"><span class="code">    &gt; 开发人员开发完代码后推送Git仓库，触发CI流程，CI流程通过编译构建出Docker镜像，并将镜像push到Docker镜像仓库，Push动作触发Push事件，通过webhook形式通知Config Updater服务，Config Updater服务从镜像仓库中下载镜像，并更新Git仓库中的kubernetes YAML文件</span></span><br><span class="line"><span class="code">  - NoOps:</span></span><br></pre></td></tr></table></figure></li>
 </ul>
-<h2 id="介绍微服务架构设计"><a href="#介绍微服务架构设计" class="headerlink" title="介绍微服务架构设计"></a>介绍微服务架构设计</h2><figure class="highlight golang"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  fmt.Println(<span class="string">&quot;Hello, world!&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-]]></content>
+<h2 id="介绍微服务架构设计"><a href="#介绍微服务架构设计" class="headerlink" title="介绍微服务架构设计"></a>介绍微服务架构设计</h2>]]></content>
       <categories>
         <category>计算机科学</category>
       </categories>
@@ -168,7 +172,10 @@
   <entry>
     <title>Distributed ID Generator</title>
     <url>/2021/09/02/Distributed-ID-Generator/</url>
-    <content><![CDATA[<span id="more"></span>
+    <content><![CDATA[<blockquote>
+<p>分布式ID生成器</p>
+</blockquote>
+<span id="more"></span>
 
 <h1 id="Distributed-ID-Generator"><a href="#Distributed-ID-Generator" class="headerlink" title="Distributed ID Generator"></a>Distributed ID Generator</h1><ul>
 <li>UUID<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">  <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;github.com/google/uuid&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func BenchmarkUUID(t *testing.B) &#123;</span><br><span class="line">  for i := 0; i &lt; t.N; i++ &#123;</span><br><span class="line">    _ = uuid.New()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~/Downloads/uuid_demo via 🐹 v1.17 took 13s</span><br><span class="line">➜ go test -bench=.</span><br><span class="line"><span class="section">goos: darwin</span></span><br><span class="line"><span class="section">goarch: amd64</span></span><br><span class="line"><span class="section">pkg: uuid_demo</span></span><br><span class="line"><span class="section">cpu: Intel(R) Core(TM) i5-5257U CPU @ 2.70GHz</span></span><br><span class="line">BenchmarkUUID-4   	 1390710	       844.7 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok  	uuid_demo	2.351s</span><br><span class="line"></span><br><span class="line"><span class="comment"># UUIDs are 128-bit hexadecimal numbers that are globally unique</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 优点:</span></span><br><span class="line">  1. 生成足够简单，本地生成无网络消耗，具有唯一性</span><br><span class="line"><span class="comment"># 缺点:</span></span><br><span class="line">  1. 无序的字符串，不具备趋势自增特性</span><br><span class="line">  2. 没有具体的业务含义</span><br><span class="line">  3. 长度过长16字节128位,36位长度的字符串,存储以及查询数据库性能消耗较大,数据库建议主键尽量越短越好，作为数据库主键UUID的无序性会导致数据位置频繁变动，严重影响性能</span><br></pre></td></tr></table></figure></li>
@@ -592,11 +599,105 @@
 </ul>
 </li>
 </ul>
-<h2 id="Golang-Frequently-Asked-Questions-FAQ"><a href="#Golang-Frequently-Asked-Questions-FAQ" class="headerlink" title="Golang Frequently Asked Questions (FAQ)"></a>Golang Frequently Asked Questions (FAQ)</h2><ul>
+<h2 id="Go-项目组织"><a href="#Go-项目组织" class="headerlink" title="Go 项目组织"></a>Go 项目组织</h2><ul>
+<li><p>Go应用</p>
+<blockquote>
+<p>编写高质量的Go应用</p>
+</blockquote>
+<ul>
+<li>代码结构<ol>
+<li>目录结构</li>
+<li>按功能拆分模块</li>
+</ol>
+<ul>
+<li>层次拆分 - MVC</li>
+<li>功能拆分 - 实现高内聚低耦合的设计哲学</li>
+</ul>
+</li>
+<li>代码规范 - UBer_Go_Guid</li>
+<li>代码质量</li>
+<li>编程哲学<ul>
+<li>面向接口编程<ol>
+<li>代码扩展性更强</li>
+<li>解耦上下游的实现</li>
+<li>提高代码的可测性</li>
+</ol>
+</li>
+<li>面向“对象”编程<ol>
+<li>类、抽象、封装通过结构体来实现</li>
+<li>实例通过结构体变量来实现</li>
+<li>继承通过组合来实现,一个结构体嵌到另一个结构体，称作组合</li>
+<li>多态通过结构来实现<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 基类: Bird</span></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span> &#123;</span><br><span class="line">  Type <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟来的类别</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bird *Bird)</span> <span class="title">Class</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> bird.Type</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义鸟类</span></span><br><span class="line"><span class="keyword">type</span> Birds <span class="keyword">interface</span> &#123;</span><br><span class="line">  Name() <span class="keyword">string</span></span><br><span class="line">  Class() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟类: 金丝雀</span></span><br><span class="line"><span class="keyword">type</span> Canary <span class="keyword">struct</span> &#123;</span><br><span class="line">  Bird</span><br><span class="line">  name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Canary)</span> <span class="title">Name</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> c.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟类: 乌鸦</span></span><br><span class="line"><span class="keyword">type</span> Crow <span class="keyword">struct</span> &#123;</span><br><span class="line">  Bird</span><br><span class="line">  name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Crow)</span> <span class="title">Name</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> c.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewCrow</span><span class="params">(name <span class="keyword">string</span>)</span> *<span class="title">Crow</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &amp;Crow&#123;</span><br><span class="line">    Bird: Bird&#123;</span><br><span class="line">      Type: <span class="string">&quot;Crow&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    name: name,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewCanary</span><span class="params">(name <span class="keyword">string</span>)</span> *<span class="title">Canary</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &amp;Canary&#123;</span><br><span class="line">    Bird: Bird&#123;</span><br><span class="line">      Type: <span class="string">&quot;Canary&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    name: name,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BirdInfo</span><span class="params">(birds Birds)</span></span> &#123;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;I&#x27;m %s, I belong to %s bird class!\n&quot;</span>, birds.Name(), birds.Class())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  canary := NewCanary(<span class="string">&quot;CanaryA&quot;</span>)</span><br><span class="line">  crow := NewCrow(<span class="string">&quot;CrowA&quot;</span>)</span><br><span class="line">  BirdInfo(canary)</span><br><span class="line">  BirdInfo(crow)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>软件设计方法<ul>
+<li>设计模式 Design Pattern<blockquote>
+<p>针对特定场景总结出来的最佳实现方式，特点是解决场景比较具体，实施起来比较简单</p>
+</blockquote>
+<ul>
+<li>创建型模式<ul>
+<li>单例模式</li>
+<li>简单工厂模式</li>
+<li>抽象工厂模式</li>
+<li>工厂方法模式</li>
+<li>建造者模式</li>
+<li>原型模式</li>
+</ul>
+</li>
+<li>结构型模式<ul>
+<li>访问者模式</li>
+<li>模版模式</li>
+<li>策略模式</li>
+<li>状态模式</li>
+<li>观察者模式</li>
+<li>备忘录模式</li>
+<li>中介者模式</li>
+<li>迭代器模式</li>
+<li>解释器模式</li>
+<li>命令模式</li>
+<li>责任链模式</li>
+</ul>
+</li>
+<li>行为型模式<ul>
+<li>适配器模式</li>
+<li>桥接模式</li>
+<li>组合模式</li>
+<li>装饰模式</li>
+<li>外观模式</li>
+<li>享元模式</li>
+<li>代理模式</li>
+<li>选项模式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SOLID原则<blockquote>
+<p>侧重设计原则,设计代码指导方针</p>
+</blockquote>
+<ul>
+<li>SRP: 单一功能原则, 一个类或者模块只负责完成一个指责</li>
+<li>OCP: 开闭原则,软件实体应该对扩展开放，对修改关闭</li>
+<li>LSP: 里氏替换原则, 如果S是T的子类型，则类型T的对象可以替换为类型S的对象，而不会破坏程序</li>
+<li>DIP: 依赖倒置原则，依赖于抽象而不是一个实例，其本质是要面向接口编程，不要面向实现编程</li>
+<li>ISP: 接口分离原则，客户端程序不应该依赖它不需要的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>项目管理</p>
+</li>
+<li><p>项目文档</p>
+</li>
+</ul>
+<h2 id="Go-工具集"><a href="#Go-工具集" class="headerlink" title="Go 工具集"></a>Go 工具集</h2><h2 id="Go-Guide"><a href="#Go-Guide" class="headerlink" title="Go Guide"></a>Go Guide</h2><h2 id="Golang-Frequently-Asked-Questions-FAQ"><a href="#Golang-Frequently-Asked-Questions-FAQ" class="headerlink" title="Golang Frequently Asked Questions (FAQ)"></a>Golang Frequently Asked Questions (FAQ)</h2><ul>
 <li><p>Map access is unsafe only when updates are occurring.</p>
 </li>
 <li><p>How can I gurantee my type satisfies an interface?</p>
-<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> I <span class="keyword">interface</span> &#123;</span><br><span class="line">    Say(<span class="keyword">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *T)</span> <span class="title">Say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    fmt.Println(s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ask the compiler to check that the type T implements the interface I by</span></span><br><span class="line"><span class="keyword">var</span> _ I = (*T)(<span class="literal">nil</span>) <span class="comment">// Verify that *T implements I.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    t := T&#123;&#125;</span><br><span class="line">    t.Say(<span class="string">&quot;Say Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> I <span class="keyword">interface</span> &#123;</span><br><span class="line">    Say(<span class="keyword">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *T)</span> <span class="title">Say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    fmt.Println(s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用于触发编译期的接口的合理性检查机制</span></span><br><span class="line"><span class="comment">// 如果T没有实现I，会在编译期报错</span></span><br><span class="line"><span class="comment">// 赋值右边是断言类型的零值，对于指针类型、切片、map是nil，对于结构体类型是空结构</span></span><br><span class="line"><span class="comment">// Ask the compiler to check that the type T implements the interface I by</span></span><br><span class="line"><span class="keyword">var</span> _ I = (*T)(<span class="literal">nil</span>) <span class="comment">// Verify that *T implements I.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    t := T&#123;&#125;</span><br><span class="line">    t.Say(<span class="string">&quot;Say Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>Should I define methods on values or pointers?</p>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">func (s *MyStruct) pointerMethod() &#123;&#125;   // <span class="keyword">method</span> <span class="keyword">on</span> pointer</span><br><span class="line">func (s MyStruct) valueMethod() &#123;&#125;      // <span class="keyword">method</span> <span class="keyword">on</span> <span class="keyword">value</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="keyword">When</span> defining a <span class="keyword">method</span> <span class="keyword">on</span> a <span class="keyword">type</span>, the receiver behaves exactly <span class="keyword">as</span> <span class="keyword">if</span> it were an argument <span class="keyword">to</span> the <span class="keyword">method</span>. Whether <span class="keyword">to</span> define the receiver <span class="keyword">as</span> a <span class="keyword">value</span> <span class="keyword">or</span> <span class="keyword">as</span> a pointer <span class="keyword">is</span> the same question, <span class="keyword">then</span>, <span class="keyword">as</span> whether a <span class="keyword">function</span> argument should be a <span class="keyword">value</span> <span class="keyword">or</span> poiner.</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> First, <span class="keyword">and</span> most important, does the <span class="keyword">method</span> need <span class="keyword">to</span> modify the receiver?</span><br><span class="line"><span class="number">2.</span> Second <span class="keyword">is</span> the consideration <span class="keyword">of</span> efficiency. <span class="keyword">If</span> the receiver <span class="keyword">is</span> <span class="keyword">large</span>, a big struct <span class="keyword">for</span> instance, it will be much cheaper <span class="keyword">to</span> use a pointer receiver.</span><br></pre></td></tr></table></figure></li>
 <li><p>What operations are atomic? What about mutexes?</p>
@@ -616,6 +717,77 @@
 <li><p>Why do garbage collection? Won’t it be too expensive?</p>
 <figure class="highlight mercury"><table><tr><td class="code"><pre><span class="line">The current <span class="keyword">implementation</span> <span class="keyword">is</span> a mark-and-sweep collector.</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h2 id="User-Go语言编码规范"><a href="#User-Go语言编码规范" class="headerlink" title="User Go语言编码规范"></a>User Go语言编码规范</h2><ul>
+<li><p>指导原则:</p>
+<ul>
+<li><p>指向interface的指针</p>
+<ol>
+<li>使用指针传递才能通过接口方法修改基础数据</li>
+</ol>
+</li>
+<li><p>Interface 合理性验证</p>
+<ol>
+<li>var _ http.Handler = (*Handler)(nil)  // 触发编译期的接口合理性检查机制，如果Handler没有实现Http.Handler 会报错</li>
+<li>赋值右边是断言类型的零值，指针类型、切片和映射都是nil,对于结构类型是空结构</li>
+</ol>
+</li>
+<li><p>接收器receiver与接口</p>
+<ol>
+<li>使用值接收器的方法即可以通过值调用，也可以通过指针调用</li>
+<li>带指针接收器的方法只能通过指针调用<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 一个类型可以有值接收器方法集和指针接收器方法集</span><br><span class="line">  一个值接收器方法集是指针接收器方法集的子集</span><br><span class="line"><span class="bullet">2.</span> 值对象只可以使用值接收器方法集,指针对象可以使用值接收器方法集+指针接收器方法集</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>零值 Mutex</p>
+<blockquote>
+<p>零值sync.Mutex, sync.RWMutx是有效的，指向Mutex的指针基本是不必要的</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 使用结构体指针，mutex应该作为结构体的非指针字段，即使该结构体不被导出，不要将mutex嵌入到结构体中</span><br></pre></td></tr></table></figure></li>
+<li><p>边界处拷贝Slices和Maps</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 接收Slices 和 Maps: 当<span class="built_in">map</span>或<span class="built_in">slice</span>作为函数参数传入时，用户可以对其进行修改</span><br><span class="line"><span class="number">2.</span> 注意用户对报漏内部状态的<span class="built_in">map</span>或<span class="built_in">slice</span>的修改</span><br></pre></td></tr></table></figure></li>
+<li><p>使用defer释放资源</p>
+</li>
+<li><p>Channel的size要么是1，要么是无缓冲的</p>
+</li>
+<li><p>枚举从1开始:</p>
+</li>
+<li><p>使用time处理时间</p>
+<figure class="highlight coq"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">time</span>.<span class="keyword">Time</span>表示瞬时时间</span><br><span class="line"><span class="number">2.</span> <span class="built_in">time</span>.Duration表示时间段</span><br><span class="line"><span class="number">3.</span> <span class="keyword">Time</span>.<span class="keyword">Add</span>: 某个时刻比前一个时刻晚</span><br><span class="line"><span class="number">4.</span> <span class="keyword">Time</span>.AddDate: 下一个日历日</span><br></pre></td></tr></table></figure></li>
+<li><p>错误类型</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> errors.New: 对于简单静态字符串的错误</span><br><span class="line"><span class="bullet">2.</span> fmt.Errorf: 对于格式化的错误字符串</span><br><span class="line"><span class="bullet">3.</span> 实现Error()方法的自定义类型</span><br><span class="line"><span class="bullet">4.</span> errors.Wrap: Wrapped errors</span><br></pre></td></tr></table></figure></li>
+<li><p>错误包装 Error Wrapping</p>
+</li>
+<li><p>处理类型断言失败</p>
+</li>
+<li><p>追加时优先执行切片容量</p>
+</li>
+</ul>
+</li>
+<li><p>性能</p>
+<ul>
+<li>将原语转换为字符串或从字符串转换时，strconv速度比fmt快</li>
+<li>指定容器容量,以便为容器预先分配内存，将在添加元素时最小化后续分配 – 容量提示</li>
+<li>指定切片容量,编译器为其提供make()的slice的容量分配足够的内存</li>
+</ul>
+</li>
+<li><p>规范</p>
+<ul>
+<li><p>包名</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> 全部小写，没有大写或下划线</span><br><span class="line"><span class="bullet">2.</span> 不使用复数</span><br><span class="line"><span class="bullet">3.</span> 不要用 common, util, shared, lib</span><br></pre></td></tr></table></figure></li>
+<li><p>导入别名</p>
+<blockquote>
+<p>除非导入之间有直接冲突，否则避免导入别名</p>
+</blockquote>
+</li>
+<li><p>减少嵌套</p>
+<blockquote>
+<p>代码通过尽可能先处理错误情况/特殊情况今早返回或继续循环减少嵌套，减少嵌套多个级别的代码的代码</p>
+</blockquote>
+</li>
+<li><p>顶层变量声明</p>
+</li>
+</ul>
+</li>
+</ul>
 <h2 id="Golang-Tips-amp-Tracks"><a href="#Golang-Tips-amp-Tracks" class="headerlink" title="Golang Tips &amp; Tracks"></a>Golang Tips &amp; Tracks</h2><ul>
 <li><strong>负载均衡算法对比</strong><blockquote>
 <p>负载均衡最重要的就是均衡</p>
@@ -625,6 +797,38 @@
 ]]></content>
       <tags>
         <tag>Go</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>CS - Basic Introduction</title>
+    <url>/2021/09/06/CS-Time/</url>
+    <content><![CDATA[<blockquote>
+<p>计算机通识介绍</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Time-时间"><a href="#Time-时间" class="headerlink" title="Time 时间"></a>Time 时间</h2><ul>
+<li><p>Universal Time: 世界时</p>
+<blockquote>
+<p>依靠观测天文现象来测量时间，基于地球自转规律</p>
+</blockquote>
+</li>
+<li><p>International Atomic Time: 国际原子时</p>
+<blockquote>
+<p>以微观时间铯原子的震荡频率为基准，制造原子钟</p>
+</blockquote>
+</li>
+<li><p>Coordinated Universal Time: 协调世界时</p>
+<blockquote>
+<p>根据世间时和原子时，最终确立新的时间标准，定义成为全球的时间标准</p>
+</blockquote>
+</li>
+<li><p>NTP Network Time Protocol 同步时间</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. NTP如何同步时间</span><br><span class="line">  &gt; 假设网络来回路径对称，并且延迟相同</span><br><span class="line">  网络延时 = (t4 - t1) - (t3 - t2)</span><br><span class="line">  时间差 = t2 - t1 - 网络延迟<span class="regexp">/2 = ((t2-t1) + (t3-t4))/</span><span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 同步时间时，对正在运行的程序有没有影响</span><br><span class="line">  <span class="comment"># 墙上时钟: 世界协调时UTC，校准时间后，可能发生回拨</span></span><br><span class="line">  <span class="comment"># 单调时钟: 计算机自启动以后的纳秒数，不会回拨</span></span><br><span class="line"></span><br><span class="line">NTP校准时间提供<span class="number">2</span>中方式:</span><br><span class="line">  <span class="number">1</span>. ntpdate: 一切已服务器端时间为准，强制修改本机时间</span><br><span class="line">  <span class="number">2</span>. ntpd: 把时间差均摊到每次小的调整上 -- 避免发生倒流</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
@@ -650,36 +854,6 @@
       <tags>
         <tag>中间件</tag>
         <tag>Middleware</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS - Time</title>
-    <url>/2021/09/06/CS-Time/</url>
-    <content><![CDATA[<span id="more"></span>
-
-<h2 id="Time-时间"><a href="#Time-时间" class="headerlink" title="Time 时间"></a>Time 时间</h2><ul>
-<li><p>Universal Time: 世界时</p>
-<blockquote>
-<p>依靠观测天文现象来测量时间，基于地球自转规律</p>
-</blockquote>
-</li>
-<li><p>International Atomic Time: 国际原子时</p>
-<blockquote>
-<p>以微观时间铯原子的震荡频率为基准，制造原子钟</p>
-</blockquote>
-</li>
-<li><p>Coordinated Universal Time: 协调世界时</p>
-<blockquote>
-<p>根据世间时和原子时，最终确立新的时间标准，定义成为全球的时间标准</p>
-</blockquote>
-</li>
-<li><p>NTP Network Time Protocol 同步时间</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. NTP如何同步时间</span><br><span class="line">  &gt; 假设网络来回路径对称，并且延迟相同</span><br><span class="line">  网络延时 = (t4 - t1) - (t3 - t2)</span><br><span class="line">  时间差 = t2 - t1 - 网络延迟<span class="regexp">/2 = ((t2-t1) + (t3-t4))/</span><span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 同步时间时，对正在运行的程序有没有影响</span><br><span class="line">  <span class="comment"># 墙上时钟: 世界协调时UTC，校准时间后，可能发生回拨</span></span><br><span class="line">  <span class="comment"># 单调时钟: 计算机自启动以后的纳秒数，不会回拨</span></span><br><span class="line"></span><br><span class="line">NTP校准时间提供<span class="number">2</span>中方式:</span><br><span class="line">  <span class="number">1</span>. ntpdate: 一切已服务器端时间为准，强制修改本机时间</span><br><span class="line">  <span class="number">2</span>. ntpd: 把时间差均摊到每次小的调整上 -- 避免发生倒流</span><br></pre></td></tr></table></figure></li>
-</ul>
-<p>  -</p>
-]]></content>
-      <tags>
-        <tag>计算机</tag>
       </tags>
   </entry>
 </search>

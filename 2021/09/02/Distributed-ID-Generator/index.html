@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Distributed ID Generator UUID1234567891011121314151617181920212223242526272829303132package mainimport (  &quot;testing&quot;  &quot;github.com&#x2F;google&#x2F;uuid&quot;)func BenchmarkUUID(t *testing.B) &amp;#1">
+<meta name="description" content="分布式ID生成器">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Distributed ID Generator">
 <meta property="og:url" content="http://chyidl.github.io/2021/09/02/Distributed-ID-Generator/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="Distributed ID Generator UUID1234567891011121314151617181920212223242526272829303132package mainimport (  &quot;testing&quot;  &quot;github.com&#x2F;google&#x2F;uuid&quot;)func BenchmarkUUID(t *testing.B) &amp;#1">
+<meta property="og:description" content="分布式ID生成器">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-02T13:40:20.000Z">
-<meta property="article:modified_time" content="2021-09-04T09:12:08.745Z">
+<meta property="article:modified_time" content="2021-09-07T04:07:55.611Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="分布式">
 <meta property="article:tag" content="ID Generator">
@@ -262,7 +262,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-04 17:12:08" itemprop="dateModified" datetime="2021-09-04T17:12:08+08:00">2021-09-04</time>
+        <time title="修改时间：2021-09-07 12:07:55" itemprop="dateModified" datetime="2021-09-07T12:07:55+08:00">2021-09-07</time>
       </span>
 
   
@@ -297,7 +297,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <span id="more"></span>
+        <blockquote>
+<p>分布式ID生成器</p>
+</blockquote>
+<span id="more"></span>
 
 <h1 id="Distributed-ID-Generator"><a href="#Distributed-ID-Generator" class="headerlink" title="Distributed ID Generator"></a>Distributed ID Generator</h1><ul>
 <li>UUID<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">  <span class="string">&quot;testing&quot;</span></span><br><span class="line"></span><br><span class="line">  <span class="string">&quot;github.com/google/uuid&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line">func BenchmarkUUID(t *testing.B) &#123;</span><br><span class="line">  for i := 0; i &lt; t.N; i++ &#123;</span><br><span class="line">    _ = uuid.New()</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">~/Downloads/uuid_demo via 🐹 v1.17 took 13s</span><br><span class="line">➜ go test -bench=.</span><br><span class="line"><span class="section">goos: darwin</span></span><br><span class="line"><span class="section">goarch: amd64</span></span><br><span class="line"><span class="section">pkg: uuid_demo</span></span><br><span class="line"><span class="section">cpu: Intel(R) Core(TM) i5-5257U CPU @ 2.70GHz</span></span><br><span class="line">BenchmarkUUID-4   	 1390710	       844.7 ns/op</span><br><span class="line">PASS</span><br><span class="line">ok  	uuid_demo	2.351s</span><br><span class="line"></span><br><span class="line"><span class="comment"># UUIDs are 128-bit hexadecimal numbers that are globally unique</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 优点:</span></span><br><span class="line">  1. 生成足够简单，本地生成无网络消耗，具有唯一性</span><br><span class="line"><span class="comment"># 缺点:</span></span><br><span class="line">  1. 无序的字符串，不具备趋势自增特性</span><br><span class="line">  2. 没有具体的业务含义</span><br><span class="line">  3. 长度过长16字节128位,36位长度的字符串,存储以及查询数据库性能消耗较大,数据库建议主键尽量越短越好，作为数据库主键UUID的无序性会导致数据位置频繁变动，严重影响性能</span><br></pre></td></tr></table></figure></li>
@@ -384,13 +387,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">43k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">39 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

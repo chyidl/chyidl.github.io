@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang"><span class="nav-number">1.</span> <span class="nav-text">Golang</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Frequently-Asked-Questions-FAQ"><span class="nav-number">2.</span> <span class="nav-text">Golang Frequently Asked Questions (FAQ)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Tips-amp-Tracks"><span class="nav-number">3.</span> <span class="nav-text">Golang Tips &amp; Tracks</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang"><span class="nav-number">1.</span> <span class="nav-text">Golang</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-%E9%A1%B9%E7%9B%AE%E7%BB%84%E7%BB%87"><span class="nav-number">2.</span> <span class="nav-text">Go 项目组织</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-%E5%B7%A5%E5%85%B7%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">Go 工具集</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-Guide"><span class="nav-number">4.</span> <span class="nav-text">Go Guide</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Frequently-Asked-Questions-FAQ"><span class="nav-number">5.</span> <span class="nav-text">Golang Frequently Asked Questions (FAQ)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#User-Go%E8%AF%AD%E8%A8%80%E7%BC%96%E7%A0%81%E8%A7%84%E8%8C%83"><span class="nav-number">6.</span> <span class="nav-text">User Go语言编码规范</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Golang-Tips-amp-Tracks"><span class="nav-number">7.</span> <span class="nav-text">Golang Tips &amp; Tracks</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -271,14 +271,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3.7k</span>
+      <span>6.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>3 分钟</span>
+      <span>6 分钟</span>
     </span>
 </div>
 
@@ -325,11 +325,105 @@
 </ul>
 </li>
 </ul>
-<h2 id="Golang-Frequently-Asked-Questions-FAQ"><a href="#Golang-Frequently-Asked-Questions-FAQ" class="headerlink" title="Golang Frequently Asked Questions (FAQ)"></a>Golang Frequently Asked Questions (FAQ)</h2><ul>
+<h2 id="Go-项目组织"><a href="#Go-项目组织" class="headerlink" title="Go 项目组织"></a>Go 项目组织</h2><ul>
+<li><p>Go应用</p>
+<blockquote>
+<p>编写高质量的Go应用</p>
+</blockquote>
+<ul>
+<li>代码结构<ol>
+<li>目录结构</li>
+<li>按功能拆分模块</li>
+</ol>
+<ul>
+<li>层次拆分 - MVC</li>
+<li>功能拆分 - 实现高内聚低耦合的设计哲学</li>
+</ul>
+</li>
+<li>代码规范 - UBer_Go_Guid</li>
+<li>代码质量</li>
+<li>编程哲学<ul>
+<li>面向接口编程<ol>
+<li>代码扩展性更强</li>
+<li>解耦上下游的实现</li>
+<li>提高代码的可测性</li>
+</ol>
+</li>
+<li>面向“对象”编程<ol>
+<li>类、抽象、封装通过结构体来实现</li>
+<li>实例通过结构体变量来实现</li>
+<li>继承通过组合来实现,一个结构体嵌到另一个结构体，称作组合</li>
+<li>多态通过结构来实现<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 基类: Bird</span></span><br><span class="line"><span class="keyword">type</span> Bird <span class="keyword">struct</span> &#123;</span><br><span class="line">  Type <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟来的类别</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(bird *Bird)</span> <span class="title">Class</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> bird.Type</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 定义鸟类</span></span><br><span class="line"><span class="keyword">type</span> Birds <span class="keyword">interface</span> &#123;</span><br><span class="line">  Name() <span class="keyword">string</span></span><br><span class="line">  Class() <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟类: 金丝雀</span></span><br><span class="line"><span class="keyword">type</span> Canary <span class="keyword">struct</span> &#123;</span><br><span class="line">  Bird</span><br><span class="line">  name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Canary)</span> <span class="title">Name</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> c.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 鸟类: 乌鸦</span></span><br><span class="line"><span class="keyword">type</span> Crow <span class="keyword">struct</span> &#123;</span><br><span class="line">  Bird</span><br><span class="line">  name <span class="keyword">string</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(c *Crow)</span> <span class="title">Name</span><span class="params">()</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> c.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewCrow</span><span class="params">(name <span class="keyword">string</span>)</span> *<span class="title">Crow</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &amp;Crow&#123;</span><br><span class="line">    Bird: Bird&#123;</span><br><span class="line">      Type: <span class="string">&quot;Crow&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    name: name,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">NewCanary</span><span class="params">(name <span class="keyword">string</span>)</span> *<span class="title">Canary</span></span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &amp;Canary&#123;</span><br><span class="line">    Bird: Bird&#123;</span><br><span class="line">      Type: <span class="string">&quot;Canary&quot;</span>,</span><br><span class="line">    &#125;,</span><br><span class="line">    name: name,</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">BirdInfo</span><span class="params">(birds Birds)</span></span> &#123;</span><br><span class="line">  fmt.Printf(<span class="string">&quot;I&#x27;m %s, I belong to %s bird class!\n&quot;</span>, birds.Name(), birds.Class())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  canary := NewCanary(<span class="string">&quot;CanaryA&quot;</span>)</span><br><span class="line">  crow := NewCrow(<span class="string">&quot;CrowA&quot;</span>)</span><br><span class="line">  BirdInfo(canary)</span><br><span class="line">  BirdInfo(crow)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+</ul>
+</li>
+<li>软件设计方法<ul>
+<li>设计模式 Design Pattern<blockquote>
+<p>针对特定场景总结出来的最佳实现方式，特点是解决场景比较具体，实施起来比较简单</p>
+</blockquote>
+<ul>
+<li>创建型模式<ul>
+<li>单例模式</li>
+<li>简单工厂模式</li>
+<li>抽象工厂模式</li>
+<li>工厂方法模式</li>
+<li>建造者模式</li>
+<li>原型模式</li>
+</ul>
+</li>
+<li>结构型模式<ul>
+<li>访问者模式</li>
+<li>模版模式</li>
+<li>策略模式</li>
+<li>状态模式</li>
+<li>观察者模式</li>
+<li>备忘录模式</li>
+<li>中介者模式</li>
+<li>迭代器模式</li>
+<li>解释器模式</li>
+<li>命令模式</li>
+<li>责任链模式</li>
+</ul>
+</li>
+<li>行为型模式<ul>
+<li>适配器模式</li>
+<li>桥接模式</li>
+<li>组合模式</li>
+<li>装饰模式</li>
+<li>外观模式</li>
+<li>享元模式</li>
+<li>代理模式</li>
+<li>选项模式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>SOLID原则<blockquote>
+<p>侧重设计原则,设计代码指导方针</p>
+</blockquote>
+<ul>
+<li>SRP: 单一功能原则, 一个类或者模块只负责完成一个指责</li>
+<li>OCP: 开闭原则,软件实体应该对扩展开放，对修改关闭</li>
+<li>LSP: 里氏替换原则, 如果S是T的子类型，则类型T的对象可以替换为类型S的对象，而不会破坏程序</li>
+<li>DIP: 依赖倒置原则，依赖于抽象而不是一个实例，其本质是要面向接口编程，不要面向实现编程</li>
+<li>ISP: 接口分离原则，客户端程序不应该依赖它不需要的方法</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>项目管理</p>
+</li>
+<li><p>项目文档</p>
+</li>
+</ul>
+<h2 id="Go-工具集"><a href="#Go-工具集" class="headerlink" title="Go 工具集"></a>Go 工具集</h2><h2 id="Go-Guide"><a href="#Go-Guide" class="headerlink" title="Go Guide"></a>Go Guide</h2><h2 id="Golang-Frequently-Asked-Questions-FAQ"><a href="#Golang-Frequently-Asked-Questions-FAQ" class="headerlink" title="Golang Frequently Asked Questions (FAQ)"></a>Golang Frequently Asked Questions (FAQ)</h2><ul>
 <li><p>Map access is unsafe only when updates are occurring.</p>
 </li>
 <li><p>How can I gurantee my type satisfies an interface?</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> I <span class="keyword">interface</span> &#123;</span><br><span class="line">    Say(<span class="keyword">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *T)</span> <span class="title">Say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    fmt.Println(s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Ask the compiler to check that the type T implements the interface I by</span></span><br><span class="line"><span class="keyword">var</span> _ I = (*T)(<span class="literal">nil</span>) <span class="comment">// Verify that *T implements I.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    t := T&#123;&#125;</span><br><span class="line">    t.Say(<span class="string">&quot;Say Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> I <span class="keyword">interface</span> &#123;</span><br><span class="line">    Say(<span class="keyword">string</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> T <span class="keyword">struct</span> &#123;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *T)</span> <span class="title">Say</span><span class="params">(s <span class="keyword">string</span>)</span></span> &#123;</span><br><span class="line">    fmt.Println(s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 用于触发编译期的接口的合理性检查机制</span></span><br><span class="line"><span class="comment">// 如果T没有实现I，会在编译期报错</span></span><br><span class="line"><span class="comment">// 赋值右边是断言类型的零值，对于指针类型、切片、map是nil，对于结构体类型是空结构</span></span><br><span class="line"><span class="comment">// Ask the compiler to check that the type T implements the interface I by</span></span><br><span class="line"><span class="keyword">var</span> _ I = (*T)(<span class="literal">nil</span>) <span class="comment">// Verify that *T implements I.</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    t := T&#123;&#125;</span><br><span class="line">    t.Say(<span class="string">&quot;Say Hello&quot;</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>Should I define methods on values or pointers?</p>
 <figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">func (s *MyStruct) pointerMethod() &#123;&#125;   // <span class="keyword">method</span> <span class="keyword">on</span> pointer</span><br><span class="line">func (s MyStruct) valueMethod() &#123;&#125;      // <span class="keyword">method</span> <span class="keyword">on</span> <span class="keyword">value</span></span><br><span class="line"></span><br><span class="line">&gt; <span class="keyword">When</span> defining a <span class="keyword">method</span> <span class="keyword">on</span> a <span class="keyword">type</span>, the receiver behaves exactly <span class="keyword">as</span> <span class="keyword">if</span> it were an argument <span class="keyword">to</span> the <span class="keyword">method</span>. Whether <span class="keyword">to</span> define the receiver <span class="keyword">as</span> a <span class="keyword">value</span> <span class="keyword">or</span> <span class="keyword">as</span> a pointer <span class="keyword">is</span> the same question, <span class="keyword">then</span>, <span class="keyword">as</span> whether a <span class="keyword">function</span> argument should be a <span class="keyword">value</span> <span class="keyword">or</span> poiner.</span><br><span class="line"></span><br><span class="line"><span class="number">1.</span> First, <span class="keyword">and</span> most important, does the <span class="keyword">method</span> need <span class="keyword">to</span> modify the receiver?</span><br><span class="line"><span class="number">2.</span> Second <span class="keyword">is</span> the consideration <span class="keyword">of</span> efficiency. <span class="keyword">If</span> the receiver <span class="keyword">is</span> <span class="keyword">large</span>, a big struct <span class="keyword">for</span> instance, it will be much cheaper <span class="keyword">to</span> use a pointer receiver.</span><br></pre></td></tr></table></figure></li>
 <li><p>What operations are atomic? What about mutexes?</p>
@@ -348,6 +442,77 @@
 </li>
 <li><p>Why do garbage collection? Won’t it be too expensive?</p>
 <figure class="highlight mercury"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">The current <span class="keyword">implementation</span> <span class="keyword">is</span> a mark-and-sweep collector.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="User-Go语言编码规范"><a href="#User-Go语言编码规范" class="headerlink" title="User Go语言编码规范"></a>User Go语言编码规范</h2><ul>
+<li><p>指导原则:</p>
+<ul>
+<li><p>指向interface的指针</p>
+<ol>
+<li>使用指针传递才能通过接口方法修改基础数据</li>
+</ol>
+</li>
+<li><p>Interface 合理性验证</p>
+<ol>
+<li>var _ http.Handler = (*Handler)(nil)  // 触发编译期的接口合理性检查机制，如果Handler没有实现Http.Handler 会报错</li>
+<li>赋值右边是断言类型的零值，指针类型、切片和映射都是nil,对于结构类型是空结构</li>
+</ol>
+</li>
+<li><p>接收器receiver与接口</p>
+<ol>
+<li>使用值接收器的方法即可以通过值调用，也可以通过指针调用</li>
+<li>带指针接收器的方法只能通过指针调用<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 一个类型可以有值接收器方法集和指针接收器方法集</span><br><span class="line">  一个值接收器方法集是指针接收器方法集的子集</span><br><span class="line"><span class="bullet">2.</span> 值对象只可以使用值接收器方法集,指针对象可以使用值接收器方法集+指针接收器方法集</span><br></pre></td></tr></table></figure></li>
+</ol>
+</li>
+<li><p>零值 Mutex</p>
+<blockquote>
+<p>零值sync.Mutex, sync.RWMutx是有效的，指向Mutex的指针基本是不必要的</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 使用结构体指针，mutex应该作为结构体的非指针字段，即使该结构体不被导出，不要将mutex嵌入到结构体中</span><br></pre></td></tr></table></figure></li>
+<li><p>边界处拷贝Slices和Maps</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 接收Slices 和 Maps: 当<span class="built_in">map</span>或<span class="built_in">slice</span>作为函数参数传入时，用户可以对其进行修改</span><br><span class="line"><span class="number">2.</span> 注意用户对报漏内部状态的<span class="built_in">map</span>或<span class="built_in">slice</span>的修改</span><br></pre></td></tr></table></figure></li>
+<li><p>使用defer释放资源</p>
+</li>
+<li><p>Channel的size要么是1，要么是无缓冲的</p>
+</li>
+<li><p>枚举从1开始:</p>
+</li>
+<li><p>使用time处理时间</p>
+<figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">time</span>.<span class="keyword">Time</span>表示瞬时时间</span><br><span class="line"><span class="number">2.</span> <span class="built_in">time</span>.Duration表示时间段</span><br><span class="line"><span class="number">3.</span> <span class="keyword">Time</span>.<span class="keyword">Add</span>: 某个时刻比前一个时刻晚</span><br><span class="line"><span class="number">4.</span> <span class="keyword">Time</span>.AddDate: 下一个日历日</span><br></pre></td></tr></table></figure></li>
+<li><p>错误类型</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> errors.New: 对于简单静态字符串的错误</span><br><span class="line"><span class="bullet">2.</span> fmt.Errorf: 对于格式化的错误字符串</span><br><span class="line"><span class="bullet">3.</span> 实现Error()方法的自定义类型</span><br><span class="line"><span class="bullet">4.</span> errors.Wrap: Wrapped errors</span><br></pre></td></tr></table></figure></li>
+<li><p>错误包装 Error Wrapping</p>
+</li>
+<li><p>处理类型断言失败</p>
+</li>
+<li><p>追加时优先执行切片容量</p>
+</li>
+</ul>
+</li>
+<li><p>性能</p>
+<ul>
+<li>将原语转换为字符串或从字符串转换时，strconv速度比fmt快</li>
+<li>指定容器容量,以便为容器预先分配内存，将在添加元素时最小化后续分配 – 容量提示</li>
+<li>指定切片容量,编译器为其提供make()的slice的容量分配足够的内存</li>
+</ul>
+</li>
+<li><p>规范</p>
+<ul>
+<li><p>包名</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 全部小写，没有大写或下划线</span><br><span class="line"><span class="bullet">2.</span> 不使用复数</span><br><span class="line"><span class="bullet">3.</span> 不要用 common, util, shared, lib</span><br></pre></td></tr></table></figure></li>
+<li><p>导入别名</p>
+<blockquote>
+<p>除非导入之间有直接冲突，否则避免导入别名</p>
+</blockquote>
+</li>
+<li><p>减少嵌套</p>
+<blockquote>
+<p>代码通过尽可能先处理错误情况/特殊情况今早返回或继续循环减少嵌套，减少嵌套多个级别的代码的代码</p>
+</blockquote>
+</li>
+<li><p>顶层变量声明</p>
+</li>
+</ul>
+</li>
 </ul>
 <h2 id="Golang-Tips-amp-Tracks"><a href="#Golang-Tips-amp-Tracks" class="headerlink" title="Golang Tips &amp; Tracks"></a>Golang Tips &amp; Tracks</h2><ul>
 <li><strong>负载均衡算法对比</strong><blockquote>
@@ -416,13 +581,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">39k</span>
+    <span title="站点总字数">43k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">35 分钟</span>
+    <span title="站点阅读时长">39 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

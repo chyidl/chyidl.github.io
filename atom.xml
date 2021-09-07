@@ -17,23 +17,16 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CS - Time</title>
+    <title>CS - Basic Introduction</title>
     <link href="http://chyidl.github.io/2021/09/06/CS-Time/"/>
     <id>http://chyidl.github.io/2021/09/06/CS-Time/</id>
     <published>2021-09-06T02:29:50.000Z</published>
     <updated>2021-09-06T02:29:50.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;Time-时间&quot;&gt;&lt;a href=&quot;#Time-时间&quot; class=&quot;headerlink&quot; title=&quot;Time 时间&quot;&gt;&lt;/a&gt;Time 时间&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;Universal Time:</summary>
-        
-      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;计算机通识介绍&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -162,7 +155,7 @@
     <link href="http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/"/>
     <id>http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/</id>
     <published>2021-09-02T13:55:16.000Z</published>
-    <updated>2021-09-06T11:53:13.282Z</updated>
+    <updated>2021-09-07T04:07:55.643Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Redis&quot;&gt;&lt;a href=&quot;#Redis&quot; class=&quot;headerlink&quot; title=&quot;Redis&quot;&gt;&lt;/a&gt;Redis&lt;/h1&gt;&lt;blockquote&gt;
@@ -183,7 +176,7 @@
     <link href="http://chyidl.github.io/2021/09/02/Kafka-Tips-Tracks/"/>
     <id>http://chyidl.github.io/2021/09/02/Kafka-Tips-Tracks/</id>
     <published>2021-09-02T13:54:56.000Z</published>
-    <updated>2021-09-04T09:12:08.757Z</updated>
+    <updated>2021-09-07T04:07:55.619Z</updated>
     
     
     
@@ -196,7 +189,7 @@
     <link href="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/"/>
     <id>http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/</id>
     <published>2021-09-02T13:54:37.000Z</published>
-    <updated>2021-09-04T09:12:08.765Z</updated>
+    <updated>2021-09-07T04:07:55.631Z</updated>
     
     
       
@@ -221,18 +214,12 @@
     <link href="http://chyidl.github.io/2021/09/02/Distributed-ID-Generator/"/>
     <id>http://chyidl.github.io/2021/09/02/Distributed-ID-Generator/</id>
     <published>2021-09-02T13:40:20.000Z</published>
-    <updated>2021-09-04T09:12:08.745Z</updated>
+    <updated>2021-09-07T04:07:55.611Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h1 id=&quot;Distributed-ID-Generator&quot;&gt;&lt;a href=&quot;#Distributed-ID-Generator&quot; class=&quot;headerlink&quot; title=&quot;Distributed ID</summary>
-        
-      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;分布式ID生成器&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
@@ -248,7 +235,7 @@
     <link href="http://chyidl.github.io/2021/09/02/echo-go-web-framework/"/>
     <id>http://chyidl.github.io/2021/09/02/echo-go-web-framework/</id>
     <published>2021-09-01T23:33:07.000Z</published>
-    <updated>2021-09-04T09:12:08.793Z</updated>
+    <updated>2021-09-07T04:07:55.651Z</updated>
     
     
     <summary type="html">&lt;h1 id=&quot;Echo&quot;&gt;&lt;a href=&quot;#Echo&quot; class=&quot;headerlink&quot; title=&quot;Echo&quot;&gt;&lt;/a&gt;Echo&lt;/h1&gt;&lt;blockquote&gt;
@@ -270,7 +257,7 @@
     <link href="http://chyidl.github.io/2021/09/01/docker/"/>
     <id>http://chyidl.github.io/2021/09/01/docker/</id>
     <published>2021-09-01T01:49:58.000Z</published>
-    <updated>2021-09-06T11:53:13.206Z</updated>
+    <updated>2021-09-07T04:07:55.575Z</updated>
     
     
     <summary type="html">&lt;h2 id=&quot;Docker-Info&quot;&gt;&lt;a href=&quot;#Docker-Info&quot; class=&quot;headerlink&quot; title=&quot;Docker  Info&quot;&gt;&lt;/a&gt;Docker  Info&lt;/h2&gt;&lt;figure class=&quot;highlight oxygene&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Cgroups技术是用来制造约束的主要手段&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Namespace&lt;/span&gt;技术则是用来修改进程试图的主要方法&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
@@ -289,7 +276,7 @@
     <link href="http://chyidl.github.io/2021/09/01/hexo-next-gitalk/"/>
     <id>http://chyidl.github.io/2021/09/01/hexo-next-gitalk/</id>
     <published>2021-09-01T01:12:54.000Z</published>
-    <updated>2021-09-04T09:12:08.721Z</updated>
+    <updated>2021-09-07T04:07:55.587Z</updated>
     
     
     <summary type="html">&lt;h3 id=&quot;站点搭建过程&quot;&gt;&lt;a href=&quot;#站点搭建过程&quot; class=&quot;headerlink&quot; title=&quot;站点搭建过程&quot;&gt;&lt;/a&gt;站点搭建过程&lt;/h3&gt;&lt;ul&gt;
@@ -310,20 +297,12 @@
     <link href="http://chyidl.github.io/2021/09/01/micro-services/"/>
     <id>http://chyidl.github.io/2021/09/01/micro-services/</id>
     <published>2021-08-31T23:12:02.000Z</published>
-    <updated>2021-09-06T11:53:13.230Z</updated>
+    <updated>2021-09-07T04:07:55.599Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;span id=&quot;more&quot;&gt;&lt;/span&gt;
-
-&lt;h2 id=&quot;项目工程化&quot;&gt;&lt;a href=&quot;#项目工程化&quot; class=&quot;headerlink&quot; title=&quot;项目工程化&quot;&gt;&lt;/a&gt;项目工程化&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;开源规范&lt;/p&gt;
-&lt;figure</summary>
-        
-      
+    <summary type="html">&lt;blockquote&gt;
+&lt;p&gt;项目工程化、微服务相关介绍&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
     
     
     
