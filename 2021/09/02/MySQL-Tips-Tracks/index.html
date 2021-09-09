@@ -20,15 +20,15 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="MySQL数据库日志 重做日志 - redo log 记录修改后的数据  1">
+<meta name="description" content="MySQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL Tips &amp; Tracks">
 <meta property="og:url" content="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="MySQL数据库日志 重做日志 - redo log 记录修改后的数据  1">
+<meta property="og:description" content="MySQL">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-02T13:54:37.000Z">
-<meta property="article:modified_time" content="2021-09-07T08:37:29.581Z">
+<meta property="article:modified_time" content="2021-09-09T03:38:26.568Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="MySQL">
@@ -152,7 +152,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97"><span class="nav-number">1.1.</span> <span class="nav-text">数据库日志</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MySQL"><span class="nav-number">1.</span> <span class="nav-text">MySQL</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97"><span class="nav-number">1.1.</span> <span class="nav-text">数据库日志</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#not-in-%E9%9C%80%E8%A6%81%E4%BF%9D%E8%AF%81%E8%87%AA%E6%9F%A5%E8%AF%A2%E7%9A%84%E5%8C%B9%E9%85%8D%E5%AD%97%E6%AE%B5%E6%98%AF%E9%9D%9E%E7%A9%BA%E7%9A%84"><span class="nav-number">2.</span> <span class="nav-text">not in 需要保证自查询的匹配字段是非空的</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exists-%E8%BF%94%E5%9B%9E%E7%9A%84%E7%BB%93%E6%9E%9C%E6%98%AF%E4%B8%80%E4%B8%AAboolean%E5%80%BC-true%E6%88%96%E8%80%85false-%E8%80%8C%E4%B8%8D%E5%85%B3%E5%BF%83%E6%9F%90%E4%B8%AA%E7%BB%93%E6%9E%9C%E9%9B%86"><span class="nav-number">3.</span> <span class="nav-text">exists 返回的结果是一个boolean值 true或者false,而不关心某个结果集</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%87%AA%E6%9F%A5%E8%AF%A2%E4%B8%ADname%E5%8F%AF%E4%BB%A5%E4%BF%AE%E6%94%B9%E4%B8%BA%E5%85%B6%E4%BB%96%E4%BB%BB%E6%84%8F%E7%9A%84%E5%AD%97%E6%AE%B5-%E6%89%A7%E8%A1%8C%E6%95%88%E7%8E%87%E4%B8%8A1-gt-column-gt"><span class="nav-number">4.</span> <span class="nav-text">自查询中name可以修改为其他任意的字段,执行效率上1&gt;column&gt;*</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#in-exists-%E6%89%A7%E8%A1%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">in, exists 执行流程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%B9%E4%BA%8Ein%E6%9F%A5%E8%AF%A2%E6%9D%A5%E8%AF%B4%EF%BC%8C%E4%BC%9A%E5%85%88%E6%89%A7%E8%A1%8C%E5%AD%90%E6%9F%A5%E8%AF%A2%EF%BC%8C%E7%84%B6%E5%90%8E%E6%8A%8A%E6%9F%A5%E8%AF%A2%E5%BE%97%E5%88%B0%E7%9A%84%E7%BB%93%E6%9E%9C%E5%92%8C%E5%A4%96%E8%A1%A8t1%E5%81%9A%E7%AC%9B%E5%8D%A1%E5%B0%94%EF%BC%8C%E9%80%9A%E8%BF%87%E6%9D%A1%E4%BB%B6%E8%BF%9B%E8%A1%8C%E7%AD%9B%E9%80%89-name%E6%98%AF%E5%90%A6%E7%9B%B8%E7%AD%89"><span class="nav-number">6.</span> <span class="nav-text">对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选(name是否相等)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#exists-%E5%85%88%E6%9F%A5%E8%AF%A2%E4%BE%BF%E5%88%A9%E5%A4%96%E8%A1%A8t1-%E7%84%B6%E5%90%8E%E6%AF%8F%E6%AC%A1%E9%81%8D%E5%8E%86%E6%97%B6%EF%BC%8C%E5%9C%A8%E6%A3%80%E6%9F%A5%E5%86%85%E6%A0%87%E6%98%AF%E5%90%A6%E7%AC%A6%E5%90%88%E5%8C%B9%E9%85%8D%E6%9D%A1%E4%BB%B6"><span class="nav-number">7.</span> <span class="nav-text">exists,先查询便利外表t1,然后每次遍历时，在检查内标是否符合匹配条件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%BD%93-in-%E5%80%BC%E5%A4%9A%E4%BA%86%E4%B9%8B%E5%90%8E%EF%BC%8C%E5%B0%B1%E4%B8%8D%E8%B5%B0%E7%B4%A2%E5%BC%95%E4%BA%86-%E6%8E%A8%E6%B5%8BMySQL%E5%AF%B9in%E6%9F%A5%E8%AF%A2%E7%9A%84%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96%E5%99%A8CBO"><span class="nav-number">8.</span> <span class="nav-text">当 in 值多了之后，就不走索引了; 推测MySQL对in查询的成本优化器CBO</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A6%82%E6%9E%9C%E6%9F%A5%E8%AF%A2%E7%9A%84%E4%B8%A4%E4%B8%AA%E8%A1%A8%E5%A4%A7%E5%B0%8F%E7%9B%B8%E5%BD%93%EF%BC%8C%E7%94%A8in%E5%92%8Cexist%E5%B7%AE%E5%88%AB%E4%B8%8D%E5%A4%A7%EF%BC%8C%E5%A6%82%E6%9E%9C%E4%B8%A4%E4%B8%AA%E8%A1%A8%E4%B8%AD%E4%B8%80%E4%B8%AA%E8%BE%83%E5%B0%8F%E4%B8%80%E4%B8%AA%E8%BE%83%E5%A4%A7%EF%BC%8C%E5%88%99%E5%AD%90%E6%9F%A5%E8%AF%A2%E8%A1%A8%E5%A4%A7%E7%9A%84%E7%94%A8exists-%E5%AD%90%E6%9F%A5%E8%AF%A2%E8%A1%A8%E5%B0%8F%E7%9A%84%E7%94%A8in"><span class="nav-number">9.</span> <span class="nav-text">如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists,子查询表小的用in.</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9C%AC%E6%84%8F%E6%98%BE%E7%A4%BA%E8%AD%A6%E5%91%8A%E4%BF%A1%E6%81%AF%EF%BC%8C%E4%BD%86%E6%98%AF%E5%92%8Cexplain%E4%BD%BF%E7%94%A8%EF%BC%8C%E4%BC%9A%E6%98%BE%E7%A4%BA%E4%BC%98%E5%8C%96%E5%90%8E%E7%9A%84sql"><span class="nav-number">10.</span> <span class="nav-text">本意显示警告信息，但是和explain使用，会显示优化后的sql</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%A4%96%E5%B1%82%E5%A4%A7%E8%A1%A8%E5%86%85%E5%AD%98%E5%B0%8F%E8%A1%A8%EF%BC%8C%E7%94%A8in-%E5%A4%96%E5%B1%82%E5%B0%8F%E8%A1%A8%E5%86%85%E5%B1%82%E5%A4%A7%E8%A1%A8%EF%BC%8Cin%E5%92%8Cexists%E6%95%88%E7%8E%87%E5%B7%AE%E4%B8%8D%E5%A4%9A"><span class="nav-number">11.</span> <span class="nav-text">外层大表内存小表，用in, 外层小表内层大表，in和exists效率差不多.</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -168,7 +168,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-count">22</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -177,7 +177,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">22</span>
+        <span class="site-state-item-count">29</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -262,7 +262,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-07 16:37:29" itemprop="dateModified" datetime="2021-09-07T16:37:29+08:00">2021-09-07</time>
+        <time title="修改时间：2021-09-09 11:38:26" itemprop="dateModified" datetime="2021-09-09T11:38:26+08:00">2021-09-09</time>
       </span>
 
   
@@ -279,14 +279,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>31</span>
+      <span>5.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>5 分钟</span>
     </span>
 </div>
 
@@ -297,12 +297,57 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
+        <h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><span id="more"></span>
+
+<h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
 <li>重做日志 - redo log<blockquote>
 <p>记录修改后的数据</p>
 </blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">  ```</span><br><span class="line"></span><br><span class="line"><span class="meta">## 数据库索引</span></span><br><span class="line">  - <span class="keyword">in</span>, not <span class="keyword">in</span>, <span class="keyword">exists</span>, not <span class="keyword">exists</span></span><br></pre></td></tr></table></figure>
+➜ mysql -h 127.0.0.1 -u chyi -P 13306 -p<br>Enter password:<br>Welcome to the MySQL monitor.  Commands end with ; or \g.<br>Your MySQL connection id is 223<br>Server version: 8.0.26-0ubuntu0.20.04.2 (Ubuntu)</li>
 </ul>
+<p>  Copyright (c) 2000, 2021, Oracle and/or its affiliates.</p>
+<p>  Oracle is a registered trademark of Oracle Corporation and/or its<br>  affiliates. Other names may be trademarks of their respective<br>  owners.</p>
+<p>  Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<p>  mysql&gt; use develop;<br>  Reading table information for completion of table and column names<br>  You can turn off this feature to get a quicker startup with -A</p>
+<p>  Database changed<br>  mysql&gt; DROP TABLE IF EXISTS <code>t1</code>;<br>  Query OK, 0 rows affected, 1 warning (0.03 sec)</p>
+<p>  mysql&gt; CREATE TABLE <code>t1</code> (<code>id</code> int(11) NOT NULL AUTO_INCREMENT, <code>name</code> varchar(255) DEFAULT NULL, <code>addreee</code> varchar(255) DEFAULT NULL, PRIMARY KEY(<code>id</code>)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;<br>  Query OK, 0 rows affected, 1 warning (0.06 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t1</code> VALUES (‘1001’, ‘张三’, ‘北京’), (‘1002’, ‘李四’, ‘天津’), (‘1003’, ‘王五’, ‘北京’), (‘1004’, ‘赵六’, ‘河北’), (‘1005’, ‘杰克’, ‘河南’), (‘1006’, ‘汤姆’, ‘河南’), (‘1007’, ‘贝尔’, ‘上海’), (‘1008’, ‘孙琪’, ‘北京’);<br>  Query OK, 8 rows affected (0.04 sec)<br>  Records: 8  Duplicates: 0  Warnings: 0</p>
+<p>  mysql&gt; select * from t1;<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1001 | 张三   | 北京    |<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1004 | 赵六   | 河北    |<br>  | 1005 | 杰克   | 河南    |<br>  | 1006 | 汤姆   | 河南    |<br>  | 1007 | 贝尔   | 上海    |<br>  | 1008 | 孙琪   | 北京    |<br>  +——+——–+———+<br>  8 rows in set (0.04 sec)</p>
+<p>  mysql&gt; DROP TABLE IF EXISTS <code>t2</code>;<br>  Query OK, 0 rows affected (0.05 sec)</p>
+<p>  mysql&gt; CREATE TABLE <code>t2</code> (<code>id</code> int(11) NOT NULL AUTO_INCREMENT, <code>name</code> varchar(255), <code>address</code> varchar(255), PRIMARY KEY(<code>id</code>)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;<br>  Query OK, 0 rows affected, 1 warning (0.06 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1001, ‘张三’, ‘北京’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1004, ‘赵六’, ‘河北’);<br>  Query OK, 1 row affected (0.05 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1005, ‘杰克’, ‘河南’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1007, ‘贝尔’, ‘上海’);<br>  Query OK, 1 row affected (0.03 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1008, ‘孙琪’, ‘北京’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1009, ‘曹操’, ‘魏国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1010, ‘刘备’, ‘蜀国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1011, ‘孙权’, ‘吴国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1012, ‘诸葛亮’, ‘蜀国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1013, ‘典韦’, ‘魏国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; select * FROM t1 where name not in (select name from t2);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<p>  mysql&gt; select * from t1 where not exists (select name from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1014, NULL, ‘魏国’);<br>  Query OK, 1 row affected (0.05 sec)</p>
+<h1 id="not-in-需要保证自查询的匹配字段是非空的"><a href="#not-in-需要保证自查询的匹配字段是非空的" class="headerlink" title="not in 需要保证自查询的匹配字段是非空的"></a>not in 需要保证自查询的匹配字段是非空的</h1><p>  mysql&gt; select * FROM t1 where name not in (select name from t2);<br>  Empty set (0.04 sec)</p>
+<h1 id="exists-返回的结果是一个boolean值-true或者false-而不关心某个结果集"><a href="#exists-返回的结果是一个boolean值-true或者false-而不关心某个结果集" class="headerlink" title="exists 返回的结果是一个boolean值 true或者false,而不关心某个结果集"></a>exists 返回的结果是一个boolean值 true或者false,而不关心某个结果集</h1><p>  mysql&gt; select * from t1 where not exists (select name from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<h1 id="自查询中name可以修改为其他任意的字段-执行效率上1-gt-column-gt"><a href="#自查询中name可以修改为其他任意的字段-执行效率上1-gt-column-gt" class="headerlink" title="自查询中name可以修改为其他任意的字段,执行效率上1&gt;column&gt;*"></a>自查询中name可以修改为其他任意的字段,执行效率上1&gt;column&gt;*</h1><p>  mysql&gt; select * from t1 where not exists (select 1 from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<h1 id="in-exists-执行流程"><a href="#in-exists-执行流程" class="headerlink" title="in, exists 执行流程"></a>in, exists 执行流程</h1><h1 id="对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选-name是否相等"><a href="#对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选-name是否相等" class="headerlink" title="对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选(name是否相等)"></a>对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选(name是否相等)</h1><p>  mysql&gt; select * from t1 where name in (select name from t2);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1001 | 张三   | 北京    |<br>  | 1004 | 赵六   | 河北    |<br>  | 1005 | 杰克   | 河南    |<br>  | 1007 | 贝尔   | 上海    |<br>  | 1008 | 孙琪   | 北京    |<br>  +——+——–+———+<br>  5 rows in set (0.04 sec)</p>
+<h1 id="exists-先查询便利外表t1-然后每次遍历时，在检查内标是否符合匹配条件"><a href="#exists-先查询便利外表t1-然后每次遍历时，在检查内标是否符合匹配条件" class="headerlink" title="exists,先查询便利外表t1,然后每次遍历时，在检查内标是否符合匹配条件"></a>exists,先查询便利外表t1,然后每次遍历时，在检查内标是否符合匹配条件</h1><p>  mysql&gt; select * from t1 where exists (select 1 from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1001 | 张三   | 北京    |<br>  | 1004 | 赵六   | 河北    |<br>  | 1005 | 杰克   | 河南    |<br>  | 1007 | 贝尔   | 上海    |<br>  | 1008 | 孙琪   | 北京    |<br>  +——+——–+———+<br>  5 rows in set (0.03 sec)</p>
+<h1 id="当-in-值多了之后，就不走索引了-推测MySQL对in查询的成本优化器CBO"><a href="#当-in-值多了之后，就不走索引了-推测MySQL对in查询的成本优化器CBO" class="headerlink" title="当 in 值多了之后，就不走索引了; 推测MySQL对in查询的成本优化器CBO"></a>当 in 值多了之后，就不走索引了; 推测MySQL对in查询的成本优化器CBO</h1><p>  mysql&gt; explain select * from t1 where id in (1001, 1002, 1003, 1004, 1005, 1006, 1007);<br>  +—-+————-+——-+————+——-+—————+———+———+——+——+———-+————-+<br>  | id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref  | rows | filtered | Extra       |<br>  +—-+————-+——-+————+——-+—————+———+———+——+——+———-+————-+<br>  |  1 | SIMPLE      | t1    | NULL       | range | PRIMARY       | PRIMARY | 4       | NULL |    7 |   100.00 | Using where |<br>  +—-+————-+——-+————+——-+—————+———+———+——+——+———-+————-+<br>  1 row in set, 1 warning (0.03 sec)</p>
+<p>  mysql&gt; explain select * from t1 where id in (1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010);<br>  +—-+————-+——-+————+——+—————+——+———+——+——+———-+————-+<br>  | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |<br>  +—-+————-+——-+————+——+—————+——+———+——+——+———-+————-+<br>  |  1 | SIMPLE      | t1    | NULL       | ALL  | PRIMARY       | NULL | NULL    | NULL |    8 |   100.00 | Using where |<br>  +—-+————-+——-+————+——+—————+——+———+——+——+———-+————-+<br>  1 row in set, 1 warning (0.03 sec)</p>
+<h1 id="如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists-子查询表小的用in"><a href="#如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists-子查询表小的用in" class="headerlink" title="如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists,子查询表小的用in."></a>如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists,子查询表小的用in.</h1><p>  mysql&gt; explain select * from t1 where id in (select id from t2);<br>  +—-+————-+——-+————+——–+—————+———+———+—————+——+———-+————-+<br>  | id | select_type | table | partitions | type   | possible_keys | key     | key_len | ref           | rows | filtered | Extra       |<br>  +—-+————-+——-+————+——–+—————+———+———+—————+——+———-+————-+<br>  |  1 | SIMPLE      | t1    | NULL       | ALL    | PRIMARY       | NULL    | NULL    | NULL          |    8 |   100.00 | NULL        |<br>  |  1 | SIMPLE      | t2    | NULL       | eq_ref | PRIMARY       | PRIMARY | 4       | develop.t1.id |    1 |   100.00 | Using index |<br>  +—-+————-+——-+————+——–+—————+———+———+—————+——+———-+————-+<br>  2 rows in set, 1 warning (0.05 sec)</p>
+<h1 id="本意显示警告信息，但是和explain使用，会显示优化后的sql"><a href="#本意显示警告信息，但是和explain使用，会显示优化后的sql" class="headerlink" title="本意显示警告信息，但是和explain使用，会显示优化后的sql"></a>本意显示警告信息，但是和explain使用，会显示优化后的sql</h1><p>  mysql&gt; show warnings;<br>  +——-+——+——————————————————————————————————————————————————————————————————————-+<br>  | Level | Code | Message                                                                                                                                                                                                           |<br>  +——-+——+——————————————————————————————————————————————————————————————————————-+<br>  | Note  | 1003 | /* select#1 */ select <code>develop</code>.<code>t1</code>.<code>id</code> AS <code>id</code>,<code>develop</code>.<code>t1</code>.<code>name</code> AS <code>name</code>,<code>develop</code>.<code>t1</code>.<code>addreee</code> AS <code>addreee</code> from <code>develop</code>.<code>t2</code> join <code>develop</code>.<code>t1</code> where (<code>develop</code>.<code>t2</code>.<code>id</code> = <code>develop</code>.<code>t1</code>.<code>id</code>) |<br>  +——-+——+——————————————————————————————————————————————————————————————————————-+<br>  1 row in set (0.04 sec)</p>
+<h1 id="外层大表内存小表，用in-外层小表内层大表，in和exists效率差不多"><a href="#外层大表内存小表，用in-外层小表内层大表，in和exists效率差不多" class="headerlink" title="外层大表内存小表，用in, 外层小表内层大表，in和exists效率差不多."></a>外层大表内存小表，用in, 外层小表内层大表，in和exists效率差不多.</h1><pre><code><figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">- <span class="keyword">join</span> 嵌套循环 <span class="keyword">Nested</span>-<span class="keyword">Loop</span> <span class="keyword">Join</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol>
+<li>简单嵌套循环连接 Simple Nested-Loop Join<br>inner join - 内连接 双层循环遍历两张表<br>一般sql中会以小表作为驱动表，外层循环，内层循环作为被驱动表</li>
+<li>索引嵌套循环连接<br>内存表列要有索引</li>
+<li>快索引嵌套连接 Block Nested Loop Join<blockquote>
+<p>缓存外层表的数据到join buffer中，然后buffer中数据批量和内层表数据进行匹配，从而减少内存循环的次数<br>```</p>
+</blockquote>
+</li>
+</ol>
 
     </div>
 
@@ -365,13 +410,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">49k</span>
+    <span title="站点总字数">65k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">45 分钟</span>
+    <span title="站点阅读时长">59 分钟</span>
   </span>
 </div>
 <div class="busuanzi-count">

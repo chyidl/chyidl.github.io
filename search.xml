@@ -158,6 +158,12 @@
 <li><p>应用生命周期管理</p>
 <figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 研发模式</span></span><br><span class="line"><span class="bullet">  -</span> 瀑布模式</span><br><span class="line"><span class="bullet">    -</span> 优点:</span><br><span class="line"><span class="bullet">      1.</span> 严格按照研发阶段推进研发进度，流程清晰，适合按项目交付的应用</span><br><span class="line"><span class="bullet">    -</span> 缺点:</span><br><span class="line"><span class="bullet">      1.</span> 变更困难</span><br><span class="line"><span class="bullet">      2.</span> 研发周期长</span><br><span class="line"><span class="bullet">  -</span> 迭代模式</span><br><span class="line"><span class="code">    &gt; 不要求每个阶段的任务做到最完美，而是先把主要功能搭建起来，然后通过客户的反馈信息不断完善</span></span><br><span class="line"><span class="code">  - 敏捷模式</span></span><br><span class="line"><span class="code">    &gt; 敏捷模式把一个大的需求分成多个、可分阶段完成的小迭代，每个迭代交付的都是一个可使用的软件，开发过程中，软件要一致处于可使用状态</span></span><br><span class="line"><span class="code">    - Scrum开发模式</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># CI/CD</span></span><br><span class="line">  CI: Continuous Integration, 持续集成</span><br><span class="line">  CD: Continous Delivery, 持续交付</span><br><span class="line">  CD: Continous Deployment, 持续部署</span><br><span class="line"></span><br><span class="line"><span class="section"># DevOps: 研发运维一体化</span></span><br><span class="line"><span class="bullet">  -</span> AIOps: 职能运维</span><br><span class="line"><span class="bullet">  -</span> ChatOps: 通过聊天窗口的机器人Bot出发任务</span><br><span class="line"><span class="bullet">  -</span> GitOps:</span><br><span class="line"><span class="code">    &gt; 开发人员开发完代码后推送Git仓库，触发CI流程，CI流程通过编译构建出Docker镜像，并将镜像push到Docker镜像仓库，Push动作触发Push事件，通过webhook形式通知Config Updater服务，Config Updater服务从镜像仓库中下载镜像，并更新Git仓库中的kubernetes YAML文件</span></span><br><span class="line"><span class="code">  - NoOps:</span></span><br></pre></td></tr></table></figure></li>
 </ul>
+<h2 id="介绍Web框架"><a href="#介绍Web框架" class="headerlink" title="介绍Web框架"></a>介绍Web框架</h2><ul>
+<li>Gin<blockquote>
+<p>Go编写的web框架，是一个类似martini性能更好的API框架</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> Engine: 初始化gin对象实例，</span><br><span class="line">  日志</span><br><span class="line">  中间件</span><br><span class="line">  路由控制</span><br><span class="line">  handlercontext</span><br><span class="line"><span class="bullet">2.</span> Router: 定义各种路由规则和条件</span><br><span class="line"><span class="bullet">3.</span> Context: 允许在中间件中共享变量，管理整个流程，验证请求的json以及提供</span><br><span class="line"><span class="bullet">4.</span> Bind:</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="介绍微服务架构设计"><a href="#介绍微服务架构设计" class="headerlink" title="介绍微服务架构设计"></a>介绍微服务架构设计</h2>]]></content>
       <categories>
         <category>计算机科学</category>
@@ -207,24 +213,69 @@
       </tags>
   </entry>
   <entry>
+    <title>Kafka Tips &amp; Tracks</title>
+    <url>/2021/09/02/Kafka-Tips-Tracks/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>MySQL Tips &amp; Tracks</title>
     <url>/2021/09/02/MySQL-Tips-Tracks/</url>
-    <content><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
+    <content><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><span id="more"></span>
+
+<h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
 <li>重做日志 - redo log<blockquote>
 <p>记录修改后的数据</p>
 </blockquote>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight axapta"><table><tr><td class="code"><pre><span class="line">  ```</span><br><span class="line"></span><br><span class="line"><span class="meta">## 数据库索引</span></span><br><span class="line">  - <span class="keyword">in</span>, not <span class="keyword">in</span>, <span class="keyword">exists</span>, not <span class="keyword">exists</span></span><br></pre></td></tr></table></figure>
+➜ mysql -h 127.0.0.1 -u chyi -P 13306 -p<br>Enter password:<br>Welcome to the MySQL monitor.  Commands end with ; or \g.<br>Your MySQL connection id is 223<br>Server version: 8.0.26-0ubuntu0.20.04.2 (Ubuntu)</li>
 </ul>
+<p>  Copyright (c) 2000, 2021, Oracle and/or its affiliates.</p>
+<p>  Oracle is a registered trademark of Oracle Corporation and/or its<br>  affiliates. Other names may be trademarks of their respective<br>  owners.</p>
+<p>  Type ‘help;’ or ‘\h’ for help. Type ‘\c’ to clear the current input statement.</p>
+<p>  mysql&gt; use develop;<br>  Reading table information for completion of table and column names<br>  You can turn off this feature to get a quicker startup with -A</p>
+<p>  Database changed<br>  mysql&gt; DROP TABLE IF EXISTS <code>t1</code>;<br>  Query OK, 0 rows affected, 1 warning (0.03 sec)</p>
+<p>  mysql&gt; CREATE TABLE <code>t1</code> (<code>id</code> int(11) NOT NULL AUTO_INCREMENT, <code>name</code> varchar(255) DEFAULT NULL, <code>addreee</code> varchar(255) DEFAULT NULL, PRIMARY KEY(<code>id</code>)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;<br>  Query OK, 0 rows affected, 1 warning (0.06 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t1</code> VALUES (‘1001’, ‘张三’, ‘北京’), (‘1002’, ‘李四’, ‘天津’), (‘1003’, ‘王五’, ‘北京’), (‘1004’, ‘赵六’, ‘河北’), (‘1005’, ‘杰克’, ‘河南’), (‘1006’, ‘汤姆’, ‘河南’), (‘1007’, ‘贝尔’, ‘上海’), (‘1008’, ‘孙琪’, ‘北京’);<br>  Query OK, 8 rows affected (0.04 sec)<br>  Records: 8  Duplicates: 0  Warnings: 0</p>
+<p>  mysql&gt; select * from t1;<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1001 | 张三   | 北京    |<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1004 | 赵六   | 河北    |<br>  | 1005 | 杰克   | 河南    |<br>  | 1006 | 汤姆   | 河南    |<br>  | 1007 | 贝尔   | 上海    |<br>  | 1008 | 孙琪   | 北京    |<br>  +——+——–+———+<br>  8 rows in set (0.04 sec)</p>
+<p>  mysql&gt; DROP TABLE IF EXISTS <code>t2</code>;<br>  Query OK, 0 rows affected (0.05 sec)</p>
+<p>  mysql&gt; CREATE TABLE <code>t2</code> (<code>id</code> int(11) NOT NULL AUTO_INCREMENT, <code>name</code> varchar(255), <code>address</code> varchar(255), PRIMARY KEY(<code>id</code>)) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;<br>  Query OK, 0 rows affected, 1 warning (0.06 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1001, ‘张三’, ‘北京’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1004, ‘赵六’, ‘河北’);<br>  Query OK, 1 row affected (0.05 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1005, ‘杰克’, ‘河南’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1007, ‘贝尔’, ‘上海’);<br>  Query OK, 1 row affected (0.03 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1008, ‘孙琪’, ‘北京’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1009, ‘曹操’, ‘魏国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1010, ‘刘备’, ‘蜀国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1011, ‘孙权’, ‘吴国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1012, ‘诸葛亮’, ‘蜀国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1013, ‘典韦’, ‘魏国’);<br>  Query OK, 1 row affected (0.04 sec)</p>
+<p>  mysql&gt; select * FROM t1 where name not in (select name from t2);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<p>  mysql&gt; select * from t1 where not exists (select name from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<p>  mysql&gt; INSERT INTO <code>t2</code> VALUES (1014, NULL, ‘魏国’);<br>  Query OK, 1 row affected (0.05 sec)</p>
+<h1 id="not-in-需要保证自查询的匹配字段是非空的"><a href="#not-in-需要保证自查询的匹配字段是非空的" class="headerlink" title="not in 需要保证自查询的匹配字段是非空的"></a>not in 需要保证自查询的匹配字段是非空的</h1><p>  mysql&gt; select * FROM t1 where name not in (select name from t2);<br>  Empty set (0.04 sec)</p>
+<h1 id="exists-返回的结果是一个boolean值-true或者false-而不关心某个结果集"><a href="#exists-返回的结果是一个boolean值-true或者false-而不关心某个结果集" class="headerlink" title="exists 返回的结果是一个boolean值 true或者false,而不关心某个结果集"></a>exists 返回的结果是一个boolean值 true或者false,而不关心某个结果集</h1><p>  mysql&gt; select * from t1 where not exists (select name from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<h1 id="自查询中name可以修改为其他任意的字段-执行效率上1-gt-column-gt"><a href="#自查询中name可以修改为其他任意的字段-执行效率上1-gt-column-gt" class="headerlink" title="自查询中name可以修改为其他任意的字段,执行效率上1&gt;column&gt;*"></a>自查询中name可以修改为其他任意的字段,执行效率上1&gt;column&gt;*</h1><p>  mysql&gt; select * from t1 where not exists (select 1 from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1002 | 李四   | 天津    |<br>  | 1003 | 王五   | 北京    |<br>  | 1006 | 汤姆   | 河南    |<br>  +——+——–+———+<br>  3 rows in set (0.04 sec)</p>
+<h1 id="in-exists-执行流程"><a href="#in-exists-执行流程" class="headerlink" title="in, exists 执行流程"></a>in, exists 执行流程</h1><h1 id="对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选-name是否相等"><a href="#对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选-name是否相等" class="headerlink" title="对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选(name是否相等)"></a>对于in查询来说，会先执行子查询，然后把查询得到的结果和外表t1做笛卡尔，通过条件进行筛选(name是否相等)</h1><p>  mysql&gt; select * from t1 where name in (select name from t2);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1001 | 张三   | 北京    |<br>  | 1004 | 赵六   | 河北    |<br>  | 1005 | 杰克   | 河南    |<br>  | 1007 | 贝尔   | 上海    |<br>  | 1008 | 孙琪   | 北京    |<br>  +——+——–+———+<br>  5 rows in set (0.04 sec)</p>
+<h1 id="exists-先查询便利外表t1-然后每次遍历时，在检查内标是否符合匹配条件"><a href="#exists-先查询便利外表t1-然后每次遍历时，在检查内标是否符合匹配条件" class="headerlink" title="exists,先查询便利外表t1,然后每次遍历时，在检查内标是否符合匹配条件"></a>exists,先查询便利外表t1,然后每次遍历时，在检查内标是否符合匹配条件</h1><p>  mysql&gt; select * from t1 where exists (select 1 from t2 where t1.name = t2.name);<br>  +——+——–+———+<br>  | id   | name   | addreee |<br>  +——+——–+———+<br>  | 1001 | 张三   | 北京    |<br>  | 1004 | 赵六   | 河北    |<br>  | 1005 | 杰克   | 河南    |<br>  | 1007 | 贝尔   | 上海    |<br>  | 1008 | 孙琪   | 北京    |<br>  +——+——–+———+<br>  5 rows in set (0.03 sec)</p>
+<h1 id="当-in-值多了之后，就不走索引了-推测MySQL对in查询的成本优化器CBO"><a href="#当-in-值多了之后，就不走索引了-推测MySQL对in查询的成本优化器CBO" class="headerlink" title="当 in 值多了之后，就不走索引了; 推测MySQL对in查询的成本优化器CBO"></a>当 in 值多了之后，就不走索引了; 推测MySQL对in查询的成本优化器CBO</h1><p>  mysql&gt; explain select * from t1 where id in (1001, 1002, 1003, 1004, 1005, 1006, 1007);<br>  +—-+————-+——-+————+——-+—————+———+———+——+——+———-+————-+<br>  | id | select_type | table | partitions | type  | possible_keys | key     | key_len | ref  | rows | filtered | Extra       |<br>  +—-+————-+——-+————+——-+—————+———+———+——+——+———-+————-+<br>  |  1 | SIMPLE      | t1    | NULL       | range | PRIMARY       | PRIMARY | 4       | NULL |    7 |   100.00 | Using where |<br>  +—-+————-+——-+————+——-+—————+———+———+——+——+———-+————-+<br>  1 row in set, 1 warning (0.03 sec)</p>
+<p>  mysql&gt; explain select * from t1 where id in (1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010);<br>  +—-+————-+——-+————+——+—————+——+———+——+——+———-+————-+<br>  | id | select_type | table | partitions | type | possible_keys | key  | key_len | ref  | rows | filtered | Extra       |<br>  +—-+————-+——-+————+——+—————+——+———+——+——+———-+————-+<br>  |  1 | SIMPLE      | t1    | NULL       | ALL  | PRIMARY       | NULL | NULL    | NULL |    8 |   100.00 | Using where |<br>  +—-+————-+——-+————+——+—————+——+———+——+——+———-+————-+<br>  1 row in set, 1 warning (0.03 sec)</p>
+<h1 id="如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists-子查询表小的用in"><a href="#如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists-子查询表小的用in" class="headerlink" title="如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists,子查询表小的用in."></a>如果查询的两个表大小相当，用in和exist差别不大，如果两个表中一个较小一个较大，则子查询表大的用exists,子查询表小的用in.</h1><p>  mysql&gt; explain select * from t1 where id in (select id from t2);<br>  +—-+————-+——-+————+——–+—————+———+———+—————+——+———-+————-+<br>  | id | select_type | table | partitions | type   | possible_keys | key     | key_len | ref           | rows | filtered | Extra       |<br>  +—-+————-+——-+————+——–+—————+———+———+—————+——+———-+————-+<br>  |  1 | SIMPLE      | t1    | NULL       | ALL    | PRIMARY       | NULL    | NULL    | NULL          |    8 |   100.00 | NULL        |<br>  |  1 | SIMPLE      | t2    | NULL       | eq_ref | PRIMARY       | PRIMARY | 4       | develop.t1.id |    1 |   100.00 | Using index |<br>  +—-+————-+——-+————+——–+—————+———+———+—————+——+———-+————-+<br>  2 rows in set, 1 warning (0.05 sec)</p>
+<h1 id="本意显示警告信息，但是和explain使用，会显示优化后的sql"><a href="#本意显示警告信息，但是和explain使用，会显示优化后的sql" class="headerlink" title="本意显示警告信息，但是和explain使用，会显示优化后的sql"></a>本意显示警告信息，但是和explain使用，会显示优化后的sql</h1><p>  mysql&gt; show warnings;<br>  +——-+——+——————————————————————————————————————————————————————————————————————-+<br>  | Level | Code | Message                                                                                                                                                                                                           |<br>  +——-+——+——————————————————————————————————————————————————————————————————————-+<br>  | Note  | 1003 | /* select#1 */ select <code>develop</code>.<code>t1</code>.<code>id</code> AS <code>id</code>,<code>develop</code>.<code>t1</code>.<code>name</code> AS <code>name</code>,<code>develop</code>.<code>t1</code>.<code>addreee</code> AS <code>addreee</code> from <code>develop</code>.<code>t2</code> join <code>develop</code>.<code>t1</code> where (<code>develop</code>.<code>t2</code>.<code>id</code> = <code>develop</code>.<code>t1</code>.<code>id</code>) |<br>  +——-+——+——————————————————————————————————————————————————————————————————————-+<br>  1 row in set (0.04 sec)</p>
+<h1 id="外层大表内存小表，用in-外层小表内层大表，in和exists效率差不多"><a href="#外层大表内存小表，用in-外层小表内层大表，in和exists效率差不多" class="headerlink" title="外层大表内存小表，用in, 外层小表内层大表，in和exists效率差不多."></a>外层大表内存小表，用in, 外层小表内层大表，in和exists效率差不多.</h1><pre><code><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">- <span class="keyword">join</span> 嵌套循环 <span class="keyword">Nested</span>-<span class="keyword">Loop</span> <span class="keyword">Join</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol>
+<li>简单嵌套循环连接 Simple Nested-Loop Join<br>inner join - 内连接 双层循环遍历两张表<br>一般sql中会以小表作为驱动表，外层循环，内层循环作为被驱动表</li>
+<li>索引嵌套循环连接<br>内存表列要有索引</li>
+<li>快索引嵌套连接 Block Nested Loop Join<blockquote>
+<p>缓存外层表的数据到join buffer中，然后buffer中数据批量和内层表数据进行匹配，从而减少内存循环的次数<br>```</p>
+</blockquote>
+</li>
+</ol>
 ]]></content>
       <tags>
         <tag>数据库</tag>
         <tag>MySQL</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Kafka Tips &amp; Tracks</title>
-    <url>/2021/09/02/Kafka-Tips-Tracks/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Redis Tips &amp; Tracks</title>
@@ -976,6 +1027,323 @@
       <tags>
         <tag>中间件</tag>
         <tag>Middleware</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Protocol Buffer Intro</title>
+    <url>/2021/09/07/Protocol-Buffer-Intro/</url>
+    <content><![CDATA[<h1 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h1><blockquote>
+<p>Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。</p>
+</blockquote>
+<ul>
+<li>主要特征<ul>
+<li>更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度</li>
+<li>跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端</li>
+<li>良好的扩展性和兼容性:</li>
+<li>基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+
+]]></content>
+      <tags>
+        <tag>Protocol Buffer</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>API Design</title>
+    <url>/2021/09/07/RESTful-API-Design/</url>
+    <content><![CDATA[<blockquote>
+<p>目前业界常用的API风格</p>
+</blockquote>
+<ul>
+<li>RESTful</li>
+<li>RPC</li>
+<li>GraphQL</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h2><blockquote>
+<p>Representational State Transfer - 表现层状态转移<br>REST是一种软件架构风格，是一组架构约束条件和原则<br>REST规范把所有内容都视为资源<br>REST是一种规范，而RESTful API则是满足这种规范的API接口</p>
+</blockquote>
+<ul>
+<li><p>HTTP动词与REST风格CRUD对应关系</p>
+<table>
+<thead>
+<tr>
+<th align="left">HTTP方法</th>
+<th align="left">行为</th>
+<th align="left">URI</th>
+<th align="left">示例说明</th>
+<th align="left">是否安全</th>
+<th align="left">是否幂等</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">获取资源列表</td>
+<td align="left">/users</td>
+<td align="left">获取用户列表</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">获取一个具体资源</td>
+<td align="left">/users/admin</td>
+<td align="left">获取admin用户的详细信息</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">创建一个新的资源</td>
+<td align="left">/users</td>
+<td align="left">创建一个新用户</td>
+<td align="left">否</td>
+<td align="left">否</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">以整体的方式更新一个资源</td>
+<td align="left">/users/admin</td>
+<td align="left">更新user为admin的用户</td>
+<td align="left">否</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">DELETE</td>
+<td align="left">删除服务器上的一个资源</td>
+<td align="left">/users/admin</td>
+<td align="left">删除user为admin的用户</td>
+<td align="left">否</td>
+<td align="left">是</td>
+</tr>
+</tbody></table>
+<figure class="highlight basic"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="keyword">GET</span>,<span class="keyword">PUT</span>,POST操作的资源属性一致</span><br><span class="line"><span class="number">2</span>. 资源进行状态/属性变更，要用<span class="keyword">PUT</span>方法，POST方法用来创建或者批量删除</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>核心特点</p>
+<ol>
+<li>以资源resource为中心, 所有的东西都抽象称资源，所有的行为都应该是在资源上的CRUD操作</li>
+<li>资源是有状态的，使用JSON/XML等在HTTP Body里表征资源的状态</li>
+<li>客户端通过四个HTTP动词，对服务器资源进行操作, 实现“表现层状态转化”</li>
+<li>无状态, 对于服务端的弹性扩容是很重要的</li>
+</ol>
+</li>
+<li><p>RESTful API 设计原则</p>
+<figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line"><span class="comment"># URI设计</span></span><br><span class="line">  1. 资源名使用名词而不是动词,并且用名词复数表示</span><br><span class="line">  2. URI结尾不包含/</span><br><span class="line">  3. URI中不能出现下划线,必须使用中杠代替</span><br><span class="line">  4. URI路径shying小写，不使用大写</span><br><span class="line">  5. 避免层级过深的URI，超过2层的资源嵌套会很乱,建议其他资源转换为?参数</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安全性: 不会改变资源状态</span></span><br><span class="line"><span class="comment"># 幂等性: 执行1次和执行N次，对资源状态改变的效果是等价的</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># API版本管理</span></span><br><span class="line">  1. URL中 <span class="string">/v1/users</span></span><br><span class="line">  2. HTTP Header中, Accept: <span class="keyword">version</span>=1.0</span><br><span class="line">  3. Form参数中, <span class="string">/users</span>?<span class="keyword">version</span>=v1</span><br><span class="line"></span><br><span class="line"><span class="comment"># API命名:</span></span><br><span class="line">  1. 驼峰命名法 serverAddress</span><br><span class="line">  2. 蛇形命名法 server_address</span><br><span class="line">  3. 脊柱命名法 server-address -- GitHub API 使用的脊柱命名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统一分页/过滤/排序/搜索功能</span></span><br><span class="line">  1. 分页: <span class="string">/users</span>?offset=0&amp;limit20</span><br><span class="line">  2. 过滤: <span class="string">/users</span>?fields=email,username,address</span><br><span class="line">  3. 排序: <span class="string">/users</span>?sort=age,desc</span><br><span class="line">  4. 搜索:</span><br><span class="line"></span><br><span class="line"><span class="comment"># 域名</span></span><br><span class="line">  1. https:<span class="string">//chyidl.com/api</span> : 这种方式适合API不会有进一步扩展的情况</span><br><span class="line">  2. https:<span class="string">//storage.api.chyidl.com</span> : chyidl.com域名下会新增另一个系统API</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="RPC-API"><a href="#RPC-API" class="headerlink" title="RPC API"></a>RPC API</h2><blockquote>
+<p>RPC (Remote Procedure Call) 远程过程调用</p>
+</blockquote>
+<ul>
+<li><p>RPC调用流程</p>
+<figure class="highlight arduino"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">Client</span> 通过本地调用<span class="built_in">Client</span> Stub --</span><br><span class="line"><span class="number">2.</span> <span class="built_in">Client</span> Stub将参数打包称一个消息，然后发送这个消息</span><br><span class="line"><span class="number">3.</span> <span class="built_in">Client</span>所在的OS将消息发送给<span class="built_in">Server</span></span><br><span class="line"><span class="number">4.</span> <span class="built_in">Server</span>端接收到消息后，将消息传递给<span class="built_in">Server</span> Stub</span><br><span class="line"><span class="number">5.</span> <span class="built_in">Server</span> Stub将消息解包，得到参数</span><br><span class="line"><span class="number">6.</span> <span class="built_in">Server</span> Stub调用服务端的子程序，处理完后，最终结果按照相反的步骤返回给<span class="built_in">Client</span></span><br><span class="line"></span><br><span class="line">Stub: 负责调用参数和返回值的流化serialization、参数的打包和解包、以及网络层的通信.</span><br><span class="line"></span><br><span class="line">google gRPC</span><br><span class="line">Facebook Thrift</span><br></pre></td></tr></table></figure></li>
+<li><p>RESTful VS gRPC</p>
+<table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="left">RESTful</th>
+<th align="left">gRPC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">优点</td>
+<td align="left">1. REST更规范、更标准、更通用 无论那种语言都支持HTTP协议，可以对接外部很多系统</td>
+<td align="left">1. 屏蔽网络细节，调用远程接口像调用本地方法一样，调用简单、方便</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2. RESTful接口采用JSON作为数据通信格式，JSON格式可读性强</td>
+<td align="left">2. gRPC采用Protocol Buffer作为数据传输格式，效率高</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">3. 客户端和服务端松耦合</td>
+<td align="left">3.gRPC基于HTTP/2协议标准，性能更高</td>
+</tr>
+<tr>
+<td align="left">缺点</td>
+<td align="left">1.扩展性差，随着需求变化</td>
+<td align="left">1.Protobuf数据格式可读性差</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2.性能相对于gRPC偏低</td>
+<td align="left">2.gRPC不支持浏览器调用,调试不方便</td>
+</tr>
+<tr>
+<td align="left">使用场景</td>
+<td align="left">1. 接口对外，需要接口规范易懂</td>
+<td align="left">1.消息密集型、对系统性能和延时要求比较高</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2.系统能要求不高</td>
+<td align="left">2.偏向内部的API</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">3.提供API天生围绕资源、对象、管理展开</td>
+<td align="left">3.提供API很难进行资源、对象抽象</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>API</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>gRPC Intro</title>
+    <url>/2021/09/07/gRPC-Intro/</url>
+    <content><![CDATA[<h1 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h1><blockquote>
+<p>Google开发共性能、开源、跨编程语言的通用RPC框架，基于HTTP2.0协议开发，默认采用Protocol Buffers数据序列化协议</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>gRPC</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gin Crash Course</title>
+    <url>/2021/09/08/Gin-Crash-Course/</url>
+    <content><![CDATA[<h1 id="Gin-Web-Framework"><a href="#Gin-Web-Framework" class="headerlink" title="Gin Web Framework"></a>Gin Web Framework</h1><blockquote>
+<p>Gin是Go语言编写的Web框架，功能完善，使用简单，性能高，Gin核心的路由功能是通过HttpRouter实现，具有很高的路由性能.</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Web服务核心功能"><a href="#Web服务核心功能" class="headerlink" title="Web服务核心功能"></a>Web服务核心功能</h2><ul>
+<li><p>基础功能</p>
+<figure class="highlight vala"><table><tr><td class="code"><pre><span class="line"><span class="meta"># 通信协议: HTTP/HTTPS/gRPC</span></span><br><span class="line"><span class="meta"># 通信格式: JSON/Protobuf</span></span><br><span class="line"><span class="meta"># 路由匹配</span></span><br><span class="line">  &gt; HTTP方法，请求路径匹配到处理这个请求的函数,最终由改函数处理这次请求，并返回结果</span><br><span class="line"><span class="meta"># 路由分组</span></span><br><span class="line"><span class="meta"># 一进程多服务</span></span><br><span class="line"><span class="meta"># 业务处理</span></span><br><span class="line">  <span class="number">1.</span> 参数解析</span><br><span class="line">  <span class="number">2.</span> 参数校验</span><br><span class="line">  <span class="number">3.</span> 逻辑处理</span><br><span class="line">  <span class="number">4.</span> 返回结果</span><br></pre></td></tr></table></figure></li>
+<li><p>高级功能</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 中间件</span></span><br><span class="line">  &gt; Gin支持中间件，HTTP请求在转发到实际的处理函数之前，会被一系列加载的中间件进行处理</span><br><span class="line">  gin.Engine.<span class="keyword">Use</span>() 方法加载中间件</span><br></pre></td></tr></table></figure>
+<p>gin.Logger(): Logger中间件将日志写到gin.DefaultWriter, gin.DefaultWriter默认为os.Stdout<br>gin.Recovery(): Recovery中间件可以从任何panic恢复，并写入500状态<br>gin.CustomRecovery(handle gin.RecoverFunc):<br>gin.BasicAuth(): HTTP 请求基本认证</p>
+<figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">|<span class="string">中间件   </span>|<span class="string"> 功能                  </span>|</span><br><span class="line">|<span class="string">:--------</span>|<span class="string">:----------------------</span>|</span><br><span class="line">|<span class="string"> gin-jwt </span>|<span class="string"> JWT中间件，实现JWT认证</span>|</span><br><span class="line">|<span class="string"> gin-swagger</span>|<span class="string"> 自动生成Swagger 2.0格式的RESTful API文档</span>|</span><br><span class="line">|<span class="string"> cors</span>|<span class="string"> 实现HTTP请求跨域</span>|</span><br><span class="line">|<span class="string">sessions</span>|<span class="string">会话管理中间件</span>|</span><br><span class="line">|<span class="string">authz</span>|<span class="string"> 基于casbin授权中间件</span>|</span><br><span class="line">|<span class="string">pprof</span>|<span class="string"> gin pprof 中间件</span>|</span><br><span class="line">|<span class="string">go-gin-prometheus</span>|<span class="string">Prometheus metrics exporter</span>|</span><br><span class="line">|<span class="string">gzip</span>|<span class="string"> 支持HTTP请求和响应的gzip压缩</span>|</span><br><span class="line">|<span class="string">gin-limit</span>|<span class="string">HTTP请求并发控制中间件</span>|</span><br><span class="line">|<span class="string">requestid</span>|<span class="string">给每个Request生成uuid,并添加在返回的X-Request-ID Header中</span>|</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 认证</span></span><br></pre></td></tr></table></figure>
+<p>认证: Authentication: 用来验证某个用户是否具有访问系统的权限 – 证明你是谁<br>授权: Authorization: 用来验证某个用户是否具有访问某个资源的权限 – 决定你能做什么</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> Basic: 基础认证</span><br></pre></td></tr></table></figure>
+<p>   用户名:密码: base64编码后，放到HTTP Authorization Header<br>  github.com/chyidl/noone via 🐹 v1.17<br>  ➜ basic=<code>echo -n &#39;admin:Admin@2021&#39;|base64</code></p>
+<p>  github.com/chyidl/noone via 🐹 v1.17<br>  ➜ echo $basic<br>  YWRtaW46QWRtaW5AMjAyMQ==</p>
+<p>  github.com/chyidl/noone via 🐹 v1.17<br>  ➜ echo $basic | base64 –decode<br>  admin:Admin@2021%</p>
+<p>Basic认证简单,但是不安全, 使用Basic认证+SSL配合使用确保整个认证过程安全</p>
+<blockquote>
+<p>不要再请求参数中使用明文密码，不要在任何存储中保存明文密码</p>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">2.</span> Digest</span><br><span class="line"><span class="bullet">3.</span> OAuth</span><br><span class="line"><span class="bullet">4.</span> Bearer</span><br><span class="line"><span class="quote">&gt; Bearer认证称为令牌认证。是一种HTTP身份验证方式. Bearer认证的核心是bearer token.</span></span><br></pre></td></tr></table></figure>
+<p>bearer token: 是一个加密字符串，由服务端根据密钥生成, 客户端在请求服务端时，必须在请求头包含Authorization: Bearer <token>. 服务端收到请求头，解析出<token>.校验<token>合法性，Bearer认证配合HTTPS使用，保证认证安全性</p>
+<p>JSON Web Token: JWT<br>JWT是Bearer Token一个具体实现，由JSON数据格式组成, 通过HASH散列算法生成字符串.</p>
+<h1 id="JWT-认证流程"><a href="#JWT-认证流程" class="headerlink" title="JWT 认证流程:"></a>JWT 认证流程:</h1><blockquote>
+<p>不要存放敏感信息到Token中<br>Payload exp值不要设置太大，一般开发版本2小时，上线版本7天</p>
+</blockquote>
+<ol>
+<li>客户端使用用户名和密码请求登陆</li>
+<li>服务端收到请求后，会验证用户名和密码，如果用户名和密码验证成功，服务端签发Token返回给客户端</li>
+<li>客户端收到请求后将Token缓存起来 Cookie中或者LocalStorage,之后每次请求都会携带该Token</li>
+<li>服务端收到请求后，验证请求中的Token,验证通过则进行业务逻辑处理，处理完返回处理结果</li>
+</ol>
+<h1 id="JWT格式"><a href="#JWT格式" class="headerlink" title="JWT格式:"></a>JWT格式:</h1><p>  1.Header</p>
+<pre><code>- 类型声明 JWT
+- 声明加密算法 HMAC SHA256
+- 密钥ID 可选
+  &#123;
+    &quot;typ&quot;: &quot;JWT&quot;,
+    &quot;alg&quot;: &quot;HS256&quot;
+    &quot;kid&quot;: &quot;youknowwhoami&quot;
+  &#125;
+  Header进行base64编码
+  github.com/chyidl/noone via 🐹 v1.17
+  ➜ echo -n &#39;&#123;&quot;typ&quot;:&quot;JWT&quot;,&quot;alg&quot;:&quot;HS256&quot;,&quot;kid&quot;:&quot;youknowwhoami&quot;&#125;&#39;|base64
+  eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiIsImtpZCI6InlvdWtub3d3aG9hbWkifQ==
+</code></pre>
+<p>  2.Payload</p>
+<pre><code>- JWT标准中注册的声明
+<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="title">iss</span><span class="params">(Issuer)</span></span>: JWT Token的签发者</span><br><span class="line"><span class="function"><span class="title">sub</span><span class="params">(Subject)</span></span>: 主题</span><br><span class="line"><span class="function"><span class="title">exp</span><span class="params">(Expiration Time)</span></span>: JWT Token过期时间</span><br><span class="line"><span class="function"><span class="title">aud</span><span class="params">(Audience)</span></span>: 接受JWT Token的一方</span><br><span class="line"><span class="function"><span class="title">iat</span><span class="params">(Issued At)</span></span>: JWT Token签发时间</span><br><span class="line"><span class="function"><span class="title">nbf</span><span class="params">(Not Before)</span></span>: JWT Token生效时间</span><br><span class="line"><span class="function"><span class="title">jti</span><span class="params">(JWT ID)</span></span>: JWT Token ID,令牌的唯一标识符</span><br></pre></td></tr></table></figure>
+- 公共的声明
+  &gt; 添加用户相关信息或者其他业务需要信息
+- 私有的声明
+  &gt; 客户端和服务端共同定义的声明，base64是对称加密，不建议存放敏感信息
+</code></pre>
+<p>  3.Signature 签名</p>
+<pre><code>- header(base64后的)
+- payload(base64后)
+- secretKey: 密钥，保存在服务器中，通过配置文件保存
+- Salt(加密盐)
+<figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">服务端收到<span class="built_in">Token</span>后会解析出header.payload 然后用相同的加密算法和密钥对header.payload在进行一次加密，并对加密后的<span class="built_in">Token</span>和收到的<span class="built_in">Token</span>是否相同，如果相同则验证通过，不相同返回HTTP <span class="number">401</span> Unauthrozied</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h1 id="RequestID"><a href="#RequestID" class="headerlink" title="RequestID"></a>RequestID</h1><pre><code>&gt; 定于和跟踪RequestID
+</code></pre>
+<h1 id="跨域"><a href="#跨域" class="headerlink" title="跨域"></a>跨域</h1><pre><code>&gt; 当前软件架构中采用前后端分离，前端访问地址和后端方法地址不同，Web服务需要处理浏览器跨域请求
+</code></pre>
+<h1 id="优雅关停"><a href="#优雅关停" class="headerlink" title="优雅关停"></a>优雅关停</h1>  <figure class="highlight stata"><table><tr><td class="code"><pre><span class="line">```</span><br><span class="line"><span class="comment">// main.go</span></span><br><span class="line">package main</span><br><span class="line"></span><br><span class="line">import (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;sync&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">	<span class="string">&quot;golang.org/x/sync/errgroup&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Product struct &#123;</span><br><span class="line">	Username    string    `json:<span class="string">&quot;username&quot;</span> binding:<span class="string">&quot;required&quot;</span>`</span><br><span class="line">	Name        string    `json:<span class="string">&quot;name&quot;</span> binding:<span class="string">&quot;required&quot;</span>`</span><br><span class="line">	Category    string    `json:<span class="string">&quot;category&quot;</span> binding:<span class="string">&quot;required&quot;</span>`</span><br><span class="line">	Price       int       `json:<span class="string">&quot;price&quot;</span> binding:<span class="string">&quot;gte=0&quot;</span>`</span><br><span class="line">	Description string    `json:<span class="string">&quot;description&quot;</span>`</span><br><span class="line">	CreatedAt   time.Time `json:<span class="string">&quot;createdAt&quot;</span>`</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> productHandler struct &#123;</span><br><span class="line">	sync.RWMutex</span><br><span class="line">	products map[string]Product</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func newProductHandler() *productHandler &#123;</span><br><span class="line">	<span class="keyword">return</span> &amp;productHandler&#123;</span><br><span class="line">		products: make(map[string]Product),</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (<span class="keyword">u</span> *productHandler) Create(c *gin.Context) &#123;</span><br><span class="line">	<span class="keyword">u</span>.Lock()</span><br><span class="line">	defer <span class="keyword">u</span>.Unlock()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 1. 参数解析</span></span><br><span class="line">	<span class="keyword">var</span> product Product</span><br><span class="line">  <span class="comment">// 将Body中JSON格式数据解析到指定的Struct中</span></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := c.ShouldBindJSON(&amp;product); <span class="keyword">err</span> != nil &#123;</span><br><span class="line">    <span class="comment">// 返回JSON格式数据</span></span><br><span class="line">		c.JSON(http.StatusBadRequest, gin.<span class="keyword">H</span>&#123;<span class="string">&quot;error&quot;</span>: <span class="keyword">err</span>.<span class="keyword">Error</span>()&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 2. 参数校验</span></span><br><span class="line">	<span class="keyword">if</span> _, ok := <span class="keyword">u</span>.products[product.Name]; ok &#123;</span><br><span class="line">		c.JSON(http.StatusBadRequest, gin.<span class="keyword">H</span>&#123;<span class="string">&quot;error&quot;</span>: fmt.Sprintf(<span class="string">&quot;product %s already exist&quot;</span>, product.Name)&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line">	product.CreatedAt = time.Now()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 3. 逻辑处理</span></span><br><span class="line">	<span class="keyword">u</span>.products[product.Name] = product</span><br><span class="line">	<span class="keyword">log</span>.Printf(<span class="string">&quot;Register product %s success&quot;</span>, product.Name)</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 4. 返回结果</span></span><br><span class="line">	c.JSON(http.StatusOK, product)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func (<span class="keyword">u</span> *productHandler) <span class="built_in">Get</span>(c *gin.Context) &#123;</span><br><span class="line">	<span class="keyword">u</span>.Lock()</span><br><span class="line">	defer <span class="keyword">u</span>.Unlock()</span><br><span class="line"></span><br><span class="line">	product, ok := <span class="keyword">u</span>.products[c.Param(<span class="string">&quot;name&quot;</span>)]</span><br><span class="line">	<span class="keyword">if</span> !ok &#123;</span><br><span class="line"></span><br><span class="line">		c.JSON(http.StatusNotFound, gin.<span class="keyword">H</span>&#123;<span class="string">&quot;error&quot;</span>: fmt.Errorf(<span class="string">&quot;can not found product %s&quot;</span>, c.Param(<span class="string">&quot;name&quot;</span>))&#125;)</span><br><span class="line">		<span class="keyword">return</span></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	c.JSON(http.StatusOK, product)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func router() http.Handler &#123;</span><br><span class="line">	router := gin.Default()</span><br><span class="line">	productHandler := newProductHandler()</span><br><span class="line">	<span class="comment">// 路由分组/中间件/认证</span></span><br><span class="line">	v1 := router.<span class="built_in">Group</span>(<span class="string">&quot;/v1&quot;</span>)</span><br><span class="line">	productv1 := v1.<span class="built_in">Group</span>(<span class="string">&quot;/products&quot;</span>)</span><br><span class="line">	productv1.<span class="keyword">POST</span>(<span class="string">&quot;&quot;</span>, productHandler.Create)</span><br><span class="line">  <span class="comment">// Gin支持两种路由匹配规则</span></span><br><span class="line">  <span class="comment">//  /products/:name 精确匹配</span></span><br><span class="line">  <span class="comment">//  /products/*name 模糊匹配</span></span><br><span class="line">	productv1.<span class="built_in">GET</span>(<span class="string">&quot;:name&quot;</span>, productHandler.Get)</span><br><span class="line">	<span class="keyword">return</span> router</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">func main() &#123;</span><br><span class="line">	<span class="keyword">var</span> eg errgroup.Group</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 一进程多端口</span></span><br><span class="line">  <span class="comment">// Gin是基于net/http包封装的web框架</span></span><br><span class="line">	insecureServer := &amp;http.Server&#123;</span><br><span class="line">		Addr:         <span class="string">&quot;:8080&quot;</span>,</span><br><span class="line">		Handler:      router(),</span><br><span class="line">		ReadTimeout:  5 * time.Second,</span><br><span class="line">		WriteTimeout: 10 * time.Second,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	secureServer := &amp;http.Server&#123;</span><br><span class="line">		Addr:         <span class="string">&quot;:8443&quot;</span>,</span><br><span class="line">		Handler:      router(),</span><br><span class="line">		ReadTimeout:  5 * time.Second,</span><br><span class="line">		WriteTimeout: 10 * time.Second,</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	eg.Go(func() <span class="keyword">error</span> &#123;</span><br><span class="line">		<span class="keyword">err</span> := insecureServer.ListenAndServe()</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil &amp;&amp; <span class="keyword">err</span> != http.ErrServerClosed &#123;</span><br><span class="line">			<span class="keyword">log</span>.Fatal(<span class="keyword">err</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">err</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	eg.Go(func() <span class="keyword">error</span> &#123;</span><br><span class="line">		path, <span class="keyword">err</span> := os.Getwd()</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil &#123;</span><br><span class="line">			<span class="keyword">log</span>.Println(<span class="keyword">err</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">log</span>.Println(path)</span><br><span class="line">		<span class="keyword">err</span> = secureServer.ListenAndServeTLS(<span class="string">&quot;./server.pem&quot;</span>, <span class="string">&quot;./server.key&quot;</span>)</span><br><span class="line">		<span class="keyword">if</span> <span class="keyword">err</span> != nil &amp;&amp; <span class="keyword">err</span> != http.ErrServerClosed &#123;</span><br><span class="line">			<span class="keyword">log</span>.Fatal(<span class="keyword">err</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="keyword">err</span></span><br><span class="line">	&#125;)</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> <span class="keyword">err</span> := eg.Wait(); <span class="keyword">err</span> != nil &#123;</span><br><span class="line">		<span class="keyword">log</span>.Fatal(<span class="keyword">err</span>)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Features"><a href="#Features" class="headerlink" title="Features"></a>Features</h2><ul>
+<li>支持HTTP方法: GET/POST/PUT/PATCH/DELETE/OPTIONS</li>
+<li>支持不同位置的HTTP参数:<ul>
+<li>路径参数 path tag uri /user/:name name就是路径参数<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">路径参数: ShouldBindUri, BindUri</span></span><br></pre></td></tr></table></figure></li>
+<li>查询字符串参数 query tag form /welcome?firstname=xx firstname就是查询参数<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">查询字符串参数: ShouldBindQuery, BindQuery</span></span><br></pre></td></tr></table></figure></li>
+<li>表单参数 form tag form curl -X POST -F ‘username=colins’ <a href="http://mydomain.com/login">http://mydomain.com/login</a>, username就是表单参数<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">表单参数: ShouldBind</span></span><br></pre></td></tr></table></figure></li>
+<li>HTTP头参数 header tag header curl -X POST -H ‘Content-Type:application/json’ <a href="http://mydomain.com/login">http://mydomain.com/login</a> Content-Type就是HTTP头参数<figure class="highlight ldif"><table><tr><td class="code"><pre><span class="line"><span class="attribute">HTTP头参数</span>: ShouldBindHeader, BindHeader</span><br></pre></td></tr></table></figure></li>
+<li>消息体参数 body tag json/xml curl -X POST -H ‘Content-Type:application/json’ -d ‘{“username”:”colins”}’ <a href="http://mydomain.com/login">http://mydomain.com/login</a>, username就是消息体参数<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line"><span class="section">消息体参数: ShouldBindJSON, BindJSON</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>支持HTTP路由和路由分组</li>
+<li>支持自定义Log</li>
+<li>支持binding和validation,</li>
+<li>支持重定向</li>
+<li>支持basic auth middleware</li>
+<li>支持自定义HTTP配置</li>
+<li>支持优雅关闭</li>
+<li>支持HTTP2</li>
+<li>支持设置获取cookie</li>
+</ul>
+<h2 id="快速入门"><a href="#快速入门" class="headerlink" title="快速入门"></a>快速入门</h2>]]></content>
+      <tags>
+        <tag>Gin</tag>
+        <tag>Web框架</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Makefile Intro</title>
+    <url>/2021/09/08/Makefile-Intro/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>MySQL Index Intro</title>
+    <url>/2021/09/08/MySQL-Index-Intro/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title>数据结构-Radix-Tree</title>
+    <url>/2021/09/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-Radix-Tree/</url>
+    <content><![CDATA[<h1 id="Radix-Tree-基数树"><a href="#Radix-Tree-基数树" class="headerlink" title="Radix Tree - 基数树"></a>Radix Tree - 基数树</h1><blockquote>
+<p>radix tree用于表示一种空间优化的tree. 假如树中的一个节点是父节点的唯一子节点，那么该节点将会与父节点进行合并 radix tree的边沿edges可以是一个或者多个元素<br>元素个数不是太多，但是元素之间通常有很长的相同前缀时很适合采用radix tree存储<br>Golang的web框架gin使用radix tree作为路由查找的算法.</p>
+</blockquote>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"># gin/gin.go</span><br><span class="line"></span><br><span class="line">// <span class="keyword">method</span> -&gt; HTTP <span class="keyword">Method</span> &#123;<span class="keyword">GET</span>,PUT,POST,<span class="keyword">DELETE</span>&#125;</span><br><span class="line">func (engine *Engine) addRoute(<span class="keyword">method</span>, <span class="type">path</span> string, handlers HandlersChain) &#123;</span><br><span class="line">	assert1(<span class="type">path</span>[<span class="number">0</span>] == <span class="string">&#x27;/&#x27;</span>, &quot;path must begin with &#x27;/&#x27;&quot;)</span><br><span class="line">	assert1(<span class="keyword">method</span> != &quot;&quot;, &quot;HTTP method can not be empty&quot;)</span><br><span class="line">	assert1(len(handlers) &gt; <span class="number">0</span>, &quot;there must be at least one handler&quot;)</span><br><span class="line"></span><br><span class="line">	debugPrintRoute(<span class="keyword">method</span>, <span class="type">path</span>, handlers)</span><br><span class="line"></span><br><span class="line">  // 每一个<span class="keyword">method</span>对应一颗radix tree</span><br><span class="line">	root := engine.trees.<span class="keyword">get</span>(<span class="keyword">method</span>)</span><br><span class="line">	<span class="keyword">if</span> root == nil &#123;</span><br><span class="line">    // 如果获取不到<span class="keyword">method</span>对应的树，就创建</span><br><span class="line">		root = <span class="built_in">new</span>(node)</span><br><span class="line">		root.fullPath = &quot;/&quot;</span><br><span class="line">		engine.trees = append(engine.trees, methodTree&#123;<span class="keyword">method</span>: <span class="keyword">method</span>, root: root&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	root.addRoute(<span class="type">path</span>, handlers)</span><br><span class="line"></span><br><span class="line">	// <span class="keyword">Update</span> maxParams</span><br><span class="line">	<span class="keyword">if</span> paramsCount := countParams(<span class="type">path</span>); paramsCount &gt; engine.maxParams &#123;</span><br><span class="line">		engine.maxParams = paramsCount</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>数据结构</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>静态代码检查 golangci-lint</title>
+    <url>/2021/09/08/%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5-golangci-lint/</url>
+    <content><![CDATA[<h1 id="静态代码检查"><a href="#静态代码检查" class="headerlink" title="静态代码检查"></a>静态代码检查</h1><span id="more"></span>
+
+<h2 id="golangci-lint"><a href="#golangci-lint" class="headerlink" title="golangci-lint"></a>golangci-lint</h2><blockquote>
+<p>golangci-lint is a fast Go linters runner. It runs linters in parallel, uses caching, supports yaml config, has integrations with all major IDE and has dozens of linters included.</p>
+</blockquote>
+]]></content>
+      <tags>
+        <tag>golangci-lint</tag>
       </tags>
   </entry>
 </search>

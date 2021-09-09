@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="目前业界常用的API风格   RESTful RPC GraphQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="API Design">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/07/RESTful-API-Design/">
+<meta property="og:site_name" content="Stay Hungry Stay Foolish">
+<meta property="og:description" content="目前业界常用的API风格   RESTful RPC GraphQL">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-07T08:45:01.000Z">
+<meta property="article:modified_time" content="2021-09-07T08:45:01.000Z">
+<meta property="article:author" content="chyi">
+<meta property="article:tag" content="API">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://chyidl.github.io/2021/09/07/RESTful-API-Design/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/07/RESTful-API-Design/","path":"2021/09/07/RESTful-API-Design/","title":"API Design"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>API Design | Stay Hungry Stay Foolish</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?516e4e6590bcf7090ded728a1abdd5aa"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/chyidl" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stay Hungry Stay Foolish</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alaways be curious to learn more and achieve more.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful-API"><span class="nav-number">1.</span> <span class="nav-text">RESTful API</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RPC-API"><span class="nav-number">2.</span> <span class="nav-text">RPC API</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chyi"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">chyi</p>
+  <div class="site-description" itemprop="description">🦷🦷 Blog</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chyidl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chyidl" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/chyiyaqing@gmail.com" title="E-Mail → chyiyaqing@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/ChyiYaqing" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;ChyiYaqing" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fas fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/07/RESTful-API-Design/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          API Design
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-07 16:45:01" itemprop="dateCreated datePublished" datetime="2021-09-07T16:45:01+08:00">2021-09-07</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.9k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <blockquote>
+<p>目前业界常用的API风格</p>
+</blockquote>
+<ul>
+<li>RESTful</li>
+<li>RPC</li>
+<li>GraphQL</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="RESTful-API"><a href="#RESTful-API" class="headerlink" title="RESTful API"></a>RESTful API</h2><blockquote>
+<p>Representational State Transfer - 表现层状态转移<br>REST是一种软件架构风格，是一组架构约束条件和原则<br>REST规范把所有内容都视为资源<br>REST是一种规范，而RESTful API则是满足这种规范的API接口</p>
+</blockquote>
+<ul>
+<li><p>HTTP动词与REST风格CRUD对应关系</p>
+<table>
+<thead>
+<tr>
+<th align="left">HTTP方法</th>
+<th align="left">行为</th>
+<th align="left">URI</th>
+<th align="left">示例说明</th>
+<th align="left">是否安全</th>
+<th align="left">是否幂等</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">GET</td>
+<td align="left">获取资源列表</td>
+<td align="left">/users</td>
+<td align="left">获取用户列表</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">GET</td>
+<td align="left">获取一个具体资源</td>
+<td align="left">/users/admin</td>
+<td align="left">获取admin用户的详细信息</td>
+<td align="left">是</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">POST</td>
+<td align="left">创建一个新的资源</td>
+<td align="left">/users</td>
+<td align="left">创建一个新用户</td>
+<td align="left">否</td>
+<td align="left">否</td>
+</tr>
+<tr>
+<td align="left">PUT</td>
+<td align="left">以整体的方式更新一个资源</td>
+<td align="left">/users/admin</td>
+<td align="left">更新user为admin的用户</td>
+<td align="left">否</td>
+<td align="left">是</td>
+</tr>
+<tr>
+<td align="left">DELETE</td>
+<td align="left">删除服务器上的一个资源</td>
+<td align="left">/users/admin</td>
+<td align="left">删除user为admin的用户</td>
+<td align="left">否</td>
+<td align="left">是</td>
+</tr>
+</tbody></table>
+<figure class="highlight basic"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. <span class="keyword">GET</span>,<span class="keyword">PUT</span>,POST操作的资源属性一致</span><br><span class="line"><span class="number">2</span>. 资源进行状态/属性变更，要用<span class="keyword">PUT</span>方法，POST方法用来创建或者批量删除</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>核心特点</p>
+<ol>
+<li>以资源resource为中心, 所有的东西都抽象称资源，所有的行为都应该是在资源上的CRUD操作</li>
+<li>资源是有状态的，使用JSON/XML等在HTTP Body里表征资源的状态</li>
+<li>客户端通过四个HTTP动词，对服务器资源进行操作, 实现“表现层状态转化”</li>
+<li>无状态, 对于服务端的弹性扩容是很重要的</li>
+</ol>
+</li>
+<li><p>RESTful API 设计原则</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URI设计</span></span><br><span class="line">  1. 资源名使用名词而不是动词,并且用名词复数表示</span><br><span class="line">  2. URI结尾不包含/</span><br><span class="line">  3. URI中不能出现下划线,必须使用中杠代替</span><br><span class="line">  4. URI路径shying小写，不使用大写</span><br><span class="line">  5. 避免层级过深的URI，超过2层的资源嵌套会很乱,建议其他资源转换为?参数</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安全性: 不会改变资源状态</span></span><br><span class="line"><span class="comment"># 幂等性: 执行1次和执行N次，对资源状态改变的效果是等价的</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># API版本管理</span></span><br><span class="line">  1. URL中 <span class="string">/v1/users</span></span><br><span class="line">  2. HTTP Header中, Accept: <span class="keyword">version</span>=1.0</span><br><span class="line">  3. Form参数中, <span class="string">/users</span>?<span class="keyword">version</span>=v1</span><br><span class="line"></span><br><span class="line"><span class="comment"># API命名:</span></span><br><span class="line">  1. 驼峰命名法 serverAddress</span><br><span class="line">  2. 蛇形命名法 server_address</span><br><span class="line">  3. 脊柱命名法 server-address -- GitHub API 使用的脊柱命名</span><br><span class="line"></span><br><span class="line"><span class="comment"># 统一分页/过滤/排序/搜索功能</span></span><br><span class="line">  1. 分页: <span class="string">/users</span>?offset=0&amp;limit20</span><br><span class="line">  2. 过滤: <span class="string">/users</span>?fields=email,username,address</span><br><span class="line">  3. 排序: <span class="string">/users</span>?sort=age,desc</span><br><span class="line">  4. 搜索:</span><br><span class="line"></span><br><span class="line"><span class="comment"># 域名</span></span><br><span class="line">  1. https:<span class="string">//chyidl.com/api</span> : 这种方式适合API不会有进一步扩展的情况</span><br><span class="line">  2. https:<span class="string">//storage.api.chyidl.com</span> : chyidl.com域名下会新增另一个系统API</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<h2 id="RPC-API"><a href="#RPC-API" class="headerlink" title="RPC API"></a>RPC API</h2><blockquote>
+<p>RPC (Remote Procedure Call) 远程过程调用</p>
+</blockquote>
+<ul>
+<li><p>RPC调用流程</p>
+<figure class="highlight arduino"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> <span class="built_in">Client</span> 通过本地调用<span class="built_in">Client</span> Stub --</span><br><span class="line"><span class="number">2.</span> <span class="built_in">Client</span> Stub将参数打包称一个消息，然后发送这个消息</span><br><span class="line"><span class="number">3.</span> <span class="built_in">Client</span>所在的OS将消息发送给<span class="built_in">Server</span></span><br><span class="line"><span class="number">4.</span> <span class="built_in">Server</span>端接收到消息后，将消息传递给<span class="built_in">Server</span> Stub</span><br><span class="line"><span class="number">5.</span> <span class="built_in">Server</span> Stub将消息解包，得到参数</span><br><span class="line"><span class="number">6.</span> <span class="built_in">Server</span> Stub调用服务端的子程序，处理完后，最终结果按照相反的步骤返回给<span class="built_in">Client</span></span><br><span class="line"></span><br><span class="line">Stub: 负责调用参数和返回值的流化serialization、参数的打包和解包、以及网络层的通信.</span><br><span class="line"></span><br><span class="line">google gRPC</span><br><span class="line">Facebook Thrift</span><br></pre></td></tr></table></figure></li>
+<li><p>RESTful VS gRPC</p>
+<table>
+<thead>
+<tr>
+<th align="left">对比项</th>
+<th align="left">RESTful</th>
+<th align="left">gRPC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">优点</td>
+<td align="left">1. REST更规范、更标准、更通用 无论那种语言都支持HTTP协议，可以对接外部很多系统</td>
+<td align="left">1. 屏蔽网络细节，调用远程接口像调用本地方法一样，调用简单、方便</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2. RESTful接口采用JSON作为数据通信格式，JSON格式可读性强</td>
+<td align="left">2. gRPC采用Protocol Buffer作为数据传输格式，效率高</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">3. 客户端和服务端松耦合</td>
+<td align="left">3.gRPC基于HTTP/2协议标准，性能更高</td>
+</tr>
+<tr>
+<td align="left">缺点</td>
+<td align="left">1.扩展性差，随着需求变化</td>
+<td align="left">1.Protobuf数据格式可读性差</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2.性能相对于gRPC偏低</td>
+<td align="left">2.gRPC不支持浏览器调用,调试不方便</td>
+</tr>
+<tr>
+<td align="left">使用场景</td>
+<td align="left">1. 接口对外，需要接口规范易懂</td>
+<td align="left">1.消息密集型、对系统性能和延时要求比较高</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">2.系统能要求不高</td>
+<td align="left">2.偏向内部的API</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">3.提供API天生围绕资源、对象、管理展开</td>
+<td align="left">3.提供API很难进行资源、对象抽象</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/API/" rel="tag"># API</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/06/CS-Time/" rel="prev" title="CS - Basic Introduction">
+                  <i class="fa fa-chevron-left"></i> CS - Basic Introduction
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/07/Protocol-Buffer-Intro/" rel="next" title="Protocol Buffer Intro">
+                  Protocol Buffer Intro <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chyidl</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">65k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">59 分钟</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script src="https://embed.widgetpack.com/widget.js" async></script>
+  <script class="next-config" data-name="rating" type="application/json">{"enable":true,"id":32031,"color":"#fc6423"}</script>
+  <script src="/js/third-party/rating.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"e7305a33c3b64c12f82e9d54b4530f75"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>
