@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-09-08T14:00:11.000Z</updated>
+  <updated>2021-09-10T09:22:42.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,102 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go Concurrency Patterns</title>
+    <link href="http://chyidl.github.io/2021/09/10/Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/"/>
+    <id>http://chyidl.github.io/2021/09/10/Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</id>
+    <published>2021-09-10T09:22:42.000Z</published>
+    <updated>2021-09-10T09:22:42.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Go-Model-CSP&quot;&gt;&lt;a href=&quot;#Go-Model-CSP&quot; class=&quot;headerlink&quot; title=&quot;Go Model: CSP&quot;&gt;&lt;/a&gt;Go Model:</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Golang" scheme="http://chyidl.github.io/tags/Golang/"/>
+    
+    <category term="sync" scheme="http://chyidl.github.io/tags/sync/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>gorm intro</title>
+    <link href="http://chyidl.github.io/2021/09/09/gorm-intro/"/>
+    <id>http://chyidl.github.io/2021/09/09/gorm-intro/</id>
+    <published>2021-09-09T05:24:11.000Z</published>
+    <updated>2021-09-09T05:24:11.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;GORM&quot;&gt;&lt;a href=&quot;#GORM&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="ORM" scheme="http://chyidl.github.io/tags/ORM/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Error Code Design Intro</title>
+    <link href="http://chyidl.github.io/2021/09/09/Error-Code-Design-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/09/Error-Code-Design-Intro/</id>
+    <published>2021-09-09T05:13:07.000Z</published>
+    <updated>2021-09-09T05:13:07.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;错误码设计&quot;&gt;&lt;a href=&quot;#错误码设计&quot; class=&quot;headerlink&quot; title=&quot;错误码设计&quot;&gt;&lt;/a&gt;错误码设计&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;错误码实现方式&lt;figure class=&quot;highlight css&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Error" scheme="http://chyidl.github.io/tags/Error/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>SwaggerAPI intro</title>
+    <link href="http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/"/>
+    <id>http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/</id>
+    <published>2021-09-09T03:45:13.000Z</published>
+    <updated>2021-09-09T03:45:13.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Swagger&quot;&gt;&lt;a href=&quot;#Swagger&quot; class=&quot;headerlink&quot; title=&quot;Swagger&quot;&gt;&lt;/a&gt;Swagger&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Swagger是一套围绕OpenAPI规范构建的开源工具,可以设计·构建·编写·使用RESTAPI&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;Swagger编辑器:&lt;/li&gt;
+&lt;li&gt;Swagger UI: 将OpenAPI规范呈现为交互式API文档，并可以在浏览器中尝试API调用&lt;/li&gt;
+&lt;li&gt;Swagger Codegen: 根据OpenAPI规范，生成服务器存根和客户端代码库&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="SwaggerAPI" scheme="http://chyidl.github.io/tags/SwaggerAPI/"/>
+    
+  </entry>
   
   <entry>
     <title>Gin Crash Course</title>
@@ -343,87 +439,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL Tips &amp; Tracks</title>
-    <link href="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/"/>
-    <id>http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/</id>
-    <published>2021-09-02T13:54:37.000Z</published>
-    <updated>2021-09-09T03:38:26.568Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;MySQL&quot;&gt;&lt;a href=&quot;#MySQL&quot; class=&quot;headerlink&quot; title=&quot;MySQL&quot;&gt;&lt;/a&gt;MySQL&lt;/h1&gt;</summary>
-    
-    
-    
-    
-    <category term="数据库" scheme="http://chyidl.github.io/tags/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
-    
-    <category term="MySQL" scheme="http://chyidl.github.io/tags/MySQL/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Distributed ID Generator</title>
-    <link href="http://chyidl.github.io/2021/09/02/Distributed-ID-Generator/"/>
-    <id>http://chyidl.github.io/2021/09/02/Distributed-ID-Generator/</id>
-    <published>2021-09-02T13:40:20.000Z</published>
-    <updated>2021-09-07T08:37:29.557Z</updated>
-    
-    
-    <summary type="html">&lt;blockquote&gt;
-&lt;p&gt;分布式ID生成器&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="分布式" scheme="http://chyidl.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    <category term="ID Generator" scheme="http://chyidl.github.io/tags/ID-Generator/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>echo-go-web-framework</title>
-    <link href="http://chyidl.github.io/2021/09/02/echo-go-web-framework/"/>
-    <id>http://chyidl.github.io/2021/09/02/echo-go-web-framework/</id>
-    <published>2021-09-01T23:33:07.000Z</published>
-    <updated>2021-09-07T08:37:29.605Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Echo&quot;&gt;&lt;a href=&quot;#Echo&quot; class=&quot;headerlink&quot; title=&quot;Echo&quot;&gt;&lt;/a&gt;Echo&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;高性能、可扩展、精简的Go Web框架&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;11&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;➜ go run main.go&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;   &lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;    &lt;span class=&quot;strong&quot;&gt;__&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;strong&quot;&gt;  / __&lt;/span&gt;/&lt;span class=&quot;strong&quot;&gt;__&lt;span class=&quot;emphasis&quot;&gt;_/ /  &lt;span class=&quot;strong&quot;&gt;__&lt;span class=&quot;emphasis&quot;&gt;_&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;&lt;span class=&quot;strong&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;&lt;span class=&quot;strong&quot;&gt; / _&lt;/span&gt;// __&lt;/span&gt;/ _&lt;/span&gt; \/ &lt;span class=&quot;emphasis&quot;&gt;_ \&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;&lt;span class=&quot;strong&quot;&gt;/&lt;span class=&quot;strong&quot;&gt;__&lt;span class=&quot;emphasis&quot;&gt;_/\&lt;span class=&quot;strong&quot;&gt;__/&lt;span class=&quot;emphasis&quot;&gt;_//_&lt;/span&gt;/\__&lt;/span&gt;_&lt;/span&gt;/ v4.5.0&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;strong&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;&lt;span class=&quot;strong&quot;&gt;High performance, minimalist Go web framework&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;strong&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;&lt;span class=&quot;strong&quot;&gt;https://echo.labstack.com&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;strong&quot;&gt;&lt;span class=&quot;emphasis&quot;&gt;&lt;span class=&quot;strong&quot;&gt;__&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;__O/__&lt;/span&gt;&lt;span class=&quot;strong&quot;&gt;____&lt;/span&gt;_&lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;strong&quot;&gt;                                    O\&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;strong&quot;&gt;⇨ http server started on [::]:8080&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="框架" scheme="http://chyidl.github.io/tags/%E6%A1%86%E6%9E%B6/"/>
-    
-    <category term="Golang" scheme="http://chyidl.github.io/tags/Golang/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker Tips &amp; Tricks</title>
-    <link href="http://chyidl.github.io/2021/09/01/docker/"/>
-    <id>http://chyidl.github.io/2021/09/01/docker/</id>
-    <published>2021-09-01T01:49:58.000Z</published>
-    <updated>2021-09-07T08:37:29.521Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;Docker-Info&quot;&gt;&lt;a href=&quot;#Docker-Info&quot; class=&quot;headerlink&quot; title=&quot;Docker  Info&quot;&gt;&lt;/a&gt;Docker  Info&lt;/h2&gt;&lt;figure class=&quot;highlight oxygene&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;Cgroups技术是用来制造约束的主要手段&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Namespace&lt;/span&gt;技术则是用来修改进程试图的主要方法&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
-    
-    
-    
-    
-    <category term="Docker" scheme="http://chyidl.github.io/tags/Docker/"/>
-    
-    <category term="Dockerfile" scheme="http://chyidl.github.io/tags/Dockerfile/"/>
     
   </entry>
   

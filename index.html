@@ -163,7 +163,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-count">26</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -172,7 +172,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">29</span>
+        <span class="site-state-item-count">33</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -216,6 +216,390 @@
 
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/10/Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/10/Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/" class="post-title-link" itemprop="url">Go Concurrency Patterns</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-10 17:22:42" itemprop="dateCreated datePublished" datetime="2021-09-10T17:22:42+08:00">2021-09-10</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>5.7k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>5 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="Go-Model-CSP"><a href="#Go-Model-CSP" class="headerlink" title="Go Model: CSP"></a>Go Model: CSP</h2><ul>
+<li>CSP:<blockquote>
+<p>Communicating Sequential Processes</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="并发-Concurrency-amp-amp-并行-Parallelism"><a href="#并发-Concurrency-amp-amp-并行-Parallelism" class="headerlink" title="并发(Concurrency) &amp;&amp; 并行(Parallelism)"></a>并发(Concurrency) &amp;&amp; 并行(Parallelism)</h2><ul>
+<li><p>并发(Concurrency):</p>
+<blockquote>
+<p>Programming as the composition of independently executing processes.<br>Concurrency is about dealing with lots of things at once.<br>Concurreny is about structure</p>
+</blockquote>
+</li>
+<li><p>并行(Parallelism)</p>
+<blockquote>
+<p>programming as the simultaneous execution of computations.<br>Parallelism is about doing lots of things at once.<br>Parallelism is about execution</p>
+</blockquote>
+</li>
+</ul>
+<blockquote>
+<p>A well-written concurrent program might run efficiently in parallel on a multiprocessor.</p>
+</blockquote>
+<h2 id="进程-amp-线程"><a href="#进程-amp-线程" class="headerlink" title="进程 &amp; 线程"></a>进程 &amp; 线程</h2><blockquote>
+<p>进程 Process:<br>线程 Thread:</p>
+</blockquote>
+<h2 id="Goroutine"><a href="#Goroutine" class="headerlink" title="Goroutine"></a>Goroutine</h2><blockquote>
+<p>Concurrent execution<br>A goroutine is a function running independently in the same address space as other goroutines<br>has its own call stack, which grows and shrinks as required.</p>
+</blockquote>
+<h2 id="Channels"><a href="#Channels" class="headerlink" title="Channels"></a>Channels</h2><blockquote>
+<p>Synchronization and messaging<br>Channels are typed values that allow goroutines to synchronize and exchange information<br>Channels are first-class values<br>A channel in Go provides a connection between two goroutines, allowing them to communicate</p>
+</blockquote>
+<ul>
+<li><p>无缓冲通道 no-buffer channel</p>
+<blockquote>
+<p>发送者sender 和 接收者 receiver 必须同时准备好才能进行下去</p>
+</blockquote>
+</li>
+<li><p>缓冲通道 buffer channel</p>
+<blockquote>
+<p>缓冲通道解决同步等待问题</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Declaring and initializing</span></span><br><span class="line">c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">int</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Sending on a channel.</span></span><br><span class="line">c &lt;- <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Receiving from a channel</span></span><br><span class="line"><span class="comment">// The &quot;arrow&quot; indicates the direction of data flow.</span></span><br><span class="line">value = &lt;-c</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Select"><a href="#Select" class="headerlink" title="Select"></a>Select</h2><blockquote>
+<p>Multi-way concurrent control<br>The select statement is like a switch, but the decision is based on ability to communicate rather than equal values</p>
+</blockquote>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Fan-in using select</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fanIn</span><span class="params">(input1, input2 &lt;- <span class="keyword">chan</span> <span class="keyword">string</span>)</span> &lt;- <span class="title">chan</span> <span class="title">string</span></span> &#123;</span><br><span class="line">  c := <span class="built_in">make</span>(<span class="keyword">chan</span> <span class="keyword">string</span>)</span><br><span class="line">  <span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">for</span> &#123;</span><br><span class="line">      <span class="keyword">select</span> &#123;</span><br><span class="line">        <span class="keyword">case</span> s := &lt;-input1: c &lt;- s</span><br><span class="line">        <span class="keyword">case</span> s := &lt;-input2: c &lt;- s</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;()</span><br><span class="line">  <span class="keyword">return</span> c</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="Closures"><a href="#Closures" class="headerlink" title="Closures"></a>Closures</h2><h3 id="Demo-Project"><a href="#Demo-Project" class="headerlink" title="Demo Project"></a>Demo Project</h3><blockquote>
+<p>Always use the right tool for the job</p>
+</blockquote>
+<ul>
+<li>Google Search: A fake framework<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> google_search_test</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;math/rand&quot;</span></span><br><span class="line">	<span class="string">&quot;testing&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Result <span class="keyword">string</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> (</span><br><span class="line">	Web    = fakeSearch(<span class="string">&quot;web&quot;</span>)</span><br><span class="line">	Web1   = fakeSearch(<span class="string">&quot;web1&quot;</span>)</span><br><span class="line">	Web2   = fakeSearch(<span class="string">&quot;web2&quot;</span>)</span><br><span class="line">	Image  = fakeSearch(<span class="string">&quot;image&quot;</span>)</span><br><span class="line">	Image1 = fakeSearch(<span class="string">&quot;Image1&quot;</span>)</span><br><span class="line">	Image2 = fakeSearch(<span class="string">&quot;Image2&quot;</span>)</span><br><span class="line">	Video  = fakeSearch(<span class="string">&quot;video&quot;</span>)</span><br><span class="line">	Video1 = fakeSearch(<span class="string">&quot;Video1&quot;</span>)</span><br><span class="line">	Video2 = fakeSearch(<span class="string">&quot;Video2&quot;</span>)</span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Search <span class="function"><span class="keyword">func</span><span class="params">(query <span class="keyword">string</span>)</span> <span class="title">Result</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">fakeSearch</span><span class="params">(kind <span class="keyword">string</span>)</span> <span class="title">Search</span></span> &#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">func</span><span class="params">(query <span class="keyword">string</span>)</span> <span class="title">Result</span></span> &#123;</span><br><span class="line">		time.Sleep(time.Duration(rand.Intn(<span class="number">100</span>)) * time.Millisecond)</span><br><span class="line">		<span class="keyword">return</span> Result(fmt.Sprintf(<span class="string">&quot;%s result for %q\n&quot;</span>, kind, query))</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Google</span><span class="params">(query <span class="keyword">string</span>)</span> <span class="params">(results []Result)</span></span> &#123;</span><br><span class="line">	results = <span class="built_in">append</span>(results, Web(query))</span><br><span class="line">	results = <span class="built_in">append</span>(results, Image(query))</span><br><span class="line">	results = <span class="built_in">append</span>(results, Video(query))</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GoogleV2</span><span class="params">(query <span class="keyword">string</span>)</span> <span class="params">(results []Result)</span></span> &#123;</span><br><span class="line">	<span class="comment">// Run the Web, Image, and Video searches concurrently</span></span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> Result)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- Web(query) &#125;()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- Image(query) &#125;()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- Video(query) &#125;()</span><br><span class="line"></span><br><span class="line">	<span class="comment">// wait for all results</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		result := &lt;-c</span><br><span class="line">		results = <span class="built_in">append</span>(results, result)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GoogleV21</span><span class="params">(query <span class="keyword">string</span>)</span> <span class="params">(results []Result)</span></span> &#123;</span><br><span class="line">	<span class="comment">// Don;t wait for slow servers. No locks. No condition variables.</span></span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> Result)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- Web(query) &#125;()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- Image(query) &#125;()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- Video(query) &#125;()</span><br><span class="line"></span><br><span class="line">	timeout := time.After(<span class="number">80</span> * time.Millisecond)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> result := &lt;-c:</span><br><span class="line">			results = <span class="built_in">append</span>(results, result)</span><br><span class="line">		<span class="keyword">case</span> &lt;-timeout:</span><br><span class="line">			fmt.Println(<span class="string">&quot;timed out&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">GoogleV3</span><span class="params">(query <span class="keyword">string</span>)</span> <span class="params">(results []Result)</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> Result)</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- First(query, Web1, Web2) &#125;()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- First(query, Image1, Image2) &#125;()</span><br><span class="line">	<span class="keyword">go</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; c &lt;- First(query, Video1, Video2) &#125;()</span><br><span class="line">	timeout := time.After(<span class="number">80</span> * time.Millisecond)</span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">3</span>; i++ &#123;</span><br><span class="line">		<span class="keyword">select</span> &#123;</span><br><span class="line">		<span class="keyword">case</span> result := &lt;-c:</span><br><span class="line">			results = <span class="built_in">append</span>(results, result)</span><br><span class="line">		<span class="keyword">case</span> &lt;-timeout:</span><br><span class="line">			fmt.Println(<span class="string">&quot;timed out&quot;</span>)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">First</span><span class="params">(query <span class="keyword">string</span>, replicas ...Search)</span> <span class="title">Result</span></span> &#123;</span><br><span class="line">	c := <span class="built_in">make</span>(<span class="keyword">chan</span> Result)</span><br><span class="line">	searchReplica := <span class="function"><span class="keyword">func</span><span class="params">(i <span class="keyword">int</span>)</span></span> &#123; c &lt;- replicas[i](query) &#125;</span><br><span class="line">	<span class="keyword">for</span> i := <span class="keyword">range</span> replicas &#123;</span><br><span class="line">		<span class="keyword">go</span> searchReplica(i)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> &lt;-c</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGoogle</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	start := time.Now()</span><br><span class="line">	results := Google(<span class="string">&quot;golang&quot;</span>)</span><br><span class="line">	elapsed := time.Since(start)</span><br><span class="line">	fmt.Println(results)</span><br><span class="line">	fmt.Println(elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGoogleV2</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	start := time.Now()</span><br><span class="line">	results := GoogleV2(<span class="string">&quot;golang&quot;</span>)</span><br><span class="line">	elapsed := time.Since(start)</span><br><span class="line">	fmt.Println(results)</span><br><span class="line">	fmt.Println(elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGoogleV21</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	start := time.Now()</span><br><span class="line">	results := GoogleV21(<span class="string">&quot;golang&quot;</span>)</span><br><span class="line">	elapsed := time.Since(start)</span><br><span class="line">	fmt.Println(results)</span><br><span class="line">	fmt.Println(elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">TestGoogleV3</span><span class="params">(t *testing.T)</span></span> &#123;</span><br><span class="line">	rand.Seed(time.Now().UnixNano())</span><br><span class="line">	start := time.Now()</span><br><span class="line">	results := GoogleV3(<span class="string">&quot;golang&quot;</span>)</span><br><span class="line">	elapsed := time.Since(start)</span><br><span class="line">	fmt.Println(results)</span><br><span class="line">	fmt.Println(elapsed)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// ➜ go test -v google_search_test.go</span></span><br><span class="line"><span class="comment">// === RUN   TestGoogle</span></span><br><span class="line"><span class="comment">// [web result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  image result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  video result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">// ]</span></span><br><span class="line"><span class="comment">// 31.882269ms</span></span><br><span class="line"><span class="comment">// --- PASS: TestGoogle (0.03s)</span></span><br><span class="line"><span class="comment">// === RUN   TestGoogleV2</span></span><br><span class="line"><span class="comment">// [web result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  image result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  video result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">// ]</span></span><br><span class="line"><span class="comment">// 49.036197ms</span></span><br><span class="line"><span class="comment">// --- PASS: TestGoogleV2 (0.05s)</span></span><br><span class="line"><span class="comment">// === RUN   TestGoogleV21</span></span><br><span class="line"><span class="comment">// [web result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  video result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  image result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">// ]</span></span><br><span class="line"><span class="comment">// 53.507162ms</span></span><br><span class="line"><span class="comment">// --- PASS: TestGoogleV21 (0.05s)</span></span><br><span class="line"><span class="comment">// === RUN   TestGoogleV3</span></span><br><span class="line"><span class="comment">// [Video2 result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  web1 result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">//  Image1 result for &quot;golang&quot;</span></span><br><span class="line"><span class="comment">// ]</span></span><br><span class="line"><span class="comment">// 41.612001ms</span></span><br><span class="line"><span class="comment">// --- PASS: TestGoogleV3 (0.04s)</span></span><br><span class="line"><span class="comment">// PASS</span></span><br><span class="line"><span class="comment">// ok  	command-line-arguments	0.301s</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/09/gorm-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/09/gorm-intro/" class="post-title-link" itemprop="url">gorm intro</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-09 13:24:11" itemprop="dateCreated datePublished" datetime="2021-09-09T13:24:11+08:00">2021-09-09</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>4</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="GORM"><a href="#GORM" class="headerlink" title="GORM"></a>GORM</h1>
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/09/Error-Code-Design-Intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/09/Error-Code-Design-Intro/" class="post-title-link" itemprop="url">Error Code Design Intro</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-09 13:13:07" itemprop="dateCreated datePublished" datetime="2021-09-09T13:13:07+08:00">2021-09-09</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>164</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="错误码设计"><a href="#错误码设计" class="headerlink" title="错误码设计"></a>错误码设计</h1><ul>
+<li>错误码实现方式<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. 无论请求成功或失败，始终返回<span class="number">200</span> http status <span class="selector-tag">code</span></span><br><span class="line"> &gt; 每次请求，都需要解析HTTP <span class="selector-tag">Body</span>,从中解析出错误码和错误信息.</span><br><span class="line"><span class="number">2</span>. 返回合适的HTTP <span class="selector-tag">Code</span>. 并在<span class="selector-tag">Body</span>中返回错误信息和自定义业务<span class="selector-tag">Code</span></span><br><span class="line"><span class="number">3</span>. 返回合适的HTTP <span class="selector-tag">Code</span>, 并在<span class="selector-tag">Body</span>中详尽的错误信息</span><br></pre></td></tr></table></figure></li>
+<li>业务Code码设计</li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="🦷🦷 Blog">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/09/SwaggerAPI-intro/" class="post-title-link" itemprop="url">SwaggerAPI intro</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-09 11:45:13" itemprop="dateCreated datePublished" datetime="2021-09-09T11:45:13+08:00">2021-09-09</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>1.4k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><blockquote>
+<p>Swagger是一套围绕OpenAPI规范构建的开源工具,可以设计·构建·编写·使用RESTAPI</p>
+</blockquote>
+<ul>
+<li>Swagger编辑器:</li>
+<li>Swagger UI: 将OpenAPI规范呈现为交互式API文档，并可以在浏览器中尝试API调用</li>
+<li>Swagger Codegen: 根据OpenAPI规范，生成服务器存根和客户端代码库</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/09/SwaggerAPI-intro/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -710,379 +1094,6 @@
 
 
 
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/07/Protocol-Buffer-Intro/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="chyi">
-      <meta itemprop="description" content="🦷🦷 Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay Hungry Stay Foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/07/Protocol-Buffer-Intro/" class="post-title-link" itemprop="url">Protocol Buffer Intro</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-07 21:43:25" itemprop="dateCreated datePublished" datetime="2021-09-07T21:43:25+08:00">2021-09-07</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>231</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h1 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h1><blockquote>
-<p>Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。</p>
-</blockquote>
-<ul>
-<li>主要特征<ul>
-<li>更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度</li>
-<li>跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端</li>
-<li>良好的扩展性和兼容性:</li>
-<li>基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口</li>
-</ul>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/07/Protocol-Buffer-Intro/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/07/RESTful-API-Design/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="chyi">
-      <meta itemprop="description" content="🦷🦷 Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay Hungry Stay Foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/07/RESTful-API-Design/" class="post-title-link" itemprop="url">API Design</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-07 16:45:01" itemprop="dateCreated datePublished" datetime="2021-09-07T16:45:01+08:00">2021-09-07</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>1.9k</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>目前业界常用的API风格</p>
-</blockquote>
-<ul>
-<li>RESTful</li>
-<li>RPC</li>
-<li>GraphQL</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/07/RESTful-API-Design/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/06/CS-Time/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="chyi">
-      <meta itemprop="description" content="🦷🦷 Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay Hungry Stay Foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/06/CS-Time/" class="post-title-link" itemprop="url">CS - Basic Introduction</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-06 10:29:50" itemprop="dateCreated datePublished" datetime="2021-09-06T10:29:50+08:00">2021-09-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>436</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <blockquote>
-<p>计算机通识介绍</p>
-</blockquote>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/06/CS-Time/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/06/Middleware-Tips-Tracks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/uploads/avatar.png">
-      <meta itemprop="name" content="chyi">
-      <meta itemprop="description" content="🦷🦷 Blog">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Stay Hungry Stay Foolish">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2021/09/06/Middleware-Tips-Tracks/" class="post-title-link" itemprop="url">Middleware Tips & Tracks</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">发表于</span>
-
-      <time title="创建时间：2021-09-06 08:36:13" itemprop="dateCreated datePublished" datetime="2021-09-06T08:36:13+08:00">2021-09-06</time>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="本文字数">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">本文字数：</span>
-      <span>514</span>
-    </span>
-    <span class="post-meta-item" title="阅读时长">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><blockquote>
-<p>面对技术选型时，就是一个关于如何取舍的问题，不要不经过思考就觉得那个方案好，那个方案不好。需要根据具体场景分析<br>技术选型不只是技术问题，还与团队、管理、组织结构有关</p>
-</blockquote>
-<ul>
-<li>业务功能角度</li>
-<li>技术资源角度<blockquote>
-<p>所处的环境、技术资源能否匹配这些技术方案</p>
-</blockquote>
-</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/09/06/Middleware-Tips-Tracks/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
   <nav class="pagination">
     <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
@@ -1107,13 +1118,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">65k</span>
+    <span title="站点总字数">72k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">59 分钟</span>
+    <span title="站点阅读时长">1:06</span>
   </span>
 </div>
 <div class="busuanzi-count">
