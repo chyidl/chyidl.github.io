@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-09-10T09:22:42.000Z</updated>
+  <updated>2021-09-11T22:54:54.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,74 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Go Constants</title>
+    <link href="http://chyidl.github.io/2021/09/12/Go-Constants/"/>
+    <id>http://chyidl.github.io/2021/09/12/Go-Constants/</id>
+    <published>2021-09-11T22:54:54.000Z</published>
+    <updated>2021-09-11T22:54:54.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Constants-常量&quot;&gt;&lt;a href=&quot;#Constants-常量&quot; class=&quot;headerlink&quot; title=&quot;Constants 常量&quot;&gt;&lt;/a&gt;Constants 常量&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Go是静态类型语言，不允许同步类型的数值类型进行计算. 不允许float64 + int 甚至 int32 + int. 如果你希望不同类型进行计算需要显式转换后在进行 int(float64) + int.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="常量" scheme="http://chyidl.github.io/tags/%E5%B8%B8%E9%87%8F/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Ansible Intro</title>
+    <link href="http://chyidl.github.io/2021/09/11/Ansible-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/11/Ansible-Intro/</id>
+    <published>2021-09-11T14:12:27.000Z</published>
+    <updated>2021-09-11T14:12:27.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Ansible&quot;&gt;&lt;a href=&quot;#Ansible&quot; class=&quot;headerlink&quot; title=&quot;Ansible&quot;&gt;&lt;/a&gt;Ansible&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;is an open-source software</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Go CLI Intro</title>
+    <link href="http://chyidl.github.io/2021/09/11/Go-CLI-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/11/Go-CLI-Intro/</id>
+    <published>2021-09-11T10:16:25.000Z</published>
+    <updated>2021-09-11T10:16:25.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;flag&quot;&gt;&lt;a href=&quot;#flag&quot; class=&quot;headerlink&quot; title=&quot;flag&quot;&gt;&lt;/a&gt;flag&lt;/h2&gt;&lt;blockquote&gt;
+&lt;p&gt;命令行flag解析&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;flag</summary>
+        
+      
+    
+    
+    
+    
+    <category term="CLI" scheme="http://chyidl.github.io/tags/CLI/"/>
+    
+  </entry>
   
   <entry>
     <title>Go Concurrency Patterns</title>
@@ -382,63 +450,6 @@
     <category term="搜索引擎" scheme="http://chyidl.github.io/tags/%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E/"/>
     
     <category term="ES" scheme="http://chyidl.github.io/tags/ES/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dev-Ops Tips &amp; Tracks</title>
-    <link href="http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/"/>
-    <id>http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/</id>
-    <published>2021-09-03T00:01:55.000Z</published>
-    <updated>2021-09-03T00:01:55.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;DevOps&quot;&gt;&lt;a href=&quot;#DevOps&quot; class=&quot;headerlink&quot; title=&quot;DevOps&quot;&gt;&lt;/a&gt;DevOps&lt;/h1&gt;&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td</summary>
-        
-      
-    
-    
-    
-    
-    <category term="DevOps" scheme="http://chyidl.github.io/tags/DevOps/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Redis Tips &amp; Tracks</title>
-    <link href="http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/"/>
-    <id>http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/</id>
-    <published>2021-09-02T13:55:16.000Z</published>
-    <updated>2021-09-07T08:37:29.597Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Redis&quot;&gt;&lt;a href=&quot;#Redis&quot; class=&quot;headerlink&quot; title=&quot;Redis&quot;&gt;&lt;/a&gt;Redis&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="缓存" scheme="http://chyidl.github.io/tags/%E7%BC%93%E5%AD%98/"/>
-    
-    <category term="Redis" scheme="http://chyidl.github.io/tags/Redis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kafka Tips &amp; Tracks</title>
-    <link href="http://chyidl.github.io/2021/09/02/Kafka-Tips-Tracks/"/>
-    <id>http://chyidl.github.io/2021/09/02/Kafka-Tips-Tracks/</id>
-    <published>2021-09-02T13:54:56.000Z</published>
-    <updated>2021-09-07T08:37:29.569Z</updated>
-    
-    
-    
-    
     
   </entry>
   
