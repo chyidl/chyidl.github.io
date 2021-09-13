@@ -153,13 +153,23 @@
     <updated>2021-09-10T09:22:42.000Z</updated>
     
     
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Go-Model-CSP&quot;&gt;&lt;a href=&quot;#Go-Model-CSP&quot; class=&quot;headerlink&quot; title=&quot;Go Model: CSP&quot;&gt;&lt;/a&gt;Go Model:</summary>
-        
-      
+    <summary type="html">&lt;h1 id=&quot;Golang&quot;&gt;&lt;a href=&quot;#Golang&quot; class=&quot;headerlink&quot; title=&quot;Golang&quot;&gt;&lt;/a&gt;Golang&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Simplicity: 简单&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Simplicity is prerequisite for reliability. 简单是可靠的先觉条件&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Readablity: 可读性&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Readability is essential for maintainablity. 可读性对于可维护性至关重要&lt;br&gt;Programs must be written for people to read, and only incidentally for machine to execute. 程序必须是为人们阅读而编写的，而偶然为及其执行而编写&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Productivity: 生产力&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Design is the art of arranging code to work today, and be changeable forever.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
     
