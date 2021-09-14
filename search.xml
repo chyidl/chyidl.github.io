@@ -241,49 +241,98 @@
   <entry>
     <title>MySQL Tips &amp; Tracks</title>
     <url>/2021/09/02/MySQL-Tips-Tracks/</url>
-    <content><![CDATA[<h1 id="MySQL"><a href="#MySQL" class="headerlink" title="MySQL"></a>MySQL</h1><blockquote>
-<p>关系型数据库事务保证数据一致性</p>
-</blockquote>
+    <content><![CDATA[<h1 id="数据库-三大范式"><a href="#数据库-三大范式" class="headerlink" title="数据库-三大范式"></a>数据库-三大范式</h1><ul>
+<li>原子性: 字段不可分</li>
+<li>唯一性: 有主键(没有主键就没有唯一性)，非主键字段依赖主键</li>
+<li>消除冗余: 每列都与主键有直接关系, 非主键字段不能相互依赖</li>
+</ul>
 <span id="more"></span>
+
 
 <h2 id="MySQL事务模型-ACID"><a href="#MySQL事务模型-ACID" class="headerlink" title="MySQL事务模型 ACID"></a>MySQL事务模型 ACID</h2><blockquote>
 <p>MySQL事务的四个特性中ACD三个特性是通过Redo Log(重做日志)和Undo Log(撤销日志)实现,而I隔离型通过Lock实现</p>
 </blockquote>
 <ul>
-<li>事务是可以提交或回滚的原子工作单元</li>
-<li>ACID模型是一组数据库设计原则<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">A:</span> atomicity原子性: 事务中一系列的操作，要么全部都执行，要么全部都不执行</span><br><span class="line"><span class="symbol">C:</span> consistency一致性: 数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性</span><br><span class="line"><span class="symbol">I:</span> isolation 隔离性: 并发环境下，不同事务同时操作相同的数据，每个事务都有各自的完成数据空间</span><br><span class="line"><span class="symbol">D:</span> durability持久性: 只要事务成功结束，对数据库所做的更新就永久保存下来，即使发生系统崩溃，重新启动数据库，数据库还能恢复到事务成功结束时的状态</span><br></pre></td></tr></table></figure></li>
-<li>InnoDB 存储引擎架构<br><img src="/misc/images/InnoDB-architecture.jpeg" alt="InnoDB Architecture"></li>
+<li><p>事务是可以提交或回滚的原子工作单元</p>
+</li>
+<li><p>ACID模型是一组数据库设计原则</p>
+<figure class="highlight avrasm"><table><tr><td class="code"><pre><span class="line"><span class="symbol">A:</span> atomicity原子性: 事务中一系列的操作，要么全部都执行，要么全部都不执行</span><br><span class="line"><span class="symbol">C:</span> consistency一致性(通过AID保证): 数据库事务不能破坏关系数据的完整性以及业务逻辑上的一致性</span><br><span class="line"><span class="symbol">I:</span> isolation 隔离性(事务的隔离级别): 并发环境下，不同事务同时操作相同的数据，每个事务都有各自的完成数据空间</span><br><span class="line"><span class="symbol">D:</span> durability持久性: 只要事务成功结束，对数据库所做的更新就永久保存下来，即使发生系统崩溃，重新启动数据库，数据库还能恢复到事务成功结束时的状态</span><br></pre></td></tr></table></figure></li>
+<li><p>InnoDB 存储引擎架构<br><img src="/misc/images/InnoDB-architecture.jpeg" alt="InnoDB Architecture"></p>
+</li>
+<li><p>并发问题</p>
+<ul>
+<li>脏读: Drity Read: 读取到未提交的数据</li>
+<li>不可重复读: Non-repeatable read: 两次读取结果不同</li>
+<li>幻读 Phantom Read: select操作得到的结果所表证的数据状态无法支撑后续的业务操作</li>
+</ul>
+</li>
+<li><p>InnoDB 四种隔离级别</p>
+<ul>
+<li>READ UNCOMMITED 读未提交 –&gt; 脏读</li>
+<li>READ COMMITTED 读已提交 –&gt;  不可重复读</li>
+<li>REPEATABLE READ 可重复读 –&gt; 幻读</li>
+<li>SERIALIZABLE 串行化</li>
+</ul>
+</li>
 </ul>
 <h2 id="数据库日志"><a href="#数据库日志" class="headerlink" title="数据库日志"></a>数据库日志</h2><ul>
 <li><p>重做日志 - redo log</p>
 <blockquote>
-<p>记录修改后的数据</p>
-</blockquote>
-</li>
-<li><p>撤销日志 - Undo Log</p>
+<p>记录修改后的数据<br>用于异常恢复<br>循环写文件</p>
 <blockquote>
-<p>撤销日志记录的集合，包含如何撤销事务对聚集索引记录的最新更新的信息</p>
+<p>write Pos: 写入位置<br>Check Point: 刷盘位置<br>Check Point -&gt; Write Pos: 待落盘<br>innodb_flush_log_at_trx_commit: 刷盘时机</p>
+<blockquote>
+<p>0 commit 每秒写文件,并刷盘<br>1 commit 每次提交时写文件，</p>
 </blockquote>
+</blockquote>
+</blockquote>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># MySQL redo-log:</span></span><br><span class="line"><span class="bullet">  1.</span> 体积小，记录页的修改，比写入页代价低</span><br><span class="line"><span class="bullet">  2.</span> 末尾追加，随机写变顺序写，发生改变的页不固定</span><br></pre></td></tr></table></figure></li>
+<li><p>回滚日志 - Undo Log</p>
+<blockquote>
+<p>回滚日志记录的集合，包含如何撤销事务对聚集索引记录的最新更新的信息</p>
+</blockquote>
+<ul>
+<li><p>保证事务原子性</p>
+</li>
+<li><p>实现数据多版本</p>
+</li>
+<li><p>delete undo log: 用于回滚，提交即清理</p>
+</li>
+<li><p>update undo log:</p>
+</li>
+<li><p>undo log如何清理:</p>
+<ul>
+<li>依据系统活跃的最小活跃事务ID Read view</li>
+</ul>
+</li>
+<li><h2 id="为什么InnoDB-count-这么慢"><a href="#为什么InnoDB-count-这么慢" class="headerlink" title="为什么InnoDB count(*) 这么慢?"></a>为什么InnoDB count(*) 这么慢?</h2></li>
+</ul>
 </li>
 </ul>
 <h2 id="MySQl多版本并发控制-MVCC"><a href="#MySQl多版本并发控制-MVCC" class="headerlink" title="MySQl多版本并发控制 - MVCC"></a>MySQl多版本并发控制 - MVCC</h2><blockquote>
-<p>使得InnoDB的事务隔离级别下执行一致性读操作有保证, 查询一个被另一个事务更新的行，可以看到被更新之前的值</p>
+<p>使得InnoDB的事务隔离级别下执行一致性读操作有保证, 查询一个被另一个事务更新的行，可以看到被更新之前的值<br>多版本并发控制，解决读写冲突问题</p>
 </blockquote>
 <ul>
-<li>InnoDB MVCC实现<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">InnoDB</span>向数据库中存储的每一行数据添加三个字段隐藏字段</span><br><span class="line"><span class="attribute">1</span>. DB_TRX_ID: <span class="number">6</span>字节 表示插入或更新最后一个事务的事务标识符</span><br><span class="line"><span class="attribute">2</span>. DB_ROLL_PTR: <span class="number">7</span>字节 回滚指针 roll pointer, 指向写入回滚段撤销日志Undo Log</span><br><span class="line"><span class="attribute">3</span>. DB_ROW_ID: <span class="number">6</span>字节 随着新行插入而单调增加的行ID</span><br></pre></td></tr></table></figure></li>
+<li>InnoDB MVCC实现<ul>
+<li>当前读 – Select for update</li>
+<li>快照读 – Select Current_TRX_ID</li>
+<li>可见性判断<ul>
+<li>创建快照这一刻，还未提交的事务，在此生命周期中无法读取</li>
+<li>创建快照之后创建的事务无法读取</li>
+</ul>
+</li>
+<li>Read View<ul>
+<li>快照读 活跃事务列表</li>
+<li>活跃事务列表中最小事务ID</li>
+<li>活跃事务列表中最大事务ID<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">InnoDB</span>向数据库中存储的每一行数据添加三个字段隐藏字段</span><br><span class="line"><span class="attribute">1</span>. DB_TRX_ID: <span class="number">6</span>字节 表示插入或更新最后一个事务的事务标识符 全局递增</span><br><span class="line"><span class="attribute">2</span>. DB_ROLL_PTR: <span class="number">7</span>字节 回滚指针 roll pointer, 指向写入回滚段撤销日志Undo Log</span><br><span class="line"><span class="attribute">3</span>. DB_ROW_ID: <span class="number">6</span>字节 随着新行插入而单调增加的行ID</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p>  <img src="/misc/images/mvcc.jpeg" alt="mvcc"></p>
 <ul>
-<li><p>InnoDB 四种隔离级别</p>
-<ul>
-<li>READ UNCOMMITED 读未提交</li>
-<li>READ COMMITTED 读已提交</li>
-<li>REPEATABLE READ 可重复读</li>
-<li>SERIALIZABLE 串行化</li>
-</ul>
-</li>
-<li><p>InnoDB Locking</p>
-<ul>
+<li>InnoDB Locking<ul>
 <li>Shared and Exclusive Locks - 共享锁和排他锁<ul>
 <li>A Shared Lock 允许持有锁的事务读取该行</li>
 <li>An Exclusive Lock 允许持有锁的事务更新和删除该行<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">假设事务T1对数据行r持有共享锁(Shared <span class="keyword">Lock</span>),另一个事务T2对同一数据行r的操作分下面两种情况:</span><br><span class="line">  <span class="number">1.</span> T2对数据行r仅仅是读取请求持有(Shared <span class="keyword">Lock</span>)成功，结果是T1和T2对数据行r都持有共享锁</span><br><span class="line">  <span class="number">2.</span> T2对数据行人需要<span class="keyword">Update</span>请求持有(<span class="keyword">Exclusive</span> <span class="keyword">Lock</span>)会失败</span><br><span class="line"></span><br><span class="line">假设事务T1对数据行r持有排他锁(<span class="keyword">exclusive</span> <span class="keyword">lock</span>),另一个事务T2对同一数据行r的锁请求(共享锁/排他锁)都会失败,事务T2不得不等待事务T1释放锁</span><br></pre></td></tr></table></figure></li>
@@ -291,6 +340,80 @@
 </li>
 </ul>
 </li>
+</ul>
+<h2 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h2><ul>
+<li><p>InnoDB内存管理<br>Buffer Pool: 预分配的内存池<br>Page: Buffer Pool 的最小单位<br>Free List: 空闲Page组成的链表<br>Flush List: 脏页链表<br>Page Hash表:<br>  维护内存Page和文件Page的映射关系<br>LRU: 内存淘汰算法 - 冷热分离<br>  LRU_new: 存储热数据<br>  LRU_old: 存储冷数据<br>  Midpoint:</p>
+<p>页面淘汰:<br>  LRU尾部淘汰<br>  Flush LRU淘汰</p>
+<ul>
+<li>预分配内存空间<ul>
+<li>Buffer Pool: 预分配内存池, 页面加载单位Page</li>
+</ul>
+</li>
+<li>数据加载单元</li>
+<li>数据内外存交换<ul>
+<li>内存池</li>
+<li>内存页面管理<ul>
+<li>空闲页</li>
+<li>数据页<ul>
+<li>脏页: 数据被Update 需要刷盘</li>
+</ul>
+</li>
+<li>页面映射</li>
+<li>页面数据管理</li>
+</ul>
+</li>
+<li>数据淘汰<ul>
+<li>LRU: 最经常被访问的数据放在表头，默认删除表尾</li>
+<li>LFU: 使用频率淘汰算法</li>
+<li>双LRU: 热表LRU，冷表LRU</li>
+<li>全表扫描对内存的影响?<blockquote>
+<p>导致热数据被替换; 缓冲区被污染，导致数据库性能下降</p>
+</blockquote>
+</li>
+<li><h2 id="避免全表扫描对热数据的影响"><a href="#避免全表扫描对热数据的影响" class="headerlink" title="避免全表扫描对热数据的影响"></a>避免全表扫描对热数据的影响</h2></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="MySQL-锁实现原理"><a href="#MySQL-锁实现原理" class="headerlink" title="MySQL 锁实现原理"></a>MySQL 锁实现原理</h2><ul>
+<li><p>锁颗粒度</p>
+<ul>
+<li>行级锁<ul>
+<li>作用在索引(聚簇索引、二级索引)行</li>
+<li>是否是唯一索引</li>
+</ul>
+</li>
+<li>间隙锁<ul>
+<li>解决可重复读模式下的幻读问题</li>
+<li>GAP锁不是加载记录上</li>
+<li>GAP锁锁住的位置是两条记录之间的GAP</li>
+<li>保证两次当前读返回一致的记录</li>
+</ul>
+</li>
+<li>表级锁<ul>
+<li>lock tables</li>
+<li>元数据锁(meta data lock, MDL)</li>
+<li>全表扫描”表锁”</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>类型</p>
+<ul>
+<li>共享锁S<ul>
+<li>读锁，可以同时被多个事务获取，阻止其他事务对记录的修改</li>
+</ul>
+</li>
+<li>排他锁X<ul>
+<li>写锁</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h2 id="所有当前读加排他锁"><a href="#所有当前读加排他锁" class="headerlink" title="所有当前读加排他锁:"></a>所有当前读加排他锁:</h2></li>
 </ul>
 <h2 id="数据库索引"><a href="#数据库索引" class="headerlink" title="数据库索引"></a>数据库索引</h2><ul>
 <li><p>in, not in, exists, not exists</p>
