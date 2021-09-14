@@ -1807,4 +1807,76 @@
         <tag>性能分析</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Huawei LiteOS Intro</title>
+    <url>/2021/09/14/Huawei-LiteOS-Intro/</url>
+    <content><![CDATA[<h1 id="Huawei-LiteOS"><a href="#Huawei-LiteOS" class="headerlink" title="Huawei LiteOS"></a>Huawei LiteOS</h1><blockquote>
+<p>面向IOT领域，构建轻量级物联网操作系统, 目前支持ARM64,ARM Contex-A, ARM Cortex-M0, Cortex-M3, Cortex-M4, Cortex-M7</p>
+</blockquote>
+<ul>
+<li>优势:<ul>
+<li>高实时性,高稳定性</li>
+<li>超小内核，基础内核体积可以裁剪至不到10K</li>
+<li>低功耗</li>
+<li>支持功能静态裁剪</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="架构框图"><a href="#架构框图" class="headerlink" title="架构框图"></a>架构框图</h2><p><img src="/misc/images/huawei-liteos-architecture.png" alt="Artecture"></p>
+<ul>
+<li>基础内核:<ul>
+<li>极小内核<ul>
+<li>任务管理</li>
+<li>内存管理</li>
+<li>中断管理</li>
+<li>异常管理</li>
+<li>系统时钟</li>
+</ul>
+</li>
+<li>可裁剪其他模块<ul>
+<li>信号量</li>
+<li>互斥锁</li>
+<li>队列管理</li>
+<li>事件管理</li>
+<li>软件定时器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>内核增强<ul>
+<li>C++ 支持</li>
+<li>调测组件</li>
+<li>shell命令</li>
+<li>Trace事件跟踪</li>
+<li>CPU占用率</li>
+<li>LMS</li>
+</ul>
+</li>
+<li>文件系统<ul>
+<li>vfs</li>
+<li>ramfs</li>
+<li>fatfs</li>
+</ul>
+</li>
+<li>系统库接口<ul>
+<li>libc</li>
+<li>libm</li>
+<li>posix</li>
+<li>cmsis</li>
+</ul>
+</li>
+<li>网络协议栈<ul>
+<li>CoAP</li>
+<li>LwM2M</li>
+<li>MQTT</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>IOT</tag>
+      </tags>
+  </entry>
 </search>
