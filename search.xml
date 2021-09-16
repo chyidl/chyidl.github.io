@@ -248,7 +248,6 @@
 </ul>
 <span id="more"></span>
 
-
 <h2 id="MySQL事务模型-ACID"><a href="#MySQL事务模型-ACID" class="headerlink" title="MySQL事务模型 ACID"></a>MySQL事务模型 ACID</h2><blockquote>
 <p>MySQL事务的四个特性中ACD三个特性是通过Redo Log(重做日志)和Undo Log(撤销日志)实现,而I隔离型通过Lock实现</p>
 </blockquote>
@@ -342,41 +341,12 @@
 </li>
 </ul>
 <h2 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h2><ul>
-<li><p>InnoDB内存管理<br>Buffer Pool: 预分配的内存池<br>Page: Buffer Pool 的最小单位<br>Free List: 空闲Page组成的链表<br>Flush List: 脏页链表<br>Page Hash表:<br>  维护内存Page和文件Page的映射关系<br>LRU: 内存淘汰算法 - 冷热分离<br>  LRU_new: 存储热数据<br>  LRU_old: 存储冷数据<br>  Midpoint:</p>
-<p>页面淘汰:<br>  LRU尾部淘汰<br>  Flush LRU淘汰</p>
-<ul>
-<li>预分配内存空间<ul>
-<li>Buffer Pool: 预分配内存池, 页面加载单位Page</li>
-</ul>
-</li>
-<li>数据加载单元</li>
-<li>数据内外存交换<ul>
-<li>内存池</li>
-<li>内存页面管理<ul>
-<li>空闲页</li>
-<li>数据页<ul>
-<li>脏页: 数据被Update 需要刷盘</li>
-</ul>
-</li>
-<li>页面映射</li>
-<li>页面数据管理</li>
-</ul>
-</li>
-<li>数据淘汰<ul>
-<li>LRU: 最经常被访问的数据放在表头，默认删除表尾</li>
-<li>LFU: 使用频率淘汰算法</li>
-<li>双LRU: 热表LRU，冷表LRU</li>
-<li>全表扫描对内存的影响?<blockquote>
-<p>导致热数据被替换; 缓冲区被污染，导致数据库性能下降</p>
-</blockquote>
-</li>
-<li><h2 id="避免全表扫描对热数据的影响"><a href="#避免全表扫描对热数据的影响" class="headerlink" title="避免全表扫描对热数据的影响"></a>避免全表扫描对热数据的影响</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>Page</p>
+<figure class="highlight makefile"><table><tr><td class="code"><pre><span class="line">&gt; 页Page : 16KB, 存储IO的基本单元</span><br><span class="line">Page Header: 页头, 记录页面的控制信息，占用56字节，包括页的左右兄弟页面指针，页面空间使用情况</span><br><span class="line"><span class="section">虚记录:</span></span><br><span class="line">  最大虚记录,比页内最大主键大</span><br><span class="line">  最小虚记录,比页内最小主键小</span><br><span class="line"><span class="section">记录堆: 行记录存储区</span></span><br><span class="line">  有效记录</span><br><span class="line">  已删除记录</span><br><span class="line"><span class="section">自由空间链表: 已删除记录组成的链表</span></span><br><span class="line"><span class="section">未分配空间: 页内未使用的存储空间</span></span><br><span class="line">Slot 区: 连续空间平均分配</span><br><span class="line">Page Tailer: 页尾, 占8字节，存储页面的校验信息</span><br></pre></td></tr></table></figure></li>
+<li><p>索引B+树</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 顺序保证</span></span><br><span class="line"><span class="bullet">  -</span> 物理有序: 数组，二分查找, 支持随机读,</span><br><span class="line"><span class="bullet">  -</span> 逻辑有序: 链表, 支持随机写,</span><br><span class="line"><span class="section"># 插入策略</span></span><br><span class="line"><span class="bullet">  -</span> 自由空间链表</span><br><span class="line"><span class="bullet">  -</span> 未使用空间</span><br><span class="line"><span class="bullet">  -</span> 收缩数据库,解决数据库page碎片</span><br><span class="line"><span class="section"># 页内查询</span></span><br><span class="line"><span class="bullet">  -</span> 遍历</span><br><span class="line"><span class="bullet">  -</span> 二分查找</span><br><span class="line"><span class="bullet">  -</span> skip list</span><br></pre></td></tr></table></figure></li>
+<li><p>InnoDB内存管理</p>
+<figure class="highlight haml"><table><tr><td class="code"><pre><span class="line">-<span class="ruby"> 预分配内存空间:</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Buffer Pool(预分配内存池)<span class="symbol">:</span>页面加载单位Page</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">Page:</span> Buffer Pool 的最小单位</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Free <span class="symbol">List:</span> 空闲Page组成的链表</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Flush <span class="symbol">List:</span> 脏页列表</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Page Hash表: 维护内存Page和文件Page的映射关系</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">LRU:</span> 内存淘汰算法- 释放刷盘</span></span><br><span class="line"><span class="ruby"></span>      LRU_new: 存储热数据</span><br><span class="line">      LRU_old: 存储冷数据</span><br><span class="line">      Midpoint:</span><br><span class="line">-<span class="ruby"> 数据页面加载单元:</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 磁盘数据到内存</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby"> 数据内外存交换:</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby"> 内存管理的技术点:</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 内存池</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 内存页面管理</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 空闲页</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 数据页</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 脏页: 数据被Update 需要刷盘</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 页面映射</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 页面数据管理</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 数据淘汰:</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">LRU:</span> 最经常被访问的数据放在表头，默认删除表尾</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">LFU:</span> 使用频率淘汰算法, Redis 使用使用LFU淘汰算法</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 双<span class="symbol">LRU:</span> 热表LRU，冷表LRU</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 全表扫描对内存的影响?</span></span><br><span class="line"><span class="ruby"></span>      &gt; 导致热数据被替换, 缓冲区被污染，导致数据库性能下降</span><br><span class="line">    -<span class="ruby"> 避免全表扫描对热数据的影响</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="MySQL-锁实现原理"><a href="#MySQL-锁实现原理" class="headerlink" title="MySQL 锁实现原理"></a>MySQL 锁实现原理</h2><ul>
 <li><p>锁颗粒度</p>
@@ -1474,11 +1444,6 @@
   <entry>
     <title>Makefile Intro</title>
     <url>/2021/09/08/Makefile-Intro/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>MySQL Index Intro</title>
-    <url>/2021/09/08/MySQL-Index-Intro/</url>
     <content><![CDATA[]]></content>
   </entry>
   <entry>

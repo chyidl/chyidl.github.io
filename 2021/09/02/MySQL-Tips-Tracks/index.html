@@ -30,7 +30,7 @@
 <meta property="og:image" content="http://chyidl.github.io/misc/images/InnoDB-architecture.jpeg">
 <meta property="og:image" content="http://chyidl.github.io/misc/images/mvcc.jpeg">
 <meta property="article:published_time" content="2021-09-02T13:54:37.000Z">
-<meta property="article:modified_time" content="2021-09-14T22:32:12.039Z">
+<meta property="article:modified_time" content="2021-09-16T07:58:40.552Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="数据库">
 <meta property="article:tag" content="MySQL">
@@ -155,7 +155,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">数据库-三大范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%9E%8B-ACID"><span class="nav-number">1.1.</span> <span class="nav-text">MySQL事务模型 ACID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97"><span class="nav-number">1.2.</span> <span class="nav-text">数据库日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88InnoDB-count-%E8%BF%99%E4%B9%88%E6%85%A2"><span class="nav-number">1.3.</span> <span class="nav-text">为什么InnoDB count(*) 这么慢?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQl%E5%A4%9A%E7%89%88%E6%9C%AC%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6-MVCC"><span class="nav-number">1.4.</span> <span class="nav-text">MySQl多版本并发控制 - MVCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-number">1.5.</span> <span class="nav-text">MySQL 存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%BF%E5%85%8D%E5%85%A8%E8%A1%A8%E6%89%AB%E6%8F%8F%E5%AF%B9%E7%83%AD%E6%95%B0%E6%8D%AE%E7%9A%84%E5%BD%B1%E5%93%8D"><span class="nav-number">1.6.</span> <span class="nav-text">避免全表扫描对热数据的影响</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E9%94%81%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.7.</span> <span class="nav-text">MySQL 锁实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E5%BD%93%E5%89%8D%E8%AF%BB%E5%8A%A0%E6%8E%92%E4%BB%96%E9%94%81"><span class="nav-number">1.8.</span> <span class="nav-text">所有当前读加排他锁:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95"><span class="nav-number">1.9.</span> <span class="nav-text">数据库索引</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93-%E4%B8%89%E5%A4%A7%E8%8C%83%E5%BC%8F"><span class="nav-number">1.</span> <span class="nav-text">数据库-三大范式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL%E4%BA%8B%E5%8A%A1%E6%A8%A1%E5%9E%8B-ACID"><span class="nav-number">1.1.</span> <span class="nav-text">MySQL事务模型 ACID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E6%97%A5%E5%BF%97"><span class="nav-number">1.2.</span> <span class="nav-text">数据库日志</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88InnoDB-count-%E8%BF%99%E4%B9%88%E6%85%A2"><span class="nav-number">1.3.</span> <span class="nav-text">为什么InnoDB count(*) 这么慢?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQl%E5%A4%9A%E7%89%88%E6%9C%AC%E5%B9%B6%E5%8F%91%E6%8E%A7%E5%88%B6-MVCC"><span class="nav-number">1.4.</span> <span class="nav-text">MySQl多版本并发控制 - MVCC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="nav-number">1.5.</span> <span class="nav-text">MySQL 存储引擎</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MySQL-%E9%94%81%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86"><span class="nav-number">1.6.</span> <span class="nav-text">MySQL 锁实现原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%89%80%E6%9C%89%E5%BD%93%E5%89%8D%E8%AF%BB%E5%8A%A0%E6%8E%92%E4%BB%96%E9%94%81"><span class="nav-number">1.7.</span> <span class="nav-text">所有当前读加排他锁:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%BA%93%E7%B4%A2%E5%BC%95"><span class="nav-number">1.8.</span> <span class="nav-text">数据库索引</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -171,7 +171,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">30</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -265,7 +265,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-15 06:32:12" itemprop="dateModified" datetime="2021-09-15T06:32:12+08:00">2021-09-15</time>
+        <time title="修改时间：2021-09-16 15:58:40" itemprop="dateModified" datetime="2021-09-16T15:58:40+08:00">2021-09-16</time>
       </span>
 
   
@@ -306,7 +306,6 @@
 <li>消除冗余: 每列都与主键有直接关系, 非主键字段不能相互依赖</li>
 </ul>
 <span id="more"></span>
-
 
 <h2 id="MySQL事务模型-ACID"><a href="#MySQL事务模型-ACID" class="headerlink" title="MySQL事务模型 ACID"></a>MySQL事务模型 ACID</h2><blockquote>
 <p>MySQL事务的四个特性中ACD三个特性是通过Redo Log(重做日志)和Undo Log(撤销日志)实现,而I隔离型通过Lock实现</p>
@@ -401,41 +400,12 @@
 </li>
 </ul>
 <h2 id="MySQL-存储引擎"><a href="#MySQL-存储引擎" class="headerlink" title="MySQL 存储引擎"></a>MySQL 存储引擎</h2><ul>
-<li><p>InnoDB内存管理<br>Buffer Pool: 预分配的内存池<br>Page: Buffer Pool 的最小单位<br>Free List: 空闲Page组成的链表<br>Flush List: 脏页链表<br>Page Hash表:<br>  维护内存Page和文件Page的映射关系<br>LRU: 内存淘汰算法 - 冷热分离<br>  LRU_new: 存储热数据<br>  LRU_old: 存储冷数据<br>  Midpoint:</p>
-<p>页面淘汰:<br>  LRU尾部淘汰<br>  Flush LRU淘汰</p>
-<ul>
-<li>预分配内存空间<ul>
-<li>Buffer Pool: 预分配内存池, 页面加载单位Page</li>
-</ul>
-</li>
-<li>数据加载单元</li>
-<li>数据内外存交换<ul>
-<li>内存池</li>
-<li>内存页面管理<ul>
-<li>空闲页</li>
-<li>数据页<ul>
-<li>脏页: 数据被Update 需要刷盘</li>
-</ul>
-</li>
-<li>页面映射</li>
-<li>页面数据管理</li>
-</ul>
-</li>
-<li>数据淘汰<ul>
-<li>LRU: 最经常被访问的数据放在表头，默认删除表尾</li>
-<li>LFU: 使用频率淘汰算法</li>
-<li>双LRU: 热表LRU，冷表LRU</li>
-<li>全表扫描对内存的影响?<blockquote>
-<p>导致热数据被替换; 缓冲区被污染，导致数据库性能下降</p>
-</blockquote>
-</li>
-<li><h2 id="避免全表扫描对热数据的影响"><a href="#避免全表扫描对热数据的影响" class="headerlink" title="避免全表扫描对热数据的影响"></a>避免全表扫描对热数据的影响</h2></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
+<li><p>Page</p>
+<figure class="highlight makefile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">&gt; 页Page : 16KB, 存储IO的基本单元</span><br><span class="line">Page Header: 页头, 记录页面的控制信息，占用56字节，包括页的左右兄弟页面指针，页面空间使用情况</span><br><span class="line"><span class="section">虚记录:</span></span><br><span class="line">  最大虚记录,比页内最大主键大</span><br><span class="line">  最小虚记录,比页内最小主键小</span><br><span class="line"><span class="section">记录堆: 行记录存储区</span></span><br><span class="line">  有效记录</span><br><span class="line">  已删除记录</span><br><span class="line"><span class="section">自由空间链表: 已删除记录组成的链表</span></span><br><span class="line"><span class="section">未分配空间: 页内未使用的存储空间</span></span><br><span class="line">Slot 区: 连续空间平均分配</span><br><span class="line">Page Tailer: 页尾, 占8字节，存储页面的校验信息</span><br></pre></td></tr></table></figure></li>
+<li><p>索引B+树</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 顺序保证</span></span><br><span class="line"><span class="bullet">  -</span> 物理有序: 数组，二分查找, 支持随机读,</span><br><span class="line"><span class="bullet">  -</span> 逻辑有序: 链表, 支持随机写,</span><br><span class="line"><span class="section"># 插入策略</span></span><br><span class="line"><span class="bullet">  -</span> 自由空间链表</span><br><span class="line"><span class="bullet">  -</span> 未使用空间</span><br><span class="line"><span class="bullet">  -</span> 收缩数据库,解决数据库page碎片</span><br><span class="line"><span class="section"># 页内查询</span></span><br><span class="line"><span class="bullet">  -</span> 遍历</span><br><span class="line"><span class="bullet">  -</span> 二分查找</span><br><span class="line"><span class="bullet">  -</span> skip list</span><br></pre></td></tr></table></figure></li>
+<li><p>InnoDB内存管理</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"> 预分配内存空间:</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Buffer Pool(预分配内存池)<span class="symbol">:</span>页面加载单位Page</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">Page:</span> Buffer Pool 的最小单位</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Free <span class="symbol">List:</span> 空闲Page组成的链表</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Flush <span class="symbol">List:</span> 脏页列表</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Page Hash表: 维护内存Page和文件Page的映射关系</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">LRU:</span> 内存淘汰算法- 释放刷盘</span></span><br><span class="line"><span class="ruby"></span>      LRU_new: 存储热数据</span><br><span class="line">      LRU_old: 存储冷数据</span><br><span class="line">      Midpoint:</span><br><span class="line">-<span class="ruby"> 数据页面加载单元:</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 磁盘数据到内存</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby"> 数据内外存交换:</span></span><br><span class="line"><span class="ruby"></span>-<span class="ruby"> 内存管理的技术点:</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 内存池</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 内存页面管理</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 空闲页</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 数据页</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 脏页: 数据被Update 需要刷盘</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 页面映射</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 页面数据管理</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 数据淘汰:</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">LRU:</span> 最经常被访问的数据放在表头，默认删除表尾</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">LFU:</span> 使用频率淘汰算法, Redis 使用使用LFU淘汰算法</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 双<span class="symbol">LRU:</span> 热表LRU，冷表LRU</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 全表扫描对内存的影响?</span></span><br><span class="line"><span class="ruby"></span>      &gt; 导致热数据被替换, 缓冲区被污染，导致数据库性能下降</span><br><span class="line">    -<span class="ruby"> 避免全表扫描对热数据的影响</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="MySQL-锁实现原理"><a href="#MySQL-锁实现原理" class="headerlink" title="MySQL 锁实现原理"></a>MySQL 锁实现原理</h2><ul>
 <li><p>锁颗粒度</p>
@@ -542,13 +512,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">98k</span>
+    <span title="站点总字数">99k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:29</span>
+    <span title="站点阅读时长">1:30</span>
   </span>
 </div>
 <div class="busuanzi-count">

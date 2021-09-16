@@ -354,19 +354,6 @@
   </entry>
   
   <entry>
-    <title>MySQL Index Intro</title>
-    <link href="http://chyidl.github.io/2021/09/08/MySQL-Index-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/08/MySQL-Index-Intro/</id>
-    <published>2021-09-08T04:21:01.000Z</published>
-    <updated>2021-09-08T04:21:01.000Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>gRPC Intro</title>
     <link href="http://chyidl.github.io/2021/09/07/gRPC-Intro/"/>
     <id>http://chyidl.github.io/2021/09/07/gRPC-Intro/</id>
@@ -506,6 +493,28 @@
     <category term="分布式" scheme="http://chyidl.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
     
     <category term="爬虫" scheme="http://chyidl.github.io/tags/%E7%88%AC%E8%99%AB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>golang pkg Tips &amp; Tracks</title>
+    <link href="http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/"/>
+    <id>http://chyidl.github.io/2021/09/03/golang-pkg-Tips-Tracks/</id>
+    <published>2021-09-03T09:24:01.000Z</published>
+    <updated>2021-09-03T09:24:01.000Z</updated>
+    
+    
+    <summary type="html">&lt;h2 id=&quot;Golang&quot;&gt;&lt;a href=&quot;#Golang&quot; class=&quot;headerlink&quot; title=&quot;Golang&quot;&gt;&lt;/a&gt;Golang&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;Goals&lt;blockquote&gt;
+&lt;p&gt;The efficientcy of a statically-typed compiled language with the ease of programming of a dynamic language.&lt;br&gt;Safety: type-safe and memory-safe&lt;br&gt;Good support for concurrency and communication.&lt;br&gt;Efficient, latency-free garbage collection.&lt;br&gt;High-speed compilation.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="Go" scheme="http://chyidl.github.io/tags/Go/"/>
     
   </entry>
   
