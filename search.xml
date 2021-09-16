@@ -405,6 +405,56 @@
 </blockquote>
 <span id="more"></span>
 
+<h2 id="Redis知识的全景图"><a href="#Redis知识的全景图" class="headerlink" title="Redis知识的全景图"></a>Redis知识的全景图</h2><p><img src="/misc/images/redis-knowledge.jpg" alt="Redis 知识全景图"></p>
+<ul>
+<li>应用纬度:<ul>
+<li>缓存应用</li>
+<li>集群应用</li>
+<li>数据结构应用</li>
+</ul>
+</li>
+<li>系统纬度:<ul>
+<li>处理层:<ul>
+<li>线程模型</li>
+</ul>
+</li>
+<li>内存层:<ul>
+<li>数据结构</li>
+</ul>
+</li>
+<li>存储层:<ul>
+<li>AOF</li>
+<li>RDB</li>
+</ul>
+</li>
+<li>网络层:<ul>
+<li>epool网络框架</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>高性能主线:<ul>
+<li>线程模型</li>
+<li>数据结构</li>
+<li>持久化</li>
+<li>网络框架</li>
+</ul>
+</li>
+<li>高可用主线:<ul>
+<li>主从复制</li>
+<li>哨兵机制</li>
+</ul>
+</li>
+<li>高扩展主线:<ul>
+<li>数据分片</li>
+<li>负载均衡</li>
+</ul>
+</li>
+</ul>
+<h2 id="Redis问题画像图"><a href="#Redis问题画像图" class="headerlink" title="Redis问题画像图"></a>Redis问题画像图</h2><p><img src="/misc/images/redis-problems.jpeg" alt="Redis问题画像"></p>
+<h2 id="Redis-基础"><a href="#Redis-基础" class="headerlink" title="Redis 基础"></a>Redis 基础</h2><ul>
+<li>基础架构<figure class="highlight haml"><table><tr><td class="code"><pre><span class="line"># 数据模型: key-value</span><br><span class="line">  &gt; Redis能够在实际业务场景中广泛的应用，就是得益于支持多样化类型的value</span><br><span class="line"></span><br><span class="line"># 操作接口:</span><br><span class="line">  -<span class="ruby"> <span class="symbol">PUT:</span></span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">GET:</span></span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">DELETE:</span></span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">SCAN:</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"># 访问框架:</span><br><span class="line">  -<span class="ruby"> 动态库访问</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 网络框架访问<span class="symbol">:</span>包括Socket Server和协议解析</span></span><br><span class="line"><span class="ruby"></span># 操作模块:</span><br><span class="line">  -<span class="ruby"> Redis 键-值映射数据类型</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 哈希表: 就是一个数组，数组的每个元素netry称为一个哈希桶(桶中元素存储的是指向key和value的指针).</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> O(<span class="number">1</span>)时间复杂度快速查找键值对</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 哈希表冲突问题</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> Redis解决哈希冲突使用链式哈希,指向同一个哈希桶中的多个元素用链表保存，之间依次用指针连接</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Rehash操作:</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> rehash操作就是增加现有哈希桶数量，让增多的entry元素能在更多的桶之间分散保存，减少单个桶中元素数量,从而减少单个桶中冲突</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> Redis默认采用两个全局哈希表,哈希表<span class="number">1</span>，哈希表<span class="number">2</span>, Rehash过程:</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> hash2分配更大空间 <span class="number">2</span> * hash1</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> 将hash1中数据重新映射并拷贝到hash2</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> 释放hash1空间</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 渐进式<span class="symbol">rehash:</span></span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> 巧妙的把一次性大量拷贝的开销分摊到多次处理请求的过程中，避免耗时操作，保证数据的快速访问</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line">  -<span class="ruby"> Redis值的数据类型:</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 字符串<span class="symbol">String:</span></span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 底层数据类型:</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 简单动态字符串</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 列表List</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 底层数据类型:</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 双向链表</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 压缩列表</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 集合Set</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 底层数据类型</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 压缩列表</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 整数数组</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 有序集合Sorted Set</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 底层数据类型</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 压缩列表</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 跳表</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 哈希Hash</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 底层数据类型</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 压缩列表</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> 哈希表</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Redis底层数据结构</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 简单动态字符串</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 双向链表</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 压缩列表<span class="symbol">:</span>类似数组</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 表头:</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">zlbytes:</span> 列表长度</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">zltail:</span> 列表尾的偏移量</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">zllen:</span> 列表中entry个数</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 表尾:</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">zlend:</span> 表示结束</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 哈希表</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 跳表: 跳表在链表的基础上增加多级索引，通过索引位置的几个跳转，实现数据的快速定位</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> 查找复杂度O(logN)</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 整数数组</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 底层数据结构时间复杂度分类</span></span><br><span class="line"><span class="ruby"></span>  | 名称  | 时间复杂度    |</span><br><span class="line">  |:------|:--------------|</span><br><span class="line">  | 哈希表| O(1)|</span><br><span class="line">  | 跳表| O(logN)|</span><br><span class="line">  | 双向链表| O(N)|</span><br><span class="line">  | 压缩列表| O(N)|</span><br><span class="line">  | 整数数组| O(N)|</span><br><span class="line"></span><br><span class="line"># 索引模块:</span><br><span class="line">  -<span class="ruby"> 索引的作用是让键值数据库根据Key找到响应value的存储位置，进而执行操作</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 哈希表: redis, mamcached采用</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 内存的高性能随机访问可以很好与哈希表O(<span class="number">1</span>)操作复杂度相匹配</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> B+树</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 字典树</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> skip <span class="symbol">list:</span> RocksDB采用</span></span><br><span class="line"><span class="ruby"></span># 存储模块:</span><br><span class="line">  -<span class="ruby"> 内存分配器</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">glibc:</span> malloc/free</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> 持久化</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 日志AOF</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> 快照RDB</span></span><br><span class="line"><span class="ruby"></span># IO模型设计</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="源码分析"><a href="#源码分析" class="headerlink" title="源码分析"></a>源码分析</h2><ul>
 <li>通信协议<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">redis客户端和服务器发送的命令和数据一律以\r\n (<span class="literal">CR</span> LF)结尾</span><br><span class="line"></span><br><span class="line"><span class="comment"># 请求协议:</span></span><br><span class="line">  *&lt;参数数量&gt; <span class="literal">CR</span> LF</span><br><span class="line">  $&lt;参数的字节数量&gt; <span class="literal">CR</span> LF</span><br><span class="line">  &lt;参数的数据&gt; <span class="literal">CR</span> LF</span><br><span class="line"></span><br><span class="line">  ubuntu <span class="keyword">in</span> /  <span class="keyword">at</span> <span class="number">3</span>BPlus took <span class="number">11</span>s</span><br><span class="line">  ➜ tail appendonly.aof</span><br><span class="line">  $<span class="number">3</span></span><br><span class="line">  <span class="built_in">set</span></span><br><span class="line">  $<span class="number">4</span></span><br><span class="line">  name</span><br><span class="line">  $<span class="number">10</span></span><br><span class="line">  chyiyaqing</span><br><span class="line"></span><br><span class="line"><span class="comment"># 回复协议:</span></span><br><span class="line">  &gt; 在回复协议中，可以通过检查第一个字节，确定这个回复是什么类型</span><br><span class="line">  - 状态回复 (status reply) 第一个字节是 <span class="string">&quot;+&quot;</span></span><br><span class="line">  - 错误回复 (error reply) 第一个字节是 <span class="string">&quot;-&quot;</span></span><br><span class="line">  - 整数回复 (<span class="keyword">integer</span> reply) 第一个字节是 <span class="string">&quot;.&quot;</span></span><br><span class="line">  - 批量回复 (bulk reply) 第一个字节是 <span class="string">&quot;$&quot;</span></span><br><span class="line">  - 多条批量回复 (multi bulk reply) 第一个字节是 <span class="string">&quot;*&quot;</span></span><br></pre></td></tr></table></figure></li>
 </ul>
