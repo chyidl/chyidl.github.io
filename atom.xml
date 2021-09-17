@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-09-16T22:29:27.000Z</updated>
+  <updated>2021-09-17T03:57:31.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -17,6 +17,35 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Raspberry Pico Intro</title>
+    <link href="http://chyidl.github.io/2021/09/17/Raspberry-Pico-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/17/Raspberry-Pico-Intro/</id>
+    <published>2021-09-17T03:57:31.000Z</published>
+    <updated>2021-09-17T03:57:31.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Raspberry-Pi-Pico&quot;&gt;&lt;a href=&quot;#Raspberry-Pi-Pico&quot; class=&quot;headerlink&quot; title=&quot;Raspberry Pi Pico&quot;&gt;&lt;/a&gt;Raspberry Pi Pico&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;a microcontroller development board,&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;RP2040&lt;/p&gt;
+&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;quote&quot;&gt;&amp;gt; new microcontroller chip designed by Raspberry Pi in the UK.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;  -&lt;/span&gt; dual-core Arm Cortex-M0+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;  -&lt;/span&gt; 264KB RAM&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;  -&lt;/span&gt; 16MB off-chip Flash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Micro USB Port&lt;/p&gt;
+&lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- provide power make Pico &lt;span class=&quot;builtin-name&quot;&gt;run&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- USB&lt;span class=&quot;built_in&quot;&gt; port &lt;/span&gt;talk &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; pico&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;BOOTSEL&lt;/p&gt;
+&lt;figure class=&quot;highlight mipsasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- &lt;span class=&quot;keyword&quot;&gt;BOOTSEL &lt;/span&gt;is &lt;span class=&quot;keyword&quot;&gt;short &lt;/span&gt;for &lt;span class=&quot;keyword&quot;&gt;boot &lt;/span&gt;selection.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
+    
+    
+    
+    <category term="嵌入式" scheme="http://chyidl.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
+    
+    <category term="Raspberry Pi" scheme="http://chyidl.github.io/tags/Raspberry-Pi/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Blockchain Intro</title>
     <link href="http://chyidl.github.io/2021/09/17/Blockchain-Intro/"/>
     <id>http://chyidl.github.io/2021/09/17/Blockchain-Intro/</id>
@@ -24,8 +53,35 @@
     <updated>2021-09-16T22:29:27.000Z</updated>
     
     
+    <summary type="html">&lt;h1 id=&quot;Blockchain&quot;&gt;&lt;a href=&quot;#Blockchain&quot; class=&quot;headerlink&quot; title=&quot;Blockchain&quot;&gt;&lt;/a&gt;Blockchain&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;区块链技术萌芽于比特币，诞生在以太坊, 区块链是价值的载体，是一种新型的社会生产关系。基于区块链技术，打通现实世界与网络世界的屏障，将物质虚拟化，将价值实体化.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;数字货币&lt;ul&gt;
+&lt;li&gt;BTC:&lt;figure class=&quot;highlight node-repl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;javascript&quot;&gt;&lt;span class=&quot;number&quot;&gt;2008&lt;/span&gt;年,金融危机背景下，中本聪看到现代金融体系的不足，创建基于密码学而非信任关系的数字货币系统 -- 比特币&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;Etherenum:&lt;figure class=&quot;highlight node-repl&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;javascript&quot;&gt;V神在比特币的基础上，将智能合约于区块链结合,创立去中心化应用平台 -- 以太坊&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;硬分叉分裂:&lt;ul&gt;
+&lt;li&gt;ETH:&lt;/li&gt;
+&lt;li&gt;ETC:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;软分叉: 可兼容的程序版本更新&lt;/li&gt;
+&lt;li&gt;硬分叉: 不可兼容的程序版本更新&lt;/li&gt;
+&lt;li&gt;公链圈: 专注于有币的共有开放区块链网络&lt;figure class=&quot;highlight haml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;8&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;9&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;10&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;# 应用层面:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  -&lt;span class=&quot;ruby&quot;&gt; 去中心化金融: Decentralised Finance&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;ruby&quot;&gt;&lt;/span&gt;    -&lt;span class=&quot;ruby&quot;&gt; 金融: 通过重新分配资产来获得资产增值的一种渠道，本质在于信用、风险和杠杆，金融成立的前提就是控制不确定性风险。&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;ruby&quot;&gt;&lt;/span&gt;  -&lt;span class=&quot;ruby&quot;&gt; 去中心化存储:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;ruby&quot;&gt;&lt;/span&gt;    &amp;gt; 一种利用分布式存储技术，将文件分块存储在不同存储节点的应用型创新. 相较于中心化存储，拥有更高级别的隐私保护，存储成本更低，且具备更冗余的数据备份副本，能有效避免单点故障&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;    -&lt;span class=&quot;ruby&quot;&gt; 面临的问题:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;ruby&quot;&gt;&lt;/span&gt;      -&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;. 币价波动导致成本不确定性&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;ruby&quot;&gt;&lt;/span&gt;      -&lt;span class=&quot;ruby&quot;&gt; &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;. 受制于网络环境以及硬盘本身，整个去中心化网络存储性能不高，远不如中心化存储，只适用冷数据以及个人数据存储.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;ruby&quot;&gt;&lt;/span&gt;# 技术创新层面:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;gt; 跨链: 不同区块链网络是独立，是一个个数据孤岛，跨链技术是在这些岛之间构建互通的桥梁,提供不同链之间数据互通的可能性.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;联盟链圈: 专注于区块链技术在企业领域的研究&lt;figure class=&quot;highlight vala&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;7&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;# 数据存证:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;gt; 区块链技术具有时间连续，不可篡改，可回溯等特性，非常适合留存证据的数据存储。大多数应用在区块链上存储只是数据证明，而非原始数据。&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;# 数据交换:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  &amp;gt; 通过区块链技术解决多方数据交互需求，各方部署区块链节点，只需与自身节点交互，区块链机制自动将数据同步至其他参与方，任一节点数据更新，区块链通知机制自动通知各放&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;# 价值转移:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;</summary>
     
     
+    
+    
+    <category term="Blockchain" scheme="http://chyidl.github.io/tags/Blockchain/"/>
+    
+    <category term="区块链" scheme="http://chyidl.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
     
   </entry>
   
@@ -367,6 +423,19 @@
   </entry>
   
   <entry>
+    <title>MySQL Index Intro</title>
+    <link href="http://chyidl.github.io/2021/09/08/MySQL-Index-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/08/MySQL-Index-Intro/</id>
+    <published>2021-09-08T04:21:01.000Z</published>
+    <updated>2021-09-08T04:21:01.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
     <title>gRPC Intro</title>
     <link href="http://chyidl.github.io/2021/09/07/gRPC-Intro/"/>
     <id>http://chyidl.github.io/2021/09/07/gRPC-Intro/</id>
@@ -457,55 +526,6 @@
     
     
     <category term="计算机" scheme="http://chyidl.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Middleware Tips &amp; Tracks</title>
-    <link href="http://chyidl.github.io/2021/09/06/Middleware-Tips-Tracks/"/>
-    <id>http://chyidl.github.io/2021/09/06/Middleware-Tips-Tracks/</id>
-    <published>2021-09-06T00:36:13.000Z</published>
-    <updated>2021-09-06T00:36:13.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;技术选型&quot;&gt;&lt;a href=&quot;#技术选型&quot; class=&quot;headerlink&quot; title=&quot;技术选型&quot;&gt;&lt;/a&gt;技术选型&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;面对技术选型时，就是一个关于如何取舍的问题，不要不经过思考就觉得那个方案好，那个方案不好。需要根据具体场景分析&lt;br&gt;技术选型不只是技术问题，还与团队、管理、组织结构有关&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;业务功能角度&lt;/li&gt;
-&lt;li&gt;技术资源角度&lt;blockquote&gt;
-&lt;p&gt;所处的环境、技术资源能否匹配这些技术方案&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="中间件" scheme="http://chyidl.github.io/tags/%E4%B8%AD%E9%97%B4%E4%BB%B6/"/>
-    
-    <category term="Middleware" scheme="http://chyidl.github.io/tags/Middleware/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Distribute Scraping for Gophers</title>
-    <link href="http://chyidl.github.io/2021/09/03/Distribute-Scraping-for-Gophers/"/>
-    <id>http://chyidl.github.io/2021/09/03/Distribute-Scraping-for-Gophers/</id>
-    <published>2021-09-03T10:19:17.000Z</published>
-    <updated>2021-09-03T10:19:17.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;分布式爬虫&quot;&gt;&lt;a href=&quot;#分布式爬虫&quot; class=&quot;headerlink&quot; title=&quot;分布式爬虫&quot;&gt;&lt;/a&gt;分布式爬虫&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="分布式" scheme="http://chyidl.github.io/tags/%E5%88%86%E5%B8%83%E5%BC%8F/"/>
-    
-    <category term="爬虫" scheme="http://chyidl.github.io/tags/%E7%88%AC%E8%99%AB/"/>
     
   </entry>
   
