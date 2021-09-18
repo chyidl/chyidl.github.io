@@ -2075,16 +2075,88 @@
 </ul>
 <span id="more"></span>
 
+<h2 id="Raspberry-Pico’s-pins"><a href="#Raspberry-Pico’s-pins" class="headerlink" title="Raspberry Pico’s pins"></a>Raspberry Pico’s pins</h2><p><img src="/misc/images/pico-pins.png" alt="The Raspberry Pi Pico&#39;s pins"></p>
+<ul>
+<li><p>Raspberry Pi Pico pins functions</p>
+<table>
+<thead>
+<tr>
+<th align="left">…</th>
+<th align="left">…</th>
+<th align="left">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">3V3</td>
+<td align="left">3.3 volts power</td>
+<td align="left">Pico 3.3V 从 VSYS 获取</td>
+</tr>
+<tr>
+<td align="left">VSYS</td>
+<td align="left">~2-5 volts power</td>
+<td align="left">连接Pico内部电源</td>
+</tr>
+<tr>
+<td align="left">VBUS</td>
+<td align="left">5 volts power</td>
+<td align="left">5V power taken from Pico’s micro USB port</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">0 volts ground</td>
+<td align="left">地</td>
+</tr>
+<tr>
+<td align="left">GPxx</td>
+<td align="left">General-purpose input/output pin</td>
+<td align="left">通用GPIO口</td>
+</tr>
+<tr>
+<td align="left">GPxx_ADCx</td>
+<td align="left">GPIO/ADC input</td>
+<td align="left">普通GPIO口或ADC输入口</td>
+</tr>
+<tr>
+<td align="left">ADC_VREF</td>
+<td align="left">Analogue-to-digital coverter (ADC) voltage reference</td>
+<td align="left">模拟数字转换参考电压输入</td>
+</tr>
+<tr>
+<td align="left">AGND</td>
+<td align="left">Anaglogue-to-digital coverter (ADC) 0 volts ground</td>
+<td align="left">ADC输入电压参考0volts</td>
+</tr>
+<tr>
+<td align="left">RUN</td>
+<td align="left">Enable/disable Pico</td>
+<td align="left">启动/关闭Pico</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>MicroPython - Hello, LED!</p>
+<figure class="highlight vhdl"><table><tr><td class="code"><pre><span class="line">import machine</span><br><span class="line">import utime</span><br><span class="line"></span><br><span class="line"># <span class="keyword">on</span>-board LED <span class="keyword">is</span> connected <span class="keyword">to</span> one <span class="keyword">of</span> RP2040<span class="symbol">&#x27;s</span> general-purpose input/output pins. GP25.</span><br><span class="line">led_onboard = machine.Pin(<span class="number">25</span>, machine.Pin.<span class="keyword">OUT</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">while</span> <span class="literal">True</span>:</span><br><span class="line">    led_onboard.toggle()</span><br><span class="line">    utime.sleep(<span class="number">1</span>)</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="MicroPython-on-Raspberry-Pi-Pico"><a href="#MicroPython-on-Raspberry-Pi-Pico" class="headerlink" title="MicroPython on Raspberry Pi Pico"></a>MicroPython on Raspberry Pi Pico</h2><ul>
 <li><p>Installing MicroPython</p>
 <figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">&gt; MicroPython is <span class="keyword">a</span> full implementation <span class="keyword">of</span> <span class="keyword">the</span> Python <span class="number">3</span> Programming language that runs directly <span class="keyword">on</span> <span class="title">embedded</span> <span class="title">hardware</span> <span class="title">like</span> <span class="title">Raspberry</span> <span class="title">Pi</span> <span class="title">Pico</span>.</span><br><span class="line"><span class="comment"># Hold BOOTSEL button down 3 seconds then let go</span></span><br><span class="line">  /Volumes/RPI-RP2</span><br><span class="line">  ➜ tree</span><br><span class="line">  .</span><br><span class="line">  ├── INDEX.HTM</span><br><span class="line">  └── INFO_UF2.TXT  <span class="comment">-- hold information about your Pico</span></span><br><span class="line"></span><br><span class="line">  <span class="number">0</span> <span class="built_in">directories</span>, <span class="number">2</span> <span class="built_in">files</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Darg-and-Drop MicroPython</span></span><br><span class="line">  - Drag <span class="keyword">and</span> drop <span class="keyword">the</span> MicroPython UF2 onto <span class="keyword">the</span> RPI-RP2 volume, auto flash <span class="keyword">the</span> firmware onto its internal storage.</span><br></pre></td></tr></table></figure></li>
 <li><p>Programming with MicroPython</p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&gt; MicroPython <span class="keyword">is</span> a Python-compatible programming language developed specifically <span class="keyword">for</span> microcontrollers.</span><br><span class="line"></span><br><span class="line"><span class="comment"># Thonny - IDE</span></span><br></pre></td></tr></table></figure></li>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&gt; MicroPython <span class="keyword">is</span> a Python-compatible programming language developed specifically <span class="keyword">for</span> microcontrollers.</span><br><span class="line"></span><br><span class="line"><span class="comment"># Thonny - IDE</span></span><br><span class="line">MicroPython v1<span class="number">.17</span> on <span class="number">2021</span>-09-02; Raspberry Pi Pico <span class="keyword">with</span> RP2040</span><br><span class="line"><span class="type">Type</span> <span class="string">&quot;help()&quot;</span> <span class="keyword">for</span> more information.</span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span><span class="built_in">print</span>(<span class="string">&quot;Hello, World!&quot;</span>)</span><br><span class="line">Hello, World!</span><br><span class="line">&gt;&gt;&gt;</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h2 id="Rust-on-Raspberry-Pi-Pico"><a href="#Rust-on-Raspberry-Pi-Pico" class="headerlink" title="Rust on Raspberry Pi Pico"></a>Rust on Raspberry Pi Pico</h2><h2 id="Getting-Started-with-FreeRTOS-on-the-Raspberry-Pi-Pico"><a href="#Getting-Started-with-FreeRTOS-on-the-Raspberry-Pi-Pico" class="headerlink" title="Getting Started with FreeRTOS on the Raspberry Pi Pico"></a>Getting Started with FreeRTOS on the Raspberry Pi Pico</h2><blockquote>
+<p>RTOS - Real Time Operating System</p>
+<blockquote>
+<p>Allows multiple tasks to execute “at the same time”<br>Schedules based on task priority<br>“Task Priority” allows the programmer to define what needs to happen first</p>
+</blockquote>
+</blockquote>
 ]]></content>
       <tags>
         <tag>嵌入式</tag>
         <tag>Raspberry Pi</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>Rust language Intro</title>
+    <url>/2021/09/18/Rust-language-Intro/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
