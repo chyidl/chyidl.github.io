@@ -163,7 +163,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -172,7 +172,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">42</span>
+        <span class="site-state-item-count">46</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -225,6 +225,373 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/03/Dev-Ops-Tips-Tracks/" class="post-title-link" itemprop="url">Dev-Ops Tips & Tracks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-03 08:01:55" itemprop="dateCreated datePublished" datetime="2021-09-03T08:01:55+08:00">2021-09-03</time>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>2k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>2 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="DevOps-BOOTCAMP"><a href="#DevOps-BOOTCAMP" class="headerlink" title="DevOps BOOTCAMP"></a>DevOps BOOTCAMP</h1><h2 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h2><ul>
+<li>Pipeline<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C<span class="function"><span class="title">ollaborate</span> -&gt;</span> B<span class="function"><span class="title">uild</span> -&gt;</span> T<span class="function"><span class="title">est</span> -&gt;</span> D<span class="function"><span class="title">eploy</span> -&gt;</span> R<span class="function"><span class="title">un</span> -&gt;</span> C<span class="function"><span class="title">onfigure</span> -&gt;</span> Monitor</span><br></pre></td></tr></table></figure></li>
+<li>Tradition: Development vs Operations<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Development</span></span><br><span class="line"><span class="bullet">  -</span> programming languages</span><br><span class="line"><span class="bullet">  -</span> test frameworks</span><br><span class="line"><span class="bullet">  -</span> databases</span><br><span class="line"><span class="bullet">  -</span> version control</span><br><span class="line"></span><br><span class="line"><span class="section"># Operations</span></span><br><span class="line"><span class="bullet">  -</span> OS, mostly Linux</span><br><span class="line"><span class="bullet">  -</span> command-line</span><br><span class="line"><span class="bullet">  -</span> scripting</span><br><span class="line"><span class="bullet">  -</span> monitoring tools</span><br></pre></td></tr></table></figure></li>
+<li>DevOps culture<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> DevOps was just a way <span class="keyword">of</span> working <span class="keyword">between</span> DEV<span class="string">&#x27;s and OP&#x27;</span>s</span><br><span class="line"><span class="number">2.</span> Common <span class="keyword">language</span> <span class="keyword">to</span> communicate</span><br></pre></td></tr></table></figure></li>
+<li>Waterfall vs. Agile<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Waterfall: 瀑布开发</span></span><br><span class="line">  &gt; ineffective process</span><br><span class="line">  &gt; over time new requirements may arise</span><br><span class="line">  &gt; many places of failure and miscommunication</span><br><span class="line"><span class="bullet">  -</span> Requirements:</span><br><span class="line"><span class="bullet">    -</span> plan everything beforehend</span><br><span class="line"><span class="bullet">  -</span> Development:</span><br><span class="line"><span class="bullet">    -</span> developers code complete app</span><br><span class="line"><span class="bullet">  -</span> Testing:</span><br><span class="line"><span class="bullet">    -</span> testing after everything has developed</span><br><span class="line"><span class="bullet">  -</span> Operations:</span><br><span class="line"><span class="bullet">    -</span> huge preparation</span><br><span class="line"></span><br><span class="line"><span class="section"># Agile: 敏捷开发</span></span><br><span class="line">  &gt; speed of development, testing and development cycles</span><br><span class="line">  &gt; each feature gets tested, deployed</span><br><span class="line">  &gt; immediate feedback</span><br><span class="line">  &gt; fast development and deployment process</span><br><span class="line"><span class="bullet">  -</span> Continuous Integration:</span><br><span class="line"><span class="bullet">  -</span> Continuous Delivery:</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Operating-Systems"><a href="#Operating-Systems" class="headerlink" title="Operating Systems"></a>Operating Systems</h2><ul>
+<li>OS &amp; Linux<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"># Intro Operating Systems</span><br><span class="line">  -<span class="ruby"> Hardware of <span class="symbol">Computer:</span></span></span><br><span class="line"><span class="ruby"></span>    &gt; CPU + Memory + Storage + I/O devices</span><br><span class="line">  -<span class="ruby"> Operating <span class="symbol">System:</span></span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Translator</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Manages Resources</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> CPU <span class="symbol">Management:</span></span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Memory Management (RAM = Rapid Access Memory)</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> Memory Swape (Swap-out/Swap-<span class="keyword">in</span>)</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Storage <span class="symbol">Management:</span></span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> Manage File <span class="symbol">System:</span></span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> stored <span class="keyword">in</span> a structured way</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> <span class="keyword">in</span> Unix <span class="symbol">systems:</span> tree file system</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> <span class="keyword">in</span> Windows <span class="symbol">OS:</span> multiple root folders</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Management I/O Devices</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Security &amp; Networking</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">Security:</span></span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> managing users <span class="keyword">and</span> permissions</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">Networking:</span></span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Isolates(隔离) content of application</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Operating system <span class="symbol">Components:</span></span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">kernel:</span></span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> kernel is a program</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Consists of device drivers, dispatcher, scheduler, File System etc.</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">POSIX:</span> Portable Operating System Interface</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Linux <span class="keyword">and</span> MacOS both POSIX compliant</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"># Virtualization</span><br><span class="line"></span><br><span class="line"># Linux File System</span><br><span class="line"></span><br><span class="line"># Main Linux Commands</span><br><span class="line"></span><br><span class="line"># Package Manager</span><br><span class="line"></span><br><span class="line"># Vim Editor</span><br><span class="line"></span><br><span class="line"># Users &amp; Permissions</span><br><span class="line"></span><br><span class="line"># Shell Scripting</span><br><span class="line"></span><br><span class="line"># Environmemt Variables</span><br><span class="line"></span><br><span class="line"># Networking</span><br><span class="line"></span><br><span class="line"># SSH - Secure Shell</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Version-Control"><a href="#Version-Control" class="headerlink" title="Version Control"></a>Version Control</h2><h2 id="Build-Tools"><a href="#Build-Tools" class="headerlink" title="Build Tools"></a>Build Tools</h2><h2 id="Artifact-Repository-Manager"><a href="#Artifact-Repository-Manager" class="headerlink" title="Artifact Repository Manager"></a>Artifact Repository Manager</h2><h2 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI/CD"></a>CI/CD</h2><h2 id="Cloud-IaaS"><a href="#Cloud-IaaS" class="headerlink" title="Cloud - IaaS"></a>Cloud - IaaS</h2><h2 id="Infrastructure-Privisioning"><a href="#Infrastructure-Privisioning" class="headerlink" title="Infrastructure Privisioning"></a>Infrastructure Privisioning</h2><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><h2 id="Container-Orchestration"><a href="#Container-Orchestration" class="headerlink" title="Container Orchestration"></a>Container Orchestration</h2><h2 id="Configuration-Management"><a href="#Configuration-Management" class="headerlink" title="Configuration Management"></a>Configuration Management</h2><h2 id="Monitoring"><a href="#Monitoring" class="headerlink" title="Monitoring"></a>Monitoring</h2><h2 id="Wrap-Up-总结"><a href="#Wrap-Up-总结" class="headerlink" title="Wrap Up: 总结"></a>Wrap Up: 总结</h2><ul>
+<li>Pipeline<br><img src="/misc/images/devops-pipeline.png" alt="Pipeline 开发流程"></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/Redis-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/02/Redis-Tips-Tracks/" class="post-title-link" itemprop="url">Redis Tips & Tracks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-02 21:55:16" itemprop="dateCreated datePublished" datetime="2021-09-02T21:55:16+08:00">2021-09-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-21 21:03:56" itemprop="dateModified" datetime="2021-09-21T21:03:56+08:00">2021-09-21</time>
+      </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="Redis"><a href="#Redis" class="headerlink" title="Redis"></a>Redis</h1><blockquote>
+<p>Redis is an open source (BSD licensed), in-memory data structure store, used as a database, cache, and message broker.</p>
+</blockquote>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/02/Redis-Tips-Tracks/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/Kafka-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/02/Kafka-Tips-Tracks/" class="post-title-link" itemprop="url">Kafka Tips & Tracks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-02 21:54:56" itemprop="dateCreated datePublished" datetime="2021-09-02T21:54:56+08:00">2021-09-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-21 21:03:56" itemprop="dateModified" datetime="2021-09-21T21:03:56+08:00">2021-09-21</time>
+      </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>0</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>1 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/MySQL-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2021/09/02/MySQL-Tips-Tracks/" class="post-title-link" itemprop="url">MySQL Tips & Tracks</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-02 21:54:37" itemprop="dateCreated datePublished" datetime="2021-09-02T21:54:37+08:00">2021-09-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">更新于</span>
+        <time title="修改时间：2021-09-21 21:03:56" itemprop="dateModified" datetime="2021-09-21T21:03:56+08:00">2021-09-21</time>
+      </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h1 id="数据库-三大范式"><a href="#数据库-三大范式" class="headerlink" title="数据库-三大范式"></a>数据库-三大范式</h1><ul>
+<li>原子性: 字段不可分</li>
+<li>唯一性: 有主键(没有主键就没有唯一性)，非主键字段依赖主键</li>
+<li>消除冗余: 每列都与主键有直接关系, 非主键字段不能相互依赖</li>
+</ul>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/09/02/MySQL-Tips-Tracks/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
     <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/02/Distributed-ID-Generator/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -256,7 +623,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-19 15:41:47" itemprop="dateModified" datetime="2021-09-19T15:41:47+08:00">2021-09-19</time>
+        <time title="修改时间：2021-09-21 21:03:56" itemprop="dateModified" datetime="2021-09-21T21:03:56+08:00">2021-09-21</time>
       </span>
 
   
@@ -351,7 +718,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-19 15:41:47" itemprop="dateModified" datetime="2021-09-19T15:41:47+08:00">2021-09-19</time>
+        <time title="修改时间：2021-09-21 21:03:56" itemprop="dateModified" datetime="2021-09-21T21:03:56+08:00">2021-09-21</time>
       </span>
 
   
@@ -447,7 +814,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-19 15:41:47" itemprop="dateModified" datetime="2021-09-19T15:41:47+08:00">2021-09-19</time>
+        <time title="修改时间：2021-09-21 21:03:55" itemprop="dateModified" datetime="2021-09-21T21:03:55+08:00">2021-09-21</time>
       </span>
 
   
@@ -540,7 +907,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-19 15:41:47" itemprop="dateModified" datetime="2021-09-19T15:41:47+08:00">2021-09-19</time>
+        <time title="修改时间：2021-09-21 21:03:55" itemprop="dateModified" datetime="2021-09-21T21:03:55+08:00">2021-09-21</time>
       </span>
 
   
@@ -637,7 +1004,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-09-19 15:41:47" itemprop="dateModified" datetime="2021-09-19T15:41:47+08:00">2021-09-19</time>
+        <time title="修改时间：2021-09-21 21:03:55" itemprop="dateModified" datetime="2021-09-21T21:03:55+08:00">2021-09-21</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -726,13 +1093,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">109k</span>
+    <span title="站点总字数">115k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:39</span>
+    <span title="站点阅读时长">1:44</span>
   </span>
 </div>
 <div class="busuanzi-count">

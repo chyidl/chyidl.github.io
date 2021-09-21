@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-09-18T10:23:08.000Z</updated>
+  <updated>2021-09-21T08:30:55.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Have Read - Structure and Interpretation of Computer Programs</title>
+    <link href="http://chyidl.github.io/2021/09/21/Have-Read-Structure-and-Interpretation-of-Computer-Programs/"/>
+    <id>http://chyidl.github.io/2021/09/21/Have-Read-Structure-and-Interpretation-of-Computer-Programs/</id>
+    <published>2021-09-21T08:30:55.000Z</published>
+    <updated>2021-09-21T08:30:55.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Cyclic redundancy check Intro</title>
+    <link href="http://chyidl.github.io/2021/09/21/Cyclic-redundancy-check-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/21/Cyclic-redundancy-check-Intro/</id>
+    <published>2021-09-21T03:52:18.000Z</published>
+    <updated>2021-09-21T03:52:18.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;CRC-Cyclic-redundancy-check&quot;&gt;&lt;a href=&quot;#CRC-Cyclic-redundancy-check&quot; class=&quot;headerlink&quot; title=&quot;CRC - Cyclic redundancy</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Algorithm" scheme="http://chyidl.github.io/tags/Algorithm/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes Intro</title>
+    <link href="http://chyidl.github.io/2021/09/19/Kubernetes-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/19/Kubernetes-Intro/</id>
+    <published>2021-09-19T14:11:16.000Z</published>
+    <updated>2021-09-19T14:11:16.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;Kubernetes&quot;&gt;&lt;a href=&quot;#Kubernetes&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes&quot;&gt;&lt;/a&gt;Kubernetes&lt;/h1&gt;&lt;h2 id=&quot;容器基础&quot;&gt;&lt;a href=&quot;#容器基础&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="Kubernetes" scheme="http://chyidl.github.io/tags/Kubernetes/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <link href="http://chyidl.github.io/2021/09/19/Prometheus-Grafana-Intro/"/>
+    <id>http://chyidl.github.io/2021/09/19/Prometheus-Grafana-Intro/</id>
+    <published>2021-09-19T13:03:49.000Z</published>
+    <updated>2021-09-19T13:03:49.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;Prometheus&quot;&gt;&lt;a href=&quot;#Prometheus&quot; class=&quot;headerlink&quot; title=&quot;Prometheus&quot;&gt;&lt;/a&gt;Prometheus&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;First Steps&lt;figure</summary>
+        
+      
+    
+    
+    
+    
+    <category term="监控" scheme="http://chyidl.github.io/tags/%E7%9B%91%E6%8E%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>Dell PowerEdge R720 Intro</title>
@@ -423,83 +506,6 @@
     
     
     <category term="golangci-lint" scheme="http://chyidl.github.io/tags/golangci-lint/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Makefile Intro</title>
-    <link href="http://chyidl.github.io/2021/09/08/Makefile-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/08/Makefile-Intro/</id>
-    <published>2021-09-08T09:00:38.000Z</published>
-    <updated>2021-09-08T09:00:38.000Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>MySQL Index Intro</title>
-    <link href="http://chyidl.github.io/2021/09/08/MySQL-Index-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/08/MySQL-Index-Intro/</id>
-    <published>2021-09-08T04:21:01.000Z</published>
-    <updated>2021-09-08T04:21:01.000Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>gRPC Intro</title>
-    <link href="http://chyidl.github.io/2021/09/07/gRPC-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/07/gRPC-Intro/</id>
-    <published>2021-09-07T13:50:41.000Z</published>
-    <updated>2021-09-07T13:50:41.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;gRPC&quot;&gt;&lt;a href=&quot;#gRPC&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    
-    <category term="gRPC" scheme="http://chyidl.github.io/tags/gRPC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Protocol Buffer Intro</title>
-    <link href="http://chyidl.github.io/2021/09/07/Protocol-Buffer-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/07/Protocol-Buffer-Intro/</id>
-    <published>2021-09-07T13:43:25.000Z</published>
-    <updated>2021-09-07T13:43:25.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Protocol-Buffers&quot;&gt;&lt;a href=&quot;#Protocol-Buffers&quot; class=&quot;headerlink&quot; title=&quot;Protocol Buffers&quot;&gt;&lt;/a&gt;Protocol Buffers&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;主要特征&lt;ul&gt;
-&lt;li&gt;更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度&lt;/li&gt;
-&lt;li&gt;跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端&lt;/li&gt;
-&lt;li&gt;良好的扩展性和兼容性:&lt;/li&gt;
-&lt;li&gt;基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="Protocol Buffer" scheme="http://chyidl.github.io/tags/Protocol-Buffer/"/>
     
   </entry>
   
