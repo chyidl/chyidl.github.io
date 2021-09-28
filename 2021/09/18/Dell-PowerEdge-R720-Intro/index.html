@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dell-EMC-PowerEdge-R720"><span class="nav-number">1.</span> <span class="nav-text">Dell EMC PowerEdge R720</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dell-iDRAC"><span class="nav-number">1.1.</span> <span class="nav-text">Dell iDRAC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Ubuntu-20-04-on-R720"><span class="nav-number">1.2.</span> <span class="nav-text">Install Ubuntu 20.04 on R720</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Dell-EMC-PowerEdge-R720"><span class="nav-number">1.</span> <span class="nav-text">Dell EMC PowerEdge R720</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Dell-iDRAC"><span class="nav-number">1.1.</span> <span class="nav-text">Dell iDRAC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vSphere-ESXi-vCenter-%E5%8C%BA%E5%88%AB"><span class="nav-number">1.2.</span> <span class="nav-text">vSphere,ESXi,vCenter 区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Ubuntu-20-04-on-R720"><span class="nav-number">1.3.</span> <span class="nav-text">Install Ubuntu 20.04 on R720</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">41</span>
+          <span class="site-state-item-count">43</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -175,7 +175,7 @@
         <span class="site-state-item-name">分类</span>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-count">47</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -270,14 +270,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
+      <span>1.9k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -292,6 +292,13 @@
 
 <h2 id="Dell-iDRAC"><a href="#Dell-iDRAC" class="headerlink" title="Dell iDRAC"></a>Dell iDRAC</h2><figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">iDRAC (Integrated Dell Remote Access Controller) 远程控制卡, iDRAC相当于附加在服务器上计算机，可以实现一对一的服务器远程管理与监控，通过与服务器主板上的管理芯片BMC进行通信,监控和管理服务器的硬件状态信息，拥有自己的系统和IP地址，与服务器上的OS无关,是管理员进行远程访问和管理的利器.</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">iDRAC登陆界面默认的用户名是root密码calvin</span></span><br></pre></td></tr></table></figure>
 
+<h2 id="vSphere-ESXi-vCenter-区别"><a href="#vSphere-ESXi-vCenter-区别" class="headerlink" title="vSphere,ESXi,vCenter 区别"></a>vSphere,ESXi,vCenter 区别</h2><ul>
+<li>VMware Inc. 软件公司提供包括云产品，数据中心产品和桌面产品</li>
+<li>vSphere<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">数据中心产品下的一套软件, 包括vCenter, EXSi和vSphere <span class="keyword">client</span>, vSphere不是一个可以安装使用的软件，只是一个包含其他组件的集合.</span><br></pre></td></tr></table></figure></li>
+<li>vSphere client<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vSphere <span class="keyword">client</span>允许管理员访问ESXi服务并管理虚拟机。vSphere <span class="keyword">client</span>是安装在客户端上面，vSphere <span class="keyword">client</span>用来连接ESXi服务器和管理任务, 用来访问ESXi服务安装和管理上面的虚拟机</span><br><span class="line">vSphere <span class="keyword">client</span>可以在小环境中直接管理ESXi服务，可以在大规模的环境中，通过vCenter服务间接管理ESXi服务</span><br></pre></td></tr></table></figure></li>
+<li>EXSi<figure class="highlight erlang"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ESXi是虚拟化服务，所有的虚拟机都运行在ESXi服务上面,为了安装，管理和访问虚拟机，需要vSphere client或vCenter.</span><br><span class="line">ESXi安装在物理机上面的服务.</span><br></pre></td></tr></table></figure></li>
+<li>vCenter server<figure class="highlight axapta"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">VMware vCenter <span class="keyword">server</span>是一个企业级别的产品, 中心化的管理应用，可以通过管理所有的虚拟机和ESXi物理机</span><br><span class="line">vCenter服务用在有很多EXSi服务和许多虚拟机的大规模环境中</span><br></pre></td></tr></table></figure></li>
+</ul>
 <h2 id="Install-Ubuntu-20-04-on-R720"><a href="#Install-Ubuntu-20-04-on-R720" class="headerlink" title="Install Ubuntu 20.04 on R720"></a>Install Ubuntu 20.04 on R720</h2><ul>
 <li>Show Hardware and Network Infomation<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">chyiyaqing in ~ at chyiyaqing-PowerEdge-R720</span><br><span class="line">➜ wget -qO- bench.sh | bash</span><br><span class="line"></span><br><span class="line">grep: /<span class="keyword">proc</span>/1/environ:<span class="title"> Permission</span> denied</span><br><span class="line">----------------------------------------------------------------------<span class="title"></span></span><br><span class="line"><span class="title"> CPU</span> Model             :<span class="title"> Intel(R)</span> Xeon(R)<span class="title"> CPU</span> E5-2650<span class="title"> v2</span> @ 2.60GHz<span class="title"></span></span><br><span class="line"><span class="title"> CPU</span> Cores             : 32<span class="title"></span></span><br><span class="line"><span class="title"> CPU</span> Frequency         : 1204.573<span class="title"> MHz</span></span><br><span class="line"><span class="title"> CPU</span> Cache             : 20480<span class="title"> KB</span></span><br><span class="line"><span class="title"> Total</span> Disk            : 1127.3<span class="title"> GB</span> (9.2<span class="title"> GB</span> Used)<span class="title"></span></span><br><span class="line"><span class="title"> Total</span> Mem             : 32106<span class="title"> MB</span> (1015<span class="title"> MB</span> Used)<span class="title"></span></span><br><span class="line"><span class="title"> Total</span> Swap            : 2047<span class="title"> MB</span> (0<span class="title"> MB</span> Used)<span class="title"></span></span><br><span class="line"><span class="title"> System</span> uptime         : 0<span class="title"> days,</span> 0<span class="title"> hour</span> 22<span class="title"> min</span></span><br><span class="line"><span class="title"> Load</span> average          : 0.07, 0.09, 0.17<span class="title"></span></span><br><span class="line"><span class="title"> OS</span>                    :<span class="title"> Ubuntu</span> 20.04.3<span class="title"> LTS</span></span><br><span class="line"><span class="title"> Arch</span>                  :<span class="title"> x86_64</span> (64<span class="title"> Bit)</span></span><br><span class="line"><span class="title"> Kernel</span>                : 5.11.0-36-generic<span class="title"></span></span><br><span class="line"><span class="title"> TCP</span> CC                :<span class="title"> cubic</span></span><br><span class="line"><span class="title"> Virtualization</span>        :<span class="title"> Dedicated</span></span><br><span class="line">----------------------------------------------------------------------<span class="title"></span></span><br><span class="line"><span class="title"> I/O</span> Speed(1st<span class="title"> run)</span>    : 323<span class="title"> MB/s</span></span><br><span class="line"><span class="title"> I/O</span> Speed(2nd<span class="title"> run)</span>    : 267<span class="title"> MB/s</span></span><br><span class="line"><span class="title"> I/O</span> Speed(3rd<span class="title"> run)</span>    : 275<span class="title"> MB/s</span></span><br><span class="line"><span class="title"> Average</span> I/O<span class="title"> speed</span>     : 288.3<span class="title"> MB/s</span></span><br><span class="line">----------------------------------------------------------------------<span class="title"></span></span><br><span class="line"><span class="title"> Node</span> Name<span class="title">        Upload</span> Speed<span class="title">      Download</span> Speed<span class="title">      Latency</span></span><br><span class="line"><span class="title"> Shanghai</span> <span class="title">  CT</span>    49.45<span class="title"> Mbps</span>        256.81<span class="title"> Mbps</span>         9.34<span class="title"> ms</span></span><br><span class="line"><span class="title"> Shanghai</span> <span class="title">  CU</span>    50.03<span class="title"> Mbps</span>        263.91<span class="title"> Mbps</span>         17.96<span class="title"> ms</span></span><br><span class="line"><span class="title"> Guangzhou</span> <span class="title"> CT</span>    55.97<span class="title"> Mbps</span>        264.49<span class="title"> Mbps</span>         35.69<span class="title"> ms</span></span><br><span class="line"><span class="title"> Guangzhou</span> <span class="title"> CU</span>    50.19<span class="title"> Mbps</span>        257.02<span class="title"> Mbps</span>         31.51<span class="title"> ms</span></span><br><span class="line">----------------------------------------------------------------------</span><br></pre></td></tr></table></figure></li>
 </ul>
@@ -359,7 +366,7 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">1:57</span>
+    <span title="站点阅读时长">1:58</span>
   </span>
 </div>
 <div class="busuanzi-count">
