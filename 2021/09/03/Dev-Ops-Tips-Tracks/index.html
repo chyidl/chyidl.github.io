@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="DevOps BOOTCAMP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Dev-Ops Tips &amp; Tracks">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/">
+<meta property="og:site_name" content="Stay Hungry Stay Foolish">
+<meta property="og:description" content="DevOps BOOTCAMP">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/devops-pipeline.png">
+<meta property="article:published_time" content="2021-09-03T00:01:55.000Z">
+<meta property="article:modified_time" content="2021-09-03T00:01:55.000Z">
+<meta property="article:author" content="chyi">
+<meta property="article:tag" content="DevOps">
+<meta property="article:tag" content="Bootcamp">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://chyidl.github.io/misc/images/devops-pipeline.png">
+
+
+<link rel="canonical" href="http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/","path":"2021/09/03/Dev-Ops-Tips-Tracks/","title":"Dev-Ops Tips & Tracks"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Dev-Ops Tips & Tracks | Stay Hungry Stay Foolish</title>
+  
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?516e4e6590bcf7090ded728a1abdd5aa"></script>
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/chyidl" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stay Hungry Stay Foolish</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alaways be curious to learn more and achieve more.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#DevOps-BOOTCAMP"><span class="nav-number">1.</span> <span class="nav-text">DevOps BOOTCAMP</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#DevOps"><span class="nav-number">1.1.</span> <span class="nav-text">DevOps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Operating-Systems"><span class="nav-number">1.2.</span> <span class="nav-text">Operating Systems</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Version-Control"><span class="nav-number">1.3.</span> <span class="nav-text">Version Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Build-Tools-amp-Package-Manager"><span class="nav-number">1.4.</span> <span class="nav-text">Build Tools &amp; Package Manager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Artifact-Repository-Manager"><span class="nav-number">1.5.</span> <span class="nav-text">Artifact Repository Manager</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CI-CD"><span class="nav-number">1.6.</span> <span class="nav-text">CI&#x2F;CD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cloud-IaaS"><span class="nav-number">1.7.</span> <span class="nav-text">Cloud - IaaS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Infrastructure-Privisioning"><span class="nav-number">1.8.</span> <span class="nav-text">Infrastructure Privisioning</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming"><span class="nav-number">1.9.</span> <span class="nav-text">Programming</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Containers"><span class="nav-number">1.10.</span> <span class="nav-text">Containers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Container-Orchestration"><span class="nav-number">1.11.</span> <span class="nav-text">Container Orchestration</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Configuration-Management"><span class="nav-number">1.12.</span> <span class="nav-text">Configuration Management</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Monitoring"><span class="nav-number">1.13.</span> <span class="nav-text">Monitoring</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%93%E4%B8%9A%E5%90%8D%E8%AF%8D"><span class="nav-number">1.14.</span> <span class="nav-text">专业名词</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Wrap-Up-%E6%80%BB%E7%BB%93"><span class="nav-number">1.15.</span> <span class="nav-text">Wrap Up: 总结</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chyi"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">chyi</p>
+  <div class="site-description" itemprop="description">ああ月sブログ</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">45</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">47</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chyidl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chyidl" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/chyiyaqing@gmail.com" title="E-Mail → chyiyaqing@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/ChyiYaqing" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;ChyiYaqing" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fas fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/03/Dev-Ops-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Dev-Ops Tips & Tracks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-03 08:01:55" itemprop="dateCreated datePublished" datetime="2021-09-03T08:01:55+08:00">2021-09-03</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>12k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>11 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="DevOps-BOOTCAMP"><a href="#DevOps-BOOTCAMP" class="headerlink" title="DevOps BOOTCAMP"></a>DevOps BOOTCAMP</h1><span id="more"></span>
+
+<h2 id="DevOps"><a href="#DevOps" class="headerlink" title="DevOps"></a>DevOps</h2><ul>
+<li>Pipeline<figure class="highlight xl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">C<span class="function"><span class="title">ollaborate</span> -&gt;</span> B<span class="function"><span class="title">uild</span> -&gt;</span> T<span class="function"><span class="title">est</span> -&gt;</span> D<span class="function"><span class="title">eploy</span> -&gt;</span> R<span class="function"><span class="title">un</span> -&gt;</span> C<span class="function"><span class="title">onfigure</span> -&gt;</span> Monitor</span><br></pre></td></tr></table></figure></li>
+<li>Tradition: Development vs Operations<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Development</span></span><br><span class="line"><span class="bullet">  -</span> programming languages</span><br><span class="line"><span class="bullet">  -</span> test frameworks</span><br><span class="line"><span class="bullet">  -</span> databases</span><br><span class="line"><span class="bullet">  -</span> version control</span><br><span class="line"></span><br><span class="line"><span class="section"># Operations</span></span><br><span class="line"><span class="bullet">  -</span> OS, mostly Linux</span><br><span class="line"><span class="bullet">  -</span> command-line</span><br><span class="line"><span class="bullet">  -</span> scripting</span><br><span class="line"><span class="bullet">  -</span> monitoring tools</span><br></pre></td></tr></table></figure></li>
+<li>DevOps culture<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> DevOps was just a way <span class="keyword">of</span> working <span class="keyword">between</span> DEV<span class="string">&#x27;s and OP&#x27;</span>s</span><br><span class="line"><span class="number">2.</span> Common <span class="keyword">language</span> <span class="keyword">to</span> communicate</span><br></pre></td></tr></table></figure></li>
+<li>Waterfall vs. Agile<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Waterfall: 瀑布开发</span></span><br><span class="line">  &gt; ineffective process</span><br><span class="line">  &gt; over time new requirements may arise</span><br><span class="line">  &gt; many places of failure and miscommunication</span><br><span class="line"><span class="bullet">  -</span> Requirements:</span><br><span class="line"><span class="bullet">    -</span> plan everything beforehend</span><br><span class="line"><span class="bullet">  -</span> Development:</span><br><span class="line"><span class="bullet">    -</span> developers code complete app</span><br><span class="line"><span class="bullet">  -</span> Testing:</span><br><span class="line"><span class="bullet">    -</span> testing after everything has developed</span><br><span class="line"><span class="bullet">  -</span> Operations:</span><br><span class="line"><span class="bullet">    -</span> huge preparation</span><br><span class="line"></span><br><span class="line"><span class="section"># Agile: 敏捷开发</span></span><br><span class="line">  &gt; speed of development, testing and development cycles</span><br><span class="line">  &gt; each feature gets tested, deployed</span><br><span class="line">  &gt; immediate feedback</span><br><span class="line">  &gt; fast development and deployment process</span><br><span class="line"><span class="bullet">  -</span> Continuous Integration:</span><br><span class="line"><span class="bullet">  -</span> Continuous Delivery:</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Operating-Systems"><a href="#Operating-Systems" class="headerlink" title="Operating Systems"></a>Operating Systems</h2><ul>
+<li>OS &amp; Linux<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"># Intro Operating Systems</span><br><span class="line">  -<span class="ruby"> Hardware of <span class="symbol">Computer:</span></span></span><br><span class="line"><span class="ruby"></span>    &gt; CPU + Memory + Storage + I/O devices</span><br><span class="line">  -<span class="ruby"> Operating <span class="symbol">System:</span></span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Translator</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Manages Resources</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> CPU <span class="symbol">Management:</span></span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Memory Management (RAM = Rapid Access Memory)</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> Memory Swape (Swap-out/Swap-<span class="keyword">in</span>)</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Storage <span class="symbol">Management:</span></span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> Manage File <span class="symbol">System:</span></span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> stored <span class="keyword">in</span> a structured way</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> <span class="keyword">in</span> Unix <span class="symbol">systems:</span> tree file system</span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> <span class="keyword">in</span> Windows <span class="symbol">OS:</span> multiple root folders (Called drives, uses backslashes <span class="keyword">for</span> paths)</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Management I/O Devices</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Security &amp; Networking</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">Security:</span></span></span><br><span class="line"><span class="ruby"></span>          -<span class="ruby"> managing users <span class="keyword">and</span> permissions</span></span><br><span class="line"><span class="ruby"></span>        -<span class="ruby"> <span class="symbol">Networking:</span></span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Isolates(隔离) content of application</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Operating system <span class="symbol">Components:</span></span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> <span class="symbol">kernel:</span></span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> kernel is a program</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Consists of device drivers, dispatcher, scheduler, File System etc.</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> <span class="symbol">POSIX:</span> Portable Operating System Interface</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Linux <span class="keyword">and</span> MacOS both POSIX compliant</span></span><br></pre></td></tr></table></figure></li>
+<li>Windows &amp; Linux CLI</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Windows</th>
+<th align="left">Linux</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">dir</td>
+<td align="left">ls -l</td>
+<td align="left">Directory Listing</td>
+</tr>
+<tr>
+<td align="left">ren</td>
+<td align="left">mv</td>
+<td align="left">rename a files</td>
+</tr>
+<tr>
+<td align="left">copy</td>
+<td align="left">cp</td>
+<td align="left">Copying a file</td>
+</tr>
+<tr>
+<td align="left">move</td>
+<td align="left">mv</td>
+<td align="left">Moving a file</td>
+</tr>
+<tr>
+<td align="left">cls</td>
+<td align="left">clear</td>
+<td align="left">Clear Screen</td>
+</tr>
+<tr>
+<td align="left">del</td>
+<td align="left">rm</td>
+<td align="left">Delete file</td>
+</tr>
+<tr>
+<td align="left">chdir</td>
+<td align="left">pwd</td>
+<td align="left">returns your current directory location</td>
+</tr>
+<tr>
+<td align="left">time</td>
+<td align="left">date</td>
+<td align="left">displays the time</td>
+</tr>
+<tr>
+<td align="left">cd</td>
+<td align="left">cd</td>
+<td align="left">Change the current directory</td>
+</tr>
+<tr>
+<td align="left">md</td>
+<td align="left">mkdir</td>
+<td align="left">To create a new directory/folder</td>
+</tr>
+<tr>
+<td align="left">echo</td>
+<td align="left">echo</td>
+<td align="left">To print something on the screen</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>Virtualization虚拟化</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># VirtualBox:</span></span><br><span class="line">  &gt; VirtualBox takes<span class="built_in"> hardware </span>resources <span class="keyword">from</span> Host OS.</span><br><span class="line">  &gt; Creates virtual CPU, virtual RAM, virtual storage <span class="keyword">for</span> each virtual machine.</span><br><span class="line">  &gt;<span class="built_in"> Hardware </span>resources are shared</span><br><span class="line"></span><br><span class="line"><span class="comment"># Bare Metal(for server): Hardware -&gt; Hypervisor -&gt; Guest OS</span></span><br><span class="line">  - wmware ESXi</span><br><span class="line">  - Microsoft Hyper-v</span><br><span class="line"></span><br><span class="line">  - Efficient usage of<span class="built_in"> hardware </span>resources</span><br><span class="line">    - use all the resources of performant big<span class="built_in"> server</span></span><br><span class="line"><span class="built_in"></span>    -<span class="built_in"> Users </span>can choose any resources combinations</span><br><span class="line">  - Abstraction of the Operating<span class="built_in"> System </span><span class="keyword">from</span> the<span class="built_in"> hardware</span></span><br><span class="line"><span class="built_in"></span>    - Secure very easily</span><br><span class="line">    - Portable</span><br><span class="line">    - <span class="keyword">Not</span> dependent on physical<span class="built_in"> server</span></span><br><span class="line"><span class="built_in"></span><span class="comment"># Sharing things is not good for isolation</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Linux File System</p>
+<figure class="highlight tcl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">&gt; Everything in Linux is a File</span><br><span class="line"><span class="comment"># Linux File System</span></span><br><span class="line">  - hierarchical tree structure</span><br><span class="line">  - <span class="number">1</span> root folder</span><br><span class="line">  - multiple users on computer</span><br><span class="line">  - each user has its own space</span><br><span class="line">  - each user can have own configurations</span><br><span class="line">  - programs installed system wide, are avaiable <span class="keyword">for</span> all users</span><br><span class="line"></span><br><span class="line">  ➜ tree / -L <span class="number">1</span></span><br><span class="line">  /</span><br><span class="line">  ├── bin -&gt; usr/bin      -- executables <span class="keyword">for</span> most essential user commands</span><br><span class="line">  ├── boot                -- contains files required <span class="keyword">for</span> booting (Read Only Folders)</span><br><span class="line">  ├── core</span><br><span class="line">  ├── dev                 -- location of device files, like webcam, keyboard, hard drive etc.</span><br><span class="line">  ├── etc                 -- place where configuration <span class="keyword">for</span> system-wide applications is stored</span><br><span class="line">  ├── home</span><br><span class="line">  ├── k8s_data</span><br><span class="line">  ├── lib -&gt; usr/lib      -- Essential shared libraries that executables from /bin or /sbin use</span><br><span class="line">  ├── lost+found</span><br><span class="line">  ├── media               -- contains subdirectories, where removable media devices inserted into the computer are mounted.</span><br><span class="line">  ├── mnt                 -- historically, sys admins mounted temporary <span class="keyword">file</span> systems there</span><br><span class="line">  ├── opt                 -- third-party program you install</span><br><span class="line">  ├── <span class="keyword">proc</span></span><br><span class="line">  ├──<span class="title"> root</span></span><br><span class="line">  ├──<span class="title"> run</span></span><br><span class="line">  ├──<span class="title"> sbin</span> -&gt;<span class="title"> usr/sbin</span>    --<span class="title"> system</span> binaries:<span class="title"> essential</span> system<span class="title"> binaries</span> programs<span class="title"> that</span> admin<span class="title"> would</span> use (need<span class="title"> superuser</span> privilige)</span><br><span class="line">  ├──<span class="title"> snap</span></span><br><span class="line">  ├──<span class="title"> srv</span></span><br><span class="line">  ├──<span class="title"> sys</span></span><br><span class="line">  ├──<span class="title"> tmp</span>                 --<span class="title"> temporary</span> resources<span class="title"> required</span> for<span class="title"> some</span> process,<span class="title"> kept</span> here<span class="title"> temporarily</span></span><br><span class="line">  ├──<span class="title"> usr</span>                 --<span class="title"> this</span> was<span class="title"> used</span> for<span class="title"> user</span> home<span class="title"> directories</span></span><br><span class="line">    ├──<span class="title"> bin</span></span><br><span class="line">    ├──<span class="title"> config</span></span><br><span class="line">    ├──<span class="title"> games</span></span><br><span class="line">    ├──<span class="title"> include</span></span><br><span class="line">    ├──<span class="title"> lib</span></span><br><span class="line">    ├──<span class="title"> libexec</span></span><br><span class="line">    ├──<span class="title"> local</span>             --<span class="title"> Programs</span> that<span class="title"> you</span> install<span class="title"> on</span> the<span class="title"> computer;</span> will<span class="title"> be</span> avaiable<span class="title"> for</span> all<span class="title"> users</span> on<span class="title"> the</span> computer</span><br><span class="line">    ├──<span class="title"> sbin</span></span><br><span class="line">    ├──<span class="title"> share</span></span><br><span class="line">    └──<span class="title"> src</span></span><br><span class="line">  └──<span class="title"> var</span>                 --<span class="title"> contains</span> files<span class="title"> to</span> which<span class="title"> the</span> system<span class="title"> writes</span> data</span><br><span class="line">    ├──<span class="title"> backups</span></span><br><span class="line">    ├──<span class="title"> cache</span>             --<span class="title"> contains</span> cached<span class="title"> data</span> from<span class="title"> application</span> programs</span><br><span class="line">    ├──<span class="title"> crash</span></span><br><span class="line">    ├──<span class="title"> lib</span></span><br><span class="line">    ├──<span class="title"> local</span></span><br><span class="line">    ├──<span class="title"> lock</span> -&gt; /run/lock</span><br><span class="line">    ├──<span class="title"> log</span>               --<span class="title"> contains</span> log<span class="title"> files</span></span><br><span class="line">    ├──<span class="title"> mail</span></span><br><span class="line">    ├──<span class="title"> opt</span></span><br><span class="line">    ├──<span class="title"> run</span> -&gt; /run</span><br><span class="line">    ├──<span class="title"> snap</span></span><br><span class="line">    ├──<span class="title"> spool</span></span><br><span class="line">    ├──<span class="title"> tmp</span></span><br><span class="line">    └──<span class="title"> www</span></span><br><span class="line">  21<span class="title"> directories,</span> 1<span class="title"> file</span></span><br><span class="line"></span><br><span class="line">  - /usr/local<span class="title"> vs.</span> /opt</span><br><span class="line">    - /usr/local:</span><br><span class="line">      -<span class="title"> programs,</span> which<span class="title"> split</span> its<span class="title"> components</span></span><br><span class="line">    - /opt:</span><br><span class="line">      -<span class="title"> programs,</span> which<span class="title"> NOT</span> split<span class="title"> its</span> components</span><br><span class="line"></span><br><span class="line">#<span class="title"> Hidden</span> Files</span><br><span class="line">  -<span class="title"> ls</span> primarily<span class="title"> used</span> to<span class="title"> help</span> prevent<span class="title"> important</span> data<span class="title"> from</span> being<span class="title"> accientally</span> deleted</span><br><span class="line">  -<span class="title"> Automatically</span> generated<span class="title"> by</span> programs<span class="title"> or</span> operating<span class="title"> system</span></span><br><span class="line">  -<span class="title"> File</span> name<span class="title"> starts</span> with<span class="title"> a</span> dot</span><br><span class="line">  -<span class="title"> In</span> UNIX<span class="title"> also</span> called &quot;dotfiles&quot;</span><br><span class="line"></span><br><span class="line">#<span class="title"> Windows</span> File<span class="title"> System</span></span><br><span class="line">  -<span class="title"> multiple</span> root<span class="title"> folders</span></span><br><span class="line">  -<span class="title"> A,B:</span> Removable<span class="title"> Disks</span></span><br><span class="line">  -<span class="title"> C:</span> Local<span class="title"> Disk</span> -<span class="title"> Internal</span> hard<span class="title"> drive</span></span><br></pre></td></tr></table></figure></li>
+<li><p>Basic Linux Command</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># GUI vs. CLI</span></span><br><span class="line">  - GUI = A graphical user interface</span><br><span class="line">  - CLI = Command Line Interface</span><br><span class="line"></span><br><span class="line">ubuntu <span class="keyword">in</span> ~ <span class="keyword">at</span> k8s-node1 via 🐹 v1<span class="number">.16</span><span class="number">.5</span> via 🐍 <span class="number">3.8</span><span class="number">.6</span></span><br><span class="line">➜</span><br><span class="line">  - ubuntu: user name</span><br><span class="line">  - k8s-node1: computer name</span><br><span class="line">  - ~: home <span class="built_in">directory</span></span><br><span class="line">  - $: represents regular user</span><br><span class="line">  - <span class="comment">#: sign for root user</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Folder Operations</span></span><br><span class="line">  - pwd: Show current <span class="built_in">directory</span></span><br><span class="line">  - ls: List <span class="built_in">folders</span> <span class="keyword">and</span> <span class="built_in">files</span></span><br><span class="line">    - ls -<span class="keyword">a</span> = Show all (including hidden)</span><br><span class="line">  - cd: Change <span class="built_in">directory</span> <span class="built_in">to</span> [dir]</span><br><span class="line">  - mkdir: Make <span class="built_in">directory</span> [dirname]</span><br><span class="line"></span><br><span class="line"><span class="comment"># File Operations</span></span><br><span class="line">  - touch [filename]: Create [filename]</span><br><span class="line">  - rm [filename]: Delete [filename]</span><br><span class="line">    - rm -r [dirname]: Delete <span class="keyword">a</span> non-<span class="literal">empty</span> <span class="built_in">directory</span> <span class="keyword">and</span> all <span class="keyword">the</span> <span class="built_in">files</span> <span class="keyword">within</span> <span class="keyword">it</span>.</span><br><span class="line">    - rm -d [dirname] <span class="keyword">or</span> rmdir [dirname]: Delete <span class="keyword">an</span> <span class="literal">empty</span> <span class="built_in">directory</span></span><br><span class="line">  - mv [filename] [new_filename] = Rename <span class="keyword">the</span> <span class="built_in">file</span> <span class="built_in">to</span> <span class="keyword">a</span> <span class="built_in">new</span> filename</span><br><span class="line">  - cp -r [dirname] [new_dirname] = Copy dirname <span class="built_in">to</span> new_dirname</span><br><span class="line"></span><br><span class="line"><span class="comment"># Display OS Information</span></span><br><span class="line">  - uname -<span class="keyword">a</span>: Show <span class="keyword">system</span> <span class="keyword">and</span> kernel</span><br><span class="line">  Linux k8s-node1 <span class="number">5.4</span><span class="number">.0</span><span class="number">-1043</span>-raspi <span class="comment">#47-Ubuntu SMP PREEMPT Mon Aug 23 09:41:31 UTC 2021 aarch64 aarch64 aarch64 GNU/Linux</span></span><br><span class="line"></span><br><span class="line">  ➜ cat /etc/os-release</span><br><span class="line">  NAME=<span class="string">&quot;Ubuntu&quot;</span></span><br><span class="line">  VERSION=<span class="string">&quot;20.04.3 LTS (Focal Fossa)&quot;</span></span><br><span class="line">  ID=ubuntu</span><br><span class="line">  ID_LIKE=debian</span><br><span class="line">  PRETTY_NAME=<span class="string">&quot;Ubuntu 20.04.3 LTS&quot;</span></span><br><span class="line">  VERSION_ID=<span class="string">&quot;20.04&quot;</span></span><br><span class="line">  HOME_URL=<span class="string">&quot;https://www.ubuntu.com/&quot;</span></span><br><span class="line">  SUPPORT_URL=<span class="string">&quot;https://help.ubuntu.com/&quot;</span></span><br><span class="line">  BUG_REPORT_URL=<span class="string">&quot;https://bugs.launchpad.net/ubuntu/&quot;</span></span><br><span class="line">  PRIVACY_POLICY_URL=<span class="string">&quot;https://www.ubuntu.com/legal/terms-and-policies/privacy-policy&quot;</span></span><br><span class="line">  VERSION_CODENAME=focal</span><br><span class="line">  UBUNTU_CODENAME=focal</span><br><span class="line"></span><br><span class="line">  - lscpu:</span><br><span class="line">  - lsmem:</span><br><span class="line">  - sudo: Allows regular users <span class="built_in">to</span> run programs <span class="keyword">with</span> <span class="keyword">the</span> security privileges <span class="keyword">of</span> <span class="keyword">the</span> superusere <span class="keyword">or</span> root</span><br><span class="line">  - su - chyi: <span class="keyword">switch</span> user</span><br><span class="line"></span><br><span class="line"><span class="comment"># Some More Useful Commands</span></span><br><span class="line">  - <span class="built_in">clear</span>: Clears <span class="keyword">the</span> terminal</span><br><span class="line">  - history: Gives <span class="keyword">a</span> list <span class="keyword">of</span> all past commands typed <span class="keyword">in</span> <span class="keyword">the</span> current terminal session</span><br><span class="line">  - Ctrl + r: Search history</span><br><span class="line">  - Ctrl + c: Stop current <span class="keyword">command</span></span><br><span class="line">  - cat [filename]: Display <span class="keyword">the</span> <span class="built_in">file</span> content</span><br></pre></td></tr></table></figure></li>
+<li><p>Package Manager</p>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">  <span class="number">1</span>. central plcae to install, upgrade,configure, remove software</span><br><span class="line"></span><br><span class="line"># APT - Advanced <span class="keyword">Package</span> <span class="title">Tool</span></span><br><span class="line">  &gt; Dependencies are shared</span><br><span class="line">  &gt; Only <span class="keyword">for</span> specific Linux distributions (<span class="keyword">package</span> <span class="title">type .deb)</span></span><br><span class="line">  &gt; Manual Updates</span><br><span class="line">  - apt search &lt;package_name&gt; = Search <span class="keyword">for</span> a given <span class="keyword">package</span></span><br><span class="line">  <span class="title">- apt install &lt;package_name&gt; = Install a given <span class="keyword">package</span></span></span><br><span class="line">  - apt remove &lt;package_name&gt; = Remove installed <span class="keyword">package</span></span><br><span class="line">  <span class="title">- apt update = Updates the packages index</span></span><br><span class="line"></span><br><span class="line"># Repositories:</span><br><span class="line">  &gt; storage location, containing thousands <span class="keyword">of</span> programs</span><br><span class="line"></span><br><span class="line"># Snap <span class="keyword">Package</span> <span class="title">Manager:</span></span><br><span class="line">  &gt; A snap <span class="keyword">is</span> a bundle <span class="keyword">of</span> an app <span class="keyword">and</span> its dependencies</span><br><span class="line">  &gt; Supports universal Linux packages (<span class="keyword">package</span> <span class="title">type .snap)</span></span><br><span class="line">  &gt; Automatic Updates</span><br><span class="line">  - Self-contained - dependencies contained <span class="keyword">in</span> the <span class="keyword">package</span></span><br><span class="line"></span><br><span class="line"><span class="title"># Add Repository to official l</span>ist <span class="keyword">of</span> repos (add-apt-repository)</span><br><span class="line"># PPA = Personal <span class="keyword">Package</span> <span class="title">Archive</span></span><br><span class="line">  - PPAs are provided by the community</span><br><span class="line"></span><br><span class="line"># Debian Based:   <span class="comment">-- APT/APT-GET</span></span><br><span class="line">  - Ubuntu</span><br><span class="line">  - Debian</span><br><span class="line">  - Mint</span><br><span class="line"># Red Had Based:  <span class="comment">-- Yum</span></span><br><span class="line">  - RHEL</span><br><span class="line">  - CentOS</span><br><span class="line">  - Fedora</span><br></pre></td></tr></table></figure></li>
+<li><p>Vim Editor</p>
+<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"># Vim Mode:</span><br><span class="line">  - Command Mode:</span><br><span class="line">    - Navigate, Search, <span class="keyword">Delete</span>, Undo etc.</span><br><span class="line">    - Whatever you <span class="built_in">type</span> <span class="keyword">is</span> interpreted <span class="keyword">as</span> a command</span><br><span class="line">  - <span class="keyword">Insert</span> Mode:</span><br><span class="line">#</span><br><span class="line">- Press i <span class="keyword">key</span> = Switch <span class="keyword">to</span> <span class="keyword">insert</span> Mode</span><br><span class="line">- Press esc <span class="keyword">key</span> = Switch <span class="keyword">to</span> Command Mode</span><br><span class="line">- <span class="built_in">Type</span> dd = <span class="keyword">Delete</span> entire line</span><br><span class="line">- <span class="built_in">Type</span> d10 = <span class="keyword">Delete</span> next <span class="number">10</span> lines</span><br><span class="line">- <span class="built_in">Type</span> u = Undo</span><br><span class="line">- <span class="built_in">Type</span> $ = Jump <span class="keyword">to</span> <span class="keyword">end</span> of the line</span><br><span class="line">- <span class="built_in">Type</span> <span class="number">0</span> = Jump <span class="keyword">to</span> <span class="keyword">start</span> of the line</span><br><span class="line">- <span class="built_in">Type</span> /pattern = Search <span class="keyword">for</span> pattern</span><br><span class="line">- <span class="built_in">Type</span> :%s/old/new = <span class="built_in">Replace</span> old <span class="keyword">with</span> new throughout the file</span><br></pre></td></tr></table></figure></li>
+<li><p>Users &amp; Permissions</p>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># User Accounts:</span></span><br><span class="line">  - Superuser Account:</span><br><span class="line">  - <span class="keyword">User</span> <span class="title">Account</span>:</span><br><span class="line">  - Service Account:</span><br><span class="line">    - Don&#x27;t run services with root user!</span><br><span class="line"></span><br><span class="line">  - adduser <span class="tag">&lt;username&gt;</span> = Create a new <span class="keyword">user</span></span><br><span class="line"></span><br><span class="line"><span class="title"># Groups</span> &amp; Ownership</span><br><span class="line">  - <span class="keyword">User</span> <span class="title">Level</span>:</span><br><span class="line">  - <span class="keyword">Group</span> <span class="title">Level</span>:</span><br><span class="line"></span><br><span class="line"><span class="comment"># Access Control Files:</span></span><br><span class="line">  - /etc/passwd:</span><br><span class="line">    - Stores <span class="keyword">user</span> <span class="title">account</span> <span class="literal">inf</span>ormation</span><br><span class="line">    - Everyone can <span class="keyword">read</span> it, but only root <span class="keyword">user</span> <span class="title">can</span> change the file</span><br><span class="line"></span><br><span class="line">    ➜ cat /etc/passwd | grep pi</span><br><span class="line">    pi:x:<span class="number">1000</span>:<span class="number">1000</span>:,,,:/home/pi:/usr/bin/zsh</span><br><span class="line">    USERNAME:PASSWORD:UID:GID:GECOS:HOMEDIR:SHELL</span><br><span class="line">      - PASSWORD(x) means, that encrypted password is stored <span class="keyword">in</span> /etc/shadow file</span><br><span class="line">      - <span class="keyword">User</span> <span class="title">ID</span>(UID): Each <span class="keyword">user</span> <span class="title">has</span> a unique ID. UID <span class="number">0</span> is reserved for root</span><br><span class="line">  - /etc/shadow</span><br><span class="line">  - /etc/<span class="keyword">group</span></span><br><span class="line"></span><br><span class="line"><span class="title"># File</span> Permissions</span><br><span class="line"></span><br><span class="line"><span class="comment"># Linux Commands for Managing Users and their permissions</span></span><br><span class="line">  - passwd <span class="tag">&lt;username&gt;</span> = Change password of a <span class="keyword">user</span></span><br><span class="line">  <span class="title">- su</span> - <span class="tag">&lt;username&gt;</span> = Login as username (su = switch user)</span><br><span class="line">  - su - = Login as root</span><br><span class="line">  - groupadd <span class="tag">&lt;groupname&gt;</span> = Create new <span class="keyword">group</span></span><br><span class="line">  <span class="title">- usermod</span> [OPTIONS] <span class="tag">&lt;username&gt;</span> = Modify a <span class="keyword">user</span> <span class="title">account</span></span><br><span class="line">  - useradd [OPTIONS] <span class="tag">&lt;username&gt;</span> = Create a new <span class="keyword">user</span></span><br><span class="line">  <span class="title">- groups</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Different User &amp; Group Commands</span></span><br><span class="line">  - adduser/addgroup/deluser/delgroup:</span><br><span class="line">    - More <span class="keyword">User</span> <span class="title">Friendly</span></span><br><span class="line">  - useradd/groupadd/userdel/groupdel:</span><br><span class="line">    - Low-level utilties</span><br></pre></td></tr></table></figure></li>
+<li><p>Shell Scripting</p>
+</li>
+<li><p>Environmemt Variables</p>
+</li>
+<li><p>Networking</p>
+</li>
+<li><p>SSH - Secure Shell</p>
+</li>
+</ul>
+<h2 id="Version-Control"><a href="#Version-Control" class="headerlink" title="Version Control"></a>Version Control</h2><ul>
+<li>GUI Git<ul>
+<li>github</li>
+<li>gitlab<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Git global setup</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git config --global user.name <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git config --global user.email <span class="string">&quot;&quot;</span></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Create a new repository</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git <span class="built_in">clone</span> git@gitlab.com:</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Push an existing folder</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> <span class="built_in">cd</span> existing_folder</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git init</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git remote add origin https://gitlab.com/chyiyaqing/my-project.git</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git branch -M main</span></span><br><span class="line"><span class="meta">  $</span><span class="bash"> git push -uf origin main</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 使用SSH Key</span></span><br><span class="line">  - GitHub/GitLab can authenticate us when pushing/pulling from repository</span><br><span class="line">  - without providing username and password each time.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>Git<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># Git Stages</span></span><br><span class="line"><span class="bullet">  -</span> Working Directory (git add -&gt; Staging Area)</span><br><span class="line"><span class="bullet">  -</span> Staging Area (git commit -&gt; Local Repository)</span><br><span class="line"><span class="bullet">  -</span> Local Repository</span><br><span class="line"></span><br><span class="line"><span class="section"># Git Command Tools</span></span><br><span class="line"><span class="bullet">  -</span> git status : status of local git repo</span><br><span class="line"><span class="bullet">  -</span> git add:</span><br><span class="line"><span class="bullet">  -</span> git commit:</span><br><span class="line"><span class="bullet">  -</span> git log: history of local repository changes</span><br><span class="line"><span class="bullet">  -</span> git init:</span><br><span class="line"><span class="bullet">  -</span> git pull:</span><br><span class="line"><span class="bullet">  -</span> git checkout <span class="xml"><span class="tag">&lt;<span class="name">branch</span> <span class="attr">name</span>&gt;</span></span> = switch branches</span><br><span class="line"><span class="bullet">  -</span> git checkout -b <span class="xml"><span class="tag">&lt;<span class="name">branch</span> <span class="attr">name</span>&gt;</span></span> = creating and switching to new branch</span><br><span class="line"><span class="section"># Branch</span></span><br><span class="line"><span class="bullet">  -</span> Master branch = main branch is created by default, when initializing a git repo</span><br><span class="line"><span class="bullet">    -</span> best practice: 1 branch per bugfix or feature</span><br><span class="line"><span class="bullet">    -</span> big feature branches long open, increase the chanceee of merge conflicts</span><br><span class="line"><span class="bullet">    -</span> only master branch for continuous integration/delivery</span><br><span class="line"><span class="bullet">    -</span> pipeline is triggered whenever feature/bugfix code is merged into master</span><br><span class="line"><span class="bullet">    -</span> must be stable and ready for production</span><br><span class="line"><span class="bullet">  -</span> Develop Branch</span><br><span class="line"><span class="bullet">    -</span> dev branch: intermediary master</span><br><span class="line"><span class="bullet">  -</span> Avoiding Merge Commits (rebase)</span><br><span class="line"><span class="bullet">    -</span> git pull(git fetch + git merge) vs. git pull --rebase (no merge commit, much cleaner project history)</span><br><span class="line"><span class="bullet">  -</span> Resolving Merge Conflicts</span><br><span class="line"><span class="bullet">  -</span> Don&#x27;t track certain files (.gitignore file)</span><br><span class="line"><span class="bullet">    -</span> .gitignore: to exclude certain folders or files from git to be tracked</span><br><span class="line"><span class="bullet">    -</span> git rm -r --cached : Stop tracking a file</span><br><span class="line"><span class="bullet">  -</span> Save work-in-progress changes (stash)</span><br><span class="line"><span class="bullet">    -</span> git stash (save un-committed (work-in-progress) changes, unfinished changes, which don&#x27;t want to commit yet)</span><br><span class="line"><span class="bullet">    -</span> git stash pop (get the changes back)</span><br><span class="line"><span class="bullet">  -</span> Going back in history</span><br><span class="line"><span class="bullet">    -</span> git checkout <span class="xml"><span class="tag">&lt;<span class="name">commit</span> <span class="attr">hash</span>&gt;</span></span> (go back to a specific project version)</span><br><span class="line"><span class="bullet">    -</span> Each commit: (unique commit hash, commit message, author + date)</span><br><span class="line"><span class="bullet">  -</span> Undoing and changing commits</span><br><span class="line"><span class="bullet">    -</span> git reset --hard <span class="xml">&lt;HEAD~1&gt;</span> (removed old commit)</span><br><span class="line"><span class="bullet">    -</span> git reset --soft (keep the changes in your working directory)</span><br><span class="line"><span class="bullet">    -</span> git revert <span class="xml"><span class="tag">&lt;<span class="name">commit</span> <span class="attr">hash</span>&gt;</span></span> (creates a new commit to revert the old commits changesj)</span><br><span class="line"><span class="bullet">    -</span> git commit --amend (changing the last commit)</span><br><span class="line"><span class="bullet">  -</span> Merging Branches</span><br><span class="line"></span><br><span class="line"><span class="section"># Merge Requests:</span></span><br><span class="line"><span class="bullet">  -</span> Best practice: Other developer reviews code changes before merging</span><br><span class="line"><span class="section"># Git 名词解释</span></span><br><span class="line"><span class="bullet">  -</span> origin = your remote git project/repo</span><br><span class="line"></span><br><span class="line"><span class="section"># Git for DevOps</span></span><br><span class="line"><span class="bullet">  -</span> Infrastructure as Code</span><br><span class="line"><span class="bullet">    -</span> Many Kubernetes Configuration Files (Yaml) (Deployment to Kubernetes)</span><br><span class="line"><span class="bullet">    -</span> Terraform and Ansible Configuration Files</span><br><span class="line"><span class="bullet">    -</span> Bash and Python Python Scripts</span><br><span class="line"><span class="bullet">    -</span> tracked - history of changes</span><br><span class="line"><span class="bullet">    -</span> securely stored in one place</span><br><span class="line"><span class="bullet">  -</span> CI/CD Pipeline and Build Automation</span><br><span class="line"><span class="bullet">    -</span> checkout code, test and build application, etc.</span><br><span class="line"><span class="bullet">    -</span> need integration for the build automation tool with application git repository</span><br></pre></td></tr></table></figure></li>
+<li>Databases<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line">&gt; Database are used to persist data!</span><br><span class="line">-<span class="ruby"> DB endpoint &amp; credentials should <span class="keyword">not</span> be hardcode</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"># DevOps Engineer</span><br><span class="line">  -<span class="ruby"> how to configure DB</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> hot to setup DB</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> how to manage DB</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"># Database Types</span><br><span class="line">  -<span class="ruby"> Key-Value Database</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Redis</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Memcached</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> etcd from Kubernetes</span></span><br><span class="line"><span class="ruby"></span>    # Best for:</span><br><span class="line">      -<span class="ruby"> Caching</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Message Queue</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Wide Column Database (schema-less, scalable, no joins)</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Cassandra</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> HBase</span></span><br><span class="line"><span class="ruby"></span>    # Best for:</span><br><span class="line">      -<span class="ruby"> TIME-Series</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Iot-Records</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Historical-records</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Document Databases (schema-less)</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> MongoDB</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> DynamoDB</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> CouchDB</span></span><br><span class="line"><span class="ruby"></span>    # Best for:</span><br><span class="line">      -<span class="ruby"> Mobile Apps</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Game Apps</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Cms</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Most Apps</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Relational Databases (schema, structured query language )</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> MySQL</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Postgresql</span></span><br><span class="line"><span class="ruby"></span>    # Best for:</span><br><span class="line">      -<span class="ruby"> ACID (Atomicity, Consistency, Isolation, Durability)</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Graph Database (Nodes <span class="keyword">and</span> Edges)</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Neo4j</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Dgraph</span></span><br><span class="line"><span class="ruby"></span>    # Best for:</span><br><span class="line">      -<span class="ruby"> Graphs</span></span><br><span class="line"><span class="ruby"></span>      -<span class="ruby"> Patterns</span></span><br><span class="line"><span class="ruby"></span>  -<span class="ruby"> Search Database</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> ElasticSearch</span></span><br><span class="line"><span class="ruby"></span>    -<span class="ruby"> Solr</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Build-Tools-amp-Package-Manager"><a href="#Build-Tools-amp-Package-Manager" class="headerlink" title="Build Tools &amp; Package Manager"></a>Build Tools &amp; Package Manager</h2><ul>
+<li>artifact<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Building the code:</span></span><br><span class="line">  - compiling</span><br><span class="line">  - Compress</span><br><span class="line"></span><br><span class="line"><span class="comment"># Java artifact</span></span><br><span class="line">  - <span class="keyword">JAR </span>= <span class="keyword">Java </span>Archive</span><br><span class="line">  - <span class="keyword">Install </span><span class="keyword">Java</span></span><br><span class="line"><span class="keyword"></span>  - <span class="keyword">Install </span>Maven</span><br><span class="line">  - <span class="keyword">Install </span>Node + NPM</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Artifact-Repository-Manager"><a href="#Artifact-Repository-Manager" class="headerlink" title="Artifact Repository Manager"></a>Artifact Repository Manager</h2><h2 id="CI-CD"><a href="#CI-CD" class="headerlink" title="CI/CD"></a>CI/CD</h2><h2 id="Cloud-IaaS"><a href="#Cloud-IaaS" class="headerlink" title="Cloud - IaaS"></a>Cloud - IaaS</h2><h2 id="Infrastructure-Privisioning"><a href="#Infrastructure-Privisioning" class="headerlink" title="Infrastructure Privisioning"></a>Infrastructure Privisioning</h2><h2 id="Programming"><a href="#Programming" class="headerlink" title="Programming"></a>Programming</h2><h2 id="Containers"><a href="#Containers" class="headerlink" title="Containers"></a>Containers</h2><h2 id="Container-Orchestration"><a href="#Container-Orchestration" class="headerlink" title="Container Orchestration"></a>Container Orchestration</h2><h2 id="Configuration-Management"><a href="#Configuration-Management" class="headerlink" title="Configuration Management"></a>Configuration Management</h2><h2 id="Monitoring"><a href="#Monitoring" class="headerlink" title="Monitoring"></a>Monitoring</h2><h2 id="专业名词"><a href="#专业名词" class="headerlink" title="专业名词"></a>专业名词</h2><ul>
+<li>LTS = Long Term Support</li>
+</ul>
+<h2 id="Wrap-Up-总结"><a href="#Wrap-Up-总结" class="headerlink" title="Wrap Up: 总结"></a>Wrap Up: 总结</h2><ul>
+<li>Pipeline<br><img src="/misc/images/devops-pipeline.png" alt="Pipeline 开发流程"></li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DevOps/" rel="tag"># DevOps</a>
+              <a href="/tags/Bootcamp/" rel="tag"># Bootcamp</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
+    </div>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/02/Redis-Tips-Tracks/" rel="prev" title="Redis Tips & Tracks">
+                  <i class="fa fa-chevron-left"></i> Redis Tips & Tracks
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/03/Elasticsearch-Tips-Tracks/" rel="next" title="Elasticsearch Tips & Tracks">
+                  Elasticsearch Tips & Tracks <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chyidl</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">153k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">2:19</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+  <script src="https://embed.widgetpack.com/widget.js" async></script>
+  <script class="next-config" data-name="rating" type="application/json">{"enable":true,"id":32031,"color":"#fc6423"}</script>
+  <script src="/js/third-party/rating.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
+
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"fdd85007f53eda4c67e4665d7f4622d8"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
+
+</body>
+</html>

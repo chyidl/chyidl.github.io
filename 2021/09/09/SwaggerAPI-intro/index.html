@@ -20,27 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="ああ月sブログ">
+<meta name="description" content="Swagger Swagger是一套围绕OpenAPI规范构建的开源工具,可以设计·构建·编写·使用RESTAPI   Swagger编辑器: Swagger UI: 将OpenAPI规范呈现为交互式API文档，并可以在浏览器中尝试API调用 Swagger Codegen: 根据OpenAPI规范，生成服务器存根和客户端代码库">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Code Review Intro">
-<meta property="og:url" content="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<meta property="og:title" content="SwaggerAPI intro">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="ああ月sブログ">
+<meta property="og:description" content="Swagger Swagger是一套围绕OpenAPI规范构建的开源工具,可以设计·构建·编写·使用RESTAPI   Swagger编辑器: Swagger UI: 将OpenAPI规范呈现为交互式API文档，并可以在浏览器中尝试API调用 Swagger Codegen: 根据OpenAPI规范，生成服务器存根和客户端代码库">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-28T10:53:43.000Z">
-<meta property="article:modified_time" content="2021-09-28T10:53:43.000Z">
+<meta property="article:published_time" content="2021-09-09T03:45:13.000Z">
+<meta property="article:modified_time" content="2021-09-09T03:45:13.000Z">
 <meta property="article:author" content="chyi">
+<meta property="article:tag" content="SwaggerAPI">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<link rel="canonical" href="http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/28/Code-Review-Intro/","path":"2021/09/28/Code-Review-Intro/","title":"Code Review Intro"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/","path":"2021/09/09/SwaggerAPI-intro/","title":"SwaggerAPI intro"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Code Review Intro | Stay Hungry Stay Foolish</title>
+<title>SwaggerAPI intro | Stay Hungry Stay Foolish</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -137,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Swagger"><span class="nav-number">1.</span> <span class="nav-text">Swagger</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Swagger%E5%92%8COpenAPI%E5%8C%BA%E5%88%AB"><span class="nav-number">1.1.</span> <span class="nav-text">Swagger和OpenAPI区别</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#go-swagger%E7%94%9F%E6%88%90Swagger-API-%E6%96%87%E6%A1%A3"><span class="nav-number">1.2.</span> <span class="nav-text">go-swagger生成Swagger API 文档</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/09/SwaggerAPI-intro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -241,7 +243,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Code Review Intro
+          SwaggerAPI intro
         </h1>
 
         <div class="post-meta-container">
@@ -252,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-09-28 18:53:43" itemprop="dateCreated datePublished" datetime="2021-09-28T18:53:43+08:00">2021-09-28</time>
+      <time title="创建时间：2021-09-09 11:45:13" itemprop="dateCreated datePublished" datetime="2021-09-09T11:45:13+08:00">2021-09-09</time>
     </span>
 
   
@@ -269,7 +271,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>1.4k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -287,7 +289,26 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><blockquote>
+<p>Swagger是一套围绕OpenAPI规范构建的开源工具,可以设计·构建·编写·使用RESTAPI</p>
+</blockquote>
+<ul>
+<li>Swagger编辑器:</li>
+<li>Swagger UI: 将OpenAPI规范呈现为交互式API文档，并可以在浏览器中尝试API调用</li>
+<li>Swagger Codegen: 根据OpenAPI规范，生成服务器存根和客户端代码库</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="Swagger和OpenAPI区别"><a href="#Swagger和OpenAPI区别" class="headerlink" title="Swagger和OpenAPI区别"></a>Swagger和OpenAPI区别</h2><ul>
+<li>OpenAPI<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">OpenAPI是一个API规范，前身是<span class="keyword">Swagger规范. </span><span class="keyword">Swagger是实现规范的工具</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="go-swagger生成Swagger-API-文档"><a href="#go-swagger生成Swagger-API-文档" class="headerlink" title="go-swagger生成Swagger API 文档"></a>go-swagger生成Swagger API 文档</h2><ul>
+<li><p>go-swagger特征</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 根据Swagger定义文件生成服务端代码</span><br><span class="line"><span class="bullet">2.</span> 根据Swagger定义文件生成客户端代码</span><br><span class="line"><span class="bullet">3.</span> 校验Swagger定义文件是否正确</span><br><span class="line"><span class="bullet">4.</span> 启动一个HTTP服务器，使我们可以通过浏览器访问API文档</span><br><span class="line"><span class="bullet">5.</span> 根据Swagger文档定义的参数生成Go Model结构体定义</span><br></pre></td></tr></table></figure></li>
+<li><p>Swagger工具</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">github.com<span class="regexp">/chyidl/</span>noone via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ go get -u github.com<span class="regexp">/go-swagger/g</span>o-swagger<span class="regexp">/cmd/</span>swagger</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/</span>noone via 🐹 v1.<span class="number">17</span> took <span class="number">25</span>s</span><br><span class="line">➜ swagger version</span><br><span class="line">version: v0.<span class="number">27.0</span></span><br><span class="line">commit: (unknown, mod sum: <span class="string">&quot;h1:K7+nkBuf4oS1jTBrdvWqYFpqD69V5CN8HamZzCDDhAI=&quot;</span>)</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ swagger generate spec -o swagger.yaml</span><br><span class="line">  -o: 指定输出文件名</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ ls</span><br><span class="line">api          docs         go.mod       main.go      swagger.yaml</span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ swagger serve --no-open -F=swagger --port <span class="number">36666</span> swagger.yaml</span><br><span class="line"><span class="number">2021</span><span class="regexp">/09/</span><span class="number">09</span> <span class="number">12</span>:<span class="number">58</span>:<span class="number">09</span> serving docs at http:<span class="regexp">//</span>localhost:<span class="number">36666</span>/docs</span><br><span class="line">  --no-open: 禁止调用浏览器打开</span><br><span class="line">  -F: 指定文档风格</span><br><span class="line">  --port: 指定启动的HTTP服务监听</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ swagger generate spec -i .<span class="regexp">/swagger.yaml -o ./</span>swagger.json</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> swagger:route POST /users user createUserRequest</span><br><span class="line"><span class="regexp">//</span> Create a user <span class="keyword">in</span> memory.</span><br><span class="line"><span class="regexp">//</span> responses:</span><br><span class="line"><span class="regexp">//</span>   <span class="number">200</span>: createUserResponse</span><br><span class="line"><span class="regexp">//</span>   default: errResponse</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> swagger:route GET <span class="regexp">/users/</span>&#123;name&#125; user getUserRequest</span><br><span class="line"><span class="regexp">//</span> Get a user from memory.</span><br><span class="line"><span class="regexp">//</span> responses:</span><br><span class="line"><span class="regexp">//</span>   <span class="number">200</span>: getUserResponse</span><br><span class="line"><span class="regexp">//</span>   default: errResponse</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 
     
@@ -295,6 +316,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/SwaggerAPI/" rel="tag"># SwaggerAPI</a>
+          </div>
 
         
   <div class="post-widgets">
@@ -305,13 +329,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/28/Awesome-Tools-Intro/" rel="prev" title="Awesome Tools Intro">
-                  <i class="fa fa-chevron-left"></i> Awesome Tools Intro
+                <a href="/2021/09/08/Gin-Crash-Course/" rel="prev" title="Gin Crash Course">
+                  <i class="fa fa-chevron-left"></i> Gin Crash Course
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/28/Hyperledger-Fabric-Intro/" rel="next" title="Hyperledger Fabric Intro">
-                  Hyperledger Fabric Intro <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/09/Error-Code-Design-Intro/" rel="next" title="Error Code Design Intro">
+                  Error Code Design Intro <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -399,7 +423,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a9e613982ab4e7d3cb0eda55cc75676f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"d026fedf3ebae2252cc287784bda8c31"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

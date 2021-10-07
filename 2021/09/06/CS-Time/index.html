@@ -20,27 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="ああ月sブログ">
+<meta name="description" content="计算机通识介绍">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Code Review Intro">
-<meta property="og:url" content="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<meta property="og:title" content="CS - Basic Introduction">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/06/CS-Time/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="ああ月sブログ">
+<meta property="og:description" content="计算机通识介绍">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-28T10:53:43.000Z">
-<meta property="article:modified_time" content="2021-09-28T10:53:43.000Z">
+<meta property="article:published_time" content="2021-09-06T02:29:50.000Z">
+<meta property="article:modified_time" content="2021-09-06T02:29:50.000Z">
 <meta property="article:author" content="chyi">
+<meta property="article:tag" content="计算机">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<link rel="canonical" href="http://chyidl.github.io/2021/09/06/CS-Time/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/28/Code-Review-Intro/","path":"2021/09/28/Code-Review-Intro/","title":"Code Review Intro"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/06/CS-Time/","path":"2021/09/06/CS-Time/","title":"CS - Basic Introduction"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Code Review Intro | Stay Hungry Stay Foolish</title>
+<title>CS - Basic Introduction | Stay Hungry Stay Foolish</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -137,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Time-%E6%97%B6%E9%97%B4"><span class="nav-number">1.</span> <span class="nav-text">Time 时间</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/06/CS-Time/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -241,7 +243,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Code Review Intro
+          CS - Basic Introduction
         </h1>
 
         <div class="post-meta-container">
@@ -252,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-09-28 18:53:43" itemprop="dateCreated datePublished" datetime="2021-09-28T18:53:43+08:00">2021-09-28</time>
+      <time title="创建时间：2021-09-06 10:29:50" itemprop="dateCreated datePublished" datetime="2021-09-06T10:29:50+08:00">2021-09-06</time>
     </span>
 
   
@@ -269,7 +271,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>436</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -287,7 +289,31 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <blockquote>
+<p>计算机通识介绍</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Time-时间"><a href="#Time-时间" class="headerlink" title="Time 时间"></a>Time 时间</h2><ul>
+<li><p>Universal Time: 世界时</p>
+<blockquote>
+<p>依靠观测天文现象来测量时间，基于地球自转规律</p>
+</blockquote>
+</li>
+<li><p>International Atomic Time: 国际原子时</p>
+<blockquote>
+<p>以微观时间铯原子的震荡频率为基准，制造原子钟</p>
+</blockquote>
+</li>
+<li><p>Coordinated Universal Time: 协调世界时</p>
+<blockquote>
+<p>根据世间时和原子时，最终确立新的时间标准，定义成为全球的时间标准</p>
+</blockquote>
+</li>
+<li><p>NTP Network Time Protocol 同步时间</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. NTP如何同步时间</span><br><span class="line">  &gt; 假设网络来回路径对称，并且延迟相同</span><br><span class="line">  网络延时 = (t4 - t1) - (t3 - t2)</span><br><span class="line">  时间差 = t2 - t1 - 网络延迟<span class="regexp">/2 = ((t2-t1) + (t3-t4))/</span><span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 同步时间时，对正在运行的程序有没有影响</span><br><span class="line">  <span class="comment"># 墙上时钟: 世界协调时UTC，校准时间后，可能发生回拨</span></span><br><span class="line">  <span class="comment"># 单调时钟: 计算机自启动以后的纳秒数，不会回拨</span></span><br><span class="line"></span><br><span class="line">NTP校准时间提供<span class="number">2</span>中方式:</span><br><span class="line">  <span class="number">1</span>. ntpdate: 一切已服务器端时间为准，强制修改本机时间</span><br><span class="line">  <span class="number">2</span>. ntpd: 把时间差均摊到每次小的调整上 -- 避免发生倒流</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 
     
@@ -295,6 +321,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA/" rel="tag"># 计算机</a>
+          </div>
 
         
   <div class="post-widgets">
@@ -305,13 +334,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/28/Awesome-Tools-Intro/" rel="prev" title="Awesome Tools Intro">
-                  <i class="fa fa-chevron-left"></i> Awesome Tools Intro
+                <a href="/2021/09/06/Middleware-Tips-Tracks/" rel="prev" title="Middleware Tips & Tracks">
+                  <i class="fa fa-chevron-left"></i> Middleware Tips & Tracks
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/28/Hyperledger-Fabric-Intro/" rel="next" title="Hyperledger Fabric Intro">
-                  Hyperledger Fabric Intro <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/07/RESTful-API-Design/" rel="next" title="API Design">
+                  API Design <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -399,7 +428,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a9e613982ab4e7d3cb0eda55cc75676f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"9672302b4b90a32d284e0d7e920ccdec"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

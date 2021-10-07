@@ -20,27 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="ああ月sブログ">
+<meta name="description" content="gRPC Google开发共性能、开源、跨编程语言的通用RPC框架，基于HTTP2.0协议开发，默认采用Protocol Buffers数据序列化协议">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Code Review Intro">
-<meta property="og:url" content="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<meta property="og:title" content="gRPC Intro">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/07/gRPC-Intro/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="ああ月sブログ">
+<meta property="og:description" content="gRPC Google开发共性能、开源、跨编程语言的通用RPC框架，基于HTTP2.0协议开发，默认采用Protocol Buffers数据序列化协议">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-28T10:53:43.000Z">
-<meta property="article:modified_time" content="2021-09-28T10:53:43.000Z">
+<meta property="article:published_time" content="2021-09-07T13:50:41.000Z">
+<meta property="article:modified_time" content="2021-09-07T13:50:41.000Z">
 <meta property="article:author" content="chyi">
+<meta property="article:tag" content="gRPC">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<link rel="canonical" href="http://chyidl.github.io/2021/09/07/gRPC-Intro/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/28/Code-Review-Intro/","path":"2021/09/28/Code-Review-Intro/","title":"Code Review Intro"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/07/gRPC-Intro/","path":"2021/09/07/gRPC-Intro/","title":"gRPC Intro"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Code Review Intro | Stay Hungry Stay Foolish</title>
+<title>gRPC Intro | Stay Hungry Stay Foolish</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -137,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#gRPC"><span class="nav-number">1.</span> <span class="nav-text">gRPC</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/07/gRPC-Intro/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -241,7 +243,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Code Review Intro
+          gRPC Intro
         </h1>
 
         <div class="post-meta-container">
@@ -252,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-09-28 18:53:43" itemprop="dateCreated datePublished" datetime="2021-09-28T18:53:43+08:00">2021-09-28</time>
+      <time title="创建时间：2021-09-07 21:50:41" itemprop="dateCreated datePublished" datetime="2021-09-07T21:50:41+08:00">2021-09-07</time>
     </span>
 
   
@@ -269,7 +271,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>73</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -287,7 +289,10 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="gRPC"><a href="#gRPC" class="headerlink" title="gRPC"></a>gRPC</h1><blockquote>
+<p>Google开发共性能、开源、跨编程语言的通用RPC框架，基于HTTP2.0协议开发，默认采用Protocol Buffers数据序列化协议</p>
+</blockquote>
+
     </div>
 
     
@@ -295,6 +300,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/gRPC/" rel="tag"># gRPC</a>
+          </div>
 
         
   <div class="post-widgets">
@@ -305,13 +313,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/28/Awesome-Tools-Intro/" rel="prev" title="Awesome Tools Intro">
-                  <i class="fa fa-chevron-left"></i> Awesome Tools Intro
+                <a href="/2021/09/07/Protocol-Buffer-Intro/" rel="prev" title="Protocol Buffer Intro">
+                  <i class="fa fa-chevron-left"></i> Protocol Buffer Intro
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/28/Hyperledger-Fabric-Intro/" rel="next" title="Hyperledger Fabric Intro">
-                  Hyperledger Fabric Intro <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/08/MySQL-Index-Intro/" rel="next" title="MySQL Index Intro">
+                  MySQL Index Intro <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -399,7 +407,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a9e613982ab4e7d3cb0eda55cc75676f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"789e55e98dc25882e3031918f0e86823"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>

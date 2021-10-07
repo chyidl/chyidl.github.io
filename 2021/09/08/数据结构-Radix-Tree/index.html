@@ -20,27 +20,28 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="ああ月sブログ">
+<meta name="description" content="Radix Tree - 基数树 radix tree用于表示一种空间优化的tree. 假如树中的一个节点是父节点的唯一子节点，那么该节点将会与父节点进行合并 radix tree的边沿edges可以是一个或者多个元素元素个数不是太多，但是元素之间通常有很长的相同前缀时很适合采用radix tree存储Golang的web框架gin使用radix tree作为路由查找的算法.  123456789">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Code Review Intro">
-<meta property="og:url" content="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<meta property="og:title" content="数据结构-Radix-Tree">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-Radix-Tree/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="ああ月sブログ">
+<meta property="og:description" content="Radix Tree - 基数树 radix tree用于表示一种空间优化的tree. 假如树中的一个节点是父节点的唯一子节点，那么该节点将会与父节点进行合并 radix tree的边沿edges可以是一个或者多个元素元素个数不是太多，但是元素之间通常有很长的相同前缀时很适合采用radix tree存储Golang的web框架gin使用radix tree作为路由查找的算法.  123456789">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-28T10:53:43.000Z">
-<meta property="article:modified_time" content="2021-09-28T10:53:43.000Z">
+<meta property="article:published_time" content="2021-09-08T12:14:39.000Z">
+<meta property="article:modified_time" content="2021-09-08T12:14:39.000Z">
 <meta property="article:author" content="chyi">
+<meta property="article:tag" content="数据结构">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+<link rel="canonical" href="http://chyidl.github.io/2021/09/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-Radix-Tree/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/28/Code-Review-Intro/","path":"2021/09/28/Code-Review-Intro/","title":"Code Review Intro"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-Radix-Tree/","path":"2021/09/08/数据结构-Radix-Tree/","title":"数据结构-Radix-Tree"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Code Review Intro | Stay Hungry Stay Foolish</title>
+<title>数据结构-Radix-Tree | Stay Hungry Stay Foolish</title>
   
 
   <script src="/js/third-party/analytics/baidu-analytics.js"></script>
@@ -137,7 +138,7 @@
 
   <aside class="sidebar">
 
-    <div class="sidebar-inner sidebar-overview-active">
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
       <ul class="sidebar-nav">
         <li class="sidebar-nav-toc">
           文章目录
@@ -150,6 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Radix-Tree-%E5%9F%BA%E6%95%B0%E6%A0%91"><span class="nav-number">1.</span> <span class="nav-text">Radix Tree - 基数树</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -228,7 +230,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/08/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-Radix-Tree/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/uploads/avatar.png">
@@ -241,7 +243,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Code Review Intro
+          数据结构-Radix-Tree
         </h1>
 
         <div class="post-meta-container">
@@ -252,7 +254,7 @@
       </span>
       <span class="post-meta-item-text">发表于</span>
 
-      <time title="创建时间：2021-09-28 18:53:43" itemprop="dateCreated datePublished" datetime="2021-09-28T18:53:43+08:00">2021-09-28</time>
+      <time title="创建时间：2021-09-08 20:14:39" itemprop="dateCreated datePublished" datetime="2021-09-08T20:14:39+08:00">2021-09-08</time>
     </span>
 
   
@@ -269,7 +271,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>0</span>
+      <span>969</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -287,7 +289,11 @@
     
     
     <div class="post-body" itemprop="articleBody">
-        
+        <h1 id="Radix-Tree-基数树"><a href="#Radix-Tree-基数树" class="headerlink" title="Radix Tree - 基数树"></a>Radix Tree - 基数树</h1><blockquote>
+<p>radix tree用于表示一种空间优化的tree. 假如树中的一个节点是父节点的唯一子节点，那么该节点将会与父节点进行合并 radix tree的边沿edges可以是一个或者多个元素<br>元素个数不是太多，但是元素之间通常有很长的相同前缀时很适合采用radix tree存储<br>Golang的web框架gin使用radix tree作为路由查找的算法.</p>
+</blockquote>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"># gin/gin.go</span><br><span class="line"></span><br><span class="line">// <span class="keyword">method</span> -&gt; HTTP <span class="keyword">Method</span> &#123;<span class="keyword">GET</span>,PUT,POST,<span class="keyword">DELETE</span>&#125;</span><br><span class="line">func (engine *Engine) addRoute(<span class="keyword">method</span>, <span class="type">path</span> string, handlers HandlersChain) &#123;</span><br><span class="line">	assert1(<span class="type">path</span>[<span class="number">0</span>] == <span class="string">&#x27;/&#x27;</span>, &quot;path must begin with &#x27;/&#x27;&quot;)</span><br><span class="line">	assert1(<span class="keyword">method</span> != &quot;&quot;, &quot;HTTP method can not be empty&quot;)</span><br><span class="line">	assert1(len(handlers) &gt; <span class="number">0</span>, &quot;there must be at least one handler&quot;)</span><br><span class="line"></span><br><span class="line">	debugPrintRoute(<span class="keyword">method</span>, <span class="type">path</span>, handlers)</span><br><span class="line"></span><br><span class="line">  // 每一个<span class="keyword">method</span>对应一颗radix tree</span><br><span class="line">	root := engine.trees.<span class="keyword">get</span>(<span class="keyword">method</span>)</span><br><span class="line">	<span class="keyword">if</span> root == nil &#123;</span><br><span class="line">    // 如果获取不到<span class="keyword">method</span>对应的树，就创建</span><br><span class="line">		root = <span class="built_in">new</span>(node)</span><br><span class="line">		root.fullPath = &quot;/&quot;</span><br><span class="line">		engine.trees = append(engine.trees, methodTree&#123;<span class="keyword">method</span>: <span class="keyword">method</span>, root: root&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	root.addRoute(<span class="type">path</span>, handlers)</span><br><span class="line"></span><br><span class="line">	// <span class="keyword">Update</span> maxParams</span><br><span class="line">	<span class="keyword">if</span> paramsCount := countParams(<span class="type">path</span>); paramsCount &gt; engine.maxParams &#123;</span><br><span class="line">		engine.maxParams = paramsCount</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
+
     </div>
 
     
@@ -295,6 +301,9 @@
     
 
     <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/" rel="tag"># 数据结构</a>
+          </div>
 
         
   <div class="post-widgets">
@@ -305,13 +314,13 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2021/09/28/Awesome-Tools-Intro/" rel="prev" title="Awesome Tools Intro">
-                  <i class="fa fa-chevron-left"></i> Awesome Tools Intro
+                <a href="/2021/09/08/%E9%9D%99%E6%80%81%E4%BB%A3%E7%A0%81%E6%A3%80%E6%9F%A5-golangci-lint/" rel="prev" title="静态代码检查 golangci-lint">
+                  <i class="fa fa-chevron-left"></i> 静态代码检查 golangci-lint
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2021/09/28/Hyperledger-Fabric-Intro/" rel="next" title="Hyperledger Fabric Intro">
-                  Hyperledger Fabric Intro <i class="fa fa-chevron-right"></i>
+                <a href="/2021/09/08/Gin-Crash-Course/" rel="next" title="Gin Crash Course">
+                  Gin Crash Course <i class="fa fa-chevron-right"></i>
                 </a>
             </div>
           </div>
@@ -399,7 +408,7 @@
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"a9e613982ab4e7d3cb0eda55cc75676f"}</script>
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"4c3348abce57ee1e8d426d9ee42a563e"}</script>
 <script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
