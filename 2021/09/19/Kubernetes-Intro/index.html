@@ -276,14 +276,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>13k</span>
+      <span>15k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>12 分钟</span>
+      <span>14 分钟</span>
     </span>
 </div>
 
@@ -297,12 +297,13 @@
         <h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
 
 <h2 id="容器基础"><a href="#容器基础" class="headerlink" title="容器基础"></a>容器基础</h2><blockquote>
-<p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创建出一个“边界”<br>容器，其实是一种特殊的进程而已</p>
+<p>容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创建出一个“边界”<br>容器，其实是一种特殊的单进程模型而已</p>
 </blockquote>
+  <figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Cgroups技术用来制造约束的主要手段</span></span><br><span class="line"><span class="comment"># Namespace技术则是用来修改进程视图主要防范</span></span><br><span class="line">  &gt; Namespace技术实际上修改应用程序看待整个计算机<span class="string">&quot;视图&quot;</span>,即它的<span class="string">&quot;视线&quot;</span>被操作系统做了限制，只能<span class="string">&quot;看到&quot;</span>某些指定的内容.</span><br><span class="line">  &gt; Linux操作系统提供Mount,UTS,IPC,Network和<span class="keyword">User</span> <span class="title">Namespace</span></span><br><span class="line">  int pid = clone(main_function, stack_size, CLONE_NEWPID | SIGCHLD, NULL);</span><br></pre></td></tr></table></figure>
 <ul>
-<li>Cgroups: 制造约束</li>
-<li>Namespace: 修改进程视图<figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; Namespace技术实际上修改应用程序看待整个计算机<span class="string">&quot;视图&quot;</span>,即它的<span class="string">&quot;视线&quot;</span>被操作系统做了限制，只能<span class="string">&quot;看到&quot;</span>某些指定的内容.</span><br><span class="line"><span class="comment">// 新创建的进程“看到”全新的进程空间,</span></span><br><span class="line"><span class="keyword">int</span> pid = clone(main_function, stack_size, <span class="built_in">CLONE_NEWPID</span> | SIGCHLD, <span class="literal">NULL</span>);</span><br></pre></td></tr></table></figure></li>
-<li>容器化<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"> &gt; Dockerd实际上是在创建容器进程时，指定进程所需要启动的一组Namespace参数，这样，容器只能“看”到当前Namespace所限定的资源、文件、设备、状态、或配置，而对于宿主机以及其他不相关的程序，就完全看不到</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript"><span class="string">&quot;敏捷&quot;</span>和<span class="string">&quot;高性能&quot;</span>是容器相较于虚拟机最大的优势，也是它能够在PaaS这种更细粒度的资源管理平台上大行其道的重要原因.</span></span><br></pre></td></tr></table></figure></li>
+<li>Cgroups<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux Cgroups是Linux内核中用来为进程设置资源限制的一个重要功能</span></span><br><span class="line"><span class="comment"># Linux Cgroups全称 Linux Control Group,主要作用就是限制进程组能够使用的资源上限，CPU、内存、磁盘、网络带宽</span></span><br><span class="line"></span><br><span class="line">➜ mount -t cgroup</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>systemd type cgroup (rw,nosuid,nodev,noexec,relatime,xattr,name=systemd)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>perf_event type cgroup (rw,nosuid,nodev,noexec,relatime,perf_event)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>cpu,cpuacct type cgroup (rw,nosuid,nodev,noexec,relatime,cpu,cpuacct)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>devices type cgroup (rw,nosuid,nodev,noexec,relatime,devices)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>net_cls,net_prio type cgroup (rw,nosuid,nodev,noexec,relatime,net_cls,net_prio)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>rdma type cgroup (rw,nosuid,nodev,noexec,relatime,rdma)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>blkio type cgroup (rw,nosuid,nodev,noexec,relatime,blkio)                        -- 为块设备设置I/O限制，一般用于磁盘等设备</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/m</span>emory type cgroup (rw,nosuid,nodev,noexec,relatime,memory)                      -- 为进程设置内存使用限制</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>hugetlb type cgroup (rw,nosuid,nodev,noexec,relatime,hugetlb)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>cpuset type cgroup (rw,nosuid,nodev,noexec,relatime,cpuset)                      -- 为进程分配单独的CPU核和对应的内存节点</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>freezer type cgroup (rw,nosuid,nodev,noexec,relatime,freezer)</span><br><span class="line">cgroup on <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>pids type cgroup (rw,nosuid,nodev,noexec,relatime,pids)</span><br><span class="line"></span><br><span class="line">➜ ls  <span class="regexp">/sys/</span>fs<span class="regexp">/cgroup/</span>cpu</span><br><span class="line">cgroup.clone_children  cpuacct.usage             cpuacct.usage_percpu_user  cpu.cfs_quota_us  init.scope         system.slice</span><br><span class="line">cgroup.procs           cpuacct.usage_all         cpuacct.usage_sys          cpu.shares        kubepods.slice     tasks</span><br><span class="line">cgroup.sane_behavior   cpuacct.usage_percpu      cpuacct.usage_user         cpu.stat          notify_on_release  user.slice</span><br><span class="line">cpuacct.stat           cpuacct.usage_percpu_sys  cpu.cfs_period_us          docker            release_agent</span><br></pre></td></tr></table></figure></li>
+<li>Docker vs Hypervisor<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 用户运行在容器里的应用进程根宿主主机上的其他进程一样，都由宿主主机操作系统同一管理，只不过这些被隔离的进程拥有额外设置过的Namesapce参数, 而Docker项目在这里扮演的角色更多的是旁路式的辅助和管理工作</span><br><span class="line"><span class="bullet">2.</span> Hypervisor虚拟化作为应用沙盒，必须由Hypervisor负责创建虚拟机，这个虚拟机真实存在，并且运行完整的GuestOS才能执行用户的应用进程.</span><br></pre></td></tr></table></figure></li>
+<li>容器化<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &gt; Dockerd实际上是在创建容器进程时，指定进程所需要启动的一组Namespace参数，这样，容器只能“看”到当前Namespace所限定的资源、文件、设备、状态、或配置，而对于宿主机以及其他不相关的程序，就完全看不到</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript"><span class="string">&quot;敏捷&quot;</span>和<span class="string">&quot;高性能&quot;</span>是容器相较于虚拟机最大的优势，也是它能够在PaaS这种更细粒度的资源管理平台上大行其道的重要原因.</span></span><br><span class="line"></span><br><span class="line">- 容器和应用的同生命周期</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="部署Kubernetes"><a href="#部署Kubernetes" class="headerlink" title="部署Kubernetes"></a>部署Kubernetes</h2><ul>
 <li><p>installing kubeadm, kubelet and kubectl</p>
@@ -398,13 +399,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">153k</span>
+    <span title="站点总字数">156k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:19</span>
+    <span title="站点阅读时长">2:22</span>
   </span>
 </div>
 <div class="busuanzi-count">
