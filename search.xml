@@ -2708,6 +2708,16 @@
 </ul>
 <h3 id="References"><a href="#References" class="headerlink" title="References"></a>References</h3><ul>
 <li><a href="https://blog.logrocket.com/getting-up-to-speed-with-rust/">Getting up to speed with Rust</a></li>
+<li><a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust-go.html">基准测试</a></li>
+<li><a href="https://bitbucket.org/blog/why-rust">Bitbucket</a></li>
+<li><a href="https://benchmarksgame-team.pages.debian.net/benchmarksgame/fastest/rust-go.html">bechmarksgame</a></li>
+<li><a href="https://blog.rust-lang.org/2015/04/10/Fearless-Concurrency.html">可证明正确的并发</a></li>
+<li><a href="https://doc.rust-lang.org/stable/rust-by-example/std_misc/channels.html">通道</a></li>
+<li><a href="https://doc.rust-lang.org/std/primitive.pointer.html">指针</a></li>
+<li><a href="https://doc.rust-lang.org/std/sync/struct.Mutex.html">锁</a></li>
+<li><a href="https://blog.rust-lang.org/2015/04/10/Fearless-Concurrency.html">使用Rust进行无所畏惧的并发</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Type_safety">类型安全</a></li>
+<li><a href="https://kristoff.it/blog/why-go-and-not-rust/">Loris Cro</a></li>
 </ul>
 ]]></content>
   </entry>
