@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-09T01:34:17.000Z</updated>
+  <updated>2021-10-09T07:06:37.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,25 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Bash Script CheetSheet</title>
+    <link href="http://chyidl.github.io/2021/10/09/Bash-Script-CheetSheet/"/>
+    <id>http://chyidl.github.io/2021/10/09/Bash-Script-CheetSheet/</id>
+    <published>2021-10-09T07:06:37.000Z</published>
+    <updated>2021-10-09T07:06:37.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Bash&quot;&gt;&lt;a href=&quot;#Bash&quot; class=&quot;headerlink&quot; title=&quot;Bash&quot;&gt;&lt;/a&gt;Bash&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as the default shell on most linux distros.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+    <category term="Shell" scheme="http://chyidl.github.io/tags/Shell/"/>
+    
+  </entry>
   
   <entry>
     <title>Rust vs. Go</title>
@@ -407,33 +426,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Go CLI Intro</title>
-    <link href="http://chyidl.github.io/2021/09/11/Go-CLI-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/11/Go-CLI-Intro/</id>
-    <published>2021-09-11T10:16:25.000Z</published>
-    <updated>2021-09-11T10:16:25.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;flag&quot;&gt;&lt;a href=&quot;#flag&quot; class=&quot;headerlink&quot; title=&quot;flag&quot;&gt;&lt;/a&gt;flag&lt;/h2&gt;&lt;blockquote&gt;
-&lt;p&gt;命令行flag解析&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;flag</summary>
-        
-      
-    
-    
-    
-    
-    <category term="CLI" scheme="http://chyidl.github.io/tags/CLI/"/>
     
   </entry>
   
