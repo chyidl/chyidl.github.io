@@ -173,7 +173,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">48</span>
+          <span class="site-state-item-count">50</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -306,6 +306,7 @@
 <li>Docker vs Hypervisor<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 用户运行在容器里的应用进程根宿主主机上的其他进程一样，都由宿主主机操作系统同一管理，只不过这些被隔离的进程拥有额外设置过的Namesapce参数, 而Docker项目在这里扮演的角色更多的是旁路式的辅助和管理工作</span><br><span class="line"><span class="bullet">2.</span> Hypervisor虚拟化作为应用沙盒，必须由Hypervisor负责创建虚拟机，这个虚拟机真实存在，并且运行完整的GuestOS才能执行用户的应用进程.</span><br></pre></td></tr></table></figure></li>
 <li>容器化<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"> &gt; Dockerd实际上是在创建容器进程时，指定进程所需要启动的一组Namespace参数，这样，容器只能“看”到当前Namespace所限定的资源、文件、设备、状态、或配置，而对于宿主机以及其他不相关的程序，就完全看不到</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript"><span class="string">&quot;敏捷&quot;</span>和<span class="string">&quot;高性能&quot;</span>是容器相较于虚拟机最大的优势，也是它能够在PaaS这种更细粒度的资源管理平台上大行其道的重要原因.</span></span><br><span class="line"></span><br><span class="line">- 容器和应用的同生命周期</span><br></pre></td></tr></table></figure></li>
 <li>Docker镜像<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> Docker镜像的设计中引入层layer,用户制作镜像的每一步操作都会生成一个层，也就是一个增量rootfs</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Union File System 联合文件系统</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 将多个不同位置的目录联合挂在(Union mount)到同一个目录下</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> overlay2</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> overlay2, <span class="built_in">which</span> has potential performance advantages over the aufs storage driver.</span></span><br></pre></td></tr></table></figure></li>
+<li>Docker容器<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Linux容器的核心实现原理</span></span><br><span class="line">  &gt; Linux <span class="keyword">Namespace</span>隔离能力,<span class="title">Linux</span> <span class="title">Cgroups</span>限制能力,<span class="title">rootfs</span>文件系统</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="部署Kubernetes"><a href="#部署Kubernetes" class="headerlink" title="部署Kubernetes"></a>部署Kubernetes</h2><ul>
 <li><p>installing kubeadm, kubelet and kubectl</p>
@@ -407,13 +408,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">177k</span>
+    <span title="站点总字数">180k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:41</span>
+    <span title="站点阅读时长">2:44</span>
   </span>
 </div>
 <div class="busuanzi-count">
