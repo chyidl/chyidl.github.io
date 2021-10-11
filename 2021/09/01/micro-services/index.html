@@ -28,7 +28,7 @@
 <meta property="og:description" content="项目工程化、微服务相关介绍">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-08-31T23:12:02.000Z">
-<meta property="article:modified_time" content="2021-10-11T03:36:57.356Z">
+<meta property="article:modified_time" content="2021-10-11T08:23:30.991Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="微服务">
 <meta property="article:tag" content="DDD">
@@ -154,7 +154,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">项目工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8DWeb%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">介绍Web框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">介绍微服务架构设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">4.</span> <span class="nav-text">设计原则</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%A1%B9%E7%9B%AE%E5%B7%A5%E7%A8%8B%E5%8C%96"><span class="nav-number">1.</span> <span class="nav-text">项目工程化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8DWeb%E6%A1%86%E6%9E%B6"><span class="nav-number">2.</span> <span class="nav-text">介绍Web框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8D%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%9E%B6%E6%9E%84%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">介绍微服务架构设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BFF-Backend-For-Frontend-%E6%9C%8D%E5%8A%A1%E4%BA%8E%E5%89%8D%E7%AB%AF%E7%9A%84%E5%90%8E%E7%AB%AF"><span class="nav-number">4.</span> <span class="nav-text">BFF - Backend For Frontend 服务于前端的后端</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99"><span class="nav-number">5.</span> <span class="nav-text">设计原则</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -170,7 +170,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">50</span>
+          <span class="site-state-item-count">53</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -264,7 +264,7 @@
           <i class="far fa-calendar-check"></i>
         </span>
         <span class="post-meta-item-text">更新于</span>
-        <time title="修改时间：2021-10-11 11:36:57" itemprop="dateModified" datetime="2021-10-11T11:36:57+08:00">2021-10-11</time>
+        <time title="修改时间：2021-10-11 16:23:30" itemprop="dateModified" datetime="2021-10-11T16:23:30+08:00">2021-10-11</time>
       </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -357,6 +357,9 @@
 <li><p>服务端存储模型</p>
 <figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># Kafka RocketMQ基于partition存储模型</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">每个subject分为一个或多个partition，而Server收到消息后将其分发到某个partition上，而concumer消费的时候与partition对应。合理的分配策略是partition个数与consumer个数成倍数关系.</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">静态绑定关系导致consumer扩容缩容比较麻烦</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">顺序append文件，提供很好的性能</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">顺序消费文件，使用offset表示消费进度，不给给个消息记录消费状态,成本极低</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">将所有subject的消息合并在一起</span></span><br><span class="line"></span><br><span class="line"># 业务使用消息 vs. 数据流处理区别</span><br><span class="line">  &gt; 数据流中消息主题少，每个消息主题的吞吐量极大</span><br><span class="line">  &gt; 业务中消息主题极多，很多主题量级很小</span><br></pre></td></tr></table></figure></li>
 </ul>
+<h2 id="BFF-Backend-For-Frontend-服务于前端的后端"><a href="#BFF-Backend-For-Frontend-服务于前端的后端" class="headerlink" title="BFF - Backend For Frontend 服务于前端的后端"></a>BFF - Backend For Frontend 服务于前端的后端</h2><blockquote>
+<p>用户体验适配器</p>
+</blockquote>
 <h2 id="设计原则"><a href="#设计原则" class="headerlink" title="设计原则"></a>设计原则</h2><ul>
 <li>计算中所有文件都可以通过添加一个中间层来解决，一个中间层解决不了就添加两个</li>
 </ul>
@@ -421,13 +424,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">182k</span>
+    <span title="站点总字数">184k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:45</span>
+    <span title="站点阅读时长">2:47</span>
   </span>
 </div>
 <div class="busuanzi-count">

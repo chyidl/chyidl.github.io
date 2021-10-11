@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-10T12:42:52.000Z</updated>
+  <updated>2021-10-11T07:14:10.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Kubernetes 中文指南</title>
+    <link href="http://chyidl.github.io/2021/10/11/Kubernetes-%E4%B8%AD%E6%96%87%E6%8C%87%E5%8D%97/"/>
+    <id>http://chyidl.github.io/2021/10/11/Kubernetes-%E4%B8%AD%E6%96%87%E6%8C%87%E5%8D%97/</id>
+    <published>2021-10-11T07:14:10.000Z</published>
+    <updated>2021-10-11T07:14:10.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Go Web Framework</title>
+    <link href="http://chyidl.github.io/2021/10/11/Go-Web-Framework/"/>
+    <id>http://chyidl.github.io/2021/10/11/Go-Web-Framework/</id>
+    <published>2021-10-11T04:35:56.000Z</published>
+    <updated>2021-10-11T04:35:56.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Go-Web-Frameworks&quot;&gt;&lt;a href=&quot;#Go-Web-Frameworks&quot; class=&quot;headerlink&quot; title=&quot;Go Web Frameworks&quot;&gt;&lt;/a&gt;Go Web Frameworks&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Web框架分类&lt;figure class=&quot;highlight shell&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;6&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 运行性能:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;  &amp;gt;&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 追求性能的框架很简洁，包含东西很少，一个路由一个MVC, 比如Gin&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 开发效率:&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;meta&quot;&gt;  &amp;gt;&lt;/span&gt;&lt;span class=&quot;bash&quot;&gt; 封装很好，集成很多功能, 比如Beego&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;Web框架选型&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;1.&lt;/span&gt; 对于中小型项目，开发效率往往是业务的第一需求, 任何领域做到第一名的产品基本上都有一个共性: 开发、迭代速度快&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;2.&lt;/span&gt; 好的框架要能区分清楚业务团队和架构团队的边界，什么应该是业务负责，什么应该是架构负责,&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;3.&lt;/span&gt; 架构是为加速业务发展而生，需要兼顾业务的开发效率和底层的性能效率&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Tech Interview Handbook</title>
+    <link href="http://chyidl.github.io/2021/10/11/Tech-Interview-Handbook/"/>
+    <id>http://chyidl.github.io/2021/10/11/Tech-Interview-Handbook/</id>
+    <published>2021-10-11T04:18:24.000Z</published>
+    <updated>2021-10-11T04:18:24.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>In Memory of Steve Jobs</title>
@@ -298,84 +341,6 @@
     
     
     <category term="Rust" scheme="http://chyidl.github.io/tags/Rust/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Raspberry Pico Intro</title>
-    <link href="http://chyidl.github.io/2021/09/17/Raspberry-Pico-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/17/Raspberry-Pico-Intro/</id>
-    <published>2021-09-17T03:57:31.000Z</published>
-    <updated>2021-09-17T03:57:31.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Raspberry-Pi-Pico&quot;&gt;&lt;a href=&quot;#Raspberry-Pi-Pico&quot; class=&quot;headerlink&quot; title=&quot;Raspberry Pi Pico&quot;&gt;&lt;/a&gt;Raspberry Pi Pico&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;a microcontroller development board,&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;RP2040&lt;/p&gt;
-&lt;figure class=&quot;highlight markdown&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;quote&quot;&gt;&amp;gt; new microcontroller chip designed by Raspberry Pi in the UK.&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;  -&lt;/span&gt; dual-core Arm Cortex-M0+&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;  -&lt;/span&gt; 264KB RAM&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;bullet&quot;&gt;  -&lt;/span&gt; 16MB off-chip Flash&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;Micro USB Port&lt;/p&gt;
-&lt;figure class=&quot;highlight routeros&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- provide power make Pico &lt;span class=&quot;builtin-name&quot;&gt;run&lt;/span&gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;- USB&lt;span class=&quot;built_in&quot;&gt; port &lt;/span&gt;talk &lt;span class=&quot;keyword&quot;&gt;to&lt;/span&gt; pico&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;BOOTSEL&lt;/p&gt;
-&lt;figure class=&quot;highlight mipsasm&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;- &lt;span class=&quot;keyword&quot;&gt;BOOTSEL &lt;/span&gt;is &lt;span class=&quot;keyword&quot;&gt;short &lt;/span&gt;for &lt;span class=&quot;keyword&quot;&gt;boot &lt;/span&gt;selection.&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="嵌入式" scheme="http://chyidl.github.io/tags/%E5%B5%8C%E5%85%A5%E5%BC%8F/"/>
-    
-    <category term="Raspberry Pi" scheme="http://chyidl.github.io/tags/Raspberry-Pi/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Blockchain Intro</title>
-    <link href="http://chyidl.github.io/2021/09/17/Blockchain-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/17/Blockchain-Intro/</id>
-    <published>2021-09-16T22:29:27.000Z</published>
-    <updated>2021-09-16T22:29:27.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Blockchain&quot;&gt;&lt;a href=&quot;#Blockchain&quot; class=&quot;headerlink&quot; title=&quot;Blockchain&quot;&gt;&lt;/a&gt;Blockchain&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;区块链技术萌芽于比特币，诞生在以太坊, 区块链是价值的载体，是一种新型的社会生产关系。基于区块链技术，打通现实世界与网络世界的屏障，将物质虚拟化，将价值实体化.&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="Blockchain" scheme="http://chyidl.github.io/tags/Blockchain/"/>
-    
-    <category term="区块链" scheme="http://chyidl.github.io/tags/%E5%8C%BA%E5%9D%97%E9%93%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Huawei LiteOS Intro</title>
-    <link href="http://chyidl.github.io/2021/09/14/Huawei-LiteOS-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/14/Huawei-LiteOS-Intro/</id>
-    <published>2021-09-14T15:58:01.000Z</published>
-    <updated>2021-09-14T15:58:01.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Huawei-LiteOS&quot;&gt;&lt;a href=&quot;#Huawei-LiteOS&quot; class=&quot;headerlink&quot; title=&quot;Huawei LiteOS&quot;&gt;&lt;/a&gt;Huawei LiteOS&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;面向IOT领域，构建轻量级物联网操作系统, 目前支持ARM64,ARM Contex-A, ARM Cortex-M0, Cortex-M3, Cortex-M4, Cortex-M7&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;ul&gt;
-&lt;li&gt;优势:&lt;ul&gt;
-&lt;li&gt;高实时性,高稳定性&lt;/li&gt;
-&lt;li&gt;超小内核，基础内核体积可以裁剪至不到10K&lt;/li&gt;
-&lt;li&gt;低功耗&lt;/li&gt;
-&lt;li&gt;支持功能静态裁剪&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;</summary>
-    
-    
-    
-    
-    <category term="IOT" scheme="http://chyidl.github.io/tags/IOT/"/>
     
   </entry>
   
