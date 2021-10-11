@@ -270,7 +270,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>3k</span>
+      <span>3.2k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -314,7 +314,7 @@
 <li><strong>Pro Tip #6</strong>: PEP 8<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&quot; Add the proper PEP 8 indentation</span></span><br><span class="line"><span class="keyword">au</span> BufNewFile,BufRead *.<span class="keyword">py</span></span><br><span class="line">    \ <span class="keyword">set</span> tabstop=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> softtabstop=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> textwidth=<span class="number">79</span></span><br><span class="line">    \ <span class="keyword">set</span> expandtab</span><br><span class="line">    \ <span class="keyword">set</span> autoindent</span><br><span class="line">    \ <span class="keyword">set</span> fileformat=unix</span><br><span class="line"></span><br><span class="line"><span class="comment">&quot; full stack development</span></span><br><span class="line"><span class="keyword">au</span> BufNewFile,BufRead *.js, *.html, *.css</span><br><span class="line">    \ <span class="keyword">set</span> tabstop=<span class="number">2</span></span><br><span class="line">    \ <span class="keyword">set</span> softtabstop=<span class="number">2</span></span><br><span class="line">    \ <span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">2</span></span><br></pre></td></tr></table></figure></li>
 <li><strong>Pro Tip #7</strong>: Flagging Unnecessary Whitespace<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">au</span> BufRead,BufNewFile <span class="regexp">*.py</span>,<span class="regexp">*.pyw</span>,<span class="regexp">*.c</span>,<span class="regexp">*.h</span> match BadWhitespace /\s\+$/</span><br></pre></td></tr></table></figure></li>
 <li><strong>Pro Tip #8</strong>: UTF-8 Support<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">set</span> <span class="attribute">encoding</span>=utf-8</span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #9</strong>: Syntax Checking/Highlighting<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #9</strong>: Syntax Checking/Highlighting<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># <span class="keyword">check</span> syntax <span class="keyword">on</span> <span class="keyword">each</span> save <span class="keyword">with</span> the syntastic <span class="keyword">extension</span></span><br><span class="line">Plug <span class="string">&#x27;vim-syntastic/syntastic&#x27;</span></span><br><span class="line"></span><br><span class="line"># <span class="keyword">add</span> PEP <span class="number">8</span> checking <span class="keyword">with</span> this nifty little plugin</span><br><span class="line">Plug <span class="string">&#x27;nvie/vim-flake8&#x27;</span></span><br><span class="line"></span><br><span class="line">let python_highlight_all=<span class="number">1</span></span><br><span class="line">syntax <span class="keyword">on</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Vim-and-Python"><a href="#Vim-and-Python" class="headerlink" title="Vim and Python"></a>Vim and Python</h2><ul>
 <li>Verifying VIM Install<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Make sure have installed VIM &gt; <span class="number">7.3</span> <span class="keyword">with</span> Python support.</span><br><span class="line"></span><br><span class="line">  :python3 <span class="keyword">import</span> sys; <span class="built_in">print</span>(sys.version)</span><br><span class="line">  <span class="number">3.8</span><span class="number">.10</span> (<span class="keyword">default</span>, Sep <span class="number">28</span> <span class="number">2021</span>, <span class="number">16</span>:<span class="number">10</span>:<span class="number">42</span>)</span><br><span class="line">  [GCC <span class="number">9.3</span><span class="number">.0</span>]</span><br></pre></td></tr></table></figure></li>
@@ -381,13 +381,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">180k</span>
+    <span title="站点总字数">182k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">2:44</span>
+    <span title="站点阅读时长">2:45</span>
   </span>
 </div>
 <div class="busuanzi-count">
