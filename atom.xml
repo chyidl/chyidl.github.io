@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-12T05:39:42.000Z</updated>
+  <updated>2021-10-13T03:49:15.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apache APISIX Intro</title>
+    <link href="http://chyidl.github.io/2021/10/13/Apache-APISIX-Intro/"/>
+    <id>http://chyidl.github.io/2021/10/13/Apache-APISIX-Intro/</id>
+    <published>2021-10-13T03:49:15.000Z</published>
+    <updated>2021-10-13T03:49:15.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Apache-APISIX&quot;&gt;&lt;a href=&quot;#Apache-APISIX&quot; class=&quot;headerlink&quot; title=&quot;Apache APISIX&quot;&gt;&lt;/a&gt;Apache APISIX&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;云原生微服务API网关，高性能、安全性、开源可扩展的服务平台&lt;br&gt;APISIX 基于Nginx, Etcd.与传统的API 网关相比，具有动态路由和热插拔加载，适合微服务系统下的API管理.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Uber Zap Intro</title>
@@ -324,21 +341,6 @@
     
     
     <category term="监控" scheme="http://chyidl.github.io/tags/%E7%9B%91%E6%8E%A7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dell PowerEdge R720 Intro</title>
-    <link href="http://chyidl.github.io/2021/09/18/Dell-PowerEdge-R720-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/18/Dell-PowerEdge-R720-Intro/</id>
-    <published>2021-09-18T10:23:08.000Z</published>
-    <updated>2021-09-18T10:23:08.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Dell-EMC-PowerEdge-R720&quot;&gt;&lt;a href=&quot;#Dell-EMC-PowerEdge-R720&quot; class=&quot;headerlink&quot; title=&quot;Dell EMC PowerEdge R720&quot;&gt;&lt;/a&gt;Dell EMC PowerEdge R720&lt;/h1&gt;</summary>
-    
-    
-    
     
   </entry>
   
