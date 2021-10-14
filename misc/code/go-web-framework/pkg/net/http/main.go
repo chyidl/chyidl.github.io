@@ -1,5 +1,10 @@
 package main
 
+import (
+	"fmt"
+	"net/http"
+)
+
 func main() {
 	// 创建一个Foo路由和处理函数
 	http.Handle("/foo", fooHandler)
