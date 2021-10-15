@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-13T03:49:15.000Z</updated>
+  <updated>2021-10-15T05:24:29.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,23 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>NFS Mount Intro</title>
+    <link href="http://chyidl.github.io/2021/10/15/NFS-Mount-Intro/"/>
+    <id>http://chyidl.github.io/2021/10/15/NFS-Mount-Intro/</id>
+    <published>2021-10-15T05:24:29.000Z</published>
+    <updated>2021-10-15T05:24:29.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;NFS-or-Network-File-System&quot;&gt;&lt;a href=&quot;#NFS-or-Network-File-System&quot; class=&quot;headerlink&quot; title=&quot;NFS, or Network File System&quot;&gt;&lt;/a&gt;NFS, or Network File System&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;一种分布式文件系统协议，允许你在服务器上挂载远程目录，你可以管理不同位置的存储空间并从多客户端写入该空间. NFS提供一种相对标准和高效的方式来通过网络访问远程系统。并且适合访问共享资源的情况.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Apache APISIX Intro</title>
@@ -317,30 +334,6 @@
     
     
     <category term="Kubernetes" scheme="http://chyidl.github.io/tags/Kubernetes/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <link href="http://chyidl.github.io/2021/09/19/Prometheus-Grafana-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/19/Prometheus-Grafana-Intro/</id>
-    <published>2021-09-19T13:03:49.000Z</published>
-    <updated>2021-09-19T13:03:49.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h2 id=&quot;Prometheus&quot;&gt;&lt;a href=&quot;#Prometheus&quot; class=&quot;headerlink&quot; title=&quot;Prometheus&quot;&gt;&lt;/a&gt;Prometheus&lt;/h2&gt;&lt;ul&gt;
-&lt;li&gt;First Steps&lt;figure</summary>
-        
-      
-    
-    
-    
-    
-    <category term="监控" scheme="http://chyidl.github.io/tags/%E7%9B%91%E6%8E%A7/"/>
     
   </entry>
   
