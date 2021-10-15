@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-15T05:24:29.000Z</updated>
+  <updated>2021-10-15T11:23:09.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,64 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Apple Silicon M1 New product experience</title>
+    <link href="http://chyidl.github.io/2021/10/15/Apple-Silicon-M1-New-product-experience/"/>
+    <id>http://chyidl.github.io/2021/10/15/Apple-Silicon-M1-New-product-experience/</id>
+    <published>2021-10-15T11:23:09.000Z</published>
+    <updated>2021-10-15T11:23:09.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Apple-Silicon-M1-MacBook-Pro&quot;&gt;&lt;a href=&quot;#Apple-Silicon-M1-MacBook-Pro&quot; class=&quot;headerlink&quot; title=&quot;Apple Silicon M1 MacBook Pro&quot;&gt;&lt;/a&gt;Apple Silicon M1 MacBook Pro&lt;/h1&gt;&lt;p&gt;&lt;img src=&quot;/misc/images/macbookpro&quot; alt=&quot;MacBook Pro&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Learning Helm: Managing Apps on Kubernetes</title>
+    <link href="http://chyidl.github.io/2021/10/15/Learning-Helm-Managing-Apps-on-Kubernetes/"/>
+    <id>http://chyidl.github.io/2021/10/15/Learning-Helm-Managing-Apps-on-Kubernetes/</id>
+    <published>2021-10-15T11:08:16.000Z</published>
+    <updated>2021-10-15T11:08:16.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Kubernetes分析源码</title>
+    <link href="http://chyidl.github.io/2021/10/15/Kubernetes%E5%88%86%E6%9E%90%E6%BA%90%E7%A0%81/"/>
+    <id>http://chyidl.github.io/2021/10/15/Kubernetes%E5%88%86%E6%9E%90%E6%BA%90%E7%A0%81/</id>
+    <published>2021-10-15T11:05:48.000Z</published>
+    <updated>2021-10-15T11:05:48.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Harbor Intro</title>
+    <link href="http://chyidl.github.io/2021/10/15/Harbor-Intro/"/>
+    <id>http://chyidl.github.io/2021/10/15/Harbor-Intro/</id>
+    <published>2021-10-15T07:14:53.000Z</published>
+    <updated>2021-10-15T07:14:53.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Harbor&quot;&gt;&lt;a href=&quot;#Harbor&quot; class=&quot;headerlink&quot; title=&quot;Harbor&quot;&gt;&lt;/a&gt;Harbor&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Kubernetes 值得信赖的云原生存储库&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>NFS Mount Intro</title>
@@ -64,19 +122,6 @@
   </entry>
   
   <entry>
-    <title>Kubernetes 中文指南</title>
-    <link href="http://chyidl.github.io/2021/10/11/Kubernetes-%E4%B8%AD%E6%96%87%E6%8C%87%E5%8D%97/"/>
-    <id>http://chyidl.github.io/2021/10/11/Kubernetes-%E4%B8%AD%E6%96%87%E6%8C%87%E5%8D%97/</id>
-    <published>2021-10-11T07:14:10.000Z</published>
-    <updated>2021-10-11T07:14:10.000Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
     <title>Go Web Framework</title>
     <link href="http://chyidl.github.io/2021/10/11/Go-Web-Framework/"/>
     <id>http://chyidl.github.io/2021/10/11/Go-Web-Framework/</id>
@@ -113,6 +158,8 @@
     <published>2021-10-10T12:42:52.000Z</published>
     <updated>2021-10-10T12:42:52.000Z</updated>
     
+    
+    <summary type="html">&lt;h1 id=&quot;Steve-Jobs&quot;&gt;&lt;a href=&quot;#Steve-Jobs&quot; class=&quot;headerlink&quot; title=&quot;Steve Jobs&quot;&gt;&lt;/a&gt;Steve Jobs&lt;/h1&gt;</summary>
     
     
     
@@ -281,59 +328,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Have Read - Structure and Interpretation of Computer Programs</title>
-    <link href="http://chyidl.github.io/2021/09/21/Have-Read-Structure-and-Interpretation-of-Computer-Programs/"/>
-    <id>http://chyidl.github.io/2021/09/21/Have-Read-Structure-and-Interpretation-of-Computer-Programs/</id>
-    <published>2021-09-21T08:30:55.000Z</published>
-    <updated>2021-09-21T08:30:55.000Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Cyclic redundancy check Intro</title>
-    <link href="http://chyidl.github.io/2021/09/21/Cyclic-redundancy-check-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/21/Cyclic-redundancy-check-Intro/</id>
-    <published>2021-09-21T03:52:18.000Z</published>
-    <updated>2021-09-21T03:52:18.000Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;CRC-Cyclic-redundancy-check&quot;&gt;&lt;a href=&quot;#CRC-Cyclic-redundancy-check&quot; class=&quot;headerlink&quot; title=&quot;CRC - Cyclic redundancy</summary>
-        
-      
-    
-    
-    
-    
-    <category term="Algorithm" scheme="http://chyidl.github.io/tags/Algorithm/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Kubernetes Intro</title>
-    <link href="http://chyidl.github.io/2021/09/19/Kubernetes-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/19/Kubernetes-Intro/</id>
-    <published>2021-09-19T14:11:16.000Z</published>
-    <updated>2021-09-19T14:11:16.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Kubernetes&quot;&gt;&lt;a href=&quot;#Kubernetes&quot; class=&quot;headerlink&quot; title=&quot;Kubernetes&quot;&gt;&lt;/a&gt;Kubernetes&lt;/h1&gt;</summary>
-    
-    
-    
-    
-    <category term="Kubernetes" scheme="http://chyidl.github.io/tags/Kubernetes/"/>
     
   </entry>
   
