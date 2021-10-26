@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-21T07:40:54.000Z</updated>
+  <updated>2021-10-26T08:23:05.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Build Go Executables for Multiple Platforms</title>
+    <link href="http://chyidl.github.io/2021/10/26/Build-Go-Executables-for-Multiple-Platforms/"/>
+    <id>http://chyidl.github.io/2021/10/26/Build-Go-Executables-for-Multiple-Platforms/</id>
+    <published>2021-10-26T08:23:05.000Z</published>
+    <updated>2021-10-26T08:23:05.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;构建Go可执行文件&quot;&gt;&lt;a href=&quot;#构建Go可执行文件&quot; class=&quot;headerlink&quot; title=&quot;构建Go可执行文件&quot;&gt;&lt;/a&gt;构建Go可执行文件&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Go most powerful features is the ability to cross-build(跨平台交叉编译构建可执行文件)executables for any Go-supported foreign platform.&lt;/p&gt;
+&lt;/blockquote&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Git Intro</title>
+    <link href="http://chyidl.github.io/2021/10/26/Git-Intro/"/>
+    <id>http://chyidl.github.io/2021/10/26/Git-Intro/</id>
+    <published>2021-10-26T03:27:16.000Z</published>
+    <updated>2021-10-26T03:27:16.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Git&quot;&gt;&lt;a href=&quot;#Git&quot; class=&quot;headerlink&quot; title=&quot;Git&quot;&gt;&lt;/a&gt;Git&lt;/h1&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>数据库迁移 MySQL -&gt; Postgres</title>
@@ -301,38 +333,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Awesome Tools Intro</title>
-    <link href="http://chyidl.github.io/2021/09/28/Awesome-Tools-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/28/Awesome-Tools-Intro/</id>
-    <published>2021-09-28T04:56:21.000Z</published>
-    <updated>2021-09-28T04:56:21.000Z</updated>
-    
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>LevelDB Intro</title>
-    <link href="http://chyidl.github.io/2021/09/28/LevelDB-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/28/LevelDB-Intro/</id>
-    <published>2021-09-28T02:47:11.000Z</published>
-    <updated>2021-09-28T02:47:11.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;LevelDB&quot;&gt;&lt;a href=&quot;#LevelDB&quot; class=&quot;headerlink&quot; title=&quot;LevelDB&quot;&gt;&lt;/a&gt;LevelDB&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;LevelDB is a fast key-value storage library written at Google that provides an ordered mapping from string keys to string values.&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="Key-Value DB" scheme="http://chyidl.github.io/tags/Key-Value-DB/"/>
     
   </entry>
   
