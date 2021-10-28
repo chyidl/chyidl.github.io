@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-26T08:23:05.000Z</updated>
+  <updated>2021-10-27T02:38:10.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Unix&amp;Linux FAQ</title>
+    <link href="http://chyidl.github.io/2021/10/27/Unix-Linux-FAQ/"/>
+    <id>http://chyidl.github.io/2021/10/27/Unix-Linux-FAQ/</id>
+    <published>2021-10-27T02:38:10.000Z</published>
+    <updated>2021-10-27T02:38:10.000Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;查看状态信息&quot;&gt;&lt;a href=&quot;#查看状态信息&quot; class=&quot;headerlink&quot; title=&quot;查看状态信息&quot;&gt;&lt;/a&gt;查看状态信息&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;calculate total disk space&lt;figure</summary>
+        
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Build Go Executables for Multiple Platforms</title>
@@ -320,19 +343,6 @@
     
     
     <category term="Blockchain" scheme="http://chyidl.github.io/tags/Blockchain/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Code Review Intro</title>
-    <link href="http://chyidl.github.io/2021/09/28/Code-Review-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/28/Code-Review-Intro/</id>
-    <published>2021-09-28T10:53:43.000Z</published>
-    <updated>2021-09-28T10:53:43.000Z</updated>
-    
-    
-    
-    
     
   </entry>
   
