@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Go-Web-Frameworks"><span class="nav-number">1.</span> <span class="nav-text">Go Web Frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%92%E9%B8%A1%E6%B1%A4"><span class="nav-number">1.0.1.</span> <span class="nav-text">毒鸡汤</span></a></li></ol></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Go-Web-Frameworks"><span class="nav-number">1.</span> <span class="nav-text">Go Web Frameworks</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Go-%E8%AF%AD%E8%A8%80%E7%89%B9%E6%80%A7"><span class="nav-number">1.1.</span> <span class="nav-text">Go 语言特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#First-Step"><span class="nav-number">1.2.</span> <span class="nav-text">First Step:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Second-Step"><span class="nav-number">1.3.</span> <span class="nav-text">Second Step:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Third-Step"><span class="nav-number">1.4.</span> <span class="nav-text">Third Step:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Fourth-Step"><span class="nav-number">1.5.</span> <span class="nav-text">Fourth Step:</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%92%E9%B8%A1%E6%B1%A4"><span class="nav-number">1.5.1.</span> <span class="nav-text">毒鸡汤</span></a></li></ol></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -270,7 +270,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>269</span>
+      <span>846</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -292,6 +292,41 @@
 <li>Web框架分类<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> 运行性能:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 追求性能的框架很简洁，包含东西很少，一个路由一个MVC, 比如Gin</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> 开发效率:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 封装很好，集成很多功能, 比如Beego</span></span><br></pre></td></tr></table></figure></li>
 <li>Web框架选型<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 对于中小型项目，开发效率往往是业务的第一需求, 任何领域做到第一名的产品基本上都有一个共性: 开发、迭代速度快</span><br><span class="line"><span class="bullet">2.</span> 好的框架要能区分清楚业务团队和架构团队的边界，什么应该是业务负责，什么应该是架构负责,</span><br><span class="line"><span class="bullet">3.</span> 架构是为加速业务发展而生，需要兼顾业务的开发效率和底层的性能效率</span><br></pre></td></tr></table></figure>
 <span id="more"></span></li>
+</ul>
+<h2 id="Go-语言特性"><a href="#Go-语言特性" class="headerlink" title="Go 语言特性"></a>Go 语言特性</h2><ul>
+<li>Goroutine<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Goroutine设计，提供“一个请求一个协程”的请求模型.对比PHP的“一个请求一个进程”的模型，提升后端资源占用和调度负载。</span><br></pre></td></tr></table></figure></li>
+<li>Runtime<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Go的<span class="keyword">Runtime</span>机制让运行程序不再依赖各种环境和库</span><br></pre></td></tr></table></figure></li>
+<li>compile<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Go提供交叉编译、数据结构、channel等语言级别提醒，让处理Web请求变得简单</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="First-Step"><a href="#First-Step" class="headerlink" title="First Step:"></a>First Step:</h2><ul>
+<li>net, net/http<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 工作中，会因为不了解底层原理，想当然的认为他的使用方式,导致代码编写、应用调优的时候出现各种问题</span></span><br><span class="line"></span><br><span class="line"><span class="section"># Web Server</span></span><br><span class="line">  &gt; 是一个通过HTTP协议处理Web请求的计算机系统</span><br><span class="line"><span class="bullet">  -</span> HTTP协议: 超文本传输协议</span><br><span class="line"><span class="bullet">    -</span> HTTP Head: 描述一般是和业务无关与传输相关的信息(请求地址、编码格式、缓存时长)</span><br><span class="line"><span class="bullet">    -</span> HTTP Body: 描述的是与业务相关的信息</span><br><span class="line"><span class="section"># net 库</span></span><br><span class="line">  &gt; 对应OSI的TCP层</span><br><span class="line"></span><br><span class="line"><span class="section"># net/http库</span></span><br><span class="line">  &gt; 对应OSI的HTTP层</span><br></pre></td></tr></table></figure></li>
+<li>context</li>
+<li>router</li>
+<li>middleware</li>
+<li>encapsulation</li>
+<li>restart</li>
+</ul>
+<h2 id="Second-Step"><a href="#Second-Step" class="headerlink" title="Second Step:"></a>Second Step:</h2><ul>
+<li>面向接口编程</li>
+<li>设计目录结构</li>
+<li>命令行交互</li>
+<li>定时任务</li>
+<li>配置和环境</li>
+<li>多输出日志</li>
+</ul>
+<h2 id="Third-Step"><a href="#Third-Step" class="headerlink" title="Third Step:"></a>Third Step:</h2><ul>
+<li>一体化、自动化</li>
+<li>调试模式</li>
+<li>进程、接口管理</li>
+<li>GORM</li>
+<li>缓存服务</li>
+<li>发布与维护</li>
+</ul>
+<h2 id="Fourth-Step"><a href="#Fourth-Step" class="headerlink" title="Fourth Step:"></a>Fourth Step:</h2><ul>
+<li>设计需求分析</li>
+<li>技术方案设计</li>
+<li>网站统计服务</li>
+<li>一站式前后台</li>
 </ul>
 <h3 id="毒鸡汤"><a href="#毒鸡汤" class="headerlink" title="毒鸡汤"></a>毒鸡汤</h3><figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">了解一个东西最好的办法就是去实现它</span></span><br></pre></td></tr></table></figure>
 
@@ -352,13 +387,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">212k</span>
+    <span title="站点总字数">217k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:13</span>
+    <span title="站点阅读时长">3:17</span>
   </span>
 </div>
 <div class="busuanzi-count">
