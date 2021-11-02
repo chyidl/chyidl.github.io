@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-27T02:38:10.000Z</updated>
+  <updated>2021-10-31T13:51:09.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hacker Scripts</title>
+    <link href="http://chyidl.github.io/2021/10/31/Hacker-Scripts/"/>
+    <id>http://chyidl.github.io/2021/10/31/Hacker-Scripts/</id>
+    <published>2021-10-31T13:51:09.000Z</published>
+    <updated>2021-10-31T13:51:09.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Unix&amp;Linux FAQ</title>
@@ -324,25 +337,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>Hyperledger Fabric Intro</title>
-    <link href="http://chyidl.github.io/2021/09/28/Hyperledger-Fabric-Intro/"/>
-    <id>http://chyidl.github.io/2021/09/28/Hyperledger-Fabric-Intro/</id>
-    <published>2021-09-28T11:36:40.000Z</published>
-    <updated>2021-09-28T11:36:40.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Hyperledger-Fabric&quot;&gt;&lt;a href=&quot;#Hyperledger-Fabric&quot; class=&quot;headerlink&quot; title=&quot;Hyperledger Fabric&quot;&gt;&lt;/a&gt;Hyperledger Fabric&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Hyperledger Fabric 1.4 LTS - long-term support release&lt;br&gt;Hyperledger Fabric is a permissioned blockchain network(许可区块链网络).&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-    <category term="Blockchain" scheme="http://chyidl.github.io/tags/Blockchain/"/>
     
   </entry>
   

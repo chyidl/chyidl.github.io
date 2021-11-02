@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">64</span>
+          <span class="site-state-item-count">65</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -270,7 +270,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>846</span>
+      <span>881</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -299,7 +299,7 @@
 <li>compile<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Go提供交叉编译、数据结构、channel等语言级别提醒，让处理Web请求变得简单</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="First-Step"><a href="#First-Step" class="headerlink" title="First Step:"></a>First Step:</h2><ul>
-<li>net, net/http<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 工作中，会因为不了解底层原理，想当然的认为他的使用方式,导致代码编写、应用调优的时候出现各种问题</span></span><br><span class="line"></span><br><span class="line"><span class="section"># Web Server</span></span><br><span class="line">  &gt; 是一个通过HTTP协议处理Web请求的计算机系统</span><br><span class="line"><span class="bullet">  -</span> HTTP协议: 超文本传输协议</span><br><span class="line"><span class="bullet">    -</span> HTTP Head: 描述一般是和业务无关与传输相关的信息(请求地址、编码格式、缓存时长)</span><br><span class="line"><span class="bullet">    -</span> HTTP Body: 描述的是与业务相关的信息</span><br><span class="line"><span class="section"># net 库</span></span><br><span class="line">  &gt; 对应OSI的TCP层</span><br><span class="line"></span><br><span class="line"><span class="section"># net/http库</span></span><br><span class="line">  &gt; 对应OSI的HTTP层</span><br></pre></td></tr></table></figure></li>
+<li>net, net/http<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Web Server</span></span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> Web Server的本质，实际上就是接收、解析HTTP请求传输的文本字符，理解这些文本字符的指令，然后计算、在将返回值组织成HTTP响应的文本字符，通过TCP网络输出回去</span></span><br><span class="line"><span class="meta"> &gt;</span><span class="bash"> 是一个通过HTTP协议处理Web请求的计算机系统</span></span><br><span class="line">  - HTTP协议: 超文本传输协议</span><br><span class="line">    - HTTP Head: 描述一般是和业务无关与传输相关的信息(请求地址、编码格式、缓存时长)</span><br><span class="line">    - HTTP Body: 描述的是与业务相关的信息</span><br><span class="line"><span class="meta">#</span><span class="bash"> net 库</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 对应OSI的TCP层</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> net/http库</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 对应OSI的HTTP层</span></span><br></pre></td></tr></table></figure></li>
 <li>context</li>
 <li>router</li>
 <li>middleware</li>
@@ -387,13 +387,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">221k</span>
+    <span title="站点总字数">223k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:21</span>
+    <span title="站点阅读时长">3:22</span>
   </span>
 </div>
 <div class="busuanzi-count">
