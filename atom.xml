@@ -276,6 +276,10 @@
     
     
     <summary type="html">&lt;h1 id=&quot;Why-I-Still-Use-Vim&quot;&gt;&lt;a href=&quot;#Why-I-Still-Use-Vim&quot; class=&quot;headerlink&quot; title=&quot;Why I Still Use Vim&quot;&gt;&lt;/a&gt;Why I Still Use Vim&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;Vim is exists on all Unix systems, support all file formats and programming languages&lt;/li&gt;
+&lt;li&gt;Mouse free navigation&lt;/li&gt;
+&lt;li&gt;Vim is very light-weight and fast.&lt;/li&gt;
+&lt;li&gt;Vim is highly configurable. (~/.vimrc)&lt;/li&gt;
 &lt;li&gt;Memory Usage Low&lt;/li&gt;
 &lt;li&gt;Startup Time short&lt;/li&gt;
 &lt;/ul&gt;</summary>
