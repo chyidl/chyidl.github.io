@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-10-31T13:51:09.000Z</updated>
+  <updated>2021-11-03T03:17:13.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,21 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My World</title>
+    <link href="http://chyidl.github.io/2021/11/03/My-World/"/>
+    <id>http://chyidl.github.io/2021/11/03/My-World/</id>
+    <published>2021-11-03T03:17:13.000Z</published>
+    <updated>2021-11-03T03:17:13.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;My-World-我的世界&quot;&gt;&lt;a href=&quot;#My-World-我的世界&quot; class=&quot;headerlink&quot; title=&quot;My World (我的世界)&quot;&gt;&lt;/a&gt;My World (我的世界)&lt;/h1&gt;</summary>
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Hacker Scripts</title>
@@ -326,21 +341,6 @@
     
     
     <category term="Shell" scheme="http://chyidl.github.io/tags/Shell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Rust vs. Go</title>
-    <link href="http://chyidl.github.io/2021/10/09/Rust-vs-Go/"/>
-    <id>http://chyidl.github.io/2021/10/09/Rust-vs-Go/</id>
-    <published>2021-10-09T01:34:17.000Z</published>
-    <updated>2021-10-09T01:34:17.000Z</updated>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;When-to-use-Rust-and-when-to-use-Go&quot;&gt;&lt;a href=&quot;#When-to-use-Rust-and-when-to-use-Go&quot; class=&quot;headerlink&quot; title=&quot;When to use Rust and when to use Go&quot;&gt;&lt;/a&gt;When to use Rust and when to use Go&lt;/h2&gt;</summary>
-    
-    
-    
     
   </entry>
   

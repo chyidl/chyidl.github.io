@@ -150,7 +150,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAGo%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">构建Go可执行文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Go-Programs-from-Version-Control"><span class="nav-number">1.1.</span> <span class="nav-text">Installing Go Programs from Version Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-an-Executable"><span class="nav-number">1.2.</span> <span class="nav-text">Building an Executable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-an-Executable"><span class="nav-number">1.3.</span> <span class="nav-text">Installing an Executable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-Executables-for-Different-Architectures"><span class="nav-number">1.4.</span> <span class="nav-text">Building Executables for Different Architectures</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-a-Script-to-Automate-Cross-Compilation"><span class="nav-number">1.5.</span> <span class="nav-text">Creating a Script to Automate Cross-Compilation</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%9E%84%E5%BB%BAGo%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">构建Go可执行文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-Go-Programs-from-Version-Control"><span class="nav-number">1.1.</span> <span class="nav-text">Installing Go Programs from Version Control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Building-an-Executable"><span class="nav-number">1.2.</span> <span class="nav-text">Building an Executable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Installing-an-Executable"><span class="nav-number">1.3.</span> <span class="nav-text">Installing an Executable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cross-Compiling"><span class="nav-number">1.4.</span> <span class="nav-text">Cross Compiling</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Creating-a-Script-to-Automate-Cross-Compilation"><span class="nav-number">1.5.</span> <span class="nav-text">Creating a Script to Automate Cross-Compilation</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -166,7 +166,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">65</span>
+          <span class="site-state-item-count">66</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -299,7 +299,7 @@
 
 <h2 id="Installing-an-Executable"><a href="#Installing-an-Executable" class="headerlink" title="Installing an Executable"></a>Installing an Executable</h2><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ go install github.com<span class="regexp">/mholt/</span>caddy/caddy</span><br></pre></td></tr></table></figure>
 
-<h2 id="Building-Executables-for-Different-Architectures"><a href="#Building-Executables-for-Different-Architectures" class="headerlink" title="Building Executables for Different Architectures"></a>Building Executables for Different Architectures</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; Cross-compiling works <span class="keyword">by</span> setting required environment variables that specify <span class="keyword">the</span> target operating <span class="keyword">system</span> <span class="keyword">and</span> architecture.</span><br><span class="line">   - GOOS: <span class="keyword">the</span> target operating <span class="keyword">system</span></span><br><span class="line">   - GOARCH: <span class="keyword">the</span> target architecture</span><br><span class="line"></span><br><span class="line"><span class="comment"># the env command runs a program in a modified environment.</span></span><br><span class="line">$ env GOOS=target-OS GOARCH=target-architecture go build package-import-path</span><br></pre></td></tr></table></figure>
+<h2 id="Cross-Compiling"><a href="#Cross-Compiling" class="headerlink" title="Cross Compiling"></a>Cross Compiling</h2><figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt; Cross-compiling works <span class="keyword">by</span> setting required environment variables that specify <span class="keyword">the</span> target operating <span class="keyword">system</span> <span class="keyword">and</span> architecture.</span><br><span class="line">   - GOOS: <span class="keyword">the</span> target operating <span class="keyword">system</span></span><br><span class="line">   - GOARCH: <span class="keyword">the</span> target architecture</span><br><span class="line"></span><br><span class="line"><span class="comment"># the env command runs a program in a modified environment.</span></span><br><span class="line">$ env GOOS=target-OS GOARCH=target-architecture go build package-import-path</span><br></pre></td></tr></table></figure>
 
 <table>
 <thead>
@@ -480,13 +480,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">224k</span>
+    <span title="站点总字数">227k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:24</span>
+    <span title="站点阅读时长">3:27</span>
   </span>
 </div>
 <div class="busuanzi-count">
