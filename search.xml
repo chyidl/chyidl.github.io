@@ -1,27 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>hexo-next-gitalk</title>
-    <url>/2021/09/01/hexo-next-gitalk/</url>
-    <content><![CDATA[<h3 id="站点搭建过程"><a href="#站点搭建过程" class="headerlink" title="站点搭建过程"></a>站点搭建过程</h3><ul>
-<li><a href="https://hexo.io/zh-cn/">hexo</a> : 快速、简洁且高校的博客框架</li>
-<li><a href="https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/README.md">next</a> : Hexo主题</li>
-<li><a href="https://github.com/gitalk/gitalk">gitalk</a> : 依靠GitHub issue的评论系统</li>
-</ul>
-<span id="more"></span>
-
-<h3 id="Settings-amp-Tips"><a href="#Settings-amp-Tips" class="headerlink" title="Settings &amp; Tips"></a>Settings &amp; Tips</h3><ul>
-<li><p><strong>Show descripion</strong></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 修改themes/next/_config.yml</span><br><span class="line">excerpt_description: true</span><br><span class="line"></span><br><span class="line"># 文章截断</span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>字数统计</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装插件 hexo-symbols-count-time</span></span><br><span class="line"><span class="string">$</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-symbols-count-time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改hexo配置文件_config.yml</span></span><br><span class="line">  <span class="comment"># Symbols count and time to read of articles for Hexo.</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">      <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改Next配置文件</span></span><br><span class="line">  <span class="comment"># Post wordcount display settings</span></span><br><span class="line">  <span class="comment"># Dependencies: https://github.com/next-theme/hexo-word-counter</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">    <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_post:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_total:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">    <span class="attr">wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>blog</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Docker Tips &amp; Tricks</title>
     <url>/2021/09/01/Docker-Intro/</url>
     <content><![CDATA[<h2 id="Docker-Info"><a href="#Docker-Info" class="headerlink" title="Docker  Info"></a>Docker  Info</h2><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”</span><br><span class="line"></span><br><span class="line">Cgroups技术是用来制造约束的主要手段</span><br><span class="line"><span class="keyword">Namespace</span>技术则是用来修改进程试图的主要方法</span><br></pre></td></tr></table></figure>
@@ -182,6 +161,27 @@
       <tags>
         <tag>Docker</tag>
         <tag>Dockerfile</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo-next-gitalk</title>
+    <url>/2021/09/01/hexo-next-gitalk/</url>
+    <content><![CDATA[<h3 id="站点搭建过程"><a href="#站点搭建过程" class="headerlink" title="站点搭建过程"></a>站点搭建过程</h3><ul>
+<li><a href="https://hexo.io/zh-cn/">hexo</a> : 快速、简洁且高校的博客框架</li>
+<li><a href="https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/README.md">next</a> : Hexo主题</li>
+<li><a href="https://github.com/gitalk/gitalk">gitalk</a> : 依靠GitHub issue的评论系统</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Settings-amp-Tips"><a href="#Settings-amp-Tips" class="headerlink" title="Settings &amp; Tips"></a>Settings &amp; Tips</h3><ul>
+<li><p><strong>Show descripion</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 修改themes/next/_config.yml</span><br><span class="line">excerpt_description: true</span><br><span class="line"></span><br><span class="line"># 文章截断</span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>字数统计</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装插件 hexo-symbols-count-time</span></span><br><span class="line"><span class="string">$</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-symbols-count-time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改hexo配置文件_config.yml</span></span><br><span class="line">  <span class="comment"># Symbols count and time to read of articles for Hexo.</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">      <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改Next配置文件</span></span><br><span class="line">  <span class="comment"># Post wordcount display settings</span></span><br><span class="line">  <span class="comment"># Dependencies: https://github.com/next-theme/hexo-word-counter</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">    <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_post:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_total:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">    <span class="attr">wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -3470,7 +3470,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#x68;&#121;&#105;&#x79;&#x61;&#x71;&#105;&#x6e;&#x67;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;">&#x63;&#x68;&#121;&#105;&#x79;&#x61;&#x71;&#105;&#x6e;&#x67;&#x40;&#103;&#x6d;&#x61;&#105;&#x6c;&#x2e;&#99;&#x6f;&#109;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#121;&#x69;&#x79;&#97;&#113;&#x69;&#110;&#103;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;">&#99;&#x68;&#121;&#x69;&#x79;&#97;&#113;&#x69;&#110;&#103;&#x40;&#x67;&#109;&#97;&#105;&#108;&#x2e;&#x63;&#x6f;&#x6d;</a>)</li>
 </ul>
 ]]></content>
   </entry>
