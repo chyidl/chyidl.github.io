@@ -271,14 +271,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>1.3k</span>
+      <span>2.6k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>1 分钟</span>
+      <span>2 分钟</span>
     </span>
 </div>
 
@@ -296,11 +296,14 @@
 
 <h2 id="1-前置知识篇"><a href="#1-前置知识篇" class="headerlink" title="1. 前置知识篇"></a>1. 前置知识篇</h2><ul>
 <li>内存<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 栈</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈自上而下增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈是程序运行的基础，每当一个函数被调用时，一块连续的内存就会被栈顶分配出来，这块内存被称为帧(frame)</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">在编译时，一切无法确定大小或者大小可以改变的数据,都无法放在栈上，只能放在堆上</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">存放栈上的值，它的大小在编译期就需要确定</span></span><br><span class="line"></span><br><span class="line"># 堆</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆自下而上增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配内存时，一般都会预留一些空间</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">动态分配大小的内存需要被分配到堆上，动态声明周期的内存也需要分配到堆上.</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配出来的每一块内存需要显式地释放，这就使堆山内存有更加灵活的声明周期，可以在不同的调用栈之间共享数据</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆可以存放大小未知或者动态伸缩的数据类型</span></span><br><span class="line"></span><br><span class="line">栈上存放的数据时静态的，静态大小，静态生命周期，堆上存放的数据时动态的，动态大小，动态生命周期</span><br><span class="line"></span><br><span class="line"># GC vs ARC</span><br><span class="line">  1. GC在内存分配和释放上无需额外操作，而ARC添加了大量的额外代码处理引用计数，所以GC效率更高，吞吐量(throughput)更大</span><br><span class="line">  2. GC释放内存的时机不确定，释放时引发的STW(Stop The World)会导致代码执行的延迟latency.一般携带GC的编程语言不适合做嵌入式系统或者实时系统</span><br></pre></td></tr></table></figure></li>
-<li>函数</li>
-<li>闭包</li>
-<li>虚表</li>
-<li>泛型</li>
-<li>同步/异步</li>
+<li>数据<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 程序操作的对象</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 值和类型</span></span><br><span class="line"><span class="quote">&gt; 编程语言的类型可以分为原生类型和组合类型</span></span><br><span class="line"><span class="bullet">  -</span> 原生类型(primitive type) : 所有原生类型的大小都是固定的，因此他们可以被分配到栈上</span><br><span class="line"><span class="bullet">    -</span> 字符</span><br><span class="line"><span class="bullet">    -</span> 整数</span><br><span class="line"><span class="bullet">    -</span> 浮点数</span><br><span class="line"><span class="bullet">    -</span> 布尔值</span><br><span class="line"><span class="bullet">    -</span> 数组array</span><br><span class="line"><span class="bullet">    -</span> 元组tuple</span><br><span class="line"><span class="bullet">    -</span> 指针</span><br><span class="line"><span class="bullet">      -</span> 胖指针(fat poiner): 比正常指针携带更多信息的指针</span><br><span class="line"><span class="bullet">  -</span> 组合类型(composite type) : 由一组原生类型和其它类型组合而成的类型</span><br><span class="line"><span class="bullet">    -</span> 结构体(structure type): 多个类型组合在一起共同表达一个值的复杂数据结构</span><br><span class="line"><span class="bullet">    -</span> 标签联合(tagged union): 不相交并集</span><br></pre></td></tr></table></figure></li>
+<li>指针和引用<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">指针和应用都指向内存地址，只不过二者在解引用时的行为不一样</span><br><span class="line">引用只能解引用到原来的数据类型</span><br></pre></td></tr></table></figure></li>
+<li>函数<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数时代码中重复行为的抽象</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">方法时对象内部定义的函数</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数是编程语言的基本要素,是对完成某个功能的一组相关语句和表达式的封装</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数往往是一等公民，意味着函数可以作为参数传递，或者作为返回值返回，也可以作为符合类型中的一个组成部分</span></span><br></pre></td></tr></table></figure></li>
+<li>闭包<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包是一种特殊的函数，会捕获函数体内使用到的上下文中的自由变量,作为闭包成员的一部分</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包是将函数和其环境一起存储的一种数据结构</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包引用的上下文中的自由变量会被捕获到闭包的结构中，成为闭包类型的一部分</span></span><br></pre></td></tr></table></figure></li>
+<li>接口&amp;&amp;虚表<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 接口</span></span><br><span class="line"><span class="quote">&gt; 作为一个抽象层,接口将使用方和实现方隔离开来，使两者不直接有依赖关系，大大提高了复用性和扩展性</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 虚表 virtual table</span></span><br><span class="line"><span class="quote">&gt; 虚表是指向一张涵盖接口所支持方法的列表</span></span><br></pre></td></tr></table></figure></li>
+<li>并发(concurreny)与并行(parallel)<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 并发</span></span><br><span class="line"><span class="quote">&gt; 并发是同时与多件事情打交道的能力，比如系统可以在任务1做到一定程度后，保存该任务的上下文，挂起并切换到任务2，然后过段时间在切换回任务1</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 并行</span></span><br><span class="line"><span class="quote">&gt; 并行是同时处理多件事情的手段，任务1和任务2可以在同一个时间片下工作,无需上下文切换</span></span><br><span class="line"></span><br><span class="line">拥有高并发处理能力的编程语言会在用户程序中嵌入一个M:N的调度器，把M个并行任务，合理地分配在N个CPU core上并行运行,让程序的吞吐量达到最大</span><br></pre></td></tr></table></figure></li>
+<li>同步和异步<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 同步</span></span><br><span class="line">&gt; 指一个任务开始执行后，后续的操作回阻塞，直到这个任务结束</span><br><span class="line">&gt; 同步执行保证了代码的因果关系(causality),是程序正确性的保证</span><br><span class="line"></span><br><span class="line"><span class="comment"># 异步</span></span><br><span class="line">&gt; 指一个任务开始执行后，与它没有因果关系的其他任务可以正常执行，不必等待前一个任务结束</span><br><span class="line">  - <span class="built_in">Promise</span>(future/delay/deferred): 对象用来描述未来某个时刻才能获得的结果的值</span><br><span class="line">    - 初始状态: <span class="built_in">Promise</span>还未运行</span><br><span class="line">    - 等待pending状态: <span class="built_in">Promise</span>已经运行，但还没有结束</span><br><span class="line">    - 结束状态: promise成功解析出一个值，或者执行失败</span><br><span class="line">  - <span class="keyword">async</span>/<span class="keyword">await</span></span><br><span class="line">    &gt; <span class="keyword">async</span>/<span class="keyword">await</span>是一个语法糖(syntactic sugar)使用状态机将promise包装起来，让异步调用的使用感觉和同步调用非常类型</span><br><span class="line">    - <span class="keyword">async</span>定义一个可以并发执行的任务</span><br><span class="line">    - <span class="keyword">await</span>触发并发执行</span><br></pre></td></tr></table></figure></li>
+<li>编程泛式<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 泛型编程</span></span><br><span class="line"><span class="bullet">  -</span> 数据结构的泛型</span><br><span class="line"><span class="bullet">  -</span> 代码的泛型化</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="2-基础知识篇"><a href="#2-基础知识篇" class="headerlink" title="2. 基础知识篇"></a>2. 基础知识篇</h2><ul>
 <li>Rust变量的所有权和生命周期</li>
@@ -331,6 +334,7 @@
 <li>Tracing GC : 追踪式垃圾回收(通过定期标记mark找出不再被引用的对象，然后将其清理sweep掉，来自动管理内存)</li>
 <li>Automatic Reference Counting: 自动引用计数 (编译时，为每个函数插入retain/release语句来自动维护堆上对象的引用计数，当引用计数为零的时候，release语句就释放对象)</li>
 <li>throughput: 吞吐量</li>
+<li>syntactic sugar: 语法糖</li>
 </ul>
 <h2 id="阅读资料"><a href="#阅读资料" class="headerlink" title="阅读资料"></a>阅读资料</h2><ul>
 <li><a href="">begin-rust</a></li>
@@ -397,13 +401,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">237k</span>
+    <span title="站点总字数">238k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:35</span>
+    <span title="站点阅读时长">3:36</span>
   </span>
 </div>
 <div class="busuanzi-count">
