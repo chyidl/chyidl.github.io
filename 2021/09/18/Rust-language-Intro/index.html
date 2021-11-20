@@ -20,12 +20,12 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
-<meta name="description" content="Rust  Getting Started Instaling Rust on Linux Writing a Hello, world Using cargo, Rust’s package manager and build system  Programming a Guessing Game阅读资料 The Rust Programming Language">
+<meta name="description" content="Rust 一门非常重视开发者用户体验的语言如果你想从其他语言迁移到Rust,必须经过一段时期的思维转换(Paradigm Shift)  1234命令式(imperative)编程语言转换为函数式(function)编程语言变量的可变性(mutable)迁移到不可变性(immutable)弱类型语言迁移到强类型语言从手工或者自动内存管理到通过生命周期来管理内存Rust最大的思维转换就是变量的所有权">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Rust language Intro">
 <meta property="og:url" content="http://chyidl.github.io/2021/09/18/Rust-language-Intro/">
 <meta property="og:site_name" content="Stay Hungry Stay Foolish">
-<meta property="og:description" content="Rust  Getting Started Instaling Rust on Linux Writing a Hello, world Using cargo, Rust’s package manager and build system  Programming a Guessing Game阅读资料 The Rust Programming Language">
+<meta property="og:description" content="Rust 一门非常重视开发者用户体验的语言如果你想从其他语言迁移到Rust,必须经过一段时期的思维转换(Paradigm Shift)  1234命令式(imperative)编程语言转换为函数式(function)编程语言变量的可变性(mutable)迁移到不可变性(immutable)弱类型语言迁移到强类型语言从手工或者自动内存管理到通过生命周期来管理内存Rust最大的思维转换就是变量的所有权">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-18T00:32:38.000Z">
 <meta property="article:modified_time" content="2021-09-18T00:32:38.000Z">
@@ -151,7 +151,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Rust"><span class="nav-number">1.</span> <span class="nav-text">Rust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Getting-Started"><span class="nav-number">1.1.</span> <span class="nav-text">Getting Started</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Programming-a-Guessing-Game"><span class="nav-number">1.2.</span> <span class="nav-text">Programming a Guessing Game</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E8%B5%84%E6%96%99"><span class="nav-number">1.3.</span> <span class="nav-text">阅读资料</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Rust"><span class="nav-number">1.</span> <span class="nav-text">Rust</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86%E7%AF%87"><span class="nav-number">1.1.</span> <span class="nav-text">1. 前置知识篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E7%AF%87"><span class="nav-number">1.2.</span> <span class="nav-text">2. 基础知识篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-%E8%BF%9B%E9%98%B6%E7%AF%87"><span class="nav-number">1.3.</span> <span class="nav-text">3. 进阶篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-%E5%B9%B6%E5%8F%91%E7%AF%87"><span class="nav-number">1.4.</span> <span class="nav-text">4. 并发篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-%E5%AE%9E%E6%88%98%E7%AF%87"><span class="nav-number">1.5.</span> <span class="nav-text">5. 实战篇</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%8D%E8%AF%8D%E8%A7%A3%E9%87%8A"><span class="nav-number">1.6.</span> <span class="nav-text">名词解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%98%85%E8%AF%BB%E8%B5%84%E6%96%99"><span class="nav-number">1.7.</span> <span class="nav-text">阅读资料</span></a></li></ol></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -167,7 +167,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">67</span>
+          <span class="site-state-item-count">68</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -271,7 +271,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>156</span>
+      <span>1.3k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
@@ -290,13 +290,50 @@
     
     <div class="post-body" itemprop="articleBody">
         <h1 id="Rust"><a href="#Rust" class="headerlink" title="Rust"></a>Rust</h1><blockquote>
+<p>一门非常重视开发者用户体验的语言<br>如果你想从其他语言迁移到Rust,必须经过一段时期的思维转换(Paradigm Shift)<br>  <figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">命令式<span class="comment">(imperative)</span>编程语言转换为函数式<span class="comment">(function)</span>编程语言</span><br><span class="line">变量的可变性<span class="comment">(mutable)</span>迁移到不可变性<span class="comment">(immutable)</span></span><br><span class="line">弱类型语言迁移到强类型语言</span><br><span class="line">从手工或者自动内存管理到通过生命周期来管理内存</span><br></pre></td></tr></table></figure><br>Rust最大的思维转换就是变量的所有权和声明周期</p>
 </blockquote>
-<h2 id="Getting-Started"><a href="#Getting-Started" class="headerlink" title="Getting Started"></a>Getting Started</h2><ul>
-<li>Instaling Rust on Linux</li>
-<li>Writing a Hello, world</li>
-<li>Using cargo, Rust’s package manager and build system</li>
+<span id="more"></span>
+
+<h2 id="1-前置知识篇"><a href="#1-前置知识篇" class="headerlink" title="1. 前置知识篇"></a>1. 前置知识篇</h2><ul>
+<li>内存<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"># 栈</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈自上而下增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈是程序运行的基础，每当一个函数被调用时，一块连续的内存就会被栈顶分配出来，这块内存被称为帧(frame)</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">在编译时，一切无法确定大小或者大小可以改变的数据,都无法放在栈上，只能放在堆上</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">存放栈上的值，它的大小在编译期就需要确定</span></span><br><span class="line"></span><br><span class="line"># 堆</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆自下而上增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配内存时，一般都会预留一些空间</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">动态分配大小的内存需要被分配到堆上，动态声明周期的内存也需要分配到堆上.</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配出来的每一块内存需要显式地释放，这就使堆山内存有更加灵活的声明周期，可以在不同的调用栈之间共享数据</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆可以存放大小未知或者动态伸缩的数据类型</span></span><br><span class="line"></span><br><span class="line">栈上存放的数据时静态的，静态大小，静态生命周期，堆上存放的数据时动态的，动态大小，动态生命周期</span><br><span class="line"></span><br><span class="line"># GC vs ARC</span><br><span class="line">  1. GC在内存分配和释放上无需额外操作，而ARC添加了大量的额外代码处理引用计数，所以GC效率更高，吞吐量(throughput)更大</span><br><span class="line">  2. GC释放内存的时机不确定，释放时引发的STW(Stop The World)会导致代码执行的延迟latency.一般携带GC的编程语言不适合做嵌入式系统或者实时系统</span><br></pre></td></tr></table></figure></li>
+<li>函数</li>
+<li>闭包</li>
+<li>虚表</li>
+<li>泛型</li>
+<li>同步/异步</li>
 </ul>
-<h2 id="Programming-a-Guessing-Game"><a href="#Programming-a-Guessing-Game" class="headerlink" title="Programming a Guessing Game"></a>Programming a Guessing Game</h2><h2 id="阅读资料"><a href="#阅读资料" class="headerlink" title="阅读资料"></a>阅读资料</h2><ul>
+<h2 id="2-基础知识篇"><a href="#2-基础知识篇" class="headerlink" title="2. 基础知识篇"></a>2. 基础知识篇</h2><ul>
+<li>Rust变量的所有权和生命周期</li>
+<li>Rust内存管理方式</li>
+<li>C的手工管理</li>
+<li>Java的GC</li>
+<li>Swift的ARC</li>
+<li>Rust语言特性<ul>
+<li>函数式编程特性</li>
+<li>类型系统</li>
+<li>范性编程</li>
+<li>错误处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-进阶篇"><a href="#3-进阶篇" class="headerlink" title="3. 进阶篇"></a>3. 进阶篇</h2><p>  *</p>
+<h2 id="4-并发篇"><a href="#4-并发篇" class="headerlink" title="4. 并发篇"></a>4. 并发篇</h2><ul>
+<li>无畏并发(Fearless Concurrency)</li>
+</ul>
+<h2 id="5-实战篇"><a href="#5-实战篇" class="headerlink" title="5. 实战篇"></a>5. 实战篇</h2><h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><blockquote>
+<p>学习过程就像《中庸》里谈治学的方法：博学之、审问之、慎思之、明辨之、笃(du)行之<br>算法+数据结构=程序, Pascal之父,图灵奖得主Niklaus Wirth</p>
+</blockquote>
+<ul>
+<li>Paradigm Shift : 思维转换</li>
+<li>Stack Overflow: 栈溢出</li>
+<li>heap out of bounds: 堆越界</li>
+<li>use after free : 堆上的内存被释放，但栈上指向堆上内存的响应指针没有被清空</li>
+<li>Tracing GC : 追踪式垃圾回收(通过定期标记mark找出不再被引用的对象，然后将其清理sweep掉，来自动管理内存)</li>
+<li>Automatic Reference Counting: 自动引用计数 (编译时，为每个函数插入retain/release语句来自动维护堆上对象的引用计数，当引用计数为零的时候，release语句就释放对象)</li>
+<li>throughput: 吞吐量</li>
+</ul>
+<h2 id="阅读资料"><a href="#阅读资料" class="headerlink" title="阅读资料"></a>阅读资料</h2><ul>
+<li><a href="">begin-rust</a></li>
 <li><a target="_blank" rel="noopener" href="https://doc.rust-lang.org/book/">The Rust Programming Language</a></li>
 </ul>
 
@@ -360,13 +397,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">235k</span>
+    <span title="站点总字数">237k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:34</span>
+    <span title="站点阅读时长">3:35</span>
   </span>
 </div>
 <div class="busuanzi-count">
