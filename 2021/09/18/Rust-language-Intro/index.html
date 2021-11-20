@@ -271,14 +271,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">本文字数：</span>
-      <span>2.6k</span>
+      <span>3.7k</span>
     </span>
     <span class="post-meta-item" title="阅读时长">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">阅读时长 &asymp;</span>
-      <span>2 分钟</span>
+      <span>3 分钟</span>
     </span>
 </div>
 
@@ -306,6 +306,7 @@
 <li>编程泛式<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 泛型编程</span></span><br><span class="line"><span class="bullet">  -</span> 数据结构的泛型</span><br><span class="line"><span class="bullet">  -</span> 代码的泛型化</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="2-基础知识篇"><a href="#2-基础知识篇" class="headerlink" title="2. 基础知识篇"></a>2. 基础知识篇</h2><ul>
+<li>第一个程序<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">➜ tree scrape_url</span><br><span class="line">scrape_url</span><br><span class="line">├── Cargo<span class="selector-class">.lock</span></span><br><span class="line">├── Cargo<span class="selector-class">.toml</span>      -- Rust项目的配置管理文件</span><br><span class="line">├── <span class="attribute">src</span></span><br><span class="line">│   └── <span class="selector-tag">main</span><span class="selector-class">.rs</span></span><br><span class="line">└── target</span><br><span class="line">    ├── CACHEDIR<span class="selector-class">.TAG</span></span><br><span class="line">    └── debug</span><br><span class="line">        ├── build</span><br><span class="line">        ├── deps</span><br><span class="line">        │   ├── libscrape_url-f8d1878e1d7fc033<span class="selector-class">.rmeta</span></span><br><span class="line">        │   └── scrape_url-f8d1878e1d7fc033<span class="selector-class">.d</span></span><br><span class="line">        ├── examples</span><br><span class="line">        └── incremental</span><br><span class="line">            └── scrape_url-<span class="number">2</span>n1xt1o9t0ikb</span><br><span class="line">                ├── s-g4eprmaq6h-ez2nl7-<span class="number">1</span>g41whu33uaqz</span><br><span class="line">                │   ├── dep-graph<span class="selector-class">.bin</span></span><br><span class="line">                │   ├── query-cache<span class="selector-class">.bin</span></span><br><span class="line">                │   └── work-products<span class="selector-class">.bin</span></span><br><span class="line">                └── s-g4eprmaq6h-ez2nl7<span class="selector-class">.lock</span></span><br><span class="line"></span><br><span class="line"><span class="number">9</span> directories, <span class="number">10</span> files</span><br><span class="line"></span><br><span class="line">scrape_url on  <span class="selector-tag">main</span> <span class="selector-attr">[?]</span> is 📦 v0.<span class="number">1.0</span> via 🦀 v1.<span class="number">52.0</span> took <span class="number">8s</span></span><br><span class="line">➜ cargo run</span><br><span class="line">   Compiling scrape_url v0.<span class="number">1.0</span> (/Users/chyiyaqing/chyi/github.com/begin-rust/scrape_url)</span><br><span class="line">    Finished dev <span class="selector-attr">[unoptimized + debuginfo]</span> target(s) <span class="keyword">in</span> <span class="number">3.13s</span></span><br><span class="line">     Running `target/debug/scrape_url`</span><br><span class="line">Fetching url: https:<span class="comment">//www.rust-lang.org/</span></span><br><span class="line">Converting <span class="selector-tag">html</span> to markdown...</span><br><span class="line">Converted markdown has been saved <span class="keyword">in</span> rust<span class="selector-class">.md</span>.</span><br><span class="line"></span><br><span class="line">&gt; Rust使用cargo工具管理项目</span><br><span class="line">&gt; Rust整体语法偏向C/C++风格</span><br><span class="line">&gt; Rust支持面向接口编程和泛型编程</span><br><span class="line">&gt; Rust有非常丰富的数据类型和强大的标准库</span><br><span class="line">&gt; Rust有非常丰富的控制流程</span><br><span class="line">&gt; Rust默认变量不可变，可以添加mut关键字让变量具备可变性</span><br><span class="line">&gt; Rust项目的组织可以用mod来组织代码</span><br><span class="line">&gt; Rust一个项目被称为crate (cargo new &lt;name&gt; -- lib 创建一个库)</span><br></pre></td></tr></table></figure></li>
 <li>Rust变量的所有权和生命周期</li>
 <li>Rust内存管理方式</li>
 <li>C的手工管理</li>
@@ -335,6 +336,8 @@
 <li>Automatic Reference Counting: 自动引用计数 (编译时，为每个函数插入retain/release语句来自动维护堆上对象的引用计数，当引用计数为零的时候，release语句就释放对象)</li>
 <li>throughput: 吞吐量</li>
 <li>syntactic sugar: 语法糖</li>
+<li>Principle of Least Privilege: 最小权限原则</li>
+<li>derive macro : 派生宏</li>
 </ul>
 <h2 id="阅读资料"><a href="#阅读资料" class="headerlink" title="阅读资料"></a>阅读资料</h2><ul>
 <li><a href="">begin-rust</a></li>
@@ -401,13 +404,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="站点总字数">238k</span>
+    <span title="站点总字数">239k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">3:36</span>
+    <span title="站点阅读时长">3:37</span>
   </span>
 </div>
 <div class="busuanzi-count">
