@@ -1573,6 +1573,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Protocol Buffer Intro</title>
+    <url>/2021/09/07/Protocol-Buffer-Intro/</url>
+    <content><![CDATA[<h1 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h1><blockquote>
+<p>Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。</p>
+</blockquote>
+<ul>
+<li>主要特征<ul>
+<li>更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度</li>
+<li>跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端</li>
+<li>良好的扩展性和兼容性:</li>
+<li>基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+
+]]></content>
+      <tags>
+        <tag>Protocol Buffer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Middleware Tips &amp; Tracks</title>
     <url>/2021/09/06/Middleware-Tips-Tracks/</url>
     <content><![CDATA[<h2 id="技术选型"><a href="#技术选型" class="headerlink" title="技术选型"></a>技术选型</h2><blockquote>
@@ -1595,29 +1618,6 @@
       <tags>
         <tag>中间件</tag>
         <tag>Middleware</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Protocol Buffer Intro</title>
-    <url>/2021/09/07/Protocol-Buffer-Intro/</url>
-    <content><![CDATA[<h1 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h1><blockquote>
-<p>Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。</p>
-</blockquote>
-<ul>
-<li>主要特征<ul>
-<li>更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度</li>
-<li>跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端</li>
-<li>良好的扩展性和兼容性:</li>
-<li>基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口</li>
-</ul>
-</li>
-</ul>
-<span id="more"></span>
-
-
-]]></content>
-      <tags>
-        <tag>Protocol Buffer</tag>
       </tags>
   </entry>
   <entry>
@@ -3550,7 +3550,7 @@
 
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#104;&#121;&#105;&#121;&#x61;&#113;&#105;&#x6e;&#103;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#x63;&#104;&#121;&#105;&#121;&#x61;&#113;&#105;&#x6e;&#103;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#x79;&#105;&#x79;&#x61;&#x71;&#x69;&#x6e;&#x67;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;">&#99;&#x68;&#x79;&#105;&#x79;&#x61;&#x71;&#x69;&#x6e;&#x67;&#64;&#103;&#x6d;&#97;&#105;&#108;&#46;&#x63;&#111;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
