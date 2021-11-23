@@ -2627,6 +2627,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
+    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>监控</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes Intro</title>
     <url>/2021/09/19/Kubernetes-Intro/</url>
     <content><![CDATA[<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
@@ -2750,17 +2761,6 @@
 ]]></content>
       <tags>
         <tag>Kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
-    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
-<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>监控</tag>
       </tags>
   </entry>
   <entry>
@@ -3551,7 +3551,7 @@
 
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#x79;&#105;&#121;&#97;&#x71;&#105;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#x68;&#x79;&#105;&#121;&#97;&#x71;&#105;&#110;&#103;&#64;&#103;&#x6d;&#x61;&#x69;&#108;&#x2e;&#99;&#x6f;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#x68;&#121;&#105;&#x79;&#97;&#113;&#105;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;">&#x63;&#x68;&#121;&#105;&#x79;&#97;&#113;&#105;&#x6e;&#x67;&#x40;&#x67;&#x6d;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
