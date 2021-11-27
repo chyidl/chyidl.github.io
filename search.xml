@@ -2627,17 +2627,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
-    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
-<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>监控</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kubernetes Intro</title>
     <url>/2021/09/19/Kubernetes-Intro/</url>
     <content><![CDATA[<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
@@ -2761,6 +2750,17 @@
 ]]></content>
       <tags>
         <tag>Kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
+    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>监控</tag>
       </tags>
   </entry>
   <entry>
@@ -3347,12 +3347,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>Rancher Intro</title>
-    <url>/2021/10/18/Rancher-Intro/</url>
-    <content><![CDATA[<h1 id="Rancher"><a href="#Rancher" class="headerlink" title="Rancher"></a>Rancher</h1><span id="more"></span>
-]]></content>
-  </entry>
-  <entry>
     <title>NFS Mount Intro</title>
     <url>/2021/10/15/NFS-Mount-Intro/</url>
     <content><![CDATA[<h1 id="NFS-or-Network-File-System"><a href="#NFS-or-Network-File-System" class="headerlink" title="NFS, or Network File System"></a>NFS, or Network File System</h1><blockquote>
@@ -3374,6 +3368,12 @@
 <h2 id="Step-5-Mounting-the-Remote-NFS-Directories-at-Boot"><a href="#Step-5-Mounting-the-Remote-NFS-Directories-at-Boot" class="headerlink" title="Step 5 - Mounting the Remote NFS Directories at Boot"></a>Step 5 - Mounting the Remote NFS Directories at Boot</h2>  <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">&gt; 通过将远程NFS共享添加到客户端上的<span class="regexp">/etc/</span>fstab文件，可以在启动是自动挂载远程NFS共享</span><br><span class="line"></span><br><span class="line">ubuntu <span class="keyword">in</span> ~ at <span class="number">3</span>B</span><br><span class="line">➜ sudo vim <span class="regexp">/etc/</span>fstab</span><br><span class="line"></span><br><span class="line">  <span class="number">172.30</span>.<span class="number">1.14</span>:<span class="regexp">/export/</span>K8sData /k8s_data nfs auto,nofail,noatime,nolock,intr,tcp,actimeo=<span class="number">1800</span> <span class="number">0</span> <span class="number">0</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="Step-6-Unmounting-an-NFS-Remote-Share"><a href="#Step-6-Unmounting-an-NFS-Remote-Share" class="headerlink" title="Step 6 - Unmounting an NFS Remote Share"></a>Step 6 - Unmounting an NFS Remote Share</h2>  <figure class="highlight elixir"><table><tr><td class="code"><pre><span class="line"><span class="variable">$ </span>sudo umount /k8s_data</span><br></pre></td></tr></table></figure>
+]]></content>
+  </entry>
+  <entry>
+    <title>Rancher Intro</title>
+    <url>/2021/10/18/Rancher-Intro/</url>
+    <content><![CDATA[<h1 id="Rancher"><a href="#Rancher" class="headerlink" title="Rancher"></a>Rancher</h1><span id="more"></span>
 ]]></content>
   </entry>
   <entry>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#x68;&#121;&#x69;&#121;&#x61;&#x71;&#105;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#x68;&#121;&#x69;&#121;&#x61;&#x71;&#105;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#104;&#121;&#105;&#x79;&#x61;&#113;&#105;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x63;&#104;&#121;&#105;&#x79;&#x61;&#113;&#105;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a>)</li>
 </ul>
 ]]></content>
   </entry>
