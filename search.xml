@@ -3277,6 +3277,27 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
+    <title>Apple Silicon M1 New product experience</title>
+    <url>/2021/10/15/Apple-Silicon-M1-New-product-experience/</url>
+    <content><![CDATA[<h1 id="Apple-Silicon-M1-MacBook-Pro"><a href="#Apple-Silicon-M1-MacBook-Pro" class="headerlink" title="Apple Silicon M1 MacBook Pro"></a>Apple Silicon M1 MacBook Pro</h1><blockquote>
+<p>“Ths best way to predict the future is to invent it” - Alan Kay</p>
+</blockquote>
+<p><img src="/misc/images/macbookpro" alt="MacBook Pro"></p>
+<span id="more"></span>
+
+<h2 id="Apple-switching-Mac-to-ARM-Architecture"><a href="#Apple-switching-Mac-to-ARM-Architecture" class="headerlink" title="Apple switching Mac to ARM Architecture"></a>Apple switching Mac to ARM Architecture</h2><ul>
+<li>Pros and Cons 优缺点<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Pros优点</span></span><br><span class="line">  - <span class="number">1</span>. ARM processors use significantly less amount of power</span><br><span class="line">  - <span class="number">2</span>. MacOS is based on the [Darwin](https:<span class="regexp">//gi</span>thub.com<span class="regexp">/apple/</span>darwin-xnu)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Cons缺点</span></span><br><span class="line">  - [<span class="string">&quot;Hackintosh&quot;</span>](https:<span class="regexp">//</span>hackintosh.com/) future will be doomed.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="ARM64-amp-amp-Intel-x86-Virtual-Machines"><a href="#ARM64-amp-amp-Intel-x86-Virtual-Machines" class="headerlink" title="ARM64 &amp;&amp; Intel x86 Virtual Machines"></a>ARM64 &amp;&amp; Intel x86 Virtual Machines</h2><ul>
+<li>ARM64<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">&gt; Apple Silicon <span class="keyword">is</span> an ARM <span class="keyword">platform</span> (RISC)</span><br></pre></td></tr></table></figure></li>
+<li>Intel x86<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">&gt; Intel x86 <span class="keyword">is</span> a CISC <span class="keyword">platform</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="How-to-run-x86-Virtual-Machine-on-Apple-M1"><a href="#How-to-run-x86-Virtual-Machine-on-Apple-M1" class="headerlink" title="How to run x86 Virtual Machine on Apple M1"></a>How to run x86 Virtual Machine on Apple M1</h2><ul>
+<li>Virtualization or Emulation<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Virtualization:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 创建虚拟的副本(虚拟硬件和设备、存储设备和网络资源)</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Emulation:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> (<span class="built_in">emulate</span> different CPU architecture ) 模拟不同的CPU架构</span></span><br><span class="line"></span><br><span class="line">  - QEMU : a king of emulation</span><br><span class="line">  - UTM : emulation and virtualization solution</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Apache APISIX Intro</title>
     <url>/2021/10/13/Apache-APISIX-Intro/</url>
     <content><![CDATA[<h1 id="Apache-APISIX"><a href="#Apache-APISIX" class="headerlink" title="Apache APISIX"></a>Apache APISIX</h1><blockquote>
@@ -3296,27 +3317,6 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://medium.com/@ming_wen/apache-apisixs-technology-selection-testing-and-continuous-integration-313221b02542">Apache APISIX’s technology selection,testing and continuous integration</a></li>
-</ul>
-]]></content>
-  </entry>
-  <entry>
-    <title>Apple Silicon M1 New product experience</title>
-    <url>/2021/10/15/Apple-Silicon-M1-New-product-experience/</url>
-    <content><![CDATA[<h1 id="Apple-Silicon-M1-MacBook-Pro"><a href="#Apple-Silicon-M1-MacBook-Pro" class="headerlink" title="Apple Silicon M1 MacBook Pro"></a>Apple Silicon M1 MacBook Pro</h1><blockquote>
-<p>“Ths best way to predict the future is to invent it” - Alan Kay</p>
-</blockquote>
-<p><img src="/misc/images/macbookpro" alt="MacBook Pro"></p>
-<span id="more"></span>
-
-<h2 id="Apple-switching-Mac-to-ARM-Architecture"><a href="#Apple-switching-Mac-to-ARM-Architecture" class="headerlink" title="Apple switching Mac to ARM Architecture"></a>Apple switching Mac to ARM Architecture</h2><ul>
-<li>Pros and Cons 优缺点<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Pros优点</span></span><br><span class="line">  - <span class="number">1</span>. ARM processors use significantly less amount of power</span><br><span class="line">  - <span class="number">2</span>. MacOS is based on the [Darwin](https:<span class="regexp">//gi</span>thub.com<span class="regexp">/apple/</span>darwin-xnu)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Cons缺点</span></span><br><span class="line">  - [<span class="string">&quot;Hackintosh&quot;</span>](https:<span class="regexp">//</span>hackintosh.com/) future will be doomed.</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="ARM64-amp-amp-Intel-x86-Virtual-Machines"><a href="#ARM64-amp-amp-Intel-x86-Virtual-Machines" class="headerlink" title="ARM64 &amp;&amp; Intel x86 Virtual Machines"></a>ARM64 &amp;&amp; Intel x86 Virtual Machines</h2><ul>
-<li>ARM64<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">&gt; Apple Silicon <span class="keyword">is</span> an ARM <span class="keyword">platform</span> (RISC)</span><br></pre></td></tr></table></figure></li>
-<li>Intel x86<figure class="highlight delphi"><table><tr><td class="code"><pre><span class="line">&gt; Intel x86 <span class="keyword">is</span> a CISC <span class="keyword">platform</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="How-to-run-x86-Virtual-Machine-on-Apple-M1"><a href="#How-to-run-x86-Virtual-Machine-on-Apple-M1" class="headerlink" title="How to run x86 Virtual Machine on Apple M1"></a>How to run x86 Virtual Machine on Apple M1</h2><ul>
-<li>Virtualization or Emulation<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Virtualization:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 创建虚拟的副本(虚拟硬件和设备、存储设备和网络资源)</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Emulation:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> (<span class="built_in">emulate</span> different CPU architecture ) 模拟不同的CPU架构</span></span><br><span class="line"></span><br><span class="line">  - QEMU : a king of emulation</span><br><span class="line">  - UTM : emulation and virtualization solution</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
   </entry>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#x79;&#105;&#121;&#97;&#113;&#x69;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#99;&#x68;&#x79;&#105;&#121;&#97;&#113;&#x69;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#121;&#x69;&#121;&#97;&#x71;&#x69;&#110;&#103;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;">&#99;&#x68;&#121;&#x69;&#121;&#97;&#x71;&#x69;&#110;&#103;&#x40;&#x67;&#x6d;&#97;&#x69;&#108;&#x2e;&#99;&#111;&#x6d;</a>)</li>
 </ul>
 ]]></content>
   </entry>
