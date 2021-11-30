@@ -3018,13 +3018,6 @@
       </tags>
   </entry>
   <entry>
-    <title>In Memory of Steve Jobs</title>
-    <url>/2021/10/10/In-Memory-of-Steve-Jobs/</url>
-    <content><![CDATA[<h1 id="Steve-Jobs"><a href="#Steve-Jobs" class="headerlink" title="Steve Jobs"></a>Steve Jobs</h1><span id="more"></span>
-<p><img src="/misc/images/steve-jobs/In-memory-of-Steve-Jobs.jpg" alt="Steve Jobs"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Rust vs. Go</title>
     <url>/2021/10/09/Rust-vs-Go/</url>
     <content><![CDATA[<h2 id="When-to-use-Rust-and-when-to-use-Go"><a href="#When-to-use-Rust-and-when-to-use-Go" class="headerlink" title="When to use Rust and when to use Go"></a>When to use Rust and when to use Go</h2><span id="more"></span>
@@ -3068,6 +3061,13 @@
 <li><a href="https://en.wikipedia.org/wiki/Type_safety">类型安全</a></li>
 <li><a href="https://kristoff.it/blog/why-go-and-not-rust/">Loris Cro</a></li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>In Memory of Steve Jobs</title>
+    <url>/2021/10/10/In-Memory-of-Steve-Jobs/</url>
+    <content><![CDATA[<h1 id="Steve-Jobs"><a href="#Steve-Jobs" class="headerlink" title="Steve Jobs"></a>Steve Jobs</h1><span id="more"></span>
+<p><img src="/misc/images/steve-jobs/In-memory-of-Steve-Jobs.jpg" alt="Steve Jobs"></p>
 ]]></content>
   </entry>
   <entry>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#104;&#x79;&#x69;&#x79;&#97;&#113;&#x69;&#110;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#104;&#x79;&#x69;&#x79;&#97;&#113;&#x69;&#110;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#x6f;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#121;&#x69;&#121;&#97;&#x71;&#x69;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;">&#99;&#x68;&#121;&#x69;&#121;&#97;&#x71;&#x69;&#x6e;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#46;&#x63;&#x6f;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
