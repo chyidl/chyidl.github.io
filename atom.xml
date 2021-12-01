@@ -24,6 +24,31 @@
     <updated>2021-12-01T11:24:05.000Z</updated>
     
     
+    <summary type="html">&lt;h1 id=&quot;The-Websocket-Protocol&quot;&gt;&lt;a href=&quot;#The-Websocket-Protocol&quot; class=&quot;headerlink&quot; title=&quot;The Websocket Protocol&quot;&gt;&lt;/a&gt;The Websocket Protocol&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Introduction&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Background&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;variety of problem&lt;ul&gt;
+&lt;li&gt;The server is forced to use a number of different underlying TCP connections for each client: one for sending information to the client and a new one for each incoming message.&lt;/li&gt;
+&lt;li&gt;The wire protocol has a high overhead, with each client-to-server message having an HTTP header.&lt;/li&gt;
+&lt;li&gt;The client-side script is forced to maintain a mapping from the outgoing connections to the incoming connection to track replies.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Protocol Overview&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;The protocol has two parts: a handshake and the data transfer.&lt;ul&gt;
+&lt;li&gt;The handshake from the client looks as follows&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
     
     
     
