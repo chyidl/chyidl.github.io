@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-11-25T01:08:15.000Z</updated>
+  <updated>2021-12-01T11:24:05.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,19 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>websocket intro</title>
+    <link href="http://chyidl.github.io/2021/12/01/websocket-intro/"/>
+    <id>http://chyidl.github.io/2021/12/01/websocket-intro/</id>
+    <published>2021-12-01T11:24:05.000Z</published>
+    <updated>2021-12-01T11:24:05.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Patterns of Distributed Systems</title>
@@ -371,21 +384,6 @@
     <published>2021-10-11T04:18:24.000Z</published>
     <updated>2021-10-11T04:18:24.000Z</updated>
     
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>In Memory of Steve Jobs</title>
-    <link href="http://chyidl.github.io/2021/10/10/In-Memory-of-Steve-Jobs/"/>
-    <id>http://chyidl.github.io/2021/10/10/In-Memory-of-Steve-Jobs/</id>
-    <published>2021-10-10T12:42:52.000Z</published>
-    <updated>2021-10-10T12:42:52.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Steve-Jobs&quot;&gt;&lt;a href=&quot;#Steve-Jobs&quot; class=&quot;headerlink&quot; title=&quot;Steve Jobs&quot;&gt;&lt;/a&gt;Steve Jobs&lt;/h1&gt;</summary>
     
     
     
