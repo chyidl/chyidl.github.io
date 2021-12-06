@@ -1599,6 +1599,29 @@
       </tags>
   </entry>
   <entry>
+    <title>Protocol Buffer Intro</title>
+    <url>/2021/09/07/Protocol-Buffer-Intro/</url>
+    <content><![CDATA[<h1 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h1><blockquote>
+<p>Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。</p>
+</blockquote>
+<ul>
+<li>主要特征<ul>
+<li>更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度</li>
+<li>跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端</li>
+<li>良好的扩展性和兼容性:</li>
+<li>基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+
+]]></content>
+      <tags>
+        <tag>Protocol Buffer</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>API Design</title>
     <url>/2021/09/07/RESTful-API-Design/</url>
     <content><![CDATA[<blockquote>
@@ -1745,29 +1768,6 @@
 ]]></content>
       <tags>
         <tag>API</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Protocol Buffer Intro</title>
-    <url>/2021/09/07/Protocol-Buffer-Intro/</url>
-    <content><![CDATA[<h1 id="Protocol-Buffers"><a href="#Protocol-Buffers" class="headerlink" title="Protocol Buffers"></a>Protocol Buffers</h1><blockquote>
-<p>Google 开发的一套对数据结构进行序列化的方法，可用作数据通信协议、数据存储格式。</p>
-</blockquote>
-<ul>
-<li>主要特征<ul>
-<li>更快的数据传输速度：protobuf传输将数据序列化为二进制数据，JSON文本传输格式 节省大量IO操作，提高数据传输速度</li>
-<li>跨平台多语言：protobuf编译工具protoc基于protobuf定义文件，编译出不同语言的客户端或者服务端</li>
-<li>良好的扩展性和兼容性:</li>
-<li>基于IDL文件定义服务，通过proto3工具生成指定语言的数据结构,服务端和客户端接口</li>
-</ul>
-</li>
-</ul>
-<span id="more"></span>
-
-
-]]></content>
-      <tags>
-        <tag>Protocol Buffer</tag>
       </tags>
   </entry>
   <entry>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#x68;&#x79;&#105;&#x79;&#x61;&#113;&#105;&#110;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;">&#x63;&#x68;&#x79;&#105;&#x79;&#x61;&#113;&#105;&#110;&#x67;&#x40;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#99;&#111;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#x79;&#x69;&#121;&#x61;&#x71;&#x69;&#x6e;&#103;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#99;&#x68;&#x79;&#x69;&#121;&#x61;&#x71;&#x69;&#x6e;&#103;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a>)</li>
 </ul>
 ]]></content>
   </entry>
