@@ -291,6 +291,11 @@
       </tags>
   </entry>
   <entry>
+    <title>Kafka Tips &amp; Tracks</title>
+    <url>/2021/09/02/Kafka-Tips-Tracks/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>MySQL Tips &amp; Tracks</title>
     <url>/2021/09/02/MySQL-Tips-Tracks/</url>
     <content><![CDATA[<h1 id="数据库-三大范式"><a href="#数据库-三大范式" class="headerlink" title="数据库-三大范式"></a>数据库-三大范式</h1><ul>
@@ -730,31 +735,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Kafka Tips &amp; Tracks</title>
-    <url>/2021/09/02/Kafka-Tips-Tracks/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Distribute Scraping for Gophers</title>
-    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
-    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
-<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
-<li>nats<blockquote>
-<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>分布式</tag>
-        <tag>爬虫</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Dev-Ops Tips &amp; Tracks</title>
     <url>/2021/09/03/Dev-Ops-Tips-Tracks/</url>
     <content><![CDATA[<h1 id="DevOps-BOOTCAMP"><a href="#DevOps-BOOTCAMP" class="headerlink" title="DevOps BOOTCAMP"></a>DevOps BOOTCAMP</h1><span id="more"></span>
@@ -946,6 +926,26 @@
       <tags>
         <tag>DevOps</tag>
         <tag>Bootcamp</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Distribute Scraping for Gophers</title>
+    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
+    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
+<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
+<li>nats<blockquote>
+<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>分布式</tag>
+        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -2562,6 +2562,82 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Rust language Intro</title>
+    <url>/2021/09/18/Rust-language-Intro/</url>
+    <content><![CDATA[<h1 id="Rust"><a href="#Rust" class="headerlink" title="Rust"></a>Rust</h1><blockquote>
+<p>一门非常重视开发者用户体验的语言<br>如果你想从其他语言迁移到Rust,必须经过一段时期的思维转换(Paradigm Shift)<br>  <figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">命令式<span class="comment">(imperative)</span>编程语言转换为函数式<span class="comment">(function)</span>编程语言</span><br><span class="line">变量的可变性<span class="comment">(mutable)</span>迁移到不可变性<span class="comment">(immutable)</span></span><br><span class="line">弱类型语言迁移到强类型语言</span><br><span class="line">从手工或者自动内存管理到通过生命周期来管理内存</span><br></pre></td></tr></table></figure><br>Rust最大的思维转换就是变量的所有权和声明周期</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="1-前置知识篇"><a href="#1-前置知识篇" class="headerlink" title="1. 前置知识篇"></a>1. 前置知识篇</h2><ul>
+<li>内存<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"># 栈</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈自上而下增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈是程序运行的基础，每当一个函数被调用时，一块连续的内存就会被栈顶分配出来，这块内存被称为帧(frame)</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">在编译时，一切无法确定大小或者大小可以改变的数据,都无法放在栈上，只能放在堆上</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">存放栈上的值，它的大小在编译期就需要确定</span></span><br><span class="line"></span><br><span class="line"># 堆</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆自下而上增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配内存时，一般都会预留一些空间</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">动态分配大小的内存需要被分配到堆上，动态声明周期的内存也需要分配到堆上.</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配出来的每一块内存需要显式地释放，这就使堆山内存有更加灵活的声明周期，可以在不同的调用栈之间共享数据</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆可以存放大小未知或者动态伸缩的数据类型</span></span><br><span class="line"></span><br><span class="line">栈上存放的数据时静态的，静态大小，静态生命周期，堆上存放的数据时动态的，动态大小，动态生命周期</span><br><span class="line"></span><br><span class="line"># GC vs ARC</span><br><span class="line">  1. GC在内存分配和释放上无需额外操作，而ARC添加了大量的额外代码处理引用计数，所以GC效率更高，吞吐量(throughput)更大</span><br><span class="line">  2. GC释放内存的时机不确定，释放时引发的STW(Stop The World)会导致代码执行的延迟latency.一般携带GC的编程语言不适合做嵌入式系统或者实时系统</span><br></pre></td></tr></table></figure></li>
+<li>数据<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="quote">&gt; 程序操作的对象</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 值和类型</span></span><br><span class="line"><span class="quote">&gt; 编程语言的类型可以分为原生类型和组合类型</span></span><br><span class="line"><span class="bullet">  -</span> 原生类型(primitive type) : 所有原生类型的大小都是固定的，因此他们可以被分配到栈上</span><br><span class="line"><span class="bullet">    -</span> 字符</span><br><span class="line"><span class="bullet">    -</span> 整数</span><br><span class="line"><span class="bullet">    -</span> 浮点数</span><br><span class="line"><span class="bullet">    -</span> 布尔值</span><br><span class="line"><span class="bullet">    -</span> 数组array</span><br><span class="line"><span class="bullet">    -</span> 元组tuple</span><br><span class="line"><span class="bullet">    -</span> 指针</span><br><span class="line"><span class="bullet">      -</span> 胖指针(fat poiner): 比正常指针携带更多信息的指针</span><br><span class="line"><span class="bullet">  -</span> 组合类型(composite type) : 由一组原生类型和其它类型组合而成的类型</span><br><span class="line"><span class="bullet">    -</span> 结构体(structure type): 多个类型组合在一起共同表达一个值的复杂数据结构</span><br><span class="line"><span class="bullet">    -</span> 标签联合(tagged union): 不相交并集</span><br></pre></td></tr></table></figure></li>
+<li>指针和引用<figure class="highlight"><table><tr><td class="code"><pre><span class="line">指针和应用都指向内存地址，只不过二者在解引用时的行为不一样</span><br><span class="line">引用只能解引用到原来的数据类型</span><br></pre></td></tr></table></figure></li>
+<li>函数<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数时代码中重复行为的抽象</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">方法时对象内部定义的函数</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数是编程语言的基本要素,是对完成某个功能的一组相关语句和表达式的封装</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数往往是一等公民，意味着函数可以作为参数传递，或者作为返回值返回，也可以作为符合类型中的一个组成部分</span></span><br></pre></td></tr></table></figure></li>
+<li>闭包<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包是一种特殊的函数，会捕获函数体内使用到的上下文中的自由变量,作为闭包成员的一部分</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包是将函数和其环境一起存储的一种数据结构</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包引用的上下文中的自由变量会被捕获到闭包的结构中，成为闭包类型的一部分</span></span><br></pre></td></tr></table></figure></li>
+<li>接口&amp;&amp;虚表<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 接口</span></span><br><span class="line"><span class="quote">&gt; 作为一个抽象层,接口将使用方和实现方隔离开来，使两者不直接有依赖关系，大大提高了复用性和扩展性</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 虚表 virtual table</span></span><br><span class="line"><span class="quote">&gt; 虚表是指向一张涵盖接口所支持方法的列表</span></span><br></pre></td></tr></table></figure></li>
+<li>并发(concurreny)与并行(parallel)<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 并发</span></span><br><span class="line"><span class="quote">&gt; 并发是同时与多件事情打交道的能力，比如系统可以在任务1做到一定程度后，保存该任务的上下文，挂起并切换到任务2，然后过段时间在切换回任务1</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 并行</span></span><br><span class="line"><span class="quote">&gt; 并行是同时处理多件事情的手段，任务1和任务2可以在同一个时间片下工作,无需上下文切换</span></span><br><span class="line"></span><br><span class="line">拥有高并发处理能力的编程语言会在用户程序中嵌入一个M:N的调度器，把M个并行任务，合理地分配在N个CPU core上并行运行,让程序的吞吐量达到最大</span><br></pre></td></tr></table></figure></li>
+<li>同步和异步<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 同步</span></span><br><span class="line">&gt; 指一个任务开始执行后，后续的操作回阻塞，直到这个任务结束</span><br><span class="line">&gt; 同步执行保证了代码的因果关系(causality),是程序正确性的保证</span><br><span class="line"></span><br><span class="line"><span class="comment"># 异步</span></span><br><span class="line">&gt; 指一个任务开始执行后，与它没有因果关系的其他任务可以正常执行，不必等待前一个任务结束</span><br><span class="line">  - <span class="built_in">Promise</span>(future/delay/deferred): 对象用来描述未来某个时刻才能获得的结果的值</span><br><span class="line">    - 初始状态: <span class="built_in">Promise</span>还未运行</span><br><span class="line">    - 等待pending状态: <span class="built_in">Promise</span>已经运行，但还没有结束</span><br><span class="line">    - 结束状态: promise成功解析出一个值，或者执行失败</span><br><span class="line">  - <span class="keyword">async</span>/<span class="keyword">await</span></span><br><span class="line">    &gt; <span class="keyword">async</span>/<span class="keyword">await</span>是一个语法糖(syntactic sugar)使用状态机将promise包装起来，让异步调用的使用感觉和同步调用非常类型</span><br><span class="line">    - <span class="keyword">async</span>定义一个可以并发执行的任务</span><br><span class="line">    - <span class="keyword">await</span>触发并发执行</span><br></pre></td></tr></table></figure></li>
+<li>编程泛式<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 泛型编程</span></span><br><span class="line"><span class="bullet">  -</span> 数据结构的泛型</span><br><span class="line"><span class="bullet">  -</span> 代码的泛型化</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="2-基础知识篇"><a href="#2-基础知识篇" class="headerlink" title="2. 基础知识篇"></a>2. 基础知识篇</h2><ul>
+<li>第一个程序<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">➜ tree scrape_url</span><br><span class="line">scrape_url</span><br><span class="line">├── Cargo<span class="selector-class">.lock</span></span><br><span class="line">├── Cargo<span class="selector-class">.toml</span>      -- Rust项目的配置管理文件</span><br><span class="line">├── <span class="attribute">src</span></span><br><span class="line">│   └── <span class="selector-tag">main</span><span class="selector-class">.rs</span></span><br><span class="line">└── target</span><br><span class="line">    ├── CACHEDIR<span class="selector-class">.TAG</span></span><br><span class="line">    └── debug</span><br><span class="line">        ├── build</span><br><span class="line">        ├── deps</span><br><span class="line">        │   ├── libscrape_url-f8d1878e1d7fc033<span class="selector-class">.rmeta</span></span><br><span class="line">        │   └── scrape_url-f8d1878e1d7fc033<span class="selector-class">.d</span></span><br><span class="line">        ├── examples</span><br><span class="line">        └── incremental</span><br><span class="line">            └── scrape_url-<span class="number">2</span>n1xt1o9t0ikb</span><br><span class="line">                ├── s-g4eprmaq6h-ez2nl7-<span class="number">1</span>g41whu33uaqz</span><br><span class="line">                │   ├── dep-graph<span class="selector-class">.bin</span></span><br><span class="line">                │   ├── query-cache<span class="selector-class">.bin</span></span><br><span class="line">                │   └── work-products<span class="selector-class">.bin</span></span><br><span class="line">                └── s-g4eprmaq6h-ez2nl7<span class="selector-class">.lock</span></span><br><span class="line"></span><br><span class="line"><span class="number">9</span> directories, <span class="number">10</span> files</span><br><span class="line"></span><br><span class="line">scrape_url on  <span class="selector-tag">main</span> <span class="selector-attr">[?]</span> is 📦 v0.<span class="number">1.0</span> via 🦀 v1.<span class="number">52.0</span> took <span class="number">8s</span></span><br><span class="line">➜ cargo run</span><br><span class="line">   Compiling scrape_url v0.<span class="number">1.0</span> (/Users/chyiyaqing/chyi/github.com/begin-rust/scrape_url)</span><br><span class="line">    Finished dev <span class="selector-attr">[unoptimized + debuginfo]</span> target(s) <span class="keyword">in</span> <span class="number">3.13s</span></span><br><span class="line">     Running `target/debug/scrape_url`</span><br><span class="line">Fetching url: https:<span class="comment">//www.rust-lang.org/</span></span><br><span class="line">Converting <span class="selector-tag">html</span> to markdown...</span><br><span class="line">Converted markdown has been saved <span class="keyword">in</span> rust<span class="selector-class">.md</span>.</span><br><span class="line"></span><br><span class="line">&gt; Rust使用cargo工具管理项目</span><br><span class="line">&gt; Rust整体语法偏向C/C++风格</span><br><span class="line">&gt; Rust支持面向接口编程和泛型编程</span><br><span class="line">&gt; Rust有非常丰富的数据类型和强大的标准库</span><br><span class="line">&gt; Rust有非常丰富的控制流程</span><br><span class="line">&gt; Rust默认变量不可变，可以添加mut关键字让变量具备可变性</span><br><span class="line">&gt; Rust项目的组织可以用mod来组织代码</span><br><span class="line">&gt; Rust一个项目被称为crate (cargo new &lt;name&gt; -- lib 创建一个库)</span><br></pre></td></tr></table></figure></li>
+<li>Rust变量的所有权和生命周期</li>
+<li>Rust内存管理方式</li>
+<li>C的手工管理</li>
+<li>Java的GC</li>
+<li>Swift的ARC</li>
+<li>Rust语言特性<ul>
+<li>函数式编程特性</li>
+<li>类型系统</li>
+<li>范性编程</li>
+<li>错误处理</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-进阶篇"><a href="#3-进阶篇" class="headerlink" title="3. 进阶篇"></a>3. 进阶篇</h2><p>  *</p>
+<h2 id="4-并发篇"><a href="#4-并发篇" class="headerlink" title="4. 并发篇"></a>4. 并发篇</h2><ul>
+<li>无畏并发(Fearless Concurrency)</li>
+</ul>
+<h2 id="5-实战篇"><a href="#5-实战篇" class="headerlink" title="5. 实战篇"></a>5. 实战篇</h2><ul>
+<li>HTTPie<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> </span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><blockquote>
+<p>学习过程就像《中庸》里谈治学的方法：博学之、审问之、慎思之、明辨之、笃(du)行之<br>算法+数据结构=程序, Pascal之父,图灵奖得主Niklaus Wirth</p>
+</blockquote>
+<ul>
+<li>Paradigm Shift : 思维转换</li>
+<li>Stack Overflow: 栈溢出</li>
+<li>heap out of bounds: 堆越界</li>
+<li>use after free : 堆上的内存被释放，但栈上指向堆上内存的响应指针没有被清空</li>
+<li>Tracing GC : 追踪式垃圾回收(通过定期标记mark找出不再被引用的对象，然后将其清理sweep掉，来自动管理内存)</li>
+<li>Automatic Reference Counting: 自动引用计数 (编译时，为每个函数插入retain/release语句来自动维护堆上对象的引用计数，当引用计数为零的时候，release语句就释放对象)</li>
+<li>throughput: 吞吐量</li>
+<li>syntactic sugar: 语法糖</li>
+<li>Principle of Least Privilege: 最小权限原则</li>
+<li>derive macro : 派生宏</li>
+</ul>
+<h2 id="阅读资料"><a href="#阅读资料" class="headerlink" title="阅读资料"></a>阅读资料</h2><ul>
+<li><a href="https://github.com/chyidl/begin-rust.git">begin-rust</a></li>
+<li><a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Rust</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
+    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>监控</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes Intro</title>
     <url>/2021/09/19/Kubernetes-Intro/</url>
     <content><![CDATA[<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
@@ -2685,82 +2761,6 @@
 ]]></content>
       <tags>
         <tag>Kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Rust language Intro</title>
-    <url>/2021/09/18/Rust-language-Intro/</url>
-    <content><![CDATA[<h1 id="Rust"><a href="#Rust" class="headerlink" title="Rust"></a>Rust</h1><blockquote>
-<p>一门非常重视开发者用户体验的语言<br>如果你想从其他语言迁移到Rust,必须经过一段时期的思维转换(Paradigm Shift)<br>  <figure class="highlight gcode"><table><tr><td class="code"><pre><span class="line">命令式<span class="comment">(imperative)</span>编程语言转换为函数式<span class="comment">(function)</span>编程语言</span><br><span class="line">变量的可变性<span class="comment">(mutable)</span>迁移到不可变性<span class="comment">(immutable)</span></span><br><span class="line">弱类型语言迁移到强类型语言</span><br><span class="line">从手工或者自动内存管理到通过生命周期来管理内存</span><br></pre></td></tr></table></figure><br>Rust最大的思维转换就是变量的所有权和声明周期</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="1-前置知识篇"><a href="#1-前置知识篇" class="headerlink" title="1. 前置知识篇"></a>1. 前置知识篇</h2><ul>
-<li>内存<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"># 栈</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈自上而下增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">栈是程序运行的基础，每当一个函数被调用时，一块连续的内存就会被栈顶分配出来，这块内存被称为帧(frame)</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">在编译时，一切无法确定大小或者大小可以改变的数据,都无法放在栈上，只能放在堆上</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">存放栈上的值，它的大小在编译期就需要确定</span></span><br><span class="line"></span><br><span class="line"># 堆</span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆自下而上增长</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配内存时，一般都会预留一些空间</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">动态分配大小的内存需要被分配到堆上，动态声明周期的内存也需要分配到堆上.</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆上分配出来的每一块内存需要显式地释放，这就使堆山内存有更加灵活的声明周期，可以在不同的调用栈之间共享数据</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">堆可以存放大小未知或者动态伸缩的数据类型</span></span><br><span class="line"></span><br><span class="line">栈上存放的数据时静态的，静态大小，静态生命周期，堆上存放的数据时动态的，动态大小，动态生命周期</span><br><span class="line"></span><br><span class="line"># GC vs ARC</span><br><span class="line">  1. GC在内存分配和释放上无需额外操作，而ARC添加了大量的额外代码处理引用计数，所以GC效率更高，吞吐量(throughput)更大</span><br><span class="line">  2. GC释放内存的时机不确定，释放时引发的STW(Stop The World)会导致代码执行的延迟latency.一般携带GC的编程语言不适合做嵌入式系统或者实时系统</span><br></pre></td></tr></table></figure></li>
-<li>数据<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="quote">&gt; 程序操作的对象</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 值和类型</span></span><br><span class="line"><span class="quote">&gt; 编程语言的类型可以分为原生类型和组合类型</span></span><br><span class="line"><span class="bullet">  -</span> 原生类型(primitive type) : 所有原生类型的大小都是固定的，因此他们可以被分配到栈上</span><br><span class="line"><span class="bullet">    -</span> 字符</span><br><span class="line"><span class="bullet">    -</span> 整数</span><br><span class="line"><span class="bullet">    -</span> 浮点数</span><br><span class="line"><span class="bullet">    -</span> 布尔值</span><br><span class="line"><span class="bullet">    -</span> 数组array</span><br><span class="line"><span class="bullet">    -</span> 元组tuple</span><br><span class="line"><span class="bullet">    -</span> 指针</span><br><span class="line"><span class="bullet">      -</span> 胖指针(fat poiner): 比正常指针携带更多信息的指针</span><br><span class="line"><span class="bullet">  -</span> 组合类型(composite type) : 由一组原生类型和其它类型组合而成的类型</span><br><span class="line"><span class="bullet">    -</span> 结构体(structure type): 多个类型组合在一起共同表达一个值的复杂数据结构</span><br><span class="line"><span class="bullet">    -</span> 标签联合(tagged union): 不相交并集</span><br></pre></td></tr></table></figure></li>
-<li>指针和引用<figure class="highlight"><table><tr><td class="code"><pre><span class="line">指针和应用都指向内存地址，只不过二者在解引用时的行为不一样</span><br><span class="line">引用只能解引用到原来的数据类型</span><br></pre></td></tr></table></figure></li>
-<li>函数<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数时代码中重复行为的抽象</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">方法时对象内部定义的函数</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数是编程语言的基本要素,是对完成某个功能的一组相关语句和表达式的封装</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">函数往往是一等公民，意味着函数可以作为参数传递，或者作为返回值返回，也可以作为符合类型中的一个组成部分</span></span><br></pre></td></tr></table></figure></li>
-<li>闭包<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包是一种特殊的函数，会捕获函数体内使用到的上下文中的自由变量,作为闭包成员的一部分</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包是将函数和其环境一起存储的一种数据结构</span></span><br><span class="line"><span class="meta">&gt;</span> <span class="javascript">闭包引用的上下文中的自由变量会被捕获到闭包的结构中，成为闭包类型的一部分</span></span><br></pre></td></tr></table></figure></li>
-<li>接口&amp;&amp;虚表<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 接口</span></span><br><span class="line"><span class="quote">&gt; 作为一个抽象层,接口将使用方和实现方隔离开来，使两者不直接有依赖关系，大大提高了复用性和扩展性</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 虚表 virtual table</span></span><br><span class="line"><span class="quote">&gt; 虚表是指向一张涵盖接口所支持方法的列表</span></span><br></pre></td></tr></table></figure></li>
-<li>并发(concurreny)与并行(parallel)<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 并发</span></span><br><span class="line"><span class="quote">&gt; 并发是同时与多件事情打交道的能力，比如系统可以在任务1做到一定程度后，保存该任务的上下文，挂起并切换到任务2，然后过段时间在切换回任务1</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 并行</span></span><br><span class="line"><span class="quote">&gt; 并行是同时处理多件事情的手段，任务1和任务2可以在同一个时间片下工作,无需上下文切换</span></span><br><span class="line"></span><br><span class="line">拥有高并发处理能力的编程语言会在用户程序中嵌入一个M:N的调度器，把M个并行任务，合理地分配在N个CPU core上并行运行,让程序的吞吐量达到最大</span><br></pre></td></tr></table></figure></li>
-<li>同步和异步<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 同步</span></span><br><span class="line">&gt; 指一个任务开始执行后，后续的操作回阻塞，直到这个任务结束</span><br><span class="line">&gt; 同步执行保证了代码的因果关系(causality),是程序正确性的保证</span><br><span class="line"></span><br><span class="line"><span class="comment"># 异步</span></span><br><span class="line">&gt; 指一个任务开始执行后，与它没有因果关系的其他任务可以正常执行，不必等待前一个任务结束</span><br><span class="line">  - <span class="built_in">Promise</span>(future/delay/deferred): 对象用来描述未来某个时刻才能获得的结果的值</span><br><span class="line">    - 初始状态: <span class="built_in">Promise</span>还未运行</span><br><span class="line">    - 等待pending状态: <span class="built_in">Promise</span>已经运行，但还没有结束</span><br><span class="line">    - 结束状态: promise成功解析出一个值，或者执行失败</span><br><span class="line">  - <span class="keyword">async</span>/<span class="keyword">await</span></span><br><span class="line">    &gt; <span class="keyword">async</span>/<span class="keyword">await</span>是一个语法糖(syntactic sugar)使用状态机将promise包装起来，让异步调用的使用感觉和同步调用非常类型</span><br><span class="line">    - <span class="keyword">async</span>定义一个可以并发执行的任务</span><br><span class="line">    - <span class="keyword">await</span>触发并发执行</span><br></pre></td></tr></table></figure></li>
-<li>编程泛式<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 泛型编程</span></span><br><span class="line"><span class="bullet">  -</span> 数据结构的泛型</span><br><span class="line"><span class="bullet">  -</span> 代码的泛型化</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="2-基础知识篇"><a href="#2-基础知识篇" class="headerlink" title="2. 基础知识篇"></a>2. 基础知识篇</h2><ul>
-<li>第一个程序<figure class="highlight stylus"><table><tr><td class="code"><pre><span class="line">➜ tree scrape_url</span><br><span class="line">scrape_url</span><br><span class="line">├── Cargo<span class="selector-class">.lock</span></span><br><span class="line">├── Cargo<span class="selector-class">.toml</span>      -- Rust项目的配置管理文件</span><br><span class="line">├── <span class="attribute">src</span></span><br><span class="line">│   └── <span class="selector-tag">main</span><span class="selector-class">.rs</span></span><br><span class="line">└── target</span><br><span class="line">    ├── CACHEDIR<span class="selector-class">.TAG</span></span><br><span class="line">    └── debug</span><br><span class="line">        ├── build</span><br><span class="line">        ├── deps</span><br><span class="line">        │   ├── libscrape_url-f8d1878e1d7fc033<span class="selector-class">.rmeta</span></span><br><span class="line">        │   └── scrape_url-f8d1878e1d7fc033<span class="selector-class">.d</span></span><br><span class="line">        ├── examples</span><br><span class="line">        └── incremental</span><br><span class="line">            └── scrape_url-<span class="number">2</span>n1xt1o9t0ikb</span><br><span class="line">                ├── s-g4eprmaq6h-ez2nl7-<span class="number">1</span>g41whu33uaqz</span><br><span class="line">                │   ├── dep-graph<span class="selector-class">.bin</span></span><br><span class="line">                │   ├── query-cache<span class="selector-class">.bin</span></span><br><span class="line">                │   └── work-products<span class="selector-class">.bin</span></span><br><span class="line">                └── s-g4eprmaq6h-ez2nl7<span class="selector-class">.lock</span></span><br><span class="line"></span><br><span class="line"><span class="number">9</span> directories, <span class="number">10</span> files</span><br><span class="line"></span><br><span class="line">scrape_url on  <span class="selector-tag">main</span> <span class="selector-attr">[?]</span> is 📦 v0.<span class="number">1.0</span> via 🦀 v1.<span class="number">52.0</span> took <span class="number">8s</span></span><br><span class="line">➜ cargo run</span><br><span class="line">   Compiling scrape_url v0.<span class="number">1.0</span> (/Users/chyiyaqing/chyi/github.com/begin-rust/scrape_url)</span><br><span class="line">    Finished dev <span class="selector-attr">[unoptimized + debuginfo]</span> target(s) <span class="keyword">in</span> <span class="number">3.13s</span></span><br><span class="line">     Running `target/debug/scrape_url`</span><br><span class="line">Fetching url: https:<span class="comment">//www.rust-lang.org/</span></span><br><span class="line">Converting <span class="selector-tag">html</span> to markdown...</span><br><span class="line">Converted markdown has been saved <span class="keyword">in</span> rust<span class="selector-class">.md</span>.</span><br><span class="line"></span><br><span class="line">&gt; Rust使用cargo工具管理项目</span><br><span class="line">&gt; Rust整体语法偏向C/C++风格</span><br><span class="line">&gt; Rust支持面向接口编程和泛型编程</span><br><span class="line">&gt; Rust有非常丰富的数据类型和强大的标准库</span><br><span class="line">&gt; Rust有非常丰富的控制流程</span><br><span class="line">&gt; Rust默认变量不可变，可以添加mut关键字让变量具备可变性</span><br><span class="line">&gt; Rust项目的组织可以用mod来组织代码</span><br><span class="line">&gt; Rust一个项目被称为crate (cargo new &lt;name&gt; -- lib 创建一个库)</span><br></pre></td></tr></table></figure></li>
-<li>Rust变量的所有权和生命周期</li>
-<li>Rust内存管理方式</li>
-<li>C的手工管理</li>
-<li>Java的GC</li>
-<li>Swift的ARC</li>
-<li>Rust语言特性<ul>
-<li>函数式编程特性</li>
-<li>类型系统</li>
-<li>范性编程</li>
-<li>错误处理</li>
-</ul>
-</li>
-</ul>
-<h2 id="3-进阶篇"><a href="#3-进阶篇" class="headerlink" title="3. 进阶篇"></a>3. 进阶篇</h2><p>  *</p>
-<h2 id="4-并发篇"><a href="#4-并发篇" class="headerlink" title="4. 并发篇"></a>4. 并发篇</h2><ul>
-<li>无畏并发(Fearless Concurrency)</li>
-</ul>
-<h2 id="5-实战篇"><a href="#5-实战篇" class="headerlink" title="5. 实战篇"></a>5. 实战篇</h2><ul>
-<li>HTTPie<figure class="highlight node-repl"><table><tr><td class="code"><pre><span class="line"><span class="meta">&gt;</span> </span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="名词解释"><a href="#名词解释" class="headerlink" title="名词解释"></a>名词解释</h2><blockquote>
-<p>学习过程就像《中庸》里谈治学的方法：博学之、审问之、慎思之、明辨之、笃(du)行之<br>算法+数据结构=程序, Pascal之父,图灵奖得主Niklaus Wirth</p>
-</blockquote>
-<ul>
-<li>Paradigm Shift : 思维转换</li>
-<li>Stack Overflow: 栈溢出</li>
-<li>heap out of bounds: 堆越界</li>
-<li>use after free : 堆上的内存被释放，但栈上指向堆上内存的响应指针没有被清空</li>
-<li>Tracing GC : 追踪式垃圾回收(通过定期标记mark找出不再被引用的对象，然后将其清理sweep掉，来自动管理内存)</li>
-<li>Automatic Reference Counting: 自动引用计数 (编译时，为每个函数插入retain/release语句来自动维护堆上对象的引用计数，当引用计数为零的时候，release语句就释放对象)</li>
-<li>throughput: 吞吐量</li>
-<li>syntactic sugar: 语法糖</li>
-<li>Principle of Least Privilege: 最小权限原则</li>
-<li>derive macro : 派生宏</li>
-</ul>
-<h2 id="阅读资料"><a href="#阅读资料" class="headerlink" title="阅读资料"></a>阅读资料</h2><ul>
-<li><a href="https://github.com/chyidl/begin-rust.git">begin-rust</a></li>
-<li><a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
-    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
-<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>监控</tag>
       </tags>
   </entry>
   <entry>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#104;&#121;&#105;&#121;&#97;&#x71;&#105;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;">&#x63;&#104;&#121;&#105;&#121;&#97;&#x71;&#105;&#110;&#103;&#64;&#103;&#109;&#x61;&#x69;&#x6c;&#46;&#99;&#111;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#x68;&#121;&#105;&#121;&#97;&#113;&#x69;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;">&#x63;&#x68;&#121;&#105;&#121;&#97;&#113;&#x69;&#x6e;&#x67;&#64;&#x67;&#x6d;&#97;&#105;&#x6c;&#x2e;&#99;&#111;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
