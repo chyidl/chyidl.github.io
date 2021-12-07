@@ -2010,6 +2010,48 @@
       </tags>
   </entry>
   <entry>
+    <title>Ansible Intro</title>
+    <url>/2021/09/11/Ansible-Intro/</url>
+    <content><![CDATA[<h1 id="Ansible"><a href="#Ansible" class="headerlink" title="Ansible"></a>Ansible</h1><blockquote>
+<p>Tool to automate IT tasks.</p>
+</blockquote>
+<ul>
+<li>SIMPLE<ul>
+<li>Human readable automation</li>
+<li>No special coding skills needed</li>
+<li>Tasks executed in order</li>
+</ul>
+</li>
+<li>POWERFUL<ul>
+<li>App deployment</li>
+<li>Configuration management</li>
+<li>Workflow orchestration</li>
+</ul>
+</li>
+<li>AGENTLESS<ul>
+<li>Agentless architecture</li>
+<li>Use OpenSSH &amp; WinRM</li>
+</ul>
+</li>
+</ul>
+<h2 id="What-Can-I-Use-Ansible-To-Do"><a href="#What-Can-I-Use-Ansible-To-Do" class="headerlink" title="What Can I Use Ansible To Do?"></a>What Can I Use Ansible To Do?</h2><ul>
+<li>Config Management</li>
+<li>App deployment</li>
+<li>Provisioning</li>
+<li>Continuous delivery</li>
+<li>Security &amp; Compliance</li>
+<li>orchestration</li>
+</ul>
+<h2 id="Ansible-Architecture"><a href="#Ansible-Architecture" class="headerlink" title="Ansible Architecture"></a>Ansible Architecture</h2><p><img src="/misc/images/ansible-architecture.png" alt="ansible architecture"></p>
+<ul>
+<li>MODULES:</li>
+</ul>
+<h2 id="Quick-Start-Ansible"><a href="#Quick-Start-Ansible" class="headerlink" title="Quick Start Ansible"></a>Quick Start Ansible</h2><ul>
+<li>Installing an Ansible<figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line">$ <span class="string">curl</span> <span class="string">https</span>://<span class="string">bootstrap</span>.<span class="string">pypa</span>.<span class="string">io</span>/<span class="built_in">get-pip.py</span> -<span class="string">o</span> <span class="built_in">get-pip.py</span></span><br><span class="line">$ <span class="string">python</span> <span class="built_in">get-pip.py</span> <span class="built_in">--user</span></span><br><span class="line">$ <span class="string">python</span> -<span class="string">m</span> <span class="string">pip</span> <span class="string">install</span> <span class="built_in">--user</span> <span class="string">ansible</span></span><br><span class="line"></span><br><span class="line">➜ <span class="string">ansible</span> <span class="built_in">--version</span></span><br><span class="line"><span class="string">ansible</span> [<span class="string">core</span> <span class="string">2</span>.<span class="string">11</span>.<span class="string">4</span>]</span><br><span class="line">  <span class="string">config</span> <span class="string">file</span> = <span class="string">None</span></span><br><span class="line">  <span class="string">configured</span> <span class="string">module</span> <span class="string">search</span> <span class="string">path</span> = [<span class="string">&#x27;/Users/chyiyaqing/.ansible/plugins/modules&#x27;</span>, <span class="string">&#x27;/usr/share/ansible/plugins/modules&#x27;</span>]</span><br><span class="line">  <span class="string">ansible</span> <span class="string">python</span> <span class="string">module</span> <span class="string">location</span> = /<span class="string">usr</span>/<span class="string">local</span>/<span class="string">lib</span>/<span class="string">python3</span>.<span class="string">9</span>/<span class="string">site-packages</span>/<span class="string">ansible</span></span><br><span class="line">  <span class="string">ansible</span> <span class="string">collection</span> <span class="string">location</span> = /<span class="string">Users</span>/<span class="string">chyiyaqing</span>/.<span class="string">ansible</span>/<span class="string">collections</span>:/<span class="string">usr</span>/<span class="string">share</span>/<span class="string">ansible</span>/<span class="string">collections</span></span><br><span class="line">  <span class="string">executable</span> <span class="string">location</span> = /<span class="string">usr</span>/<span class="string">local</span>/<span class="string">bin</span>/<span class="string">ansible</span></span><br><span class="line">  <span class="string">python</span> <span class="string">version</span> = <span class="string">3</span>.<span class="string">9</span>.<span class="string">6</span> (<span class="string">default</span>, <span class="string">Jun</span> <span class="string">29</span> <span class="string">2021</span>, <span class="string">05:25:</span><span class="string">02</span>) [<span class="string">Clang</span> <span class="string">12</span>.<span class="string">0</span>.<span class="string">5</span> (<span class="string">clang-1205</span>.<span class="string">0</span>.<span class="string">22</span>.<span class="string">9</span>)]</span><br><span class="line">  <span class="string">jinja</span> <span class="string">version</span> = <span class="string">2</span>.<span class="string">10</span>.<span class="string">1</span></span><br><span class="line">  <span class="string">libyaml</span> = <span class="string">True</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Go Concurrency Patterns</title>
     <url>/2021/09/10/Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/</url>
     <content><![CDATA[<h1 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h1><ul>
@@ -2110,48 +2152,6 @@
         <tag>Golang</tag>
         <tag>sync</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Ansible Intro</title>
-    <url>/2021/09/11/Ansible-Intro/</url>
-    <content><![CDATA[<h1 id="Ansible"><a href="#Ansible" class="headerlink" title="Ansible"></a>Ansible</h1><blockquote>
-<p>Tool to automate IT tasks.</p>
-</blockquote>
-<ul>
-<li>SIMPLE<ul>
-<li>Human readable automation</li>
-<li>No special coding skills needed</li>
-<li>Tasks executed in order</li>
-</ul>
-</li>
-<li>POWERFUL<ul>
-<li>App deployment</li>
-<li>Configuration management</li>
-<li>Workflow orchestration</li>
-</ul>
-</li>
-<li>AGENTLESS<ul>
-<li>Agentless architecture</li>
-<li>Use OpenSSH &amp; WinRM</li>
-</ul>
-</li>
-</ul>
-<h2 id="What-Can-I-Use-Ansible-To-Do"><a href="#What-Can-I-Use-Ansible-To-Do" class="headerlink" title="What Can I Use Ansible To Do?"></a>What Can I Use Ansible To Do?</h2><ul>
-<li>Config Management</li>
-<li>App deployment</li>
-<li>Provisioning</li>
-<li>Continuous delivery</li>
-<li>Security &amp; Compliance</li>
-<li>orchestration</li>
-</ul>
-<h2 id="Ansible-Architecture"><a href="#Ansible-Architecture" class="headerlink" title="Ansible Architecture"></a>Ansible Architecture</h2><p><img src="/misc/images/ansible-architecture.png" alt="ansible architecture"></p>
-<ul>
-<li>MODULES:</li>
-</ul>
-<h2 id="Quick-Start-Ansible"><a href="#Quick-Start-Ansible" class="headerlink" title="Quick Start Ansible"></a>Quick Start Ansible</h2><ul>
-<li>Installing an Ansible<figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line">$ <span class="string">curl</span> <span class="string">https</span>://<span class="string">bootstrap</span>.<span class="string">pypa</span>.<span class="string">io</span>/<span class="built_in">get-pip.py</span> -<span class="string">o</span> <span class="built_in">get-pip.py</span></span><br><span class="line">$ <span class="string">python</span> <span class="built_in">get-pip.py</span> <span class="built_in">--user</span></span><br><span class="line">$ <span class="string">python</span> -<span class="string">m</span> <span class="string">pip</span> <span class="string">install</span> <span class="built_in">--user</span> <span class="string">ansible</span></span><br><span class="line"></span><br><span class="line">➜ <span class="string">ansible</span> <span class="built_in">--version</span></span><br><span class="line"><span class="string">ansible</span> [<span class="string">core</span> <span class="string">2</span>.<span class="string">11</span>.<span class="string">4</span>]</span><br><span class="line">  <span class="string">config</span> <span class="string">file</span> = <span class="string">None</span></span><br><span class="line">  <span class="string">configured</span> <span class="string">module</span> <span class="string">search</span> <span class="string">path</span> = [<span class="string">&#x27;/Users/chyiyaqing/.ansible/plugins/modules&#x27;</span>, <span class="string">&#x27;/usr/share/ansible/plugins/modules&#x27;</span>]</span><br><span class="line">  <span class="string">ansible</span> <span class="string">python</span> <span class="string">module</span> <span class="string">location</span> = /<span class="string">usr</span>/<span class="string">local</span>/<span class="string">lib</span>/<span class="string">python3</span>.<span class="string">9</span>/<span class="string">site-packages</span>/<span class="string">ansible</span></span><br><span class="line">  <span class="string">ansible</span> <span class="string">collection</span> <span class="string">location</span> = /<span class="string">Users</span>/<span class="string">chyiyaqing</span>/.<span class="string">ansible</span>/<span class="string">collections</span>:/<span class="string">usr</span>/<span class="string">share</span>/<span class="string">ansible</span>/<span class="string">collections</span></span><br><span class="line">  <span class="string">executable</span> <span class="string">location</span> = /<span class="string">usr</span>/<span class="string">local</span>/<span class="string">bin</span>/<span class="string">ansible</span></span><br><span class="line">  <span class="string">python</span> <span class="string">version</span> = <span class="string">3</span>.<span class="string">9</span>.<span class="string">6</span> (<span class="string">default</span>, <span class="string">Jun</span> <span class="string">29</span> <span class="string">2021</span>, <span class="string">05:25:</span><span class="string">02</span>) [<span class="string">Clang</span> <span class="string">12</span>.<span class="string">0</span>.<span class="string">5</span> (<span class="string">clang-1205</span>.<span class="string">0</span>.<span class="string">22</span>.<span class="string">9</span>)]</span><br><span class="line">  <span class="string">jinja</span> <span class="string">version</span> = <span class="string">2</span>.<span class="string">10</span>.<span class="string">1</span></span><br><span class="line">  <span class="string">libyaml</span> = <span class="string">True</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Go CLI Intro</title>
@@ -3267,11 +3267,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Tech Interview Handbook</title>
-    <url>/2021/10/11/Tech-Interview-Handbook/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Uber Zap Intro</title>
     <url>/2021/10/12/Uber-Zap-Intro/</url>
     <content><![CDATA[]]></content>
@@ -3319,6 +3314,11 @@
 <li>Virtualization or Emulation<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash"> Virtualization:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> 创建虚拟的副本(虚拟硬件和设备、存储设备和网络资源)</span></span><br><span class="line"><span class="meta"></span></span><br><span class="line"><span class="meta">#</span><span class="bash"> Emulation:</span></span><br><span class="line"><span class="meta">  &gt;</span><span class="bash"> (<span class="built_in">emulate</span> different CPU architecture ) 模拟不同的CPU架构</span></span><br><span class="line"></span><br><span class="line">  - QEMU : a king of emulation</span><br><span class="line">  - UTM : emulation and virtualization solution</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Tech Interview Handbook</title>
+    <url>/2021/10/11/Tech-Interview-Handbook/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Harbor Intro</title>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#104;&#121;&#105;&#121;&#x61;&#x71;&#105;&#110;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;">&#x63;&#104;&#121;&#105;&#121;&#x61;&#x71;&#105;&#110;&#103;&#x40;&#103;&#x6d;&#97;&#x69;&#108;&#x2e;&#x63;&#111;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#104;&#121;&#x69;&#121;&#x61;&#x71;&#105;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;">&#x63;&#104;&#121;&#x69;&#121;&#x61;&#x71;&#105;&#x6e;&#x67;&#x40;&#103;&#109;&#97;&#105;&#108;&#x2e;&#99;&#x6f;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
