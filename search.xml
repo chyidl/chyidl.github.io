@@ -1963,6 +1963,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Error Code Design Intro</title>
+    <url>/2021/09/09/Error-Code-Design-Intro/</url>
+    <content><![CDATA[<h1 id="错误码设计"><a href="#错误码设计" class="headerlink" title="错误码设计"></a>错误码设计</h1><ul>
+<li>错误码实现方式<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 无论请求成功或失败，始终返回<span class="number">200</span> http status <span class="selector-tag">code</span></span><br><span class="line"> &gt; 每次请求，都需要解析HTTP <span class="selector-tag">Body</span>,从中解析出错误码和错误信息.</span><br><span class="line"><span class="number">2</span>. 返回合适的HTTP <span class="selector-tag">Code</span>. 并在<span class="selector-tag">Body</span>中返回错误信息和自定义业务<span class="selector-tag">Code</span></span><br><span class="line"><span class="number">3</span>. 返回合适的HTTP <span class="selector-tag">Code</span>, 并在<span class="selector-tag">Body</span>中详尽的错误信息</span><br></pre></td></tr></table></figure></li>
+<li>业务Code码设计<figure class="highlight"><table><tr><td class="code"><pre><span class="line">  </span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>Error</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>SwaggerAPI intro</title>
     <url>/2021/09/09/SwaggerAPI-intro/</url>
     <content><![CDATA[<h1 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h1><blockquote>
@@ -1987,18 +1999,6 @@
 ]]></content>
       <tags>
         <tag>SwaggerAPI</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Error Code Design Intro</title>
-    <url>/2021/09/09/Error-Code-Design-Intro/</url>
-    <content><![CDATA[<h1 id="错误码设计"><a href="#错误码设计" class="headerlink" title="错误码设计"></a>错误码设计</h1><ul>
-<li>错误码实现方式<figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 无论请求成功或失败，始终返回<span class="number">200</span> http status <span class="selector-tag">code</span></span><br><span class="line"> &gt; 每次请求，都需要解析HTTP <span class="selector-tag">Body</span>,从中解析出错误码和错误信息.</span><br><span class="line"><span class="number">2</span>. 返回合适的HTTP <span class="selector-tag">Code</span>. 并在<span class="selector-tag">Body</span>中返回错误信息和自定义业务<span class="selector-tag">Code</span></span><br><span class="line"><span class="number">3</span>. 返回合适的HTTP <span class="selector-tag">Code</span>, 并在<span class="selector-tag">Body</span>中详尽的错误信息</span><br></pre></td></tr></table></figure></li>
-<li>业务Code码设计<figure class="highlight"><table><tr><td class="code"><pre><span class="line">  </span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>Error</tag>
       </tags>
   </entry>
   <entry>
@@ -3554,7 +3554,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#x68;&#x79;&#105;&#x79;&#x61;&#113;&#x69;&#110;&#x67;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;">&#x63;&#x68;&#x79;&#105;&#x79;&#x61;&#113;&#x69;&#110;&#x67;&#64;&#103;&#109;&#x61;&#105;&#x6c;&#x2e;&#x63;&#111;&#109;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#121;&#x69;&#x79;&#97;&#x71;&#x69;&#x6e;&#x67;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;">&#99;&#x68;&#121;&#x69;&#x79;&#97;&#x71;&#x69;&#x6e;&#x67;&#64;&#103;&#x6d;&#97;&#x69;&#x6c;&#46;&#x63;&#x6f;&#x6d;</a>)</li>
 </ul>
 ]]></content>
   </entry>
