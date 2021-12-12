@@ -1,6 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>hexo-next-gitalk</title>
+    <url>/2021/09/01/hexo-next-gitalk/</url>
+    <content><![CDATA[<h3 id="站点搭建过程"><a href="#站点搭建过程" class="headerlink" title="站点搭建过程"></a>站点搭建过程</h3><ul>
+<li><a href="https://hexo.io/zh-cn/">hexo</a> : 快速、简洁且高校的博客框架</li>
+<li><a href="https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/README.md">next</a> : Hexo主题</li>
+<li><a href="https://github.com/gitalk/gitalk">gitalk</a> : 依靠GitHub issue的评论系统</li>
+</ul>
+<span id="more"></span>
+
+<h3 id="Settings-amp-Tips"><a href="#Settings-amp-Tips" class="headerlink" title="Settings &amp; Tips"></a>Settings &amp; Tips</h3><ul>
+<li><p><strong>Show descripion</strong></p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 修改themes/next/_config.yml</span><br><span class="line">excerpt_description: true</span><br><span class="line"></span><br><span class="line"># 文章截断</span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p><strong>字数统计</strong></p>
+<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装插件 hexo-symbols-count-time</span></span><br><span class="line"><span class="string">$</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-symbols-count-time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改hexo配置文件_config.yml</span></span><br><span class="line">  <span class="comment"># Symbols count and time to read of articles for Hexo.</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">      <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改Next配置文件</span></span><br><span class="line">  <span class="comment"># Post wordcount display settings</span></span><br><span class="line">  <span class="comment"># Dependencies: https://github.com/next-theme/hexo-word-counter</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">    <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_post:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_total:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">    <span class="attr">wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>blog</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Docker Tips &amp; Tricks</title>
     <url>/2021/09/01/Docker-Intro/</url>
     <content><![CDATA[<h2 id="Docker-Info"><a href="#Docker-Info" class="headerlink" title="Docker  Info"></a>Docker  Info</h2><figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line">容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”</span><br><span class="line"></span><br><span class="line">Cgroups技术是用来制造约束的主要手段</span><br><span class="line"><span class="keyword">Namespace</span>技术则是用来修改进程试图的主要方法</span><br></pre></td></tr></table></figure>
@@ -150,6 +171,8 @@
 <figure class="highlight subunit"><table><tr><td class="code"><pre><span class="line">chyiyaqing in core at chyiyaqing-PowerEdge-R720 on  feat/adaptation-kingbases [!?] via 🐹 v1.17.1 on 🐳 v20.10.10</span><br><span class="line">➜ docker run core:BF<span class="string">-9748</span></span><br><span class="line"><span class="keyword">Error </span>relocating /root/core/blocface-core: __vfprintf_chk: symbol not found</span><br><span class="line"><span class="keyword">Error </span>relocating /root/core/blocface-core: __fprintf_chk: symbol not found</span><br><span class="line"></span><br><span class="line">在Alpine Linux上, not found错误是动态链接失败的典型特征，musl的ldd链接器存在一个相当混乱的错误，大多数Linux软件都是与glibc(GNUlibc库)相链接(libc提供了标准的C库和posixapi),大多数Linux发行版本都是基于glibc, alpineLinux是基于muslibc库(这是最小的实现，严格遵守POSIX).</span><br></pre></td></tr></table></figure></li>
 <li><p><strong>Docker Tip #27</strong>: 防止容器自动退出</p>
 <figure class="highlight gherkin"><table><tr><td class="code"><pre><span class="line">&gt; docker容器的生命周期是同容器中的前置进程相关在一起,前置进程运行结束后，容器便自动退出</span><br><span class="line"></span><br><span class="line">下文使用alpine镜像做为基础镜像，创建一个alpine系统小容器,让其可以常驻运行，以便我们登陆交互执行</span><br><span class="line"></span><br><span class="line">  <span class="comment"># 使用alpine系统镜像创建容器</span></span><br><span class="line">  <span class="comment"># -i interactive=true 开启stdin</span></span><br><span class="line">  <span class="comment"># -t tty=true 分配会话终端</span></span><br><span class="line">  <span class="comment"># -d 守护模式 不加就直接进入容器中需要ctrl+p+q切出，</span></span><br><span class="line"></span><br><span class="line">  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 9s</span><br><span class="line">  ➜ docker run -it -d --name my_alpine alpine sh</span><br><span class="line">  Unable to find image &#x27;alpine:latest&#x27; locally</span><br><span class="line">  latest: Pulling from library/alpine</span><br><span class="line">  a0d0a0d46f8b: Pull complete</span><br><span class="line">  Digest: sha256:e1c082e3d3c45cccac829840a25941e679c25d438cc8412c2fa221cf1a824e6a</span><br><span class="line">  Status: Downloaded newer image for alpine:latest</span><br><span class="line">  78c0429dd98fe42addaa2071ffe1ca6c22295ea6d6d465ff1f970644f6234a37</span><br><span class="line"></span><br><span class="line">  <span class="comment"># my_alpine 容器处于运行状态</span></span><br><span class="line">  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 8s</span><br><span class="line">  ➜ docker ps |<span class="string"> grep alpine</span></span><br><span class="line"><span class="string">  78c0429dd98f   alpine                                                          &quot;sh&quot;                     34 seconds ago   Up 34 seconds                                                         my_alpine</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  # 登入容器</span></span><br><span class="line"><span class="string">  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720</span></span><br><span class="line"><span class="string">  ➜ docker exec -it my_alpine sh</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  # 查看 sh 会话数量</span></span><br><span class="line"><span class="string">  / # ps</span></span><br><span class="line"><span class="string">  PID   USER     TIME  COMMAND</span></span><br><span class="line"><span class="string">      1 root      0:00 sh</span></span><br><span class="line"><span class="string">      7 root      0:00 sh</span></span><br><span class="line"><span class="string">     13 root      0:00 ps</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  # alpine使用apk做为包管理</span></span><br><span class="line"><span class="string">  / # apk add sl</span></span><br><span class="line"><span class="string">  fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz</span></span><br><span class="line"><span class="string">  fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/x86_64/APKINDEX.tar.gz</span></span><br><span class="line"><span class="string">  (1/3) Installing ncurses-terminfo-base (6.2_p20210612-r0)</span></span><br><span class="line"><span class="string">  (2/3) Installing ncurses-libs (6.2_p20210612-r0)</span></span><br><span class="line"><span class="string">  (3/3) Installing sl (5.02-r0)</span></span><br><span class="line"><span class="string">  Executing busybox-1.33.1-r3.trigger</span></span><br><span class="line"><span class="string">  OK: 6 MiB in 17 packages</span></span><br><span class="line"><span class="string">  / # sl</span></span><br><span class="line"><span class="string">            (@@@@)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">          (   )</span></span><br><span class="line"><span class="string">        ====        ________                ___________</span></span><br><span class="line"><span class="string">    _D _</span>|<span class="string">  </span>|<span class="string">_______/        \__I_I_____===__</span>|<span class="string">_________</span>|</span><br><span class="line">     |<span class="string">(_)---  </span>|<span class="string">   H\________/ </span>|<span class="string">   </span>|<span class="string">        =</span>|<span class="string">___ ___</span>|<span class="string">      _________________</span></span><br><span class="line"><span class="string">     /     </span>|<span class="string">  </span>|<span class="string">   H  </span>|<span class="string">  </span>|<span class="string">     </span>|<span class="string">   </span>|<span class="string">         </span>||<span class="string">_</span>|<span class="string"> </span>|<span class="string">_</span>||<span class="string">     _</span>|<span class="string">                \_____A</span></span><br><span class="line"><span class="string">    </span>|<span class="string">      </span>|<span class="string">  </span>|<span class="string">   H  </span>|<span class="string">__--------------------</span>|<span class="string"> [___] </span>|<span class="string">   =</span>|<span class="string">                        </span>|</span><br><span class="line">    |<span class="string"> ________</span>|<span class="string">___H__/__</span>|<span class="string">_____/[][]~\_______</span>|<span class="string">       </span>|<span class="string">   -</span>|<span class="string">                        </span>|</span><br><span class="line">    |<span class="string">/ </span>|<span class="string">   </span>|<span class="string">-----------I_____I [][] []  D   </span>|<span class="string">=======</span>|<span class="string">____</span>|<span class="string">________________________</span>|_</span><br><span class="line">  __/ =|<span class="string"> o </span>|<span class="string">=-~O=====O=====O=====O\ ____Y___________</span>|<span class="string">__</span>|<span class="string">__________________________</span>|_</span><br><span class="line">   |<span class="string">/-=</span>|<span class="string">___</span>|<span class="string">=    </span>||<span class="string">    </span>||<span class="string">    </span>||<span class="string">    </span>|<span class="string">_____/~\___/          </span>|<span class="string">_D__D__D_</span>|<span class="string">  </span>|<span class="string">_D__D__D_</span>|</span><br><span class="line">    \_/      \__/  \__/  \__/  \__/      \_/               \_/   \_/    \_/   \_/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 提交容器变更生成新的镜像</span></span><br><span class="line">chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 2m 57s</span><br><span class="line">➜ docker commit -m <span class="string">&quot;alpine with sl cmd&quot;</span> -a <span class="string">&quot;big_cat&quot;</span> my_alpine chyiyaqing/alpine_sl</span><br><span class="line">sha256:79981bb43b0e638cc193570456ad93793a8cb481c8940e4fd899a0cc60a8bd46</span><br><span class="line"></span><br><span class="line"><span class="comment"># 发布到Docker Hub</span></span><br><span class="line">chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 10s</span><br><span class="line">➜ docker push chyiyaqing/alpine_sl</span><br><span class="line">Using default tag: latest</span><br><span class="line">The push refers to repository [docker.io/chyiyaqing/alpine_sl]</span><br><span class="line">102b73ff0977: Pushed</span><br><span class="line">e2eb06d8af82: Mounted from library/alpine</span><br><span class="line">latest: digest: sha256:500e9b9536a4fec460c487867d3cd7084da934ba37151aa122f4be438cc06d57 size: 739</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止/启动容器</span></span><br><span class="line">$ docker stop/start  my_alpine</span><br></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #28</strong>: Docker目录空间</p>
+<figure class="highlight perl"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 查看docker工作根目录</span></span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$ docker info | <span class="keyword">grep</span>  <span class="string">&#x27;Docker Root Dir&#x27;</span></span><br><span class="line">Docker Root Dir: <span class="regexp">/var/li</span>b/docker</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看工作目录占用空间大小</span></span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$ sudo du -sh /var/lib/docker/</span><br><span class="line"><span class="number">65</span>G     /var/lib/docker/</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看docker占用磁盘空间</span></span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$ docker <span class="keyword">system</span> df</span><br><span class="line">TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE</span><br><span class="line">Images              <span class="number">22</span>                  <span class="number">0</span>                   <span class="number">11.07</span>GB             <span class="number">11.07</span>GB (<span class="number">100</span>%)</span><br><span class="line">Containers          <span class="number">0</span>                   <span class="number">0</span>                   0B                  0B</span><br><span class="line">Local Volumes       <span class="number">120</span>                 <span class="number">0</span>                   <span class="number">56.7</span>GB              <span class="number">56.7</span>GB (<span class="number">100</span>%)</span><br><span class="line">Build Cache         <span class="number">0</span>                   <span class="number">0</span>                   0B                  0B</span><br><span class="line"></span><br><span class="line"><span class="comment"># 清理docker没有被使用的docker镜像</span></span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$ docker <span class="keyword">system</span> prune -a</span><br><span class="line">WARNING! This will remove:</span><br><span class="line">        - all stopped containers</span><br><span class="line">        - all networks <span class="keyword">not</span> used by at least one container</span><br><span class="line">        - all dangling images</span><br><span class="line">        - all dangling build cache</span><br><span class="line">Are you sure you want to <span class="keyword">continue</span>? [<span class="keyword">y</span>/N] <span class="keyword">y</span></span><br><span class="line">Total reclaimed space: 0B</span><br><span class="line"></span><br><span class="line"><span class="comment"># 停止docker服务</span></span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$ systemctl stop docker</span><br><span class="line">==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ====</span><br><span class="line">Authentication is required to stop <span class="string">&#x27;docker.service&#x27;</span>.</span><br><span class="line">Authenticating as: hyperchain</span><br><span class="line">Password:</span><br><span class="line">==== AUTHENTICATION COMPLETE ====</span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除 volumnes</span></span><br><span class="line">[hyperchain@mini <span class="keyword">package</span>]$ docker volume prune</span><br><span class="line">WARNING! This will remove all <span class="keyword">local</span> volumes <span class="keyword">not</span> used by at least one container.</span><br><span class="line">Are you sure you want to <span class="keyword">continue</span>? [<span class="keyword">y</span>/N] <span class="keyword">y</span></span><br><span class="line">Deleted Volumes:</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Have-a-Fun"><a href="#Have-a-Fun" class="headerlink" title="Have a Fun"></a>Have a Fun</h2><ul>
 <li>Run the First Edition of Unix (1972) with Docker<blockquote>
@@ -161,27 +184,6 @@
       <tags>
         <tag>Docker</tag>
         <tag>Dockerfile</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>hexo-next-gitalk</title>
-    <url>/2021/09/01/hexo-next-gitalk/</url>
-    <content><![CDATA[<h3 id="站点搭建过程"><a href="#站点搭建过程" class="headerlink" title="站点搭建过程"></a>站点搭建过程</h3><ul>
-<li><a href="https://hexo.io/zh-cn/">hexo</a> : 快速、简洁且高校的博客框架</li>
-<li><a href="https://github.com/next-theme/hexo-theme-next/blob/master/docs/zh-CN/README.md">next</a> : Hexo主题</li>
-<li><a href="https://github.com/gitalk/gitalk">gitalk</a> : 依靠GitHub issue的评论系统</li>
-</ul>
-<span id="more"></span>
-
-<h3 id="Settings-amp-Tips"><a href="#Settings-amp-Tips" class="headerlink" title="Settings &amp; Tips"></a>Settings &amp; Tips</h3><ul>
-<li><p><strong>Show descripion</strong></p>
-<figure class="highlight xml"><table><tr><td class="code"><pre><span class="line"># 修改themes/next/_config.yml</span><br><span class="line">excerpt_description: true</span><br><span class="line"></span><br><span class="line"># 文章截断</span><br><span class="line"><span class="comment">&lt;!--more--&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><p><strong>字数统计</strong></p>
-<figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装插件 hexo-symbols-count-time</span></span><br><span class="line"><span class="string">$</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-symbols-count-time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改hexo配置文件_config.yml</span></span><br><span class="line">  <span class="comment"># Symbols count and time to read of articles for Hexo.</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">      <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改Next配置文件</span></span><br><span class="line">  <span class="comment"># Post wordcount display settings</span></span><br><span class="line">  <span class="comment"># Dependencies: https://github.com/next-theme/hexo-word-counter</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">    <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_post:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_total:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">    <span class="attr">wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>blog</tag>
       </tags>
   </entry>
   <entry>
@@ -735,6 +737,26 @@
       </tags>
   </entry>
   <entry>
+    <title>Distribute Scraping for Gophers</title>
+    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
+    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
+<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
+<li>nats<blockquote>
+<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>分布式</tag>
+        <tag>爬虫</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Dev-Ops Tips &amp; Tracks</title>
     <url>/2021/09/03/Dev-Ops-Tips-Tracks/</url>
     <content><![CDATA[<h1 id="DevOps-BOOTCAMP"><a href="#DevOps-BOOTCAMP" class="headerlink" title="DevOps BOOTCAMP"></a>DevOps BOOTCAMP</h1><span id="more"></span>
@@ -926,26 +948,6 @@
       <tags>
         <tag>DevOps</tag>
         <tag>Bootcamp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Distribute Scraping for Gophers</title>
-    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
-    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
-<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
-<li>nats<blockquote>
-<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>分布式</tag>
-        <tag>爬虫</tag>
       </tags>
   </entry>
   <entry>
@@ -2627,6 +2629,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
+    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>监控</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes Intro</title>
     <url>/2021/09/19/Kubernetes-Intro/</url>
     <content><![CDATA[<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
@@ -2750,17 +2763,6 @@
 ]]></content>
       <tags>
         <tag>Kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
-    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
-<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>监控</tag>
       </tags>
   </entry>
   <entry>
@@ -3554,7 +3556,7 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#104;&#x79;&#105;&#x79;&#x61;&#x71;&#x69;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;">&#99;&#104;&#x79;&#105;&#x79;&#x61;&#x71;&#x69;&#110;&#x67;&#x40;&#x67;&#109;&#x61;&#x69;&#108;&#46;&#99;&#x6f;&#x6d;</a>)</li>
+<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#99;&#x68;&#121;&#x69;&#x79;&#x61;&#113;&#105;&#110;&#103;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;">&#99;&#x68;&#121;&#x69;&#x79;&#x61;&#113;&#105;&#110;&#103;&#x40;&#x67;&#109;&#x61;&#105;&#108;&#46;&#99;&#x6f;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
@@ -3784,11 +3786,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Markdown Intro</title>
-    <url>/2021/11/18/Markdown-Intro/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>Patterns of Distributed Systems</title>
     <url>/2021/11/25/Patterns-of-Distributed-Systems/</url>
     <content><![CDATA[<h1 id="Patterns-of-Distributed-Systems"><a href="#Patterns-of-Distributed-Systems" class="headerlink" title="Patterns of Distributed Systems"></a>Patterns of Distributed Systems</h1><ul>
@@ -3884,6 +3881,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Markdown Intro</title>
+    <url>/2021/11/18/Markdown-Intro/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>websocket intro</title>
     <url>/2021/12/01/websocket-intro/</url>
     <content><![CDATA[<h1 id="The-Websocket-Protocol"><a href="#The-Websocket-Protocol" class="headerlink" title="The Websocket Protocol"></a>The Websocket Protocol</h1><ul>
@@ -3924,5 +3926,10 @@
 <p><img src="/misc/images/websocket.png" alt="websocket"></p>
 <h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>[]</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>RAID Intro</title>
+    <url>/2021/12/12/RAID-Intro/</url>
+    <content><![CDATA[]]></content>
   </entry>
 </search>
