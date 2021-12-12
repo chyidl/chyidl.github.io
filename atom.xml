@@ -24,6 +24,22 @@
     <updated>2021-12-12T02:17:20.000Z</updated>
     
     
+    <summary type="html">&lt;h1 id=&quot;RAID&quot;&gt;&lt;a href=&quot;#RAID&quot; class=&quot;headerlink&quot; title=&quot;RAID&quot;&gt;&lt;/a&gt;RAID&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;stands for Redundant Array of Inexpensive Disks(廉价磁盘冗余阵列)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;Hardware RAID&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hardware RAID using controllers or RAID cards to manage the RAID configuration independently from the operating system.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;Software RAID&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Software RAID tends to be slower than hardware RAID.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</summary>
+    
     
     
     
