@@ -277,91 +277,15 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="NodePort-vs-LoadBalancer-vs-Ingress"><a href="#NodePort-vs-LoadBalancer-vs-Ingress" class="headerlink" title="NodePort vs LoadBalancer vs Ingress"></a>NodePort vs LoadBalancer vs Ingress</h1><h2 id="ClusterIP"><a href="#ClusterIP" class="headerlink" title="ClusterIP"></a>ClusterIP</h2><blockquote>
-<p>A ClusterIP service is the default Kubernetes service. It gives you a service inside your cluster that other apps inside your cluster can access. There is no external access.</p>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-internal-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">ClusterIP</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">http</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">protocol:</span> <span class="string">TCP</span></span><br></pre></td></tr></table></figure>
-<p><img src="/misc/images/k8s_clusterip.png" alt="Kubernetes ClusterIP"></p>
-<h2 id="NodePort"><a href="#NodePort" class="headerlink" title="NodePort"></a>NodePort</h2><blockquote>
-<p>NodePort, opens a specific port on all the Nodes, and any traffic that is sent to this port is forwarded to the service.</p>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">v1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Service</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-nodeport-service</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">selector:</span></span><br><span class="line">    <span class="attr">app:</span> <span class="string">my-app</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">NodePort</span></span><br><span class="line">  <span class="attr">ports:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">http</span></span><br><span class="line">    <span class="attr">port:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">targetPort:</span> <span class="number">80</span></span><br><span class="line">    <span class="attr">nodePort:</span> <span class="number">30036</span></span><br><span class="line">    <span class="attr">protocol:</span> <span class="string">TCP</span></span><br></pre></td></tr></table></figure>
-
-<p><img src="/misc/images/k8s_nodeport.png" alt="Kubernetes NodePort"></p>
-<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>. You can only have one service per <span class="keyword">port</span></span><br><span class="line"><span class="number">2</span>. You can only <span class="keyword">use</span> ports <span class="number">30000</span>-<span class="number">32767</span></span><br><span class="line"><span class="number">3</span>. You need <span class="keyword">to</span> track which node have pods <span class="keyword">with</span> exposed ports</span><br><span class="line"></span><br><span class="line">Don<span class="symbol">&#x27;t</span> recommand using this method <span class="keyword">in</span> production <span class="keyword">to</span> directly expose your service.</span><br></pre></td></tr></table></figure>
-
-<h2 id="LoadBalancer"><a href="#LoadBalancer" class="headerlink" title="LoadBalancer"></a>LoadBalancer</h2><blockquote>
-<p>A LoadBalancer service is the standard way to expose a service to the interne.</p>
-</blockquote>
-<p><img src="/misc/images/k8s_loadbalancer.png" alt="Kubernetes LoadBalancer"></p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Traffic <span class="keyword">on</span> the port you specify will be forwarded <span class="keyword">to</span> the service. There <span class="keyword">is</span> <span class="keyword">no</span> filtering, <span class="keyword">no</span> routing, etc. This means you can send almost <span class="keyword">any</span> kind <span class="keyword">of</span> traffic <span class="keyword">to</span> it. <span class="keyword">like</span> HTTP, TCP, UDP, Websockets, gRPC, <span class="keyword">or</span> whatever.</span><br></pre></td></tr></table></figure>
-
-<h2 id="Ingress-L7-HTTP-Load-Balancer"><a href="#Ingress-L7-HTTP-Load-Balancer" class="headerlink" title="Ingress - L7 HTTP Load Balancer"></a>Ingress - L7 HTTP Load Balancer</h2><blockquote>
-<p>Ingress is not a type of service, Instead, it sits in front of multiple services and act as a “smart router” or entrypoint into your cluster.</p>
-</blockquote>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">apiVersion:</span> <span class="string">extensions/v1beta1</span></span><br><span class="line"><span class="attr">kind:</span> <span class="string">Ingress</span></span><br><span class="line"><span class="attr">metadata:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">my-ingress</span></span><br><span class="line"><span class="attr">spec:</span></span><br><span class="line">  <span class="attr">backend:</span></span><br><span class="line">    <span class="attr">serviceName:</span> <span class="string">other</span></span><br><span class="line">    <span class="attr">servicePort:</span> <span class="number">8080</span></span><br><span class="line">  <span class="attr">rules:</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">host:</span> <span class="string">foo.mydomain.com</span></span><br><span class="line">    <span class="attr">http:</span></span><br><span class="line">      <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">backend:</span></span><br><span class="line">        <span class="attr">serviceName:</span> <span class="string">foo</span></span><br><span class="line">        <span class="attr">servicePort:</span> <span class="number">8080</span></span><br><span class="line">  <span class="bullet">-</span> <span class="attr">host:</span> <span class="string">mydomain.com</span></span><br><span class="line">    <span class="attr">http:</span></span><br><span class="line">      <span class="attr">paths:</span></span><br><span class="line">      <span class="bullet">-</span> <span class="attr">path:</span> <span class="string">/bar/*</span></span><br><span class="line">        <span class="attr">backend:</span></span><br><span class="line">          <span class="attr">seviceName:</span> <span class="string">bar</span></span><br><span class="line">          <span class="attr">servicePort:</span> <span class="number">8080</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Ingress is <span class="keyword">the</span> most useful <span class="keyword">if</span> you want <span class="built_in">to</span> expose multiple services under <span class="keyword">the</span> same IP address, <span class="keyword">and</span> these servcies all use same L7 protocol</span><br><span class="line"></span><br><span class="line">Under <span class="keyword">the</span> hood, Ingress will use <span class="keyword">a</span> NodePort <span class="keyword">or</span> LoadBalancer service <span class="built_in">to</span> expose itself <span class="built_in">to</span> <span class="keyword">the</span> world so <span class="keyword">it</span> can act <span class="keyword">as</span> that proxy.</span><br></pre></td></tr></table></figure>
-
-<h2 id="Cheat-Sheet"><a href="#Cheat-Sheet" class="headerlink" title="Cheat Sheet"></a>Cheat Sheet</h2><table>
-<thead>
-<tr>
-<th align="left"></th>
-<th align="left">NodePort</th>
-<th align="left">LoadBalancer</th>
-<th align="left">Ingress</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">Supported by core Kubernetes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">Works on every platform Kubernetes will deploy</td>
-<td align="left">Yes</td>
-<td align="left">Only supports a few public clouds. MetalLB project allows use on-premises.</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">Direct access to service</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-<td align="left">No</td>
-</tr>
-<tr>
-<td align="left">Proxies each service through third party(NGINX, HAProxy)</td>
-<td align="left">No</td>
-<td align="left">No</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">Multiple ports per service</td>
-<td align="left">No</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">Multiple services per IP</td>
-<td align="left">Yes</td>
-<td align="left">No</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">Allows use of standard service ports (80,443,etc)</td>
-<td align="left">No</td>
-<td align="left">Yes</td>
-<td align="left">Yes</td>
-</tr>
-<tr>
-<td align="left">Have to track individual node IPs</td>
-<td align="left">Yes</td>
-<td align="left">No</td>
-<td align="left">Yes, When using NodePort; No, when using LoadBalancer</td>
-</tr>
-</tbody></table>
-
+          <h1 id="NodePort-vs-LoadBalancer-vs-Ingress"><a href="#NodePort-vs-LoadBalancer-vs-Ingress" class="headerlink" title="NodePort vs LoadBalancer vs Ingress"></a>NodePort vs LoadBalancer vs Ingress</h1>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021/12/13/Kubernetes-NodePort-vs-LoadBalancer-vs-Ingress-Intro/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
