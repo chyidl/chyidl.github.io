@@ -3741,11 +3741,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Markdown Intro</title>
-    <url>/2021/11/18/Markdown-Intro/</url>
-    <content><![CDATA[]]></content>
-  </entry>
-  <entry>
     <title>School of SRE</title>
     <url>/2021/11/16/School-of-SRE/</url>
     <content><![CDATA[<h1 id="SRE-Site-Reliability-Engineers"><a href="#SRE-Site-Reliability-Engineers" class="headerlink" title="SRE (Site Reliability Engineers)"></a>SRE (Site Reliability Engineers)</h1><ul>
@@ -3789,6 +3784,11 @@
 
 <h2 id="Python-and-Web"><a href="#Python-and-Web" class="headerlink" title="Python and Web"></a>Python and Web</h2><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">say</span> python</span><br></pre></td></tr></table></figure>
 ]]></content>
+  </entry>
+  <entry>
+    <title>Markdown Intro</title>
+    <url>/2021/11/18/Markdown-Intro/</url>
+    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Patterns of Distributed Systems</title>
