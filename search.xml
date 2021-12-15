@@ -3791,48 +3791,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>websocket intro</title>
-    <url>/2021/12/01/websocket-intro/</url>
-    <content><![CDATA[<h1 id="The-Websocket-Protocol"><a href="#The-Websocket-Protocol" class="headerlink" title="The Websocket Protocol"></a>The Websocket Protocol</h1><ul>
-<li><p>Introduction</p>
-<ul>
-<li><p>Background</p>
-<ul>
-<li>variety of problem<ul>
-<li>The server is forced to use a number of different underlying TCP connections for each client: one for sending information to the client and a new one for each incoming message.</li>
-<li>The wire protocol has a high overhead, with each client-to-server message having an HTTP header.</li>
-<li>The client-side script is forced to maintain a mapping from the outgoing connections to the incoming connection to track replies.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Protocol Overview</p>
-<ul>
-<li>The protocol has two parts: a handshake and the data transfer.<ul>
-<li>The handshake from the client looks as follows<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<span id="more"></span>
-
-<ul>
-<li>publisher-subscriber server<ul>
-<li>(as known as a bus, message broker, or event-channel)<ul>
-<li>receive notifications about state changes on the one hand, and subscriptions for such notifications on the other.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/misc/images/websocket.png" alt="websocket"></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>[]</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Patterns of Distributed Systems</title>
     <url>/2021/11/25/Patterns-of-Distributed-Systems/</url>
     <content><![CDATA[<h1 id="Patterns-of-Distributed-Systems"><a href="#Patterns-of-Distributed-Systems" class="headerlink" title="Patterns of Distributed Systems"></a>Patterns of Distributed Systems</h1><ul>
@@ -3925,6 +3883,48 @@
 <li>Cassandra</li>
 <li>Epoch’s in Kafka</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>websocket intro</title>
+    <url>/2021/12/01/websocket-intro/</url>
+    <content><![CDATA[<h1 id="The-Websocket-Protocol"><a href="#The-Websocket-Protocol" class="headerlink" title="The Websocket Protocol"></a>The Websocket Protocol</h1><ul>
+<li><p>Introduction</p>
+<ul>
+<li><p>Background</p>
+<ul>
+<li>variety of problem<ul>
+<li>The server is forced to use a number of different underlying TCP connections for each client: one for sending information to the client and a new one for each incoming message.</li>
+<li>The wire protocol has a high overhead, with each client-to-server message having an HTTP header.</li>
+<li>The client-side script is forced to maintain a mapping from the outgoing connections to the incoming connection to track replies.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Protocol Overview</p>
+<ul>
+<li>The protocol has two parts: a handshake and the data transfer.<ul>
+<li>The handshake from the client looks as follows<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li>publisher-subscriber server<ul>
+<li>(as known as a bus, message broker, or event-channel)<ul>
+<li>receive notifications about state changes on the one hand, and subscriptions for such notifications on the other.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/misc/images/websocket.png" alt="websocket"></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>[]</p>
 ]]></content>
   </entry>
   <entry>
