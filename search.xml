@@ -3557,7 +3557,6 @@
 </ul>
 <h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
 <li><a href="https://www.howtoing.com/how-to-migrate-mysql-database-to-postgres-using-pgloader">如果使用pgloader将MySQL数据库迁移到PostgreSQL</a></li>
-<li>[from Mysql to PostgreSQL](ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMdgFTAb5v6IKtasDh9HWzx8hiLhGjZ0acwke/O9vcRO <a href="mailto:&#x63;&#104;&#x79;&#x69;&#x79;&#97;&#113;&#x69;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;">&#x63;&#104;&#x79;&#x69;&#x79;&#97;&#113;&#x69;&#110;&#103;&#x40;&#x67;&#x6d;&#x61;&#105;&#108;&#x2e;&#x63;&#x6f;&#109;</a>)</li>
 </ul>
 ]]></content>
   </entry>
@@ -3742,6 +3741,11 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Markdown Intro</title>
+    <url>/2021/11/18/Markdown-Intro/</url>
+    <content><![CDATA[]]></content>
+  </entry>
+  <entry>
     <title>School of SRE</title>
     <url>/2021/11/16/School-of-SRE/</url>
     <content><![CDATA[<h1 id="SRE-Site-Reliability-Engineers"><a href="#SRE-Site-Reliability-Engineers" class="headerlink" title="SRE (Site Reliability Engineers)"></a>SRE (Site Reliability Engineers)</h1><ul>
@@ -3785,11 +3789,6 @@
 
 <h2 id="Python-and-Web"><a href="#Python-and-Web" class="headerlink" title="Python and Web"></a>Python and Web</h2><figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="built_in">say</span> python</span><br></pre></td></tr></table></figure>
 ]]></content>
-  </entry>
-  <entry>
-    <title>Markdown Intro</title>
-    <url>/2021/11/18/Markdown-Intro/</url>
-    <content><![CDATA[]]></content>
   </entry>
   <entry>
     <title>Patterns of Distributed Systems</title>
