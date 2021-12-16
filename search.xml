@@ -2629,6 +2629,17 @@
       </tags>
   </entry>
   <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
+    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>监控</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Kubernetes Intro</title>
     <url>/2021/09/19/Kubernetes-Intro/</url>
     <content><![CDATA[<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
@@ -2752,17 +2763,6 @@
 ]]></content>
       <tags>
         <tag>Kubernetes</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
-    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
-<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>监控</tag>
       </tags>
   </entry>
   <entry>
@@ -3791,86 +3791,6 @@
     <content><![CDATA[]]></content>
   </entry>
   <entry>
-    <title>websocket intro</title>
-    <url>/2021/12/01/websocket-intro/</url>
-    <content><![CDATA[<h1 id="The-Websocket-Protocol"><a href="#The-Websocket-Protocol" class="headerlink" title="The Websocket Protocol"></a>The Websocket Protocol</h1><ul>
-<li><p>Introduction</p>
-<ul>
-<li><p>Background</p>
-<ul>
-<li>variety of problem<ul>
-<li>The server is forced to use a number of different underlying TCP connections for each client: one for sending information to the client and a new one for each incoming message.</li>
-<li>The wire protocol has a high overhead, with each client-to-server message having an HTTP header.</li>
-<li>The client-side script is forced to maintain a mapping from the outgoing connections to the incoming connection to track replies.</li>
-</ul>
-</li>
-</ul>
-</li>
-<li><p>Protocol Overview</p>
-<ul>
-<li>The protocol has two parts: a handshake and the data transfer.<ul>
-<li>The handshake from the client looks as follows<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<span id="more"></span>
-
-<ul>
-<li>publisher-subscriber server<ul>
-<li>(as known as a bus, message broker, or event-channel)<ul>
-<li>receive notifications about state changes on the one hand, and subscriptions for such notifications on the other.</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><img src="/misc/images/websocket.png" alt="websocket"></p>
-<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>[]</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>RAID Intro</title>
-    <url>/2021/12/12/RAID-Intro/</url>
-    <content><![CDATA[<h1 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h1><blockquote>
-<p>stands for Redundant Array of Inexpensive Disks(廉价磁盘冗余阵列)</p>
-</blockquote>
-<ul>
-<li><p>Hardware RAID</p>
-<blockquote>
-<p>Hardware RAID using controllers or RAID cards to manage the RAID configuration independently from the operating system.</p>
-</blockquote>
-</li>
-<li><p>Software RAID</p>
-<blockquote>
-<p>Software RAID tends to be slower than hardware RAID.</p>
-</blockquote>
-</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="RAID-Level-Comparision"><a href="#RAID-Level-Comparision" class="headerlink" title="RAID Level Comparision"></a>RAID Level Comparision</h2><ul>
-<li><p>RAID 0<br><img src="/misc/images/raid/raid0.jpg" alt="raid 0"></p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">&gt; data are <span class="built_in">split</span> up <span class="keyword">into</span> blocks that <span class="built_in">get</span> written across all <span class="keyword">the</span> drivers <span class="keyword">in</span> <span class="keyword">the</span> array. By <span class="keyword">using</span> multiple disks (<span class="keyword">at</span> least <span class="number">2</span>) <span class="keyword">at</span> <span class="keyword">the</span> same <span class="built_in">time</span>, this offers fast <span class="built_in">read</span> <span class="keyword">and</span> <span class="built_in">write</span> speeds.</span><br><span class="line"><span class="comment"># Downside</span></span><br><span class="line">  - RAID <span class="number">0</span> is <span class="keyword">not</span> redundant, <span class="keyword">the</span> loss <span class="keyword">of</span> <span class="keyword">any</span> individual will cause complete data loss.</span><br></pre></td></tr></table></figure></li>
-<li><p>RAID 1<br><img src="/misc/images/raid/raid1.jpg" alt="raid 1"></p>
-<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">RAID <span class="number">1</span> is setup <span class="keyword">of</span> <span class="keyword">at</span> least <span class="literal">two</span> drives.</span><br><span class="line">RAID <span class="number">1</span> is high <span class="built_in">read</span> performance, <span class="keyword">as</span> data can be <span class="built_in">read</span> off <span class="keyword">any</span> <span class="keyword">of</span> <span class="keyword">the</span> drives <span class="keyword">in</span> <span class="keyword">the</span> array.</span><br><span class="line">Since <span class="keyword">the</span> data needs <span class="built_in">to</span> be written <span class="built_in">to</span> all <span class="keyword">the</span> drives <span class="keyword">in</span> <span class="keyword">the</span> array, <span class="keyword">the</span> <span class="built_in">write</span> speed is slower than <span class="keyword">a</span> RAID <span class="number">0</span> array.</span><br></pre></td></tr></table></figure></li>
-<li><p>RAID 5<br><img src="/misc/images/raid/raid5.jpg" alt="raid 5"></p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;parity&quot;</span> distributed across <span class="keyword">the</span> drives.</span><br><span class="line">READ speed <span class="keyword">is</span> very fast <span class="keyword">but</span> <span class="built_in">write</span> speed <span class="keyword">is</span> somewhat slower due <span class="keyword">to</span> <span class="keyword">the</span> partity <span class="keyword">that</span> has <span class="keyword">to</span> be calculated.</span><br></pre></td></tr></table></figure></li>
-<li><p>RAID 6<br><img src="/misc/images/raid/raid6.jpg" alt="raid 6"></p>
-<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">Read speed <span class="keyword">is</span> <span class="keyword">as</span> fast <span class="keyword">as</span> RAID <span class="number">5</span>, <span class="keyword">but</span> <span class="built_in">write</span> speed <span class="keyword">is</span> slower than RAID <span class="number">5.</span></span><br><span class="line">RAID <span class="number">6</span> <span class="keyword">is</span> a very good option <span class="keyword">for</span> a standard web server, <span class="keyword">where</span> most <span class="keyword">of</span> <span class="keyword">the</span> transactions are reads, <span class="keyword">but</span> <span class="keyword">its</span> <span class="keyword">not</span> recommanded <span class="keyword">for</span> a heavy <span class="built_in">write</span> environment.</span><br></pre></td></tr></table></figure></li>
-<li><p>RAID 10<br><img src="/misc/images/raid/raid10.jpg" alt="raid 10"></p>
-<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">RAID</span> <span class="number">10</span> can provide the speed of RAID <span class="number">0</span> with the redundancy of RAID <span class="number">1</span>.</span><br></pre></td></tr></table></figure></li>
-</ul>
-<figure class="highlight tcl"><table><tr><td class="code"><pre><span class="line">chyiyaqing in ~ at chyiyaqing-PowerEdge-R720</span><br><span class="line">➜ cat /<span class="keyword">proc</span>/scsi/scsi<span class="title"></span></span><br><span class="line"><span class="title">Attached</span> devices:<span class="title"></span></span><br><span class="line"><span class="title">Host:</span> scsi0<span class="title"> Channel:</span> 02<span class="title"> Id:</span> 00<span class="title"> Lun:</span> 00<span class="title"></span></span><br><span class="line"><span class="title">  Vendor:</span> DELL<span class="title">     Model:</span> PERC<span class="title"> H710</span> <span class="title">       Rev:</span> 3.13<span class="title"></span></span><br><span class="line"><span class="title">  Type:</span> <span class="title">  Direct-Access</span> <span class="title">                   ANSI</span> <span class="title"> SCSI</span> revision: 05</span><br></pre></td></tr></table></figure>
-
-
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://medium.com/@dataplugshk/raid-level-comparison-raid-0-raid-1-raid-5-raid-6-and-raid-10-6d64210544a9">raid level</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Patterns of Distributed Systems</title>
     <url>/2021/11/25/Patterns-of-Distributed-Systems/</url>
     <content><![CDATA[<h1 id="Patterns-of-Distributed-Systems"><a href="#Patterns-of-Distributed-Systems" class="headerlink" title="Patterns of Distributed Systems"></a>Patterns of Distributed Systems</h1><ul>
@@ -3963,6 +3883,86 @@
 <li>Cassandra</li>
 <li>Epoch’s in Kafka</li>
 </ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>websocket intro</title>
+    <url>/2021/12/01/websocket-intro/</url>
+    <content><![CDATA[<h1 id="The-Websocket-Protocol"><a href="#The-Websocket-Protocol" class="headerlink" title="The Websocket Protocol"></a>The Websocket Protocol</h1><ul>
+<li><p>Introduction</p>
+<ul>
+<li><p>Background</p>
+<ul>
+<li>variety of problem<ul>
+<li>The server is forced to use a number of different underlying TCP connections for each client: one for sending information to the client and a new one for each incoming message.</li>
+<li>The wire protocol has a high overhead, with each client-to-server message having an HTTP header.</li>
+<li>The client-side script is forced to maintain a mapping from the outgoing connections to the incoming connection to track replies.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>Protocol Overview</p>
+<ul>
+<li>The protocol has two parts: a handshake and the data transfer.<ul>
+<li>The handshake from the client looks as follows<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li>publisher-subscriber server<ul>
+<li>(as known as a bus, message broker, or event-channel)<ul>
+<li>receive notifications about state changes on the one hand, and subscriptions for such notifications on the other.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/misc/images/websocket.png" alt="websocket"></p>
+<h2 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h2><p>[]</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>RAID Intro</title>
+    <url>/2021/12/12/RAID-Intro/</url>
+    <content><![CDATA[<h1 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h1><blockquote>
+<p>stands for Redundant Array of Inexpensive Disks(廉价磁盘冗余阵列)</p>
+</blockquote>
+<ul>
+<li><p>Hardware RAID</p>
+<blockquote>
+<p>Hardware RAID using controllers or RAID cards to manage the RAID configuration independently from the operating system.</p>
+</blockquote>
+</li>
+<li><p>Software RAID</p>
+<blockquote>
+<p>Software RAID tends to be slower than hardware RAID.</p>
+</blockquote>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="RAID-Level-Comparision"><a href="#RAID-Level-Comparision" class="headerlink" title="RAID Level Comparision"></a>RAID Level Comparision</h2><ul>
+<li><p>RAID 0<br><img src="/misc/images/raid/raid0.jpg" alt="raid 0"></p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">&gt; data are <span class="built_in">split</span> up <span class="keyword">into</span> blocks that <span class="built_in">get</span> written across all <span class="keyword">the</span> drivers <span class="keyword">in</span> <span class="keyword">the</span> array. By <span class="keyword">using</span> multiple disks (<span class="keyword">at</span> least <span class="number">2</span>) <span class="keyword">at</span> <span class="keyword">the</span> same <span class="built_in">time</span>, this offers fast <span class="built_in">read</span> <span class="keyword">and</span> <span class="built_in">write</span> speeds.</span><br><span class="line"><span class="comment"># Downside</span></span><br><span class="line">  - RAID <span class="number">0</span> is <span class="keyword">not</span> redundant, <span class="keyword">the</span> loss <span class="keyword">of</span> <span class="keyword">any</span> individual will cause complete data loss.</span><br></pre></td></tr></table></figure></li>
+<li><p>RAID 1<br><img src="/misc/images/raid/raid1.jpg" alt="raid 1"></p>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">RAID <span class="number">1</span> is setup <span class="keyword">of</span> <span class="keyword">at</span> least <span class="literal">two</span> drives.</span><br><span class="line">RAID <span class="number">1</span> is high <span class="built_in">read</span> performance, <span class="keyword">as</span> data can be <span class="built_in">read</span> off <span class="keyword">any</span> <span class="keyword">of</span> <span class="keyword">the</span> drives <span class="keyword">in</span> <span class="keyword">the</span> array.</span><br><span class="line">Since <span class="keyword">the</span> data needs <span class="built_in">to</span> be written <span class="built_in">to</span> all <span class="keyword">the</span> drives <span class="keyword">in</span> <span class="keyword">the</span> array, <span class="keyword">the</span> <span class="built_in">write</span> speed is slower than <span class="keyword">a</span> RAID <span class="number">0</span> array.</span><br></pre></td></tr></table></figure></li>
+<li><p>RAID 5<br><img src="/misc/images/raid/raid5.jpg" alt="raid 5"></p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;parity&quot;</span> distributed across <span class="keyword">the</span> drives.</span><br><span class="line">READ speed <span class="keyword">is</span> very fast <span class="keyword">but</span> <span class="built_in">write</span> speed <span class="keyword">is</span> somewhat slower due <span class="keyword">to</span> <span class="keyword">the</span> partity <span class="keyword">that</span> has <span class="keyword">to</span> be calculated.</span><br></pre></td></tr></table></figure></li>
+<li><p>RAID 6<br><img src="/misc/images/raid/raid6.jpg" alt="raid 6"></p>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">Read speed <span class="keyword">is</span> <span class="keyword">as</span> fast <span class="keyword">as</span> RAID <span class="number">5</span>, <span class="keyword">but</span> <span class="built_in">write</span> speed <span class="keyword">is</span> slower than RAID <span class="number">5.</span></span><br><span class="line">RAID <span class="number">6</span> <span class="keyword">is</span> a very good option <span class="keyword">for</span> a standard web server, <span class="keyword">where</span> most <span class="keyword">of</span> <span class="keyword">the</span> transactions are reads, <span class="keyword">but</span> <span class="keyword">its</span> <span class="keyword">not</span> recommanded <span class="keyword">for</span> a heavy <span class="built_in">write</span> environment.</span><br></pre></td></tr></table></figure></li>
+<li><p>RAID 10<br><img src="/misc/images/raid/raid10.jpg" alt="raid 10"></p>
+<figure class="highlight apache"><table><tr><td class="code"><pre><span class="line"><span class="attribute">RAID</span> <span class="number">10</span> can provide the speed of RAID <span class="number">0</span> with the redundancy of RAID <span class="number">1</span>.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight tcl"><table><tr><td class="code"><pre><span class="line">chyiyaqing in ~ at chyiyaqing-PowerEdge-R720</span><br><span class="line">➜ cat /<span class="keyword">proc</span>/scsi/scsi<span class="title"></span></span><br><span class="line"><span class="title">Attached</span> devices:<span class="title"></span></span><br><span class="line"><span class="title">Host:</span> scsi0<span class="title"> Channel:</span> 02<span class="title"> Id:</span> 00<span class="title"> Lun:</span> 00<span class="title"></span></span><br><span class="line"><span class="title">  Vendor:</span> DELL<span class="title">     Model:</span> PERC<span class="title"> H710</span> <span class="title">       Rev:</span> 3.13<span class="title"></span></span><br><span class="line"><span class="title">  Type:</span> <span class="title">  Direct-Access</span> <span class="title">                   ANSI</span> <span class="title"> SCSI</span> revision: 05</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><p><a href="https://medium.com/@dataplugshk/raid-level-comparison-raid-0-raid-1-raid-5-raid-6-and-raid-10-6d64210544a9">raid level</a></p>
 ]]></content>
   </entry>
   <entry>
