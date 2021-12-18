@@ -4059,6 +4059,37 @@
   <entry>
     <title>Kubernetes Volumes Intro</title>
     <url>/2021/12/16/Kubernetes-Volumes-Intro/</url>
-    <content><![CDATA[]]></content>
+    <content><![CDATA[<h1 id="Volumes-in-Kubernetes"><a href="#Volumes-in-Kubernetes" class="headerlink" title="Volumes in Kubernetes"></a>Volumes in Kubernetes</h1><span id="more"></span>
+
+<h2 id="Types-of-Kubernetes-Volumes"><a href="#Types-of-Kubernetes-Volumes" class="headerlink" title="Types of Kubernetes Volumes"></a>Types of Kubernetes Volumes</h2><ul>
+<li>emptyDir:</li>
+</ul>
+<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">It <span class="keyword">is</span> a type <span class="keyword">of</span> volume <span class="keyword">is</span> created when a Pod <span class="keyword">is</span> <span class="keyword">first</span> assigned <span class="keyword">to</span> a Node. It remains active <span class="keyword">as</span> long <span class="keyword">as</span> <span class="keyword">the</span> Pod <span class="keyword">is</span> <span class="built_in">running</span> <span class="keyword">on</span> <span class="keyword">that</span> node. The volume <span class="keyword">is</span> initially empty <span class="keyword">and</span> <span class="keyword">the</span> containers <span class="keyword">in</span> <span class="keyword">the</span> pod can <span class="built_in">read</span> <span class="keyword">and</span> <span class="built_in">write</span> <span class="keyword">the</span> files <span class="keyword">in</span> <span class="keyword">the</span> emptyDir volume. Once <span class="keyword">the</span> Pod <span class="keyword">is</span> removed <span class="keyword">from</span> <span class="keyword">the</span> node, <span class="keyword">the</span> data <span class="keyword">in</span> <span class="keyword">the</span> emptyDir <span class="keyword">is</span> erased.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>hostPath:</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">This type <span class="keyword">of</span> volume mounts <span class="keyword">a</span> <span class="built_in">file</span> <span class="keyword">or</span> <span class="built_in">directory</span> <span class="built_in">from</span> <span class="keyword">the</span> host node<span class="string">&#x27;s filesystem into your pod.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>gcePersistentDisk</li>
+</ul>
+<figure class="highlight haskell"><table><tr><td class="code"><pre><span class="line"><span class="type">This</span> <span class="class"><span class="keyword">type</span> of volume mounts a <span class="type">Google</span> <span class="type">Compute</span> <span class="type">Engine</span> (<span class="type">GCE</span>) <span class="type">Persistent</span> <span class="type">Disk</span> into your <span class="type">Pod</span>. <span class="type">The</span> <span class="keyword">data</span> in gcePersistentDisk remains intact when the <span class="type">Pod</span> is removed from the node.</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>awsElasticBlockStore</li>
+</ul>
+<figure class="highlight livecodeserver"><table><tr><td class="code"><pre><span class="line">This type <span class="keyword">of</span> volume mounts <span class="keyword">an</span> Amazon Web Services (AWS) Elastic Block Store <span class="keyword">into</span> your Pod. Just like gcePersistentDisk, <span class="keyword">the</span> data <span class="keyword">in</span> <span class="keyword">an</span> awsElasticBlockStore remains intact when <span class="keyword">the</span> Pod is removed <span class="built_in">from</span> <span class="keyword">the</span> node.</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>nfs</li>
+</ul>
+<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">An nfs volume allows an existing NFS (Network File <span class="keyword">System</span>) <span class="keyword">to</span> be mounted <span class="keyword">into</span> your Pod. the data <span class="keyword">in</span> an nfs volume <span class="keyword">is</span> <span class="keyword">not</span> erased <span class="keyword">when</span> the Pod <span class="keyword">is</span> removed <span class="keyword">from</span> the node. The volume <span class="keyword">is</span> <span class="keyword">only</span> unmounted</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>gitRepo</li>
+</ul>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+]]></content>
   </entry>
 </search>
