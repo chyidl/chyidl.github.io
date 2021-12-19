@@ -181,9 +181,9 @@
 <figure class="highlight yaml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 安装插件 hexo-symbols-count-time</span></span><br><span class="line"><span class="string">$</span> <span class="string">npm</span> <span class="string">install</span> <span class="string">hexo-symbols-count-time</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改hexo配置文件_config.yml</span></span><br><span class="line">  <span class="comment"># Symbols count and time to read of articles for Hexo.</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">      <span class="attr">symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">time:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_symbols:</span> <span class="literal">true</span></span><br><span class="line">      <span class="attr">total_time:</span> <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 修改Next配置文件</span></span><br><span class="line">  <span class="comment"># Post wordcount display settings</span></span><br><span class="line">  <span class="comment"># Dependencies: https://github.com/next-theme/hexo-word-counter</span></span><br><span class="line">  <span class="attr">symbols_count_time:</span></span><br><span class="line">    <span class="attr">separated_meta:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_post:</span> <span class="literal">true</span></span><br><span class="line">    <span class="attr">item_text_total:</span> <span class="literal">false</span></span><br><span class="line">    <span class="attr">awl:</span> <span class="number">4</span></span><br><span class="line">    <span class="attr">wpm:</span> <span class="number">275</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>blog</tag>
-      </tags>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
   </entry>
   <entry>
     <title>micro-services</title>
@@ -245,14 +245,8 @@
 </ul>
 ]]></content>
       <categories>
-        <category>计算机科学</category>
+        <category>Microservice</category>
       </categories>
-      <tags>
-        <tag>微服务</tag>
-        <tag>DDD</tag>
-        <tag>分布式</tag>
-        <tag>工程化</tag>
-      </tags>
   </entry>
   <entry>
     <title>Distributed ID Generator</title>
@@ -286,15 +280,17 @@
 <figure class="highlight asciidoc"><table><tr><td class="code"><pre><span class="line"><span class="section"># The default Twitter format shown below.</span></span><br><span class="line"><span class="section">+--------------------------------------------------------------------------+</span></span><br><span class="line"><span class="section">| 1 Bit Unused | 41 Bit Timestamp |  10 Bit NodeID  |   12 Bit Sequence ID |</span></span><br><span class="line"><span class="section">+--------------------------------------------------------------------------+</span></span><br><span class="line"></span><br><span class="line">41 bits: store a timestamp with millisecond precision</span><br><span class="line">10 bits: store a node id - a range from 0 through 1023</span><br><span class="line">12 bits: store a sequence number - a range from 0 through 4095</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>分布式</tag>
-        <tag>ID Generator</tag>
-      </tags>
+      <categories>
+        <category>Distributed Systems</category>
+      </categories>
   </entry>
   <entry>
     <title>Kafka Tips &amp; Tracks</title>
     <url>/2021/09/02/Kafka-Tips-Tracks/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>MySQL Tips &amp; Tracks</title>
@@ -446,10 +442,9 @@
 <figure class="highlight oxygene"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. 简单嵌套循环连接 Simple <span class="keyword">Nested</span>-<span class="keyword">Loop</span> <span class="keyword">Join</span></span><br><span class="line">  inner <span class="keyword">join</span> - 内连接 双层循环遍历两张表</span><br><span class="line">  一般sql中会以小表作为驱动表，外层循环，内层循环作为被驱动表</span><br><span class="line"><span class="number">2</span>. 索引嵌套循环连接</span><br><span class="line">  内存表列要有索引</span><br><span class="line"><span class="number">3</span>. 快索引嵌套连接 <span class="keyword">Block</span> <span class="keyword">Nested</span> <span class="keyword">Loop</span> <span class="keyword">Join</span></span><br><span class="line">  &gt; 缓存外层表的数据到<span class="keyword">join</span> buffer中，然后buffer中数据批量和内层表数据进行匹配，从而减少内存循环的次数</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>数据库</tag>
-        <tag>MySQL</tag>
-      </tags>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>Redis Tips &amp; Tracks</title>
@@ -699,10 +694,9 @@
 <figure class="highlight gauss"><table><tr><td class="code"><pre><span class="line">&gt; 雪崩和击穿类似，不同的是击穿是一个热点<span class="built_in">Key</span>某时刻失效，而雪崩是大量的热点<span class="built_in">Key</span>在一瞬间失效</span><br><span class="line"></span><br><span class="line"><span class="meta"># 处理思路?</span></span><br><span class="line">  <span class="number">1.</span> 查看<span class="built_in">Key</span>过期是不是时点性有关，时点性无关的话，可以随机过期时间解决</span><br><span class="line">  <span class="number">2.</span> 如果是时点性有关，利用强依赖击穿方案，单飞策略(先过去的线程更新一下所有<span class="built_in">Key</span>,在后台更新热点<span class="built_in">Key</span>的同时，业务层将进来的请求延时一下)</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3>]]></content>
-      <tags>
-        <tag>缓存</tag>
-        <tag>Redis</tag>
-      </tags>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>echo-go-web-framework</title>
@@ -730,10 +724,28 @@
 <li>HTTP/2 support</li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>框架</tag>
-        <tag>Golang</tag>
-      </tags>
+      <categories>
+        <category>Web Framework</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Distribute Scraping for Gophers</title>
+    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
+    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
+<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
+<li>nats<blockquote>
+<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
+</blockquote>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Distributed Systems</category>
+      </categories>
   </entry>
   <entry>
     <title>Dev-Ops Tips &amp; Tracks</title>
@@ -924,30 +936,9 @@
 <li><a href="https://www.atlassian.com/git/tutorials/atlassian-git-cheatsheet">git cheatsheet</a></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>DevOps</tag>
-        <tag>Bootcamp</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Distribute Scraping for Gophers</title>
-    <url>/2021/09/03/Distribute-Scraping-for-Gophers/</url>
-    <content><![CDATA[<h1 id="分布式爬虫"><a href="#分布式爬虫" class="headerlink" title="分布式爬虫"></a>分布式爬虫</h1><blockquote>
-<p>分布式爬虫是一套任务分发和执行系统，常见的任务分发，因为上下游存在速度不匹配问题，需要借助消息队列</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="分布式消息队列"><a href="#分布式消息队列" class="headerlink" title="分布式消息队列"></a>分布式消息队列</h2><ul>
-<li>nats<blockquote>
-<p>nats是Go实现的高性能分布式消息队列，适用于高并发吞吐量的消息分发场景.</p>
-</blockquote>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>分布式</tag>
-        <tag>爬虫</tag>
-      </tags>
+      <categories>
+        <category>DevOps</category>
+      </categories>
   </entry>
   <entry>
     <title>Elasticsearch Tips &amp; Tracks</title>
@@ -1176,10 +1167,9 @@
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"><span class="number">1.</span> 不同的集群通过不同的名字区分，-E <span class="keyword">cluster</span>.name=geektime</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="ELK-大数据分析"><a href="#ELK-大数据分析" class="headerlink" title="ELK 大数据分析"></a>ELK 大数据分析</h2>]]></content>
-      <tags>
-        <tag>搜索引擎</tag>
-        <tag>ES</tag>
-      </tags>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>golang pkg Tips &amp; Tracks</title>
@@ -1538,9 +1528,9 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">  <span class="string">&quot;fmt&quot;</span></span><br><span class="line">  <span class="string">&quot;math/rand&quot;</span></span><br><span class="line">  <span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">init</span><span class="params">()</span></span> &#123;</span><br><span class="line">  rand.Seed(time.Now().UnixNano())</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">normal_shuffle</span><span class="params">(slice []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(slice); i++ &#123;</span><br><span class="line">    a := rand.Intn(<span class="built_in">len</span>(slice))</span><br><span class="line">    b := rand.Intn(<span class="built_in">len</span>(slice))</span><br><span class="line">    slice[a], slice[b] = slice[b], slice[a]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">shuffle</span><span class="params">(indexes []<span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">  <span class="keyword">for</span> i := <span class="built_in">len</span>(indexes); i &gt; <span class="number">0</span>; i-- &#123;</span><br><span class="line">    lastIdx := i - <span class="number">1</span></span><br><span class="line">    idx := rand.Intn(i)</span><br><span class="line">    indexes[lastIdx], indexes[idx] = indexes[idx], indexes[lastIdx]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  <span class="keyword">var</span> cnt1 = <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++ &#123;</span><br><span class="line">    <span class="keyword">var</span> sl = []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">    normal_shuffle(sl)</span><br><span class="line">    cnt1[sl[<span class="number">0</span>]]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> cnt2 = <span class="keyword">map</span>[<span class="keyword">int</span>]<span class="keyword">int</span>&#123;&#125;</span><br><span class="line">  <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++ &#123;</span><br><span class="line">    <span class="keyword">var</span> sl = []<span class="keyword">int</span>&#123;<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>&#125;</span><br><span class="line">    shuffle(sl)</span><br><span class="line">    cnt2[sl[<span class="number">0</span>]]++</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  fmt.Println(<span class="string">&quot;normal shuffle: &quot;</span>, cnt1)</span><br><span class="line">  fmt.Println(<span class="string">&quot;fisher yates  : &quot;</span>, cnt2)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">chyi/<span class="keyword">go</span>-awesome-prj/shuffle via 🐹 v1<span class="number">.17</span> took <span class="number">38</span>s</span><br><span class="line">➜ <span class="keyword">go</span> run main.<span class="keyword">go</span></span><br><span class="line">normal shuffle:  <span class="keyword">map</span>[<span class="number">0</span>:<span class="number">224558</span> <span class="number">1</span>:<span class="number">128887</span> <span class="number">2</span>:<span class="number">129201</span> <span class="number">3</span>:<span class="number">129493</span> <span class="number">4</span>:<span class="number">129487</span> <span class="number">5</span>:<span class="number">129202</span> <span class="number">6</span>:<span class="number">129172</span>]</span><br><span class="line">fisher yates  :  <span class="keyword">map</span>[<span class="number">0</span>:<span class="number">142974</span> <span class="number">1</span>:<span class="number">143116</span> <span class="number">2</span>:<span class="number">142768</span> <span class="number">3</span>:<span class="number">142660</span> <span class="number">4</span>:<span class="number">142930</span> <span class="number">5</span>:<span class="number">142505</span> <span class="number">6</span>:<span class="number">143047</span>]</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Go</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>CS - Basic Introduction</title>
@@ -1570,9 +1560,9 @@
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. NTP如何同步时间</span><br><span class="line">  &gt; 假设网络来回路径对称，并且延迟相同</span><br><span class="line">  网络延时 = (t4 - t1) - (t3 - t2)</span><br><span class="line">  时间差 = t2 - t1 - 网络延迟<span class="regexp">/2 = ((t2-t1) + (t3-t4))/</span><span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 同步时间时，对正在运行的程序有没有影响</span><br><span class="line">  <span class="comment"># 墙上时钟: 世界协调时UTC，校准时间后，可能发生回拨</span></span><br><span class="line">  <span class="comment"># 单调时钟: 计算机自启动以后的纳秒数，不会回拨</span></span><br><span class="line"></span><br><span class="line">NTP校准时间提供<span class="number">2</span>中方式:</span><br><span class="line">  <span class="number">1</span>. ntpdate: 一切已服务器端时间为准，强制修改本机时间</span><br><span class="line">  <span class="number">2</span>. ntpd: 把时间差均摊到每次小的调整上 -- 避免发生倒流</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>计算机</tag>
-      </tags>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
   </entry>
   <entry>
     <title>Middleware Tips &amp; Tracks</title>
@@ -1594,10 +1584,9 @@
 <li>Redis 作为消息中间件<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1.</span> Redis本身可能会丢数据</span><br><span class="line"><span class="bullet">2.</span> 面对消息积压，Redis内存资源紧张</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>中间件</tag>
-        <tag>Middleware</tag>
-      </tags>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>Protocol Buffer Intro</title>
@@ -1618,9 +1607,9 @@
 
 
 ]]></content>
-      <tags>
-        <tag>Protocol Buffer</tag>
-      </tags>
+      <categories>
+        <category>Microservice</category>
+      </categories>
   </entry>
   <entry>
     <title>API Design</title>
@@ -1767,9 +1756,9 @@
 </li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>API</tag>
-      </tags>
+      <categories>
+        <category>Microservice</category>
+      </categories>
   </entry>
   <entry>
     <title>gRPC Intro</title>
@@ -1778,9 +1767,9 @@
 <p>Google开发共性能、开源、跨编程语言的通用RPC框架，基于HTTP2.0协议开发，默认采用Protocol Buffers数据序列化协议</p>
 </blockquote>
 ]]></content>
-      <tags>
-        <tag>gRPC</tag>
-      </tags>
+      <categories>
+        <category>Microservice</category>
+      </categories>
   </entry>
   <entry>
     <title>Gin Crash Course</title>
@@ -1886,10 +1875,9 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"># gin.Default</span><br><span class="line"></span><br><span class="line"><span class="comment">// Default returns an Engine instance with the Logger and Recovery middleware already attached.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Default</span><span class="params">()</span> *<span class="title">Engine</span></span> &#123;</span><br><span class="line">	debugPrintWARNINGDefault()  <span class="comment">// 检查Go版本是否达到Gin最低要求</span></span><br><span class="line">	engine := New()</span><br><span class="line">	engine.Use(Logger(), Recovery()) <span class="comment">// 引入中间件</span></span><br><span class="line">	<span class="keyword">return</span> engine</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># gin.New</span><br><span class="line"><span class="comment">// New returns a new blank Engine instance without any middleware attached.</span></span><br><span class="line"><span class="comment">// By default the configuration is:</span></span><br><span class="line"><span class="comment">// - RedirectTrailingSlash:  true</span></span><br><span class="line"><span class="comment">// - RedirectFixedPath:      false</span></span><br><span class="line"><span class="comment">// - HandleMethodNotAllowed: false</span></span><br><span class="line"><span class="comment">// - ForwardedByClientIP:    true</span></span><br><span class="line"><span class="comment">// - UseRawPath:             false</span></span><br><span class="line"><span class="comment">// - UnescapePathValues:     true</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">New</span><span class="params">()</span> *<span class="title">Engine</span></span> &#123;</span><br><span class="line">	debugPrintWARNINGNew()</span><br><span class="line">	engine := &amp;Engine&#123; <span class="comment">// 初始化</span></span><br><span class="line">		RouterGroup: RouterGroup&#123; <span class="comment">// 路由组</span></span><br><span class="line">			Handlers: <span class="literal">nil</span>,</span><br><span class="line">			basePath: <span class="string">&quot;/&quot;</span>,</span><br><span class="line">			root:     <span class="literal">true</span>,</span><br><span class="line">		&#125;,</span><br><span class="line">		FuncMap:                template.FuncMap&#123;&#125;,</span><br><span class="line">		RedirectTrailingSlash:  <span class="literal">true</span>,</span><br><span class="line">		RedirectFixedPath:      <span class="literal">false</span>,</span><br><span class="line">		HandleMethodNotAllowed: <span class="literal">false</span>,</span><br><span class="line">		ForwardedByClientIP:    <span class="literal">true</span>,</span><br><span class="line">		RemoteIPHeaders:        []<span class="keyword">string</span>&#123;<span class="string">&quot;X-Forwarded-For&quot;</span>, <span class="string">&quot;X-Real-IP&quot;</span>&#125;,</span><br><span class="line">		TrustedProxies:         []<span class="keyword">string</span>&#123;<span class="string">&quot;0.0.0.0/0&quot;</span>&#125;,</span><br><span class="line">		AppEngine:              defaultAppEngine,</span><br><span class="line">		UseRawPath:             <span class="literal">false</span>,</span><br><span class="line">		RemoveExtraSlash:       <span class="literal">false</span>,</span><br><span class="line">		UnescapePathValues:     <span class="literal">true</span>,</span><br><span class="line">		MaxMultipartMemory:     defaultMultipartMemory, <span class="comment">// const defaultMultipartMemory = 32 &lt;&lt; 20 // 32 MB</span></span><br><span class="line">		trees:                  <span class="built_in">make</span>(methodTrees, <span class="number">0</span>, <span class="number">9</span>),</span><br><span class="line">		delims:                 render.Delims&#123;Left: <span class="string">&quot;&#123;&#123;&quot;</span>, Right: <span class="string">&quot;&#125;&#125;&quot;</span>&#125;, <span class="comment">// HTML 模版左右定界符</span></span><br><span class="line">		secureJSONPrefix:       <span class="string">&quot;while(1);&quot;</span>,</span><br><span class="line">	&#125;</span><br><span class="line">	engine.RouterGroup.engine = engine</span><br><span class="line">	engine.pool.New = <span class="function"><span class="keyword">func</span><span class="params">()</span> <span class="title">interface</span></span>&#123;&#125; &#123;</span><br><span class="line">		<span class="keyword">return</span> engine.allocateContext()</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> engine</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># r.GET()</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">func</span> <span class="params">(group *RouterGroup)</span> <span class="title">handle</span><span class="params">(httpMethod, relativePath <span class="keyword">string</span>, handlers HandlersChain)</span> <span class="title">IRoutes</span></span> &#123;</span><br><span class="line">    absolutePath := group.calculateAbsolutePath(relativePath) <span class="comment">// 计算路由的绝对路径</span></span><br><span class="line">    handlers = group.combineHandlers(handlers)</span><br><span class="line">    group.engine.addRoute(httpMethod, absolutePath, handlers) <span class="comment">// 追加到树</span></span><br><span class="line">    <span class="keyword">return</span> group.returnObj()</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"># r.Run()</span><br><span class="line"></span><br><span class="line"><span class="comment">// Run attaches the router to a http.Server and starts listening and serving HTTP requests.</span></span><br><span class="line"><span class="comment">// It is a shortcut for http.ListenAndServe(addr, router)</span></span><br><span class="line"><span class="comment">// Note: this method will block the calling goroutine indefinitely unless an error happens.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span> <span class="title">Run</span><span class="params">(addr ...<span class="keyword">string</span>)</span> <span class="params">(err error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">defer</span> <span class="function"><span class="keyword">func</span><span class="params">()</span></span> &#123; debugPrintError(err) &#125;()</span><br><span class="line"></span><br><span class="line">	trustedCIDRs, err := engine.prepareTrustedCIDRs()</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> err</span><br><span class="line">	&#125;</span><br><span class="line">	engine.trustedCIDRs = trustedCIDRs</span><br><span class="line">	address := resolveAddress(addr)</span><br><span class="line">	debugPrint(<span class="string">&quot;Listening and serving HTTP on %s\n&quot;</span>, address)</span><br><span class="line">	err = http.ListenAndServe(address, engine)</span><br><span class="line">	<span class="keyword">return</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 上下文池化防止频繁生成上下文对象，提高性能</span></span><br><span class="line"><span class="comment">// ServeHTTP conforms to the http.Handler interface.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(engine *Engine)</span> <span class="title">ServeHTTP</span><span class="params">(w http.ResponseWriter, req *http.Request)</span></span> &#123;</span><br><span class="line">	c := engine.pool.Get().(*Context) <span class="comment">// sync.Pool 对象池中获取一个上下文对象</span></span><br><span class="line">	c.writermem.reset(w)</span><br><span class="line">	c.Request = req</span><br><span class="line">	c.reset()</span><br><span class="line"></span><br><span class="line">	engine.handleHTTPRequest(c)</span><br><span class="line"></span><br><span class="line">	engine.pool.Put(c) <span class="comment">// 返回对象池</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Gin</tag>
-        <tag>Web框架</tag>
-      </tags>
+      <categories>
+        <category>Web Framework</category>
+      </categories>
   </entry>
   <entry>
     <title>Makefile Intro</title>
@@ -1932,11 +1920,17 @@
 <li>[跟我一起写Makefile (PDF重制版)] (<a href="https://seisman.github.io/how-to-write-makefile/Makefile.pdf">https://seisman.github.io/how-to-write-makefile/Makefile.pdf</a>)</li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
   </entry>
   <entry>
     <title>MySQL Index Intro</title>
     <url>/2021/09/08/MySQL-Index-Intro/</url>
     <content><![CDATA[]]></content>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>数据结构-Radix-Tree</title>
@@ -1946,9 +1940,9 @@
 </blockquote>
 <figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"># gin/gin.go</span><br><span class="line"></span><br><span class="line">// <span class="keyword">method</span> -&gt; HTTP <span class="keyword">Method</span> &#123;<span class="keyword">GET</span>,PUT,POST,<span class="keyword">DELETE</span>&#125;</span><br><span class="line">func (engine *Engine) addRoute(<span class="keyword">method</span>, <span class="type">path</span> string, handlers HandlersChain) &#123;</span><br><span class="line">	assert1(<span class="type">path</span>[<span class="number">0</span>] == <span class="string">&#x27;/&#x27;</span>, &quot;path must begin with &#x27;/&#x27;&quot;)</span><br><span class="line">	assert1(<span class="keyword">method</span> != &quot;&quot;, &quot;HTTP method can not be empty&quot;)</span><br><span class="line">	assert1(len(handlers) &gt; <span class="number">0</span>, &quot;there must be at least one handler&quot;)</span><br><span class="line"></span><br><span class="line">	debugPrintRoute(<span class="keyword">method</span>, <span class="type">path</span>, handlers)</span><br><span class="line"></span><br><span class="line">  // 每一个<span class="keyword">method</span>对应一颗radix tree</span><br><span class="line">	root := engine.trees.<span class="keyword">get</span>(<span class="keyword">method</span>)</span><br><span class="line">	<span class="keyword">if</span> root == nil &#123;</span><br><span class="line">    // 如果获取不到<span class="keyword">method</span>对应的树，就创建</span><br><span class="line">		root = <span class="built_in">new</span>(node)</span><br><span class="line">		root.fullPath = &quot;/&quot;</span><br><span class="line">		engine.trees = append(engine.trees, methodTree&#123;<span class="keyword">method</span>: <span class="keyword">method</span>, root: root&#125;)</span><br><span class="line">	&#125;</span><br><span class="line">	root.addRoute(<span class="type">path</span>, handlers)</span><br><span class="line"></span><br><span class="line">	// <span class="keyword">Update</span> maxParams</span><br><span class="line">	<span class="keyword">if</span> paramsCount := countParams(<span class="type">path</span>); paramsCount &gt; engine.maxParams &#123;</span><br><span class="line">		engine.maxParams = paramsCount</span><br><span class="line">	&#125;</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <tags>
-        <tag>数据结构</tag>
-      </tags>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
   </entry>
   <entry>
     <title>静态代码检查 golangci-lint</title>
@@ -1959,9 +1953,9 @@
 <p>golangci-lint is a fast Go linters runner. It runs linters in parallel, uses caching, supports yaml config, has integrations with all major IDE and has dozens of linters included.</p>
 </blockquote>
 ]]></content>
-      <tags>
-        <tag>golangci-lint</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Error Code Design Intro</title>
@@ -1971,9 +1965,9 @@
 <li>业务Code码设计<figure class="highlight"><table><tr><td class="code"><pre><span class="line">  </span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Error</tag>
-      </tags>
+      <categories>
+        <category>Microservice</category>
+      </categories>
   </entry>
   <entry>
     <title>SwaggerAPI intro</title>
@@ -1998,17 +1992,17 @@
 <figure class="highlight awk"><table><tr><td class="code"><pre><span class="line">github.com<span class="regexp">/chyidl/</span>noone via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ go get -u github.com<span class="regexp">/go-swagger/g</span>o-swagger<span class="regexp">/cmd/</span>swagger</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/</span>noone via 🐹 v1.<span class="number">17</span> took <span class="number">25</span>s</span><br><span class="line">➜ swagger version</span><br><span class="line">version: v0.<span class="number">27.0</span></span><br><span class="line">commit: (unknown, mod sum: <span class="string">&quot;h1:K7+nkBuf4oS1jTBrdvWqYFpqD69V5CN8HamZzCDDhAI=&quot;</span>)</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ swagger generate spec -o swagger.yaml</span><br><span class="line">  -o: 指定输出文件名</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ ls</span><br><span class="line">api          docs         go.mod       main.go      swagger.yaml</span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ swagger serve --no-open -F=swagger --port <span class="number">36666</span> swagger.yaml</span><br><span class="line"><span class="number">2021</span><span class="regexp">/09/</span><span class="number">09</span> <span class="number">12</span>:<span class="number">58</span>:<span class="number">09</span> serving docs at http:<span class="regexp">//</span>localhost:<span class="number">36666</span>/docs</span><br><span class="line">  --no-open: 禁止调用浏览器打开</span><br><span class="line">  -F: 指定文档风格</span><br><span class="line">  --port: 指定启动的HTTP服务监听</span><br><span class="line"></span><br><span class="line">github.com<span class="regexp">/chyidl/g</span>o-swagger-demo via 🐹 v1.<span class="number">17</span></span><br><span class="line">➜ swagger generate spec -i .<span class="regexp">/swagger.yaml -o ./</span>swagger.json</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> swagger:route POST /users user createUserRequest</span><br><span class="line"><span class="regexp">//</span> Create a user <span class="keyword">in</span> memory.</span><br><span class="line"><span class="regexp">//</span> responses:</span><br><span class="line"><span class="regexp">//</span>   <span class="number">200</span>: createUserResponse</span><br><span class="line"><span class="regexp">//</span>   default: errResponse</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> swagger:route GET <span class="regexp">/users/</span>&#123;name&#125; user getUserRequest</span><br><span class="line"><span class="regexp">//</span> Get a user from memory.</span><br><span class="line"><span class="regexp">//</span> responses:</span><br><span class="line"><span class="regexp">//</span>   <span class="number">200</span>: getUserResponse</span><br><span class="line"><span class="regexp">//</span>   default: errResponse</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>SwaggerAPI</tag>
-      </tags>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
   </entry>
   <entry>
     <title>gorm intro</title>
     <url>/2021/09/09/gorm-intro/</url>
     <content><![CDATA[<h1 id="ORM"><a href="#ORM" class="headerlink" title="ORM"></a>ORM</h1>]]></content>
-      <tags>
-        <tag>ORM</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Go Concurrency Patterns</title>
@@ -2107,10 +2101,9 @@
 <li><a href="https://dave.cheney.net/practical-go/presentations/qcon-china.html">Practical Go: Real world advice for writing maintainable Go Programs</a></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Golang</tag>
-        <tag>sync</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Ansible Intro</title>
@@ -2153,6 +2146,9 @@
 <li>Installing an Ansible<figure class="highlight dsconfig"><table><tr><td class="code"><pre><span class="line">$ <span class="string">curl</span> <span class="string">https</span>://<span class="string">bootstrap</span>.<span class="string">pypa</span>.<span class="string">io</span>/<span class="built_in">get-pip.py</span> -<span class="string">o</span> <span class="built_in">get-pip.py</span></span><br><span class="line">$ <span class="string">python</span> <span class="built_in">get-pip.py</span> <span class="built_in">--user</span></span><br><span class="line">$ <span class="string">python</span> -<span class="string">m</span> <span class="string">pip</span> <span class="string">install</span> <span class="built_in">--user</span> <span class="string">ansible</span></span><br><span class="line"></span><br><span class="line">➜ <span class="string">ansible</span> <span class="built_in">--version</span></span><br><span class="line"><span class="string">ansible</span> [<span class="string">core</span> <span class="string">2</span>.<span class="string">11</span>.<span class="string">4</span>]</span><br><span class="line">  <span class="string">config</span> <span class="string">file</span> = <span class="string">None</span></span><br><span class="line">  <span class="string">configured</span> <span class="string">module</span> <span class="string">search</span> <span class="string">path</span> = [<span class="string">&#x27;/Users/chyiyaqing/.ansible/plugins/modules&#x27;</span>, <span class="string">&#x27;/usr/share/ansible/plugins/modules&#x27;</span>]</span><br><span class="line">  <span class="string">ansible</span> <span class="string">python</span> <span class="string">module</span> <span class="string">location</span> = /<span class="string">usr</span>/<span class="string">local</span>/<span class="string">lib</span>/<span class="string">python3</span>.<span class="string">9</span>/<span class="string">site-packages</span>/<span class="string">ansible</span></span><br><span class="line">  <span class="string">ansible</span> <span class="string">collection</span> <span class="string">location</span> = /<span class="string">Users</span>/<span class="string">chyiyaqing</span>/.<span class="string">ansible</span>/<span class="string">collections</span>:/<span class="string">usr</span>/<span class="string">share</span>/<span class="string">ansible</span>/<span class="string">collections</span></span><br><span class="line">  <span class="string">executable</span> <span class="string">location</span> = /<span class="string">usr</span>/<span class="string">local</span>/<span class="string">bin</span>/<span class="string">ansible</span></span><br><span class="line">  <span class="string">python</span> <span class="string">version</span> = <span class="string">3</span>.<span class="string">9</span>.<span class="string">6</span> (<span class="string">default</span>, <span class="string">Jun</span> <span class="string">29</span> <span class="string">2021</span>, <span class="string">05:25:</span><span class="string">02</span>) [<span class="string">Clang</span> <span class="string">12</span>.<span class="string">0</span>.<span class="string">5</span> (<span class="string">clang-1205</span>.<span class="string">0</span>.<span class="string">22</span>.<span class="string">9</span>)]</span><br><span class="line">  <span class="string">jinja</span> <span class="string">version</span> = <span class="string">2</span>.<span class="string">10</span>.<span class="string">1</span></span><br><span class="line">  <span class="string">libyaml</span> = <span class="string">True</span></span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>DevOps</category>
+      </categories>
   </entry>
   <entry>
     <title>Go CLI Intro</title>
@@ -2169,9 +2165,9 @@
 <figure class="highlight go"><table><tr><td class="code"><pre><span class="line"># flag.Parse</span><br><span class="line"></span><br><span class="line"><span class="comment">// CommandLine is the default set of command-line flags, parsed from os.Args.</span></span><br><span class="line"><span class="comment">// The top-level functions such as BoolVar, Arg, and so on are wrappers for the</span></span><br><span class="line"><span class="comment">// methods of CommandLine.</span></span><br><span class="line"><span class="keyword">var</span> CommandLine = NewFlagSet(os.Args[<span class="number">0</span>], ExitOnError)</span><br><span class="line"></span><br><span class="line"><span class="comment">// Parse parses the command-line flags from os.Args[1:]. Must be called</span></span><br><span class="line"><span class="comment">// after all flags are defined and before flags are accessed by the program.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Parse</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// Ignore errors; CommandLine is set for ExitOnError.</span></span><br><span class="line">	CommandLine.Parse(os.Args[<span class="number">1</span>:])</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># FlagSet.Parse</span><br><span class="line">&gt; parse异常分流处理</span><br><span class="line"><span class="comment">// Parse parses flag definitions from the argument list, which should not</span></span><br><span class="line"><span class="comment">// include the command name. Must be called after all flags in the FlagSet</span></span><br><span class="line"><span class="comment">// are defined and before flags are accessed by the program.</span></span><br><span class="line"><span class="comment">// The return value will be ErrHelp if -help or -h were set but not defined.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *FlagSet)</span> <span class="title">Parse</span><span class="params">(arguments []<span class="keyword">string</span>)</span> <span class="title">error</span></span> &#123;</span><br><span class="line">	f.parsed = <span class="literal">true</span></span><br><span class="line">	f.args = arguments</span><br><span class="line">	<span class="keyword">for</span> &#123;</span><br><span class="line">		seen, err := f.parseOne()</span><br><span class="line">		<span class="keyword">if</span> seen &#123;</span><br><span class="line">			<span class="keyword">continue</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> err == <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">switch</span> f.errorHandling &#123;</span><br><span class="line">		<span class="keyword">case</span> ContinueOnError:</span><br><span class="line">			<span class="keyword">return</span> err</span><br><span class="line">		<span class="keyword">case</span> ExitOnError:</span><br><span class="line">			<span class="keyword">if</span> err == ErrHelp &#123;</span><br><span class="line">				os.Exit(<span class="number">0</span>)</span><br><span class="line">			&#125;</span><br><span class="line">			os.Exit(<span class="number">2</span>)</span><br><span class="line">		<span class="keyword">case</span> PanicOnError:</span><br><span class="line">			<span class="built_in">panic</span>(err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">nil</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"># FlagSet.parseOne</span><br><span class="line"><span class="comment">// parseOne parses one flag. It reports whether a flag was seen.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(f *FlagSet)</span> <span class="title">parseOne</span><span class="params">()</span> <span class="params">(<span class="keyword">bool</span>, error)</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(f.args) == <span class="number">0</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	s := f.args[<span class="number">0</span>]</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(s) &lt; <span class="number">2</span> || s[<span class="number">0</span>] != <span class="string">&#x27;-&#x27;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></span><br><span class="line">	&#125;</span><br><span class="line">	numMinuses := <span class="number">1</span></span><br><span class="line">	<span class="keyword">if</span> s[<span class="number">1</span>] == <span class="string">&#x27;-&#x27;</span> &#123;</span><br><span class="line">		numMinuses++</span><br><span class="line">		<span class="keyword">if</span> <span class="built_in">len</span>(s) == <span class="number">2</span> &#123; <span class="comment">// &quot;--&quot; terminates the flags</span></span><br><span class="line">			f.args = f.args[<span class="number">1</span>:]</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>, <span class="literal">nil</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	name := s[numMinuses:]</span><br><span class="line">	<span class="keyword">if</span> <span class="built_in">len</span>(name) == <span class="number">0</span> || name[<span class="number">0</span>] == <span class="string">&#x27;-&#x27;</span> || name[<span class="number">0</span>] == <span class="string">&#x27;=&#x27;</span> &#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>, f.failf(<span class="string">&quot;bad flag syntax: %s&quot;</span>, s)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// it&#x27;s a flag. does it have an argument?</span></span><br><span class="line">	f.args = f.args[<span class="number">1</span>:]</span><br><span class="line">	hasValue := <span class="literal">false</span></span><br><span class="line">	value := <span class="string">&quot;&quot;</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">1</span>; i &lt; <span class="built_in">len</span>(name); i++ &#123; <span class="comment">// equals cannot be first</span></span><br><span class="line">		<span class="keyword">if</span> name[i] == <span class="string">&#x27;=&#x27;</span> &#123;</span><br><span class="line">			value = name[i+<span class="number">1</span>:]</span><br><span class="line">			hasValue = <span class="literal">true</span></span><br><span class="line">			name = name[<span class="number">0</span>:i]</span><br><span class="line">			<span class="keyword">break</span></span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	m := f.formal</span><br><span class="line">	flag, alreadythere := m[name] <span class="comment">// BUG</span></span><br><span class="line">	<span class="keyword">if</span> !alreadythere &#123;</span><br><span class="line">		<span class="keyword">if</span> name == <span class="string">&quot;help&quot;</span> || name == <span class="string">&quot;h&quot;</span> &#123; <span class="comment">// special case for nice help message.</span></span><br><span class="line">			f.usage()</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>, ErrHelp</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> <span class="literal">false</span>, f.failf(<span class="string">&quot;flag provided but not defined: -%s&quot;</span>, name)</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> fv, ok := flag.Value.(boolFlag); ok &amp;&amp; fv.IsBoolFlag() &#123; <span class="comment">// special case: doesn&#x27;t need an arg</span></span><br><span class="line">		<span class="keyword">if</span> hasValue &#123;</span><br><span class="line">			<span class="keyword">if</span> err := fv.Set(value); err != <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>, f.failf(<span class="string">&quot;invalid boolean value %q for -%s: %v&quot;</span>, value, name, err)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			<span class="keyword">if</span> err := fv.Set(<span class="string">&quot;true&quot;</span>); err != <span class="literal">nil</span> &#123;</span><br><span class="line">				<span class="keyword">return</span> <span class="literal">false</span>, f.failf(<span class="string">&quot;invalid boolean flag %s: %v&quot;</span>, name, err)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">		<span class="comment">// It must have a value, which might be the next argument.</span></span><br><span class="line">		<span class="keyword">if</span> !hasValue &amp;&amp; <span class="built_in">len</span>(f.args) &gt; <span class="number">0</span> &#123;</span><br><span class="line">			<span class="comment">// value is the next arg</span></span><br><span class="line">			hasValue = <span class="literal">true</span></span><br><span class="line">			value, f.args = f.args[<span class="number">0</span>], f.args[<span class="number">1</span>:]</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> !hasValue &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>, f.failf(<span class="string">&quot;flag needs an argument: -%s&quot;</span>, name)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> err := flag.Value.Set(value); err != <span class="literal">nil</span> &#123;</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">false</span>, f.failf(<span class="string">&quot;invalid value %q for flag -%s: %v&quot;</span>, value, name, err)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">if</span> f.actual == <span class="literal">nil</span> &#123;</span><br><span class="line">		f.actual = <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]*Flag)</span><br><span class="line">	&#125;</span><br><span class="line">	f.actual[name] = flag</span><br><span class="line">	<span class="keyword">return</span> <span class="literal">true</span>, <span class="literal">nil</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Cobra"><a href="#Cobra" class="headerlink" title="Cobra"></a>Cobra</h2>]]></content>
-      <tags>
-        <tag>CLI</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Go Constants</title>
@@ -2186,9 +2182,9 @@
 </blockquote>
 <h2 id="默认类型"><a href="#默认类型" class="headerlink" title="默认类型"></a>默认类型</h2>  <figure class="highlight hsp"><table><tr><td class="code"><pre><span class="line"><span class="meta"># str := <span class="meta-string">&quot;Hello, 世界&quot;</span></span></span><br><span class="line">可能会有疑惑，如果常量是没有类型的，<span class="keyword">str</span>变量如何获取到类型? 答案就是无类型的常量有一个默认类型，如果变量<span class="keyword">str</span>没有声明类型会使用右边表达式中的默认类型.</span><br></pre></td></tr></table></figure>
 ]]></content>
-      <tags>
-        <tag>常量</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Go PProf Intro</title>
@@ -2268,9 +2264,9 @@
 <figure class="highlight pf"><table><tr><td class="code"><pre><span class="line">➜ wget http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span>/<span class="keyword">debug</span>/pprof/<span class="keyword">profile</span></span><br><span class="line">--<span class="number">2021</span>-<span class="number">09</span>-<span class="number">13</span> <span class="number">18</span>:<span class="number">25</span>:<span class="number">42</span>--  http://<span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span>/<span class="keyword">debug</span>/pprof/<span class="keyword">profile</span></span><br><span class="line">Connecting <span class="keyword">to</span> <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">8080</span>... connected.</span><br><span class="line">HTTP request sent, awaiting response... <span class="number">200</span> OK</span><br><span class="line">Length: <span class="number">1290</span> (<span class="number">1.3</span>K) [application/octet-stream]</span><br><span class="line">Saving <span class="keyword">to</span>: ‘<span class="keyword">profile</span>’</span><br><span class="line"></span><br><span class="line"><span class="keyword">profile</span>                            <span class="number">100</span>%[================================================================&gt;]   <span class="number">1.26</span>K  --.-KB/s    <span class="keyword">in</span> <span class="number">0</span>s</span><br><span class="line"></span><br><span class="line"><span class="number">2021</span>-<span class="number">09</span>-<span class="number">13</span> <span class="number">18</span>:<span class="number">26</span>:<span class="number">12</span> (<span class="number">205</span> MB/s) - ‘<span class="keyword">profile</span>’ saved [<span class="number">1290</span>/<span class="number">1290</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法一</span></span><br><span class="line">➜ go tool pprof -http=:<span class="number">6001</span> <span class="keyword">profile</span></span><br><span class="line">Serving web UI <span class="keyword">on</span> http://localhost:<span class="number">6001</span></span><br><span class="line">  <span class="comment"># Top</span></span><br><span class="line">  <span class="comment"># Graph: 函数调用流程</span></span><br><span class="line">  <span class="comment"># Peek: 上下文信息</span></span><br><span class="line">  <span class="comment"># Source: 源代码的追踪和分析</span></span><br><span class="line">  <span class="comment"># Flame Graph:</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 方法二</span></span><br><span class="line">➜ go tool pprof <span class="keyword">profile</span></span><br><span class="line">Type: cpu</span><br><span class="line">Time: Sep <span class="number">13</span>, <span class="number">2021</span> at <span class="number">6</span>:<span class="number">25</span>pm (CST)</span><br><span class="line">Duration: <span class="number">30</span>s, Total samples = <span class="number">240</span>ms (  <span class="number">0.8</span>%)</span><br><span class="line">Entering interactive mode (type <span class="string">&quot;help&quot;</span> <span class="keyword">for</span> commands, <span class="string">&quot;o&quot;</span> <span class="keyword">for</span> options)</span><br><span class="line">(pprof) web</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>性能分析</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Huawei LiteOS Intro</title>
@@ -2340,9 +2336,9 @@
 </li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>IOT</tag>
-      </tags>
+      <categories>
+        <category>OS</category>
+      </categories>
   </entry>
   <entry>
     <title>Blockchain Intro</title>
@@ -2443,10 +2439,9 @@
 <li>数字社会<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">-</span> 云计算:</span><br><span class="line"><span class="bullet">  -</span> 云计算利用虚拟化技术将物理服务器、存储和网络等硬件以服务的形式提供给用户使用</span><br><span class="line"><span class="bullet">-</span> 区块链:</span><br><span class="line"><span class="bullet">  -</span> 区块链与云计算的结合催生出区块链即服务平台</span><br><span class="line"><span class="bullet">  -</span> Baas, Blockchain as a Service</span><br><span class="line"><span class="bullet">  -</span> Paas, Platform as a service</span><br><span class="line"><span class="bullet">-</span> 大数据:</span><br><span class="line"><span class="bullet">  -</span> Volume: 数据量大，通过大数据的数据量是以TB，PB来计算</span><br><span class="line"><span class="bullet">  -</span> Volocity: 高速, 大数据需要用较高的速度接收甚至是处理数据</span><br><span class="line"><span class="bullet">  -</span> Variety: 多样性, 大数据的数据源很多，且大多数属于非结构化的数据</span><br><span class="line"><span class="bullet">  -</span> Value: 价值, 大数据所面对的数据是海量的，但并不是所有的数据都有价值，需要通过数据清洗、过滤出有价值的数据</span><br><span class="line"><span class="bullet">  -</span> Veracity: 真实, 需要保证数据的真实性、准确性，才能提高数据质量</span><br><span class="line"><span class="bullet">-</span> 人工智能:</span><br><span class="line"><span class="bullet">  -</span> 语音识别</span><br><span class="line"><span class="bullet">  -</span> 图像识别</span><br><span class="line"><span class="bullet">  -</span> 自然语言处理</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Blockchain</tag>
-        <tag>区块链</tag>
-      </tags>
+      <categories>
+        <category>Blockchain</category>
+      </categories>
   </entry>
   <entry>
     <title>Raspberry Pico Intro</title>
@@ -2538,10 +2533,9 @@
 </blockquote>
 </blockquote>
 ]]></content>
-      <tags>
-        <tag>嵌入式</tag>
-        <tag>Raspberry Pi</tag>
-      </tags>
+      <categories>
+        <category>Hardware</category>
+      </categories>
   </entry>
   <entry>
     <title>Dell PowerEdge R720 Intro</title>
@@ -2561,6 +2555,9 @@
 <li>Show Hardware and Network Infomation<figure class="highlight tcl"><table><tr><td class="code"><pre><span class="line">chyiyaqing in ~ at chyiyaqing-PowerEdge-R720</span><br><span class="line">➜ wget -qO- bench.sh | bash</span><br><span class="line"></span><br><span class="line">grep: /<span class="keyword">proc</span>/1/environ:<span class="title"> Permission</span> denied</span><br><span class="line">----------------------------------------------------------------------<span class="title"></span></span><br><span class="line"><span class="title"> CPU</span> Model             :<span class="title"> Intel(R)</span> Xeon(R)<span class="title"> CPU</span> E5-2650<span class="title"> v2</span> @ 2.60GHz<span class="title"></span></span><br><span class="line"><span class="title"> CPU</span> Cores             : 32<span class="title"></span></span><br><span class="line"><span class="title"> CPU</span> Frequency         : 1204.573<span class="title"> MHz</span></span><br><span class="line"><span class="title"> CPU</span> Cache             : 20480<span class="title"> KB</span></span><br><span class="line"><span class="title"> Total</span> Disk            : 1127.3<span class="title"> GB</span> (9.2<span class="title"> GB</span> Used)<span class="title"></span></span><br><span class="line"><span class="title"> Total</span> Mem             : 32106<span class="title"> MB</span> (1015<span class="title"> MB</span> Used)<span class="title"></span></span><br><span class="line"><span class="title"> Total</span> Swap            : 2047<span class="title"> MB</span> (0<span class="title"> MB</span> Used)<span class="title"></span></span><br><span class="line"><span class="title"> System</span> uptime         : 0<span class="title"> days,</span> 0<span class="title"> hour</span> 22<span class="title"> min</span></span><br><span class="line"><span class="title"> Load</span> average          : 0.07, 0.09, 0.17<span class="title"></span></span><br><span class="line"><span class="title"> OS</span>                    :<span class="title"> Ubuntu</span> 20.04.3<span class="title"> LTS</span></span><br><span class="line"><span class="title"> Arch</span>                  :<span class="title"> x86_64</span> (64<span class="title"> Bit)</span></span><br><span class="line"><span class="title"> Kernel</span>                : 5.11.0-36-generic<span class="title"></span></span><br><span class="line"><span class="title"> TCP</span> CC                :<span class="title"> cubic</span></span><br><span class="line"><span class="title"> Virtualization</span>        :<span class="title"> Dedicated</span></span><br><span class="line">----------------------------------------------------------------------<span class="title"></span></span><br><span class="line"><span class="title"> I/O</span> Speed(1st<span class="title"> run)</span>    : 323<span class="title"> MB/s</span></span><br><span class="line"><span class="title"> I/O</span> Speed(2nd<span class="title"> run)</span>    : 267<span class="title"> MB/s</span></span><br><span class="line"><span class="title"> I/O</span> Speed(3rd<span class="title"> run)</span>    : 275<span class="title"> MB/s</span></span><br><span class="line"><span class="title"> Average</span> I/O<span class="title"> speed</span>     : 288.3<span class="title"> MB/s</span></span><br><span class="line">----------------------------------------------------------------------<span class="title"></span></span><br><span class="line"><span class="title"> Node</span> Name<span class="title">        Upload</span> Speed<span class="title">      Download</span> Speed<span class="title">      Latency</span></span><br><span class="line"><span class="title"> Shanghai</span> <span class="title">  CT</span>    49.45<span class="title"> Mbps</span>        256.81<span class="title"> Mbps</span>         9.34<span class="title"> ms</span></span><br><span class="line"><span class="title"> Shanghai</span> <span class="title">  CU</span>    50.03<span class="title"> Mbps</span>        263.91<span class="title"> Mbps</span>         17.96<span class="title"> ms</span></span><br><span class="line"><span class="title"> Guangzhou</span> <span class="title"> CT</span>    55.97<span class="title"> Mbps</span>        264.49<span class="title"> Mbps</span>         35.69<span class="title"> ms</span></span><br><span class="line"><span class="title"> Guangzhou</span> <span class="title"> CU</span>    50.19<span class="title"> Mbps</span>        257.02<span class="title"> Mbps</span>         31.51<span class="title"> ms</span></span><br><span class="line">----------------------------------------------------------------------</span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
+      <categories>
+        <category>Hardware</category>
+      </categories>
   </entry>
   <entry>
     <title>Rust language Intro</title>
@@ -2623,9 +2620,9 @@
 <li><a href="https://doc.rust-lang.org/book/">The Rust Programming Language</a></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Rust</tag>
-      </tags>
+      <categories>
+        <category>Programming Language</category>
+      </categories>
   </entry>
   <entry>
     <title>Kubernetes Intro</title>
@@ -2749,9 +2746,9 @@
 <li><a href="https://www.usenix.org/system/files/conference/hotcloud16/hotcloud16_burns.pdf">容器设计模式</a></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Kubernetes</tag>
-      </tags>
+      <categories>
+        <category>Cloud Native</category>
+      </categories>
   </entry>
   <entry>
     <title>Prometheus+Grafana Intro</title>
@@ -2760,9 +2757,9 @@
 <li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>监控</tag>
-      </tags>
+      <categories>
+        <category>Cloud Native</category>
+      </categories>
   </entry>
   <entry>
     <title>Cyclic redundancy check Intro</title>
@@ -2771,9 +2768,9 @@
 <p>A cyclic redundancy check (CRC) is an error-detecting code commonly used in digital network and storage device to detect accidental changes to raw data.</p>
 </blockquote>
 <h2 id="CRC-16-校验码"><a href="#CRC-16-校验码" class="headerlink" title="CRC-16 校验码"></a>CRC-16 校验码</h2>]]></content>
-      <tags>
-        <tag>Algorithm</tag>
-      </tags>
+      <categories>
+        <category>Algorithm</category>
+      </categories>
   </entry>
   <entry>
     <title>Have Read - Structure and Interpretation of Computer Programs</title>
@@ -2810,6 +2807,9 @@
 </blockquote>
 <span id="more"></span>
 ]]></content>
+      <categories>
+        <category>Computer Science</category>
+      </categories>
   </entry>
   <entry>
     <title>Code Review Intro</title>
@@ -2964,9 +2964,9 @@
 </ul>
 <h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p>  <a href="https://medium.com/coinmonks/demystifying-hyperledger-fabric-2-3-private-data-collection-164220ecafa5">Demystifying Hyperledger Fabric</a></p>
 ]]></content>
-      <tags>
-        <tag>Blockchain</tag>
-      </tags>
+      <categories>
+        <category>Blockchain</category>
+      </categories>
   </entry>
   <entry>
     <title>LevelDB Intro</title>
@@ -2992,9 +2992,9 @@
 <li>No client-server support builtin to the library</li>
 </ul>
 ]]></content>
-      <tags>
-        <tag>Key-Value DB</tag>
-      </tags>
+      <categories>
+        <category>Middleware</category>
+      </categories>
   </entry>
   <entry>
     <title>Bash Script CheetSheet</title>
@@ -4054,6 +4054,9 @@
 </tr>
 </tbody></table>
 ]]></content>
+      <categories>
+        <category>Cloud Native</category>
+      </categories>
   </entry>
   <entry>
     <title>Kubernetes Volumes Intro</title>
@@ -4090,5 +4093,8 @@
 </ul>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 ]]></content>
+      <categories>
+        <category>Cloud Native</category>
+      </categories>
   </entry>
 </search>

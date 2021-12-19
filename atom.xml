@@ -28,6 +28,8 @@
     
     
     
+    <category term="Cloud Native" scheme="http://chyidl.github.io/categories/Cloud-Native/"/>
+    
     
   </entry>
   
@@ -42,6 +44,8 @@
     <summary type="html">&lt;h1 id=&quot;NodePort-vs-LoadBalancer-vs-Ingress&quot;&gt;&lt;a href=&quot;#NodePort-vs-LoadBalancer-vs-Ingress&quot; class=&quot;headerlink&quot; title=&quot;NodePort vs LoadBalancer vs Ingress&quot;&gt;&lt;/a&gt;NodePort vs LoadBalancer vs Ingress&lt;/h1&gt;</summary>
     
     
+    
+    <category term="Cloud Native" scheme="http://chyidl.github.io/categories/Cloud-Native/"/>
     
     
   </entry>
