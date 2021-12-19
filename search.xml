@@ -1183,6 +1183,38 @@
       </tags>
   </entry>
   <entry>
+    <title>CS - Basic Introduction</title>
+    <url>/2021/09/06/CS-Time/</url>
+    <content><![CDATA[<blockquote>
+<p>计算机通识介绍</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="Time-时间"><a href="#Time-时间" class="headerlink" title="Time 时间"></a>Time 时间</h2><ul>
+<li><p>Universal Time: 世界时</p>
+<blockquote>
+<p>依靠观测天文现象来测量时间，基于地球自转规律</p>
+</blockquote>
+</li>
+<li><p>International Atomic Time: 国际原子时</p>
+<blockquote>
+<p>以微观时间铯原子的震荡频率为基准，制造原子钟</p>
+</blockquote>
+</li>
+<li><p>Coordinated Universal Time: 协调世界时</p>
+<blockquote>
+<p>根据世间时和原子时，最终确立新的时间标准，定义成为全球的时间标准</p>
+</blockquote>
+</li>
+<li><p>NTP Network Time Protocol 同步时间</p>
+<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. NTP如何同步时间</span><br><span class="line">  &gt; 假设网络来回路径对称，并且延迟相同</span><br><span class="line">  网络延时 = (t4 - t1) - (t3 - t2)</span><br><span class="line">  时间差 = t2 - t1 - 网络延迟<span class="regexp">/2 = ((t2-t1) + (t3-t4))/</span><span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 同步时间时，对正在运行的程序有没有影响</span><br><span class="line">  <span class="comment"># 墙上时钟: 世界协调时UTC，校准时间后，可能发生回拨</span></span><br><span class="line">  <span class="comment"># 单调时钟: 计算机自启动以后的纳秒数，不会回拨</span></span><br><span class="line"></span><br><span class="line">NTP校准时间提供<span class="number">2</span>中方式:</span><br><span class="line">  <span class="number">1</span>. ntpdate: 一切已服务器端时间为准，强制修改本机时间</span><br><span class="line">  <span class="number">2</span>. ntpd: 把时间差均摊到每次小的调整上 -- 避免发生倒流</span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>计算机</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>golang pkg Tips &amp; Tracks</title>
     <url>/2021/09/03/golang-pkg-Tips-Tracks/</url>
     <content><![CDATA[<h2 id="Golang"><a href="#Golang" class="headerlink" title="Golang"></a>Golang</h2><ul>
@@ -1541,38 +1573,6 @@
 ]]></content>
       <tags>
         <tag>Go</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>CS - Basic Introduction</title>
-    <url>/2021/09/06/CS-Time/</url>
-    <content><![CDATA[<blockquote>
-<p>计算机通识介绍</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="Time-时间"><a href="#Time-时间" class="headerlink" title="Time 时间"></a>Time 时间</h2><ul>
-<li><p>Universal Time: 世界时</p>
-<blockquote>
-<p>依靠观测天文现象来测量时间，基于地球自转规律</p>
-</blockquote>
-</li>
-<li><p>International Atomic Time: 国际原子时</p>
-<blockquote>
-<p>以微观时间铯原子的震荡频率为基准，制造原子钟</p>
-</blockquote>
-</li>
-<li><p>Coordinated Universal Time: 协调世界时</p>
-<blockquote>
-<p>根据世间时和原子时，最终确立新的时间标准，定义成为全球的时间标准</p>
-</blockquote>
-</li>
-<li><p>NTP Network Time Protocol 同步时间</p>
-<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="number">1</span>. NTP如何同步时间</span><br><span class="line">  &gt; 假设网络来回路径对称，并且延迟相同</span><br><span class="line">  网络延时 = (t4 - t1) - (t3 - t2)</span><br><span class="line">  时间差 = t2 - t1 - 网络延迟<span class="regexp">/2 = ((t2-t1) + (t3-t4))/</span><span class="number">2</span></span><br><span class="line"><span class="number">2</span>. 同步时间时，对正在运行的程序有没有影响</span><br><span class="line">  <span class="comment"># 墙上时钟: 世界协调时UTC，校准时间后，可能发生回拨</span></span><br><span class="line">  <span class="comment"># 单调时钟: 计算机自启动以后的纳秒数，不会回拨</span></span><br><span class="line"></span><br><span class="line">NTP校准时间提供<span class="number">2</span>中方式:</span><br><span class="line">  <span class="number">1</span>. ntpdate: 一切已服务器端时间为准，强制修改本机时间</span><br><span class="line">  <span class="number">2</span>. ntpd: 把时间差均摊到每次小的调整上 -- 避免发生倒流</span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>计算机</tag>
       </tags>
   </entry>
   <entry>
@@ -2629,17 +2629,6 @@
       </tags>
   </entry>
   <entry>
-    <title>Prometheus+Grafana Intro</title>
-    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
-    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
-<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
-</ul>
-]]></content>
-      <tags>
-        <tag>监控</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Kubernetes Intro</title>
     <url>/2021/09/19/Kubernetes-Intro/</url>
     <content><![CDATA[<h1 id="Kubernetes"><a href="#Kubernetes" class="headerlink" title="Kubernetes"></a>Kubernetes</h1><span id="more"></span>
@@ -2763,6 +2752,17 @@
 ]]></content>
       <tags>
         <tag>Kubernetes</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Prometheus+Grafana Intro</title>
+    <url>/2021/09/19/Prometheus-Grafana-Intro/</url>
+    <content><![CDATA[<h2 id="Prometheus"><a href="#Prometheus" class="headerlink" title="Prometheus"></a>Prometheus</h2><ul>
+<li>First Steps<figure class="highlight awk"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Downloading Prometheus</span></span><br><span class="line">  ➜ wget https:<span class="regexp">//gi</span>thub.com<span class="regexp">/prometheus/</span>prometheus<span class="regexp">/releases/</span>download<span class="regexp">/v2.30.0/</span>prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ tar -xvf prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64.tar.gz</span><br><span class="line">  ➜ cd prometheus-<span class="number">2.30</span>.<span class="number">0</span>.linux-arm64</span><br><span class="line"></span><br><span class="line"><span class="comment"># Configuring Prometheus</span></span><br><span class="line">  ➜ tree -L <span class="number">1</span></span><br><span class="line">  .</span><br><span class="line">  ├── console_libraries</span><br><span class="line">  ├── consoles</span><br><span class="line">  ├── LICENSE</span><br><span class="line">  ├── NOTICE</span><br><span class="line">  ├── prometheus</span><br><span class="line">  ├── prometheus.yml      -- a sample configuration</span><br><span class="line">  └── promtool</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span> directories, <span class="number">5</span> files</span><br><span class="line"></span><br><span class="line"><span class="comment"># Starting Prometheus</span></span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+      <tags>
+        <tag>监控</tag>
       </tags>
   </entry>
   <entry>
