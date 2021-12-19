@@ -1784,6 +1784,48 @@
       </tags>
   </entry>
   <entry>
+    <title>Makefile Intro</title>
+    <url>/2021/09/08/Makefile-Intro/</url>
+    <content><![CDATA[<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><blockquote>
+<p>Makefile 关系到整个工程的编译规则(先后顺序)<br>make: 一个解释makefile中指令的命令工具</p>
+</blockquote>
+<span id="more"></span>
+
+<h2 id="课前小知识"><a href="#课前小知识" class="headerlink" title="课前小知识"></a>课前小知识</h2><ul>
+<li>编译(compile)、链接(link)、库文件(Library File)<ul>
+<li> 编译: 将源文件编译成中间代码文件(windows .obj文件, Unix下的.o文件)</li>
+<li>编译器值检测程序语法和函数、变量是否被声明.</li>
+<li> 链接: 将大量的Object File合成执行文件</li>
+<li>链接器会在所有的Object File中寻找函数的实现</li>
+<li> 库文件: 将编译的中间文件打包(windows .lib文件, Unix .a Archive File)</li>
+</ul>
+</li>
+</ul>
+<h2 id="Makefile-1"><a href="#Makefile-1" class="headerlink" title="Makefile"></a>Makefile</h2><ul>
+<li>规则<blockquote>
+<p>prerequisties中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行</p>
+</blockquote>
+</li>
+</ul>
+  <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">target <span class="string">...</span> : prerequisities <span class="string">...</span></span><br><span class="line">  <span class="keyword">command</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line">  <span class="string">...</span></span><br></pre></td></tr></table></figure>
+<pre><code>- target:
+  - object file 目标文件:
+  - execute file 可执行文件:
+  - label 标签:
+- prerequisites:
+  - 依赖的文件
+- command:
+  - 执行的命令
+</code></pre>
+<ul>
+<li>make如何工作<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># makefile</span><br><span class="line"><span class="keyword">edit</span> : main.<span class="keyword">o</span> kbd.<span class="keyword">o</span> <span class="keyword">command</span>.<span class="keyword">o</span> <span class="keyword">display</span>.<span class="keyword">o</span> \</span><br><span class="line">&gt; <span class="keyword">make</span> 会一层层找文件的依赖关系，知道最终编译初第一个目标文件, <span class="keyword">make</span>只关注文件的依赖性.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li>[跟我一起写Makefile (PDF重制版)] (<a href="https://seisman.github.io/how-to-write-makefile/Makefile.pdf">https://seisman.github.io/how-to-write-makefile/Makefile.pdf</a>)</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>Gin Crash Course</title>
     <url>/2021/09/08/Gin-Crash-Course/</url>
     <content><![CDATA[<h1 id="Gin-Web-Framework"><a href="#Gin-Web-Framework" class="headerlink" title="Gin Web Framework"></a>Gin Web Framework</h1><blockquote>
@@ -1891,48 +1933,6 @@
         <tag>Gin</tag>
         <tag>Web框架</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>Makefile Intro</title>
-    <url>/2021/09/08/Makefile-Intro/</url>
-    <content><![CDATA[<h1 id="Makefile"><a href="#Makefile" class="headerlink" title="Makefile"></a>Makefile</h1><blockquote>
-<p>Makefile 关系到整个工程的编译规则(先后顺序)<br>make: 一个解释makefile中指令的命令工具</p>
-</blockquote>
-<span id="more"></span>
-
-<h2 id="课前小知识"><a href="#课前小知识" class="headerlink" title="课前小知识"></a>课前小知识</h2><ul>
-<li>编译(compile)、链接(link)、库文件(Library File)<ul>
-<li> 编译: 将源文件编译成中间代码文件(windows .obj文件, Unix下的.o文件)</li>
-<li>编译器值检测程序语法和函数、变量是否被声明.</li>
-<li> 链接: 将大量的Object File合成执行文件</li>
-<li>链接器会在所有的Object File中寻找函数的实现</li>
-<li> 库文件: 将编译的中间文件打包(windows .lib文件, Unix .a Archive File)</li>
-</ul>
-</li>
-</ul>
-<h2 id="Makefile-1"><a href="#Makefile-1" class="headerlink" title="Makefile"></a>Makefile</h2><ul>
-<li>规则<blockquote>
-<p>prerequisties中如果有一个以上的文件比target文件要新的话，command所定义的命令就会被执行</p>
-</blockquote>
-</li>
-</ul>
-  <figure class="highlight jboss-cli"><table><tr><td class="code"><pre><span class="line">target <span class="string">...</span> : prerequisities <span class="string">...</span></span><br><span class="line">  <span class="keyword">command</span></span><br><span class="line">  <span class="string">...</span></span><br><span class="line">  <span class="string">...</span></span><br></pre></td></tr></table></figure>
-<pre><code>- target:
-  - object file 目标文件:
-  - execute file 可执行文件:
-  - label 标签:
-- prerequisites:
-  - 依赖的文件
-- command:
-  - 执行的命令
-</code></pre>
-<ul>
-<li>make如何工作<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># makefile</span><br><span class="line"><span class="keyword">edit</span> : main.<span class="keyword">o</span> kbd.<span class="keyword">o</span> <span class="keyword">command</span>.<span class="keyword">o</span> <span class="keyword">display</span>.<span class="keyword">o</span> \</span><br><span class="line">&gt; <span class="keyword">make</span> 会一层层找文件的依赖关系，知道最终编译初第一个目标文件, <span class="keyword">make</span>只关注文件的依赖性.</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
-<li>[跟我一起写Makefile (PDF重制版)] (<a href="https://seisman.github.io/how-to-write-makefile/Makefile.pdf">https://seisman.github.io/how-to-write-makefile/Makefile.pdf</a>)</li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>MySQL Index Intro</title>
@@ -3073,6 +3073,60 @@
 ]]></content>
   </entry>
   <entry>
+    <title>Vim Tips &amp; Tracks</title>
+    <url>/2021/10/10/Vim-Tips-Tracks/</url>
+    <content><![CDATA[<h1 id="Why-I-Still-Use-Vim"><a href="#Why-I-Still-Use-Vim" class="headerlink" title="Why I Still Use Vim"></a>Why I Still Use Vim</h1><ul>
+<li>Vim is exists on all Unix systems, support all file formats and programming languages</li>
+<li>Mouse free navigation</li>
+<li>Vim is very light-weight and fast.</li>
+<li>Vim is highly configurable. (~/.vimrc)</li>
+<li>Memory Usage Low</li>
+<li>Startup Time short</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="Installing"><a href="#Installing" class="headerlink" title="Installing"></a>Installing</h2><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">&gt; Since VIM comes <span class="keyword">pre</span>-installed <span class="keyword">on</span> <span class="keyword">a</span> <span class="keyword">number</span> of *nix systems, <span class="keyword">let</span><span class="string">&#x27;s first check to see if it&#x27;</span>s installed</span><br><span class="line">  $ <span class="keyword">vim</span> --<span class="keyword">version</span></span><br><span class="line"></span><br><span class="line"># *NIX/Linux (Debian <span class="built_in">or</span> Ubuntu)</span><br><span class="line">  $ sudo apt-<span class="built_in">get</span> <span class="built_in">remove</span> <span class="keyword">vim</span>-tiny</span><br><span class="line">  $ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">  $ sudo apt-<span class="built_in">get</span> install <span class="keyword">vim</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>VIM Extensions</p>
+<ul>
+<li>vim-plug<blockquote>
+<p>Minimalist Vim Plugin Manager</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight pony"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&quot; junegunn/vim-plug -- 🌺  Minimalist Vim Plugin Manager</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> empty(glob(<span class="string">&#x27;~/.vim/autoload/plug.vim&#x27;</span>))</span><br><span class="line">  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs</span><br><span class="line">   \ https:<span class="comment">//raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span></span><br><span class="line">  autocmd <span class="type">VimEnter</span> * <span class="type">PlugInstall</span> --sync | source $<span class="type">MYVIMRC</span></span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"><span class="string">&quot; vim-plug configuration</span></span><br><span class="line"><span class="string">&quot;</span> <span class="type">For</span> <span class="type">Mac</span>/<span class="type">Linux</span> users</span><br><span class="line"><span class="string">&quot; Plugins will be download under the specified directory.</span></span><br><span class="line"><span class="string">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span><span class="type">List</span> ends here. <span class="type">Plugins</span> become visible to <span class="type">Vim</span> after <span class="literal">this</span> call.</span><br><span class="line">call plug#<span class="keyword">end</span>()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Vim-Tips"><a href="#Vim-Tips" class="headerlink" title="Vim Tips"></a>Vim Tips</h2><ul>
+<li><strong>Pro Tip #1</strong>: Make sure to utilize tab completion to find files after typing</li>
+<li><strong>Pro Tip #2</strong>: Specify different areas of the screen where the splits should occur by adding the following lines to the .vimrc file<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="builtin-name">set</span> splitbelow</span><br><span class="line"><span class="builtin-name">set</span> splitright</span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #3</strong>: Jump between splits with just one key combination<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="comment">&quot; split navigations</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-J&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-J&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-K&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-K&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-L&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-L&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-H&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-H&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #4</strong>: Buffers<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># :<span class="keyword">ls</span> - <span class="keyword">to</span> <span class="keyword">list</span> <span class="keyword">all</span> <span class="keyword">buffers</span></span><br><span class="line"># :<span class="keyword">b</span> &lt;<span class="keyword">buffer</span> <span class="keyword">number</span>&gt; - pick the <span class="keyword">buffer</span> immediately</span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #5</strong>: Code Folding<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># Collapse (<span class="built_in">or</span> <span class="keyword">fold</span>) methods <span class="built_in">and</span> classes</span><br><span class="line"><span class="comment">&quot; Enable folding</span></span><br><span class="line"><span class="keyword">set</span> foldmethod=<span class="built_in">indent</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">foldlevel</span>=<span class="number">99</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&quot; Enable folding with the spacebar</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;space&gt;</span> za</span><br><span class="line"></span><br><span class="line"># VimL Script</span><br><span class="line">plug <span class="string">&quot;tmhedberg/SimpylFold&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:SimpylFold_docstring_preview</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #6</strong>: PEP 8<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="comment">&quot; Add the proper PEP 8 indentation</span></span><br><span class="line"><span class="keyword">au</span> BufNewFile,BufRead *.<span class="keyword">py</span></span><br><span class="line">    \ <span class="keyword">set</span> tabstop=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> softtabstop=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> textwidth=<span class="number">79</span></span><br><span class="line">    \ <span class="keyword">set</span> expandtab</span><br><span class="line">    \ <span class="keyword">set</span> autoindent</span><br><span class="line">    \ <span class="keyword">set</span> fileformat=unix</span><br><span class="line"></span><br><span class="line"><span class="comment">&quot; full stack development</span></span><br><span class="line"><span class="keyword">au</span> BufNewFile,BufRead *.js, *.html, *.css</span><br><span class="line">    \ <span class="keyword">set</span> tabstop=<span class="number">2</span></span><br><span class="line">    \ <span class="keyword">set</span> softtabstop=<span class="number">2</span></span><br><span class="line">    \ <span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">2</span></span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #7</strong>: Flagging Unnecessary Whitespace<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">au</span> BufRead,BufNewFile <span class="regexp">*.py</span>,<span class="regexp">*.pyw</span>,<span class="regexp">*.c</span>,<span class="regexp">*.h</span> match BadWhitespace /\s\+$/</span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #8</strong>: UTF-8 Support<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="builtin-name">set</span> <span class="attribute">encoding</span>=utf-8</span><br></pre></td></tr></table></figure></li>
+<li><strong>Pro Tip #9</strong>: Syntax Checking/Highlighting<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"># <span class="keyword">check</span> syntax <span class="keyword">on</span> <span class="keyword">each</span> save <span class="keyword">with</span> the syntastic <span class="keyword">extension</span></span><br><span class="line">Plug <span class="string">&#x27;vim-syntastic/syntastic&#x27;</span></span><br><span class="line"></span><br><span class="line"># <span class="keyword">add</span> PEP <span class="number">8</span> checking <span class="keyword">with</span> this nifty little plugin</span><br><span class="line">Plug <span class="string">&#x27;nvie/vim-flake8&#x27;</span></span><br><span class="line"></span><br><span class="line">let python_highlight_all=<span class="number">1</span></span><br><span class="line">syntax <span class="keyword">on</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="File-Browsing"><a href="#File-Browsing" class="headerlink" title="File Browsing"></a>File Browsing</h3><ul>
+<li>NERDTree<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">&gt; File <span class="keyword">system</span> explorer <span class="keyword">for</span> the Vim. It enables you <span class="keyword">to</span> visually browse complex directory hierarchies, quickly <span class="keyword">open</span> files <span class="keyword">for</span> reading <span class="keyword">or</span> editing, <span class="keyword">and</span> <span class="keyword">perform</span> basic file <span class="keyword">system</span> operations.</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="Super-Searching"><a href="#Super-Searching" class="headerlink" title="Super Searching"></a>Super Searching</h3><ul>
+<li>ctrlP<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">Plug <span class="string">&#x27;kien/ctrlp.vim&#x27;</span></span><br><span class="line"></span><br><span class="line">Ctrl + P : <span class="keyword">enable</span> the <span class="keyword">search</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Using-Vim-for-Python-Development"><a href="#Using-Vim-for-Python-Development" class="headerlink" title="Using Vim for Python Development"></a>Using Vim for Python Development</h2><ul>
+<li>Verifying VIM Install<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">Make sure have installed VIM &gt; <span class="number">7.3</span> <span class="keyword">with</span> Python support.</span><br><span class="line"></span><br><span class="line">  :python3 <span class="keyword">import</span> sys; <span class="built_in">print</span>(sys.version)</span><br><span class="line">  <span class="number">3.8</span><span class="number">.10</span> (<span class="keyword">default</span>, Sep <span class="number">28</span> <span class="number">2021</span>, <span class="number">16</span>:<span class="number">10</span>:<span class="number">42</span>)</span><br><span class="line">  [GCC <span class="number">9.3</span><span class="number">.0</span>]</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Using-Vim-for-Go-Development"><a href="#Using-Vim-for-Go-Development" class="headerlink" title="Using Vim for Go Development"></a>Using Vim for Go Development</h2><ul>
+<li>vim-go<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&gt; Go development plugin <span class="keyword">for</span> Vim. It has everything you need <span class="keyword">for</span> Go development.</span><br><span class="line"></span><br><span class="line">:GoBuild - Compile package</span><br><span class="line">:GoInstall - Install <span class="keyword">it</span></span><br><span class="line">:GoTest - Test <span class="keyword">it</span></span><br><span class="line">:GoRun - Quickly execute current <span class="built_in">file</span></span><br><span class="line">:GoDef - Go <span class="keyword">to</span> symbol/declaration</span><br><span class="line">:GoDoc - look up documentation</span><br><span class="line">:GoDocBrowser -</span><br><span class="line"></span><br><span class="line"><span class="comment"># Auto Completion</span></span><br><span class="line">  &gt; It&#x27;s really hard <span class="keyword">to</span> code <span class="keyword">without</span> auto-completion <span class="keyword">and</span> <span class="keyword">not</span> being able <span class="keyword">to</span> going <span class="keyword">to</span> <span class="keyword">the</span> definition.</span><br><span class="line">  &gt; Vim-go use **gopls** <span class="keyword">for</span> completion etc. Completion(Ctrl-x Ctrl-p) <span class="keyword">is</span> enabled <span class="keyword">by</span> default via omnifunc.</span><br><span class="line"></span><br><span class="line">  <span class="comment"># check if vim-go has been configured correctly for autocompletetion</span></span><br><span class="line">  :verbose setlocal omnifunc?</span><br><span class="line"></span><br><span class="line">  <span class="comment"># autocomplete prompt to appear automatically whenever you press the dot(.)</span></span><br><span class="line">  au filetype go inoremap &lt;buffer&gt; . .&lt;C-x&gt;&lt;C-o&gt;</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Vim-and-Rust"><a href="#Vim-and-Rust" class="headerlink" title="Vim and Rust"></a>Vim and Rust</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://www.amazon.com/Practical-Vim-Edit-Speed-Thought/dp/1680501275/ref=as_li_ss_tl?ie=UTF8&qid=1501817867&sr=8-3&keywords=vim&linkCode=sl1&tag=caspbeye-20&linkId=6c394064b4e6f05b198e68c64a6f4d76">Practical Vim - Edit Text at the Speed of Thought</a></li>
+<li><a href="http://vimcasts.org/">VIM CASTS.org</a></li>
+<li><a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/">VIM and Python - A Match Made in Heaven</a></li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
     <title>XMind Intro</title>
     <url>/2021/10/10/XMind-Intro/</url>
     <content><![CDATA[<h1 id="XMind"><a href="#XMind" class="headerlink" title="XMind"></a>XMind</h1><blockquote>
@@ -3223,60 +3277,6 @@
     <title>Uber Zap Intro</title>
     <url>/2021/10/12/Uber-Zap-Intro/</url>
     <content><![CDATA[]]></content>
-  </entry>
-  <entry>
-    <title>Vim Tips &amp; Tracks</title>
-    <url>/2021/10/10/Vim-Tips-Tracks/</url>
-    <content><![CDATA[<h1 id="Why-I-Still-Use-Vim"><a href="#Why-I-Still-Use-Vim" class="headerlink" title="Why I Still Use Vim"></a>Why I Still Use Vim</h1><ul>
-<li>Vim is exists on all Unix systems, support all file formats and programming languages</li>
-<li>Mouse free navigation</li>
-<li>Vim is very light-weight and fast.</li>
-<li>Vim is highly configurable. (~/.vimrc)</li>
-<li>Memory Usage Low</li>
-<li>Startup Time short</li>
-</ul>
-<span id="more"></span>
-
-<h2 id="Installing"><a href="#Installing" class="headerlink" title="Installing"></a>Installing</h2><figure class="highlight vim"><table><tr><td class="code"><pre><span class="line">&gt; Since VIM comes <span class="keyword">pre</span>-installed <span class="keyword">on</span> <span class="keyword">a</span> <span class="keyword">number</span> of *nix systems, <span class="keyword">let</span><span class="string">&#x27;s first check to see if it&#x27;</span>s installed</span><br><span class="line">  $ <span class="keyword">vim</span> --<span class="keyword">version</span></span><br><span class="line"></span><br><span class="line"># *NIX/Linux (Debian <span class="built_in">or</span> Ubuntu)</span><br><span class="line">  $ sudo apt-<span class="built_in">get</span> <span class="built_in">remove</span> <span class="keyword">vim</span>-tiny</span><br><span class="line">  $ sudo apt-<span class="built_in">get</span> <span class="keyword">update</span></span><br><span class="line">  $ sudo apt-<span class="built_in">get</span> install <span class="keyword">vim</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>VIM Extensions</p>
-<ul>
-<li>vim-plug<blockquote>
-<p>Minimalist Vim Plugin Manager</p>
-</blockquote>
-</li>
-</ul>
-<figure class="highlight pony"><table><tr><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">&quot; junegunn/vim-plug -- 🌺  Minimalist Vim Plugin Manager</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span><span class="string">&quot;&quot;&quot;&quot;&quot;&quot;</span></span><br><span class="line"><span class="keyword">if</span> empty(glob(<span class="string">&#x27;~/.vim/autoload/plug.vim&#x27;</span>))</span><br><span class="line">  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs</span><br><span class="line">   \ https:<span class="comment">//raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim</span></span><br><span class="line">  autocmd <span class="type">VimEnter</span> * <span class="type">PlugInstall</span> --sync | source $<span class="type">MYVIMRC</span></span><br><span class="line">endif</span><br><span class="line"></span><br><span class="line"><span class="string">&quot; vim-plug configuration</span></span><br><span class="line"><span class="string">&quot;</span> <span class="type">For</span> <span class="type">Mac</span>/<span class="type">Linux</span> users</span><br><span class="line"><span class="string">&quot; Plugins will be download under the specified directory.</span></span><br><span class="line"><span class="string">call plug#begin(&#x27;~/.vim/plugged&#x27;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&quot;</span><span class="type">List</span> ends here. <span class="type">Plugins</span> become visible to <span class="type">Vim</span> after <span class="literal">this</span> call.</span><br><span class="line">call plug#<span class="keyword">end</span>()</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Vim-Tips"><a href="#Vim-Tips" class="headerlink" title="Vim Tips"></a>Vim Tips</h2><ul>
-<li><strong>Pro Tip #1</strong>: Make sure to utilize tab completion to find files after typing</li>
-<li><strong>Pro Tip #2</strong>: Specify different areas of the screen where the splits should occur by adding the following lines to the .vimrc file<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="builtin-name">set</span> splitbelow</span><br><span class="line"><span class="builtin-name">set</span> splitright</span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #3</strong>: Jump between splits with just one key combination<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="comment">&quot; split navigations</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-J&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-J&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-K&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-K&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-L&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-L&gt;</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;C-H&gt;</span> <span class="symbol">&lt;C-W&gt;</span><span class="symbol">&lt;C-H&gt;</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #4</strong>: Buffers<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># :<span class="keyword">ls</span> - <span class="keyword">to</span> <span class="keyword">list</span> <span class="keyword">all</span> <span class="keyword">buffers</span></span><br><span class="line"># :<span class="keyword">b</span> &lt;<span class="keyword">buffer</span> <span class="keyword">number</span>&gt; - pick the <span class="keyword">buffer</span> immediately</span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #5</strong>: Code Folding<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"># Collapse (<span class="built_in">or</span> <span class="keyword">fold</span>) methods <span class="built_in">and</span> classes</span><br><span class="line"><span class="comment">&quot; Enable folding</span></span><br><span class="line"><span class="keyword">set</span> foldmethod=<span class="built_in">indent</span></span><br><span class="line"><span class="keyword">set</span> <span class="built_in">foldlevel</span>=<span class="number">99</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&quot; Enable folding with the spacebar</span></span><br><span class="line"><span class="keyword">nnoremap</span> <span class="symbol">&lt;space&gt;</span> za</span><br><span class="line"></span><br><span class="line"># VimL Script</span><br><span class="line">plug <span class="string">&quot;tmhedberg/SimpylFold&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> <span class="variable">g:SimpylFold_docstring_preview</span>=<span class="number">1</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #6</strong>: PEP 8<figure class="highlight vim"><table><tr><td class="code"><pre><span class="line"><span class="comment">&quot; Add the proper PEP 8 indentation</span></span><br><span class="line"><span class="keyword">au</span> BufNewFile,BufRead *.<span class="keyword">py</span></span><br><span class="line">    \ <span class="keyword">set</span> tabstop=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> softtabstop=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">4</span></span><br><span class="line">    \ <span class="keyword">set</span> textwidth=<span class="number">79</span></span><br><span class="line">    \ <span class="keyword">set</span> expandtab</span><br><span class="line">    \ <span class="keyword">set</span> autoindent</span><br><span class="line">    \ <span class="keyword">set</span> fileformat=unix</span><br><span class="line"></span><br><span class="line"><span class="comment">&quot; full stack development</span></span><br><span class="line"><span class="keyword">au</span> BufNewFile,BufRead *.js, *.html, *.css</span><br><span class="line">    \ <span class="keyword">set</span> tabstop=<span class="number">2</span></span><br><span class="line">    \ <span class="keyword">set</span> softtabstop=<span class="number">2</span></span><br><span class="line">    \ <span class="keyword">set</span> <span class="built_in">shiftwidth</span>=<span class="number">2</span></span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #7</strong>: Flagging Unnecessary Whitespace<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="attribute">au</span> BufRead,BufNewFile <span class="regexp">*.py</span>,<span class="regexp">*.pyw</span>,<span class="regexp">*.c</span>,<span class="regexp">*.h</span> match BadWhitespace /\s\+$/</span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #8</strong>: UTF-8 Support<figure class="highlight routeros"><table><tr><td class="code"><pre><span class="line"><span class="builtin-name">set</span> <span class="attribute">encoding</span>=utf-8</span><br></pre></td></tr></table></figure></li>
-<li><strong>Pro Tip #9</strong>: Syntax Checking/Highlighting<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line"># <span class="keyword">check</span> syntax <span class="keyword">on</span> <span class="keyword">each</span> save <span class="keyword">with</span> the syntastic <span class="keyword">extension</span></span><br><span class="line">Plug <span class="string">&#x27;vim-syntastic/syntastic&#x27;</span></span><br><span class="line"></span><br><span class="line"># <span class="keyword">add</span> PEP <span class="number">8</span> checking <span class="keyword">with</span> this nifty little plugin</span><br><span class="line">Plug <span class="string">&#x27;nvie/vim-flake8&#x27;</span></span><br><span class="line"></span><br><span class="line">let python_highlight_all=<span class="number">1</span></span><br><span class="line">syntax <span class="keyword">on</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="File-Browsing"><a href="#File-Browsing" class="headerlink" title="File Browsing"></a>File Browsing</h3><ul>
-<li>NERDTree<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">&gt; File <span class="keyword">system</span> explorer <span class="keyword">for</span> the Vim. It enables you <span class="keyword">to</span> visually browse complex directory hierarchies, quickly <span class="keyword">open</span> files <span class="keyword">for</span> reading <span class="keyword">or</span> editing, <span class="keyword">and</span> <span class="keyword">perform</span> basic file <span class="keyword">system</span> operations.</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h3 id="Super-Searching"><a href="#Super-Searching" class="headerlink" title="Super Searching"></a>Super Searching</h3><ul>
-<li>ctrlP<figure class="highlight pgsql"><table><tr><td class="code"><pre><span class="line">Plug <span class="string">&#x27;kien/ctrlp.vim&#x27;</span></span><br><span class="line"></span><br><span class="line">Ctrl + P : <span class="keyword">enable</span> the <span class="keyword">search</span></span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Using-Vim-for-Python-Development"><a href="#Using-Vim-for-Python-Development" class="headerlink" title="Using Vim for Python Development"></a>Using Vim for Python Development</h2><ul>
-<li>Verifying VIM Install<figure class="highlight coffeescript"><table><tr><td class="code"><pre><span class="line">Make sure have installed VIM &gt; <span class="number">7.3</span> <span class="keyword">with</span> Python support.</span><br><span class="line"></span><br><span class="line">  :python3 <span class="keyword">import</span> sys; <span class="built_in">print</span>(sys.version)</span><br><span class="line">  <span class="number">3.8</span><span class="number">.10</span> (<span class="keyword">default</span>, Sep <span class="number">28</span> <span class="number">2021</span>, <span class="number">16</span>:<span class="number">10</span>:<span class="number">42</span>)</span><br><span class="line">  [GCC <span class="number">9.3</span><span class="number">.0</span>]</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Using-Vim-for-Go-Development"><a href="#Using-Vim-for-Go-Development" class="headerlink" title="Using Vim for Go Development"></a>Using Vim for Go Development</h2><ul>
-<li>vim-go<figure class="highlight applescript"><table><tr><td class="code"><pre><span class="line">&gt; Go development plugin <span class="keyword">for</span> Vim. It has everything you need <span class="keyword">for</span> Go development.</span><br><span class="line"></span><br><span class="line">:GoBuild - Compile package</span><br><span class="line">:GoInstall - Install <span class="keyword">it</span></span><br><span class="line">:GoTest - Test <span class="keyword">it</span></span><br><span class="line">:GoRun - Quickly execute current <span class="built_in">file</span></span><br><span class="line">:GoDef - Go <span class="keyword">to</span> symbol/declaration</span><br><span class="line">:GoDoc - look up documentation</span><br><span class="line">:GoDocBrowser -</span><br><span class="line"></span><br><span class="line"><span class="comment"># Auto Completion</span></span><br><span class="line">  &gt; It&#x27;s really hard <span class="keyword">to</span> code <span class="keyword">without</span> auto-completion <span class="keyword">and</span> <span class="keyword">not</span> being able <span class="keyword">to</span> going <span class="keyword">to</span> <span class="keyword">the</span> definition.</span><br><span class="line">  &gt; Vim-go use **gopls** <span class="keyword">for</span> completion etc. Completion(Ctrl-x Ctrl-p) <span class="keyword">is</span> enabled <span class="keyword">by</span> default via omnifunc.</span><br><span class="line"></span><br><span class="line">  <span class="comment"># check if vim-go has been configured correctly for autocompletetion</span></span><br><span class="line">  :verbose setlocal omnifunc?</span><br><span class="line"></span><br><span class="line">  <span class="comment"># autocomplete prompt to appear automatically whenever you press the dot(.)</span></span><br><span class="line">  au filetype go inoremap &lt;buffer&gt; . .&lt;C-x&gt;&lt;C-o&gt;</span><br></pre></td></tr></table></figure></li>
-</ul>
-<h2 id="Vim-and-Rust"><a href="#Vim-and-Rust" class="headerlink" title="Vim and Rust"></a>Vim and Rust</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
-<li><a href="https://www.amazon.com/Practical-Vim-Edit-Speed-Thought/dp/1680501275/ref=as_li_ss_tl?ie=UTF8&qid=1501817867&sr=8-3&keywords=vim&linkCode=sl1&tag=caspbeye-20&linkId=6c394064b4e6f05b198e68c64a6f4d76">Practical Vim - Edit Text at the Speed of Thought</a></li>
-<li><a href="http://vimcasts.org/">VIM CASTS.org</a></li>
-<li><a href="https://realpython.com/vim-and-python-a-match-made-in-heaven/">VIM and Python - A Match Made in Heaven</a></li>
-</ul>
-]]></content>
   </entry>
   <entry>
     <title>Apache APISIX Intro</title>
