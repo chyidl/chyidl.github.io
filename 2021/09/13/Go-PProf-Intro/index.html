@@ -1,0 +1,514 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chyi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Go Profling - 剖析 Using “pprof” to profiling your programGo语言可视化性能分析工具,PProf以profile.proto读取分析样本集合，并生成报告可视化帮助分析数据(支持文本和图形报告)   使用场景  runtime&#x2F;pprof: 采集程序指定区块的运行数据分析 net&#x2F;http&#x2F;pprof: 基于HTTP Server运行,采集运行时">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go PProf Intro">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/13/Go-PProf-Intro/">
+<meta property="og:site_name" content="Stay Hungry Stay Foolish">
+<meta property="og:description" content="Go Profling - 剖析 Using “pprof” to profiling your programGo语言可视化性能分析工具,PProf以profile.proto读取分析样本集合，并生成报告可视化帮助分析数据(支持文本和图形报告)   使用场景  runtime&#x2F;pprof: 采集程序指定区块的运行数据分析 net&#x2F;http&#x2F;pprof: 基于HTTP Server运行,采集运行时">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-13T08:55:41.000Z">
+<meta property="article:modified_time" content="2021-09-13T08:55:41.000Z">
+<meta property="article:author" content="chyi">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Go PProf Intro - Stay Hungry Stay Foolish</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chyidl.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Go PProf Intro">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-13 16:55" pubdate>
+        2021年9月13日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      8.7k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      73 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Go PProf Intro</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Go-Profling-剖析"><a href="#Go-Profling-剖析" class="headerlink" title="Go Profling - 剖析"></a>Go Profling - 剖析</h1><blockquote>
+<p>Using “pprof” to profiling your program<br>Go语言可视化性能分析工具,PProf以profile.proto读取分析样本集合，并生成报告可视化帮助分析数据(支持文本和图形报告)</p>
+</blockquote>
+<ul>
+<li><p>使用场景</p>
+<ul>
+<li>runtime/pprof: 采集程序指定区块的运行数据分析</li>
+<li>net/http/pprof: 基于HTTP Server运行,采集运行时数据分析</li>
+<li>go test: 通过运行测试用例，指定所需标识进行采样</li>
+</ul>
+</li>
+<li><p>安装可视化工具graphviz查看profile</p>
+<figure class="highlight vala"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></div></td><td class="code"><pre><code class="hljs vala"><span class="hljs-meta"># Mac: $ brew install graphviz</span><br><span class="hljs-meta"># Linux: $ sudo apt install graphviz</span><br></code></pre></td></tr></table></figure></li>
+<li><p>支持模式</p>
+<ul>
+<li>报告生成 Report generation</li>
+<li>交互终端使用 Interactive terminal use</li>
+<li>Web页面 Web interface</li>
+</ul>
+</li>
+<li><p>可以做那些</p>
+<ul>
+<li>CPU Profiling: CPU分析<ul>
+<li>按照一定频率采集监听应用程序CPU使用情况，确定应用程序的主动消耗CPU周期时花费时间的位置</li>
+</ul>
+</li>
+<li>Memory Profiling: 内存分析<ul>
+<li>程序进行堆分配时记录堆栈跟踪，监视当前和历史内存使用情况，检查内存泄漏</li>
+</ul>
+</li>
+<li>Block Profiling: 阻塞分析<ul>
+<li>记录Goroutine阻塞等待同步的位置，默认不开启，需要调用runtime.SetBlockProfileRate 设置</li>
+</ul>
+</li>
+<li>Mutex Profiling: 互斥锁分析<ul>
+<li>报告互斥锁的竞争情况, 默认不开启, runtime.SetMutexProfileFraction 设置</li>
+</ul>
+</li>
+<li>Goroutine Profiling: Goroutine分析<ul>
+<li>对当前应用程序正在运行的Goroutine进行堆栈跟踪和分析</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<span id="more"></span>
+
+<h2 id="How-to-Use"><a href="#How-to-Use" class="headerlink" title="How to Use"></a>How to Use</h2><ul>
+<li>runtime/pprof<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># pprof useful command:</span><br>  <span class="hljs-built_in">text</span>: show <span class="hljs-keyword">the</span> cpu report <span class="hljs-keyword">in</span> <span class="hljs-built_in">text</span> form<br>  web: visualize graph <span class="hljs-keyword">through</span> web browser<br>  top &lt;n&gt;: <span class="hljs-built_in">list</span> <span class="hljs-keyword">the</span> n highest entries <span class="hljs-keyword">in</span> <span class="hljs-built_in">text</span> form<br>  <span class="hljs-built_in">list</span> &lt;function <span class="hljs-built_in">name</span>&gt;: reveal <span class="hljs-keyword">the</span> <span class="hljs-built_in">running</span> <span class="hljs-built_in">time</span> <span class="hljs-keyword">of</span> function<br>  traces<br></code></pre></td></tr></table></figure></li>
+</ul>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><code class="hljs awk">package main<br><br>import (<br>	<span class="hljs-string">&quot;log&quot;</span><br>	<span class="hljs-string">&quot;net/http&quot;</span><br>	_ <span class="hljs-string">&quot;net/http/pprof&quot;</span><br>	<span class="hljs-string">&quot;time&quot;</span><br>)<br><br>var datas []string<br><br><span class="hljs-keyword">func</span> main() &#123;<br>	go <span class="hljs-keyword">func</span>() &#123;<br>		<span class="hljs-keyword">for</span> &#123;<br>			log.Printf(<span class="hljs-string">&quot;len: %d&quot;</span>, Add(<span class="hljs-string">&quot;go-programming-tour-book&quot;</span>))<br>			time.Sleep(time.Millisecond * <span class="hljs-number">10</span>)<br>		&#125;<br>	&#125;()<br><br>	_ = http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, nil)<br>&#125;<br><br><span class="hljs-keyword">func</span> Add(str string) int &#123;<br>	data := []byte(str)<br>	datas = append(datas, string(data))<br>	return len(datas)<br>&#125;<br><br><span class="hljs-regexp">//</span> 访问 http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/debug/</span>pprof<br><span class="hljs-regexp">//</span> <span class="hljs-regexp">/debug/</span>pprof/<br><span class="hljs-regexp">//</span><br><span class="hljs-regexp">//</span> Types of profiles available:<br><span class="hljs-regexp">//</span> Count	Profile<br><span class="hljs-regexp">//</span> <span class="hljs-number">3</span>	allocs                -- 查看过去内存分配样本<br><span class="hljs-regexp">//</span> <span class="hljs-number">0</span>	block                 -- 查看阻塞<br><span class="hljs-regexp">//</span> <span class="hljs-number">0</span>	cmdline               -- 命令行调用路径<br><span class="hljs-regexp">//</span> <span class="hljs-number">5</span>	goroutine             -- goroutine堆栈跟踪<br><span class="hljs-regexp">//</span> <span class="hljs-number">3</span>	heap                  -- 堆上内存分配<br><span class="hljs-regexp">//</span> <span class="hljs-number">0</span>	mutex                 -- 互斥锁竞争持有者堆栈跟踪<br><span class="hljs-regexp">//</span> <span class="hljs-number">0</span>	profile               -- 默认<span class="hljs-number">30</span>秒CPU Profiling<br><span class="hljs-regexp">//</span> <span class="hljs-number">7</span>	threadcreate          --<br><span class="hljs-regexp">//</span> <span class="hljs-number">0</span>	trace<br><span class="hljs-regexp">//</span> full goroutine stack dump<br></code></pre></td></tr></table></figure>
+
+<ul>
+<li><p>CPU Profiling</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs vim">➜ <span class="hljs-keyword">go</span> tool pprof http://localhos<span class="hljs-variable">t:8080</span>/<span class="hljs-keyword">debug</span>/pprof/<span class="hljs-keyword">profile</span>\?seconds\=<span class="hljs-number">5</span><br>Fetching <span class="hljs-keyword">profile</span> over HTTP from http://localhos<span class="hljs-variable">t:8080</span>/<span class="hljs-keyword">debug</span>/pprof/<span class="hljs-keyword">profile</span>?seconds=<span class="hljs-number">5</span><br>Saved <span class="hljs-keyword">profile</span> in /Users/chyiyaqing/pprof/pprof.samples.cpu.<span class="hljs-number">001</span>.pb.gz<br>Type: cpu<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">5</span>:<span class="hljs-number">22</span>pm (CST)<br>Duration: <span class="hljs-number">5</span>s, Total samples = <span class="hljs-number">20</span>ms (  <span class="hljs-number">0.4</span>%)<br>Entering interactive <span class="hljs-keyword">mode</span> (<span class="hljs-built_in">type</span> <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> commands, <span class="hljs-string">&quot;o&quot;</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">options</span>)<br>(pprof) top10<br>Showing nodes accounting <span class="hljs-keyword">for</span> <span class="hljs-number">20</span>ms, <span class="hljs-number">100</span>% of <span class="hljs-number">20</span>ms total<br>Showing top <span class="hljs-number">10</span> nodes out of <span class="hljs-number">11</span><br>      flat  flat%   sum%        cum   cum%<br>      <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>% <span class="hljs-number">50.00</span>%       <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%  <span class="hljs-keyword">runtime</span>.kevent<br>      <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%  <span class="hljs-keyword">runtime</span>.pthread_cond_wait<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">20</span>ms   <span class="hljs-number">100</span>%  <span class="hljs-keyword">runtime</span>.findrunnable<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%  <span class="hljs-keyword">runtime</span>.mPark<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">20</span>ms   <span class="hljs-number">100</span>%  <span class="hljs-keyword">runtime</span>.mcall<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%  <span class="hljs-keyword">runtime</span>.netpoll<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%  <span class="hljs-keyword">runtime</span>.notesleep<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">20</span>ms   <span class="hljs-number">100</span>%  <span class="hljs-keyword">runtime</span>.park_m<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">20</span>ms   <span class="hljs-number">100</span>%  <span class="hljs-keyword">runtime</span>.schedule<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%       <span class="hljs-number">10</span>ms <span class="hljs-number">50.00</span>%  <span class="hljs-keyword">runtime</span>.semasleep<br><br>fla<span class="hljs-variable">t:</span> 函数自身运行耗时<br>flat%: 函数自身在CPU运行耗时总比例<br>sum%: 函数自身累计使用CPU比例<br>cum%: 函数自身及其调用函数运行总耗时<br>cum%: 函数自身及其调用函数的运行耗时总比例<br>Name: 函数名<br></code></pre></td></tr></table></figure></li>
+<li><p>Heap Profiling</p>
+<ul>
+<li>inuse_space: 分析常驻内存占用<figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs gradle">➜ go tool pprof -inuse_space http:<span class="hljs-comment">//localhost:8080/debug/pprof/heap</span><br>Fetching profile over HTTP <span class="hljs-keyword">from</span> http:<span class="hljs-comment">//localhost:8080/debug/pprof/heap</span><br>Saved profile in <span class="hljs-regexp">/Users/</span>chyiyaqing<span class="hljs-regexp">/pprof/</span>pprof.alloc_objects.alloc_space.inuse_objects.inuse_space.<span class="hljs-number">002</span>.pb.gz<br>Type: inuse_space<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">5</span>:<span class="hljs-number">30</span>pm (CST)<br>Entering interactive mode (type <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> commands, <span class="hljs-string">&quot;o&quot;</span> <span class="hljs-keyword">for</span> <span class="hljs-keyword">options</span>)<br>(pprof) top<br>Showing nodes accounting <span class="hljs-keyword">for</span> <span class="hljs-number">6951.53</span>kB, <span class="hljs-number">100</span>% of <span class="hljs-number">6951.53</span>kB total<br>Showing top <span class="hljs-number">10</span> nodes out of <span class="hljs-number">18</span><br>      flat  flat%   sum%        cum   cum%<br> <span class="hljs-number">4898.20</span>kB <span class="hljs-number">70.46</span>% <span class="hljs-number">70.46</span>%  <span class="hljs-number">4898.20</span>kB <span class="hljs-number">70.46</span>%  main.Add (inline)<br> <span class="hljs-number">1025.12</span>kB <span class="hljs-number">14.75</span>% <span class="hljs-number">85.21</span>%  <span class="hljs-number">1025.12</span>kB <span class="hljs-number">14.75</span>%  <span class="hljs-keyword">runtime</span>.allocm<br>  <span class="hljs-number">516.01</span>kB  <span class="hljs-number">7.42</span>% <span class="hljs-number">92.63</span>%   <span class="hljs-number">516.01</span>kB  <span class="hljs-number">7.42</span>%  unicode.init<br>  <span class="hljs-number">512.20</span>kB  <span class="hljs-number">7.37</span>%   <span class="hljs-number">100</span>%   <span class="hljs-number">512.20</span>kB  <span class="hljs-number">7.37</span>%  <span class="hljs-keyword">runtime</span>.malg<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%  <span class="hljs-number">4898.20</span>kB <span class="hljs-number">70.46</span>%  main.main.func1<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%   <span class="hljs-number">516.01</span>kB  <span class="hljs-number">7.42</span>%  <span class="hljs-keyword">runtime</span>.doInit<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%   <span class="hljs-number">516.01</span>kB  <span class="hljs-number">7.42</span>%  <span class="hljs-keyword">runtime</span>.main<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%  <span class="hljs-number">1025.12</span>kB <span class="hljs-number">14.75</span>%  <span class="hljs-keyword">runtime</span>.mstart<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%  <span class="hljs-number">1025.12</span>kB <span class="hljs-number">14.75</span>%  <span class="hljs-keyword">runtime</span>.mstart0<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%  <span class="hljs-number">1025.12</span>kB <span class="hljs-number">14.75</span>%  <span class="hljs-keyword">runtime</span>.mstart1<br>(pprof) traces<br>Type: alloc_objects<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">5</span>:<span class="hljs-number">57</span>pm (CST)<br>-----------+-------------------------------------------------------<br>     bytes:  <span class="hljs-number">256</span>kB<br>         <span class="hljs-number">2</span>   compress/flate.(*compressor).init<br>             compress/flate.<span class="hljs-keyword">NewWriter</span><br>             compress/gzip.(*Writer).<span class="hljs-keyword">Write</span><br>             <span class="hljs-keyword">runtime</span>/pprof.(*profileBuilder).build<br>             <span class="hljs-keyword">runtime</span>/pprof.printCountProfile<br>             <span class="hljs-keyword">runtime</span>/pprof.writeRuntimeProfile<br>             <span class="hljs-keyword">runtime</span>/pprof.writeGoroutine<br>             <span class="hljs-keyword">runtime</span>/pprof.(*Profile).WriteTo<br>             net<span class="hljs-regexp">/http/</span>pprof.handler.ServeHTTP<br>             net<span class="hljs-regexp">/http/</span>pprof.Index<br>             net/http.HandlerFunc.ServeHTTP<br>             net/http.(*ServeMux).ServeHTTP<br>             net/http.serverHandler.ServeHTTP<br>             net/http.(*conn).serve<br>-----------+-------------------------------------------------------<br></code></pre></td></tr></table></figure></li>
+<li>alloc_space: 分析分配内存空间大小</li>
+<li>alloc_objects:</li>
+<li>inuse_objects:</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>Goroutine Profiling</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs stylus">➜ go tool pprof http:<span class="hljs-comment">//localhost:8080/debug/pprof/goroutine</span><br>Fetching profile over HTTP from http:<span class="hljs-comment">//localhost:8080/debug/pprof/goroutine</span><br>Saved profile <span class="hljs-keyword">in</span> /Users/chyiyaqing/pprof/pprof<span class="hljs-selector-class">.goroutine</span>.<span class="hljs-number">001</span><span class="hljs-selector-class">.pb</span><span class="hljs-selector-class">.gz</span><br>Type: goroutine<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">5</span>:<span class="hljs-number">54</span>pm (CST)<br>Entering interactive mode (type <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> commands, <span class="hljs-string">&quot;o&quot;</span> <span class="hljs-keyword">for</span> options)<br>(pprof) traces  <span class="hljs-comment">// 打印调用栈</span><br>Type: goroutine<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">5</span>:<span class="hljs-number">54</span>pm (CST)<br>-----------+-------------------------------------------------------<br>         <span class="hljs-number">1</span>   runtime<span class="hljs-selector-class">.gopark</span><br>             runtime<span class="hljs-selector-class">.netpollblock</span><br>             internal/poll<span class="hljs-selector-class">.runtime_pollWait</span><br>             internal/poll.(*pollDesc)<span class="hljs-selector-class">.wait</span><br>             internal/poll.(*pollDesc)<span class="hljs-selector-class">.waitRead</span> (inline)<br>             internal/poll.(*FD)<span class="hljs-selector-class">.Read</span><br>             net.(*netFD)<span class="hljs-selector-class">.Read</span><br>             net.(*conn)<span class="hljs-selector-class">.Read</span><br>             net/http.(*connReader)<span class="hljs-selector-class">.backgroundRead</span><br>-----------+-------------------------------------------------------<br>         <span class="hljs-number">1</span>   runtime<span class="hljs-selector-class">.gopark</span><br>             runtime<span class="hljs-selector-class">.netpollblock</span><br>             internal/poll<span class="hljs-selector-class">.runtime_pollWait</span><br>             internal/poll.(*pollDesc)<span class="hljs-selector-class">.wait</span><br>             internal/poll.(*pollDesc)<span class="hljs-selector-class">.waitRead</span> (inline)<br>             internal/poll.(*FD)<span class="hljs-selector-class">.Accept</span><br>             net.(*netFD)<span class="hljs-selector-class">.accept</span><br>             net.(*TCPListener)<span class="hljs-selector-class">.accept</span><br>             net.(*TCPListener)<span class="hljs-selector-class">.Accept</span><br>             net/http.(*Server)<span class="hljs-selector-class">.Serve</span><br>             net/http.(*Server)<span class="hljs-selector-class">.ListenAndServe</span><br>             net/http<span class="hljs-selector-class">.ListenAndServe</span> (inline)<br>             <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.main</span><br>             runtime<span class="hljs-selector-class">.main</span><br>-----------+-------------------------------------------------------<br>         <span class="hljs-number">1</span>   runtime<span class="hljs-selector-class">.gopark</span><br>             <span class="hljs-selector-tag">time</span><span class="hljs-selector-class">.Sleep</span><br>             <span class="hljs-selector-tag">main</span><span class="hljs-selector-class">.main</span><span class="hljs-selector-class">.func1</span><br>-----------+-------------------------------------------------------<br>         <span class="hljs-number">1</span>   runtime/pprof<span class="hljs-selector-class">.runtime_goroutineProfileWithLabels</span><br>             runtime/pprof<span class="hljs-selector-class">.writeRuntimeProfile</span><br>             runtime/pprof<span class="hljs-selector-class">.writeGoroutine</span><br>             runtime/pprof.(*Profile)<span class="hljs-selector-class">.WriteTo</span><br>             net/http/pprof<span class="hljs-selector-class">.handler</span><span class="hljs-selector-class">.ServeHTTP</span><br>             net/http/pprof<span class="hljs-selector-class">.Index</span><br>             net/http<span class="hljs-selector-class">.HandlerFunc</span><span class="hljs-selector-class">.ServeHTTP</span><br>             net/http.(*ServeMux)<span class="hljs-selector-class">.ServeHTTP</span><br>             net/http<span class="hljs-selector-class">.serverHandler</span><span class="hljs-selector-class">.ServeHTTP</span><br>             net/http.(*conn)<span class="hljs-selector-class">.serve</span><br>-----------+-------------------------------------------------------<br></code></pre></td></tr></table></figure></li>
+<li><p>Mutex Profiling</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs awk">➜ go tool pprof http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/debug/</span>pprof/mutex<br>Fetching profile over HTTP from http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/debug/</span>pprof/mutex<br>Saved profile <span class="hljs-keyword">in</span> <span class="hljs-regexp">/Users/</span>chyiyaqing<span class="hljs-regexp">/pprof/</span>pprof.contentions.delay.<span class="hljs-number">003</span>.pb.gz<br>Type: delay<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">6</span>:<span class="hljs-number">05</span>pm (CST)<br>Entering interactive mode (type <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> commands, <span class="hljs-string">&quot;o&quot;</span> <span class="hljs-keyword">for</span> options)<br>(pprof) top<br>Showing nodes accounting <span class="hljs-keyword">for</span> <span class="hljs-number">941.98</span>us, <span class="hljs-number">100</span>% of <span class="hljs-number">941.98</span>us total<br>      flat  flat%   sum%        cum   cum%<br>  <span class="hljs-number">941.98</span>us   <span class="hljs-number">100</span>%   <span class="hljs-number">100</span>%   <span class="hljs-number">941.98</span>us   <span class="hljs-number">100</span>%  sync.(*Mutex).Unlock<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%   <span class="hljs-number">941.98</span>us   <span class="hljs-number">100</span>%  main.main.func1<br>(pprof) list main<br>Total: <span class="hljs-number">941.98</span>us<br>ROUTINE ======================== main.main.func1 <span class="hljs-keyword">in</span> <span class="hljs-regexp">/Users/</span>chyiyaqing<span class="hljs-regexp">/Downloads/</span>pprof<span class="hljs-regexp">/pprof/m</span>ain2.go<br>         <span class="hljs-number">0</span>   <span class="hljs-number">941.98</span>us (flat, cum)   <span class="hljs-number">100</span>% of Total<br>         .          .     <span class="hljs-number">18</span>:	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">999</span>; i++ &#123;<br>         .          .     <span class="hljs-number">19</span>:		go <span class="hljs-keyword">func</span>(i int) &#123;<br>         .          .     <span class="hljs-number">20</span>:			m.Lock()<br>         .          .     <span class="hljs-number">21</span>:			defer m.Unlock()<br>         .          .     <span class="hljs-number">22</span>:			datas[i] = struct&#123;&#125;&#123;&#125;<br>         .   <span class="hljs-number">941.98</span>us     <span class="hljs-number">23</span>:		&#125;(i)<br>         .          .     <span class="hljs-number">24</span>:	&#125;<br>         .          .     <span class="hljs-number">25</span>:<br>         .          .     <span class="hljs-number">26</span>:	_ = http.ListenAndServe(<span class="hljs-string">&quot;:8080&quot;</span>, nil)<br>         .          .     <span class="hljs-number">27</span>:&#125;<br></code></pre></td></tr></table></figure></li>
+<li><p>Block Profiling</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs awk">➜ go tool pprof http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/debug/</span>pprof/block<br>Fetching profile over HTTP from http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">8080</span><span class="hljs-regexp">/debug/</span>pprof/block<br>Saved profile <span class="hljs-keyword">in</span> <span class="hljs-regexp">/Users/</span>chyiyaqing<span class="hljs-regexp">/pprof/</span>pprof.contentions.delay.<span class="hljs-number">005</span>.pb.gz<br>Type: delay<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">6</span>:<span class="hljs-number">17</span>pm (CST)<br>Entering interactive mode (type <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> commands, <span class="hljs-string">&quot;o&quot;</span> <span class="hljs-keyword">for</span> options)<br>(pprof) top<br>Showing nodes accounting <span class="hljs-keyword">for</span> <span class="hljs-number">92.66</span>ms, <span class="hljs-number">100</span>% of <span class="hljs-number">92.67</span>ms total<br>Dropped <span class="hljs-number">4</span> nodes (cum &lt;= <span class="hljs-number">0.46</span>ms)<br>      flat  flat%   sum%        cum   cum%<br>   <span class="hljs-number">92.66</span>ms   <span class="hljs-number">100</span>%   <span class="hljs-number">100</span>%    <span class="hljs-number">92.66</span>ms   <span class="hljs-number">100</span>%  sync.(*Mutex).Lock (inline)<br>         <span class="hljs-number">0</span>     <span class="hljs-number">0</span>%   <span class="hljs-number">100</span>%    <span class="hljs-number">92.66</span>ms   <span class="hljs-number">100</span>%  main.main.func1<br>(pprof) list<br>command list requires an argument<br>(pprof) list main<br>Total: <span class="hljs-number">92.67</span>ms<br>ROUTINE ======================== main.main.func1 <span class="hljs-keyword">in</span> <span class="hljs-regexp">/Users/</span>chyiyaqing<span class="hljs-regexp">/Downloads/</span>pprof<span class="hljs-regexp">/pprof/m</span>ain2.go<br>         <span class="hljs-number">0</span>    <span class="hljs-number">92.66</span>ms (flat, cum)   <span class="hljs-number">100</span>% of Total<br>         .          .     <span class="hljs-number">17</span>:<span class="hljs-keyword">func</span> main() &#123;<br>         .          .     <span class="hljs-number">18</span>:	var m sync.Mutex<br>         .          .     <span class="hljs-number">19</span>:	var datas = make(map[int]struct&#123;&#125;)<br>         .          .     <span class="hljs-number">20</span>:	<span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">999</span>; i++ &#123;<br>         .          .     <span class="hljs-number">21</span>:		go <span class="hljs-keyword">func</span>(i int) &#123;<br>         .    <span class="hljs-number">92.66</span>ms     <span class="hljs-number">22</span>:			m.Lock()<br>         .          .     <span class="hljs-number">23</span>:			defer m.Unlock()<br>         .          .     <span class="hljs-number">24</span>:			datas[i] = struct&#123;&#125;&#123;&#125;<br>         .          .     <span class="hljs-number">25</span>:		&#125;(i)<br>         .          .     <span class="hljs-number">26</span>:	&#125;<br>         .          .     <span class="hljs-number">27</span>:<br></code></pre></td></tr></table></figure></li>
+<li><p>查看可视化界面</p>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs pf">➜ wget http://<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>/<span class="hljs-keyword">debug</span>/pprof/<span class="hljs-keyword">profile</span><br>--<span class="hljs-number">2021</span>-<span class="hljs-number">09</span>-<span class="hljs-number">13</span> <span class="hljs-number">18</span>:<span class="hljs-number">25</span>:<span class="hljs-number">42</span>--  http://<span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>/<span class="hljs-keyword">debug</span>/pprof/<span class="hljs-keyword">profile</span><br>Connecting <span class="hljs-keyword">to</span> <span class="hljs-number">127.0</span>.<span class="hljs-number">0.1</span>:<span class="hljs-number">8080</span>... connected.<br>HTTP request sent, awaiting response... <span class="hljs-number">200</span> OK<br>Length: <span class="hljs-number">1290</span> (<span class="hljs-number">1.3</span>K) [application/octet-stream]<br>Saving <span class="hljs-keyword">to</span>: ‘<span class="hljs-keyword">profile</span>’<br><br><span class="hljs-keyword">profile</span>                            <span class="hljs-number">100</span>%[================================================================&gt;]   <span class="hljs-number">1.26</span>K  --.-KB/s    <span class="hljs-keyword">in</span> <span class="hljs-number">0</span>s<br><br><span class="hljs-number">2021</span>-<span class="hljs-number">09</span>-<span class="hljs-number">13</span> <span class="hljs-number">18</span>:<span class="hljs-number">26</span>:<span class="hljs-number">12</span> (<span class="hljs-number">205</span> MB/s) - ‘<span class="hljs-keyword">profile</span>’ saved [<span class="hljs-number">1290</span>/<span class="hljs-number">1290</span>]<br><br><span class="hljs-comment"># 方法一</span><br>➜ go tool pprof -http=:<span class="hljs-number">6001</span> <span class="hljs-keyword">profile</span><br>Serving web UI <span class="hljs-keyword">on</span> http://localhost:<span class="hljs-number">6001</span><br>  <span class="hljs-comment"># Top</span><br>  <span class="hljs-comment"># Graph: 函数调用流程</span><br>  <span class="hljs-comment"># Peek: 上下文信息</span><br>  <span class="hljs-comment"># Source: 源代码的追踪和分析</span><br>  <span class="hljs-comment"># Flame Graph:</span><br><br><span class="hljs-comment"># 方法二</span><br>➜ go tool pprof <span class="hljs-keyword">profile</span><br>Type: cpu<br>Time: Sep <span class="hljs-number">13</span>, <span class="hljs-number">2021</span> at <span class="hljs-number">6</span>:<span class="hljs-number">25</span>pm (CST)<br>Duration: <span class="hljs-number">30</span>s, Total samples = <span class="hljs-number">240</span>ms (  <span class="hljs-number">0.8</span>%)<br>Entering interactive mode (type <span class="hljs-string">&quot;help&quot;</span> <span class="hljs-keyword">for</span> commands, <span class="hljs-string">&quot;o&quot;</span> <span class="hljs-keyword">for</span> options)<br>(pprof) web<br></code></pre></td></tr></table></figure></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Programming-Language/">Programming Language</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/14/Huawei-LiteOS-Intro/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Huawei LiteOS Intro</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/12/Go-Constants/">
+                        <span class="hidden-mobile">Go Constants</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,602 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chyi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Docker  Info1234容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”Cgroups技术是用来制造约束的主要手段Namespace技术则是用来修改进程试图的主要方法">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Docker Tips &amp; Tricks">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/01/Docker-Intro/">
+<meta property="og:site_name" content="Stay Hungry Stay Foolish">
+<meta property="og:description" content="Docker  Info1234容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”Cgroups技术是用来制造约束的主要手段Namespace技术则是用来修改进程试图的主要方法">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/architecture.svg">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/docker-network-host.png">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/docker-network-container.png">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/docker-network-none.png">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/docker-network-bridge.png">
+<meta property="article:published_time" content="2021-09-01T01:49:58.000Z">
+<meta property="article:modified_time" content="2022-01-05T08:13:40.538Z">
+<meta property="article:author" content="chyi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://chyidl.github.io/misc/images/architecture.svg">
+  
+  
+  <title>Docker Tips &amp; Tricks - Stay Hungry Stay Foolish</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chyidl.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Docker Tips &amp; Tricks">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-01 09:49" pubdate>
+        2021年9月1日 上午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      22k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      181 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Docker Tips &amp; Tricks</h1>
+            
+            <div class="markdown-body">
+              <h2 id="Docker-Info"><a href="#Docker-Info" class="headerlink" title="Docker  Info"></a>Docker  Info</h2><figure class="highlight oxygene"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs oxygene">容器技术的核心功能，就是通过约束和修改进程的动态表现，从而为其创造出一个“边界”<br><br>Cgroups技术是用来制造约束的主要手段<br><span class="hljs-keyword">Namespace</span>技术则是用来修改进程试图的主要方法<br></code></pre></td></tr></table></figure>
+<span id="more"></span>
+
+<h2 id="Docker-architecture"><a href="#Docker-architecture" class="headerlink" title="Docker architecture"></a>Docker architecture</h2><blockquote>
+<p>Docker uses a client-server architecture.</p>
+</blockquote>
+<p><img src="/misc/images/architecture.svg" srcset="/img/loading.gif" lazyload alt="docker architecture"></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-comment"># Docker 仓库操作</span><br>  docker pull/push<br><br><span class="hljs-comment"># Docker 镜像管理</span><br>  docker images/rmi/build<br><br><span class="hljs-comment"># Docker 生命周期管理</span><br>  docker run/<span class="hljs-built_in">start</span>/stop/<span class="hljs-built_in">rm</span><br><br><span class="hljs-comment"># to delete all containers including its volumes use,</span><br><span class="hljs-variable">$</span> docker <span class="hljs-built_in">rm</span> <span class="hljs-literal">-vf</span> <span class="hljs-variable">$</span>(docker <span class="hljs-built_in">ps</span> <span class="hljs-literal">-a</span> <span class="hljs-literal">-q</span>)<br><br><span class="hljs-comment"># to delete all Docker images</span><br><span class="hljs-variable">$</span> docker rmi <span class="hljs-variable">$</span>(docker images <span class="hljs-literal">-q</span>)<br><br><span class="hljs-comment"># stop all Docker containers</span><br>&gt; docker <span class="hljs-built_in">ps</span> -- list all running containers<br>&gt;   <span class="hljs-literal">-q</span> flag will only list the IDs <span class="hljs-keyword">for</span> those containers<br><span class="hljs-variable">$</span> docker <span class="hljs-built_in">kill</span> <span class="hljs-variable">$</span>(docker <span class="hljs-built_in">ps</span> <span class="hljs-literal">-q</span>)<br><br><span class="hljs-comment"># Remove all Docker containers</span><br><span class="hljs-variable">$</span> docker <span class="hljs-built_in">rm</span> <span class="hljs-variable">$</span>(docker <span class="hljs-built_in">ps</span> <span class="hljs-literal">-a</span> <span class="hljs-literal">-q</span>)<br></code></pre></td></tr></table></figure>
+
+<h2 id="Docker-Tips"><a href="#Docker-Tips" class="headerlink" title="Docker Tips"></a>Docker Tips</h2><ul>
+<li><p><strong>Docker Tip #1</strong>: Docker 容器进程</p>
+<blockquote>
+<p>A Docker container is just a process/service that runs directly on your machine. It is slightly different than a regular process because the Docker daemon along with the linux kernel do a few things(<strong>Cgroups</strong>、<strong>Namespace</strong>) to ensure it runs in total isolation<br>Docker容器是一种特殊的进程,和虚拟机差别很大</p>
+</blockquote>
+</li>
+<li><p><strong>Docker Tip #2</strong>: COPY vs. ADD in a Dockerfile</p>
+<blockquote>
+<p>COPY 和 ADD 功能很相似，都可以从指定目录拷贝数据到Docker镜像中.</p>
+</blockquote>
+<figure class="highlight oxygene"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs oxygene"># <span class="hljs-keyword">COPY</span> 和 <span class="hljs-keyword">ADD</span> 区别<br><span class="hljs-number">1</span>. <span class="hljs-keyword">COPY</span>: 只能从本机文件或目录中拷贝到镜像中<br><span class="hljs-number">2</span>. <span class="hljs-keyword">ADD</span>: 不仅可以从本机文件或目录中拷贝，还可以使用URL引入外部的文件地址拷贝到镜像中<br>  $ <span class="hljs-keyword">ADD</span> rootfs.tar.gz /<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #3</strong>: 追加 Docker Run 指令减少镜像大小</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># Before Dockerfile -- 新增三个层lager</span><br>RUN wget -O myfile.tar.gz http:<span class="hljs-regexp">//</span>example.com/myfile.tar.gz<br>RUN tar -xvf myfile.tar.gz -C <span class="hljs-regexp">/usr/</span>src/myapp<br>RUN rm myfile.tar.gz<br><br><span class="hljs-comment"># After Dockerfile -- 新增一个层layer</span><br>RUN wget -O myfile.tar.gz http:<span class="hljs-regexp">//</span>example.com/myfile.tar.gz \<br>  &amp;&amp; tar -xvf myfile.tar.gz -C <span class="hljs-regexp">/usr/</span>src/myapp \<br>  &amp;&amp; rm myfile.tar.gz<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #4</strong>: Docker Base镜像OS和Host OS没有关系</p>
+<figure class="highlight sqf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs sqf">Docker <span class="hljs-built_in">Image</span> OS: 定义在Dockerfile文件的Base镜像的系统<br>Host OS: 运行Docker <span class="hljs-built_in">image</span>的环境<br>You can use whatever base <span class="hljs-built_in">image</span> you want <span class="hljs-keyword">for</span> your Docker images.<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #5</strong>: 使用相同Base镜像的好处</p>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql">You could use a different base OS <span class="hljs-keyword">for</span> <span class="hljs-keyword">each</span> Docker image, but <span class="hljs-keyword">then</span> you lose <span class="hljs-keyword">out</span> <span class="hljs-keyword">on</span> the ability <span class="hljs-keyword">to</span> <span class="hljs-keyword">cache</span> it across all of your images<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #6</strong>: RUN vs. CMD in a Dockerfile</p>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">RUN:</span> 在镜像内执行命令，这些指令仅仅在构建build镜像中执行一次，并且将构建结果写入新larger层中.<br><span class="hljs-symbol">CMD:</span> 在启动容器时定义默认的运行的指令, 这种动作发生运行时run-time, 覆盖方式<br><span class="hljs-symbol">ENTRYPOINT:</span> 执行命令参数追加方式<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #7</strong>: Base Docker Image Alpine</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">Why Alpine?<br>&gt; Small. Simple. Secure. Alpine Linux is a security-<span class="hljs-keyword">oriented, </span>lightweight Linux <span class="hljs-keyword">distribution </span><span class="hljs-keyword">based </span>on musl libc <span class="hljs-keyword">and </span><span class="hljs-keyword">busybox.</span><br><span class="hljs-keyword"></span>&gt; Alpine is about <span class="hljs-number">30</span>x smaller than Debian.<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #8</strong>: Project Structure with Multiple Dockerfiles and Docker Compose</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><code class="hljs vim">ubuntu in ~/chyi/micro-services at <span class="hljs-number">3</span>BPlus <span class="hljs-keyword">on</span> 🐳 v20.<span class="hljs-number">10.8</span><br>➜ tree -L <span class="hljs-number">2</span><br>.<br>├── auth<br>│   └── Dockerfile<br>├── billing<br>│   └── Dockerfile<br>├── contact<br>│   └── Dockerfile<br>├── docker-compose.yml<br>└── user<br>    └── Dockerfile<br><br><span class="hljs-number">4</span> directories, <span class="hljs-number">5</span> <span class="hljs-keyword">files</span><br><br>The docker-compose.yaml<br>ubuntu in ~/chyi/micro-services at <span class="hljs-number">3</span>BPlus <span class="hljs-keyword">on</span> 🐳 v20.<span class="hljs-number">10.8</span><br>➜ <span class="hljs-keyword">cat</span> docker-compose.yml<br><span class="hljs-keyword">version</span>: <span class="hljs-string">&#x27;3&#x27;</span><br><br>service<span class="hljs-variable">s:</span><br>    auth:<br>        build: <span class="hljs-string">&#x27;./auth&#x27;</span><br>    billin<span class="hljs-variable">g:</span><br>        build: <span class="hljs-string">&#x27;./billing&#x27;</span><br>    contac<span class="hljs-variable">t:</span><br>        build: <span class="hljs-string">&#x27;./contact&#x27;</span><br>    user:<br>        build: <span class="hljs-string">&#x27;./user&#x27;</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #9</strong>: 使用Volumes</p>
+<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs properties"><span class="hljs-comment"># docker-compose.yaml</span><br><span class="hljs-attr">services</span>:<span class="hljs-string"></span><br>  <span class="hljs-attr">app</span>:<span class="hljs-string"></span><br><span class="hljs-comment">    # Mount the crrent directoy into `/app` inside the running container.</span><br>    <span class="hljs-attr">volumes</span>:<span class="hljs-string"></span><br>      <span class="hljs-meta">-</span> <span class="hljs-string">&#x27;.:/app&#x27;</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #10</strong>: Published Ports</p>
+<blockquote>
+<p>Creates a firwaall rule which maps a container port to a port on the Docker host to the outside world.</p>
+</blockquote>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">Flag value</th>
+<th align="left">Description</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-p 8080:80</td>
+<td align="left">Map TCP port 80 in the container to port 8080 on the Docker host.</td>
+</tr>
+<tr>
+<td align="left">-p 192.168.1.100:8080:80</td>
+<td align="left">Map TCP port 80 in the container to port 8080 on the Docker host for connections to host IP 192.168.1.100.</td>
+</tr>
+<tr>
+<td align="left">-p 8080:80/udp</td>
+<td align="left">Map UDP port 80 in the container to port 8080 on the Docker host.</td>
+</tr>
+<tr>
+<td align="left">-p 8080:80/tcp -p 8080:80/udp</td>
+<td align="left">Map TCP port 80 in the container to TCP port 8080 on the Docker host, and map UDP port 80 in the container to UDP port 8080 on the Docker host.</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p><strong>Docker Tip #11</strong>: dockerignore file</p>
+<figure class="highlight jboss-cli"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs jboss-cli"><span class="hljs-string">.dockerignore</span>: ignore certain files and folders from your Docker images<br>  <span class="hljs-string">.git</span><br>  <span class="hljs-string">.dockerignore</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #12</strong>: Manage Docker without sudo on Linux</p>
+<figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs elixir"><span class="hljs-comment"># Add a docker group and then add your user to it:</span><br><span class="hljs-variable">$ </span>sudo groupadd docker<br><span class="hljs-variable">$ </span>docker usermod -aG docker <span class="hljs-variable">$USER</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #13</strong>: Measure Docker Container’s Resources</p>
+<blockquote>
+<p>How much resources containers are using</p>
+</blockquote>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs x86asm">$ docker stats<br>CONTAINER ID   NAME                                                                                         <span class="hljs-meta">CPU</span> %     MEM USAGE / LIMIT     MEM %     NET I/O     BLOCK I/O         PIDS<br>298d90f942e1   k8s_POD_kafka-zookeeper-0_default_a243d677-<span class="hljs-number">101b</span>-493b-a076-d94f46785f22_0                     <span class="hljs-number">0.00</span>%     724KiB / <span class="hljs-number">3.</span>704GiB     <span class="hljs-number">0.02</span>%     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>           <span class="hljs-number">1</span><br>1d92a13e4a6f   k8s_POD_kafka-0_default_f7374645-<span class="hljs-number">9904</span>-436c-bc8d-43ed415833c1_0                               <span class="hljs-number">0.00</span>%     872KiB / <span class="hljs-number">3.</span>704GiB     <span class="hljs-number">0.02</span>%     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>           <span class="hljs-number">1</span><br>b638c1bbd855   k8s_POD_postgres-postgresql-0_infrastructure_d9067ee1-<span class="hljs-number">6874</span>-<span class="hljs-number">4018</span>-a008-09362ad9330d_16         <span class="hljs-number">0.00</span>%     868KiB / <span class="hljs-number">3.</span>704GiB     <span class="hljs-number">0.02</span>%     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>           <span class="hljs-number">1</span><br>0fdc76799b4e   k8s_kube-flannel_kube-flannel-<span class="hljs-built_in">ds</span>-nk6tj_kube-system_0a186e7a-c0d7-<span class="hljs-number">4282</span>-9f5d-65ee20d0e13a_12   <span class="hljs-number">0.07</span>%     <span class="hljs-number">15.</span>4MiB / 50MiB       <span class="hljs-number">30.80</span>%    <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     <span class="hljs-number">33.</span>1MB / <span class="hljs-number">0B</span>       <span class="hljs-number">11</span><br>4c3705247efa   k8s_kube-proxy_kube-proxy-xwfvl_kube-system_f46216cb-d018-4d82-b510-9be5e01cefca_12          <span class="hljs-number">0.00</span>%     <span class="hljs-number">23.</span>36MiB / <span class="hljs-number">3.</span>704GiB   <span class="hljs-number">0.62</span>%     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     <span class="hljs-number">43.</span>7MB / <span class="hljs-number">12.</span>3kB   <span class="hljs-number">8</span><br>16d5db1e7447   k8s_POD_kube-proxy-xwfvl_kube-system_f46216cb-d018-4d82-b510-9be5e01cefca_13                 <span class="hljs-number">0.00</span>%     <span class="hljs-number">1.</span>996MiB / <span class="hljs-number">3.</span>704GiB   <span class="hljs-number">0.05</span>%     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     487kB / <span class="hljs-number">0B</span>        <span class="hljs-number">1</span><br>496aacf5fddf   k8s_POD_kube-flannel-<span class="hljs-built_in">ds</span>-nk6tj_kube-system_0a186e7a-c0d7-<span class="hljs-number">4282</span>-9f5d-65ee20d0e13a_13            <span class="hljs-number">0.00</span>%     768KiB / <span class="hljs-number">3.</span>704GiB     <span class="hljs-number">0.02</span>%     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>     <span class="hljs-number">0B</span> / <span class="hljs-number">0B</span>           <span class="hljs-number">1</span><br>1e328afeb116   dapr_zipkin                                                                                  <span class="hljs-number">0.17</span>%     <span class="hljs-number">250.</span>2MiB / <span class="hljs-number">3.</span>704GiB   <span class="hljs-number">6.60</span>%     18MB / <span class="hljs-number">0B</span>   60MB / <span class="hljs-number">0B</span>         <span class="hljs-number">55</span><br>27872f88cae3   dapr_placement                                                                               <span class="hljs-number">0.11</span>%     <span class="hljs-number">5.</span>992MiB / <span class="hljs-number">3.</span>704GiB   <span class="hljs-number">0.16</span>%     18MB / <span class="hljs-number">0B</span>   <span class="hljs-number">13.</span>6MB / <span class="hljs-number">0B</span>       <span class="hljs-number">10</span><br>27c1f6daa81c   dapr_redis                                                                                   <span class="hljs-number">0.35</span>%     <span class="hljs-number">5.</span>633MiB / <span class="hljs-number">3.</span>704GiB   <span class="hljs-number">0.15</span>%     18MB / <span class="hljs-number">0B</span>   <span class="hljs-number">10.</span>7MB / <span class="hljs-number">0B</span>       <span class="hljs-number">5</span><br><br>$ docker stats --format <span class="hljs-string">&quot;table &#123;&#123;.Container&#125;&#125;\t&#123;&#123;.CPUPerc&#125;&#125;\t&#123;&#123;.MemUsage&#125;&#125;&quot;</span><br>CONTAINER      <span class="hljs-meta">CPU</span> %     MEM USAGE / LIMIT<br>298d90f942e1   <span class="hljs-number">0.00</span>%     724KiB / <span class="hljs-number">3.</span>704GiB<br>1d92a13e4a6f   <span class="hljs-number">0.00</span>%     872KiB / <span class="hljs-number">3.</span>704GiB<br>b638c1bbd855   <span class="hljs-number">0.00</span>%     868KiB / <span class="hljs-number">3.</span>704GiB<br>0fdc76799b4e   <span class="hljs-number">2.37</span>%     <span class="hljs-number">15.</span>42MiB / 50MiB<br>4c3705247efa   <span class="hljs-number">0.00</span>%     <span class="hljs-number">23.</span>36MiB / <span class="hljs-number">3.</span>704GiB<br>16d5db1e7447   <span class="hljs-number">0.00</span>%     <span class="hljs-number">1.</span>996MiB / <span class="hljs-number">3.</span>704GiB<br>496aacf5fddf   <span class="hljs-number">0.00</span>%     768KiB / <span class="hljs-number">3.</span>704GiB<br>1e328afeb116   <span class="hljs-number">0.21</span>%     <span class="hljs-number">250.</span>2MiB / <span class="hljs-number">3.</span>704GiB<br>27872f88cae3   <span class="hljs-number">0.12</span>%     <span class="hljs-number">5.</span>992MiB / <span class="hljs-number">3.</span>704GiB<br>27c1f6daa81c   <span class="hljs-number">0.34</span>%     <span class="hljs-number">5.</span>633MiB / <span class="hljs-number">3.</span>704GiB<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #14</strong>: Docker Compose vs Docker Stack</p>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-comment"># Docker Compose: is an official tool that helps you manage your Docker containers by letting you define everything through a docker-compose.yml file.</span><br><br><span class="hljs-comment"># docker stack: is a command that&#x27;s embedded into the Docker CLI. Lets you manage a cluster of Docker containers through Docker Swarm.</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #15</strong>: Metadata Docker Images with Labels</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs dockerfile"><span class="hljs-comment"># Dockerfile example of adding 2 labels with 1 LABEL instruction:</span><br><span class="hljs-keyword">LABEL</span><span class="bash"> &lt;key&gt;=&lt;value&gt;</span><br><span class="hljs-keyword">LABEL</span><span class="bash"> version=<span class="hljs-string">&quot;1.0&quot;</span> maintainer=<span class="hljs-string">&quot;chyi &lt;nick.chyi@gmail.com&gt;&quot;</span></span><br><br><span class="hljs-comment"># Docker build example to add dynamic labels to your Docker images:</span><br>$ docker build . --<span class="hljs-keyword">label</span><span class="bash"> <span class="hljs-string">&quot;version=1.0&quot;</span> --label <span class="hljs-string">&quot;maintaner=chyi &lt;nick.chyi@gmail.com&gt;&quot;</span></span><br><br><span class="hljs-comment"># docker inspect images</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #16</strong>: Named Volumes vs Path Based Volumes</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># Named volumes</span><br>  postgres:<span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/postgresql/</span>data<br><br>  docker-compose automatically create the postgres volume, <span class="hljs-keyword">if</span> not you could running __$ docker volume create postgres__.<br>  On Linux, the volume will get saved to <span class="hljs-regexp">/var/</span>lib<span class="hljs-regexp">/docker/</span>volumes<span class="hljs-regexp">/postgres/</span>_data<br><br><span class="hljs-comment"># Path based volumes</span><br>  .<span class="hljs-regexp">/postgres:/</span>var<span class="hljs-regexp">/lib/</span>postgresql/data<br><br>  postgres/ directory would get created <span class="hljs-keyword">in</span> the current directory on the Docker host.<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #17</strong>: The Volume or Mount Flag</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># Setting up a volume the old way with docker run:</span><br>$ docker container run … -v <span class="hljs-string">&quot;<span class="hljs-subst">$(pwd)</span>&quot;</span>:/myapp<br><br><span class="hljs-comment"># Setting up the same volumes using the mount flag with docker run:</span><br>$ docker container run … --mount <span class="hljs-built_in">type</span>=<span class="hljs-built_in">bind</span>,<span class="hljs-built_in">source</span>=<span class="hljs-string">&quot;<span class="hljs-subst">$(pwd)</span>&quot;</span>,target=/myapp<br><br><span class="hljs-comment"># Docker compose</span><br>volumes:<br>  - <span class="hljs-built_in">type</span>: <span class="hljs-string">&quot;bind&quot;</span><br>    <span class="hljs-built_in">source</span>: <span class="hljs-string">&quot;.&quot;</span><br>    target: <span class="hljs-string">&quot;/myapp&quot;</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #18</strong>: Connect to a Service Running on Docker Host</p>
+<blockquote>
+<p>Implementation of connecting to Docker host over a custom network with a static IP address.</p>
+</blockquote>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># Create a custom bridge Docker network</span><br>ubuntu <span class="hljs-keyword">in</span> ~ at <span class="hljs-number">3</span>BPlus<br>➜ docker network create -d bridge --subnet <span class="hljs-number">192.168</span>.<span class="hljs-number">0.0</span>/<span class="hljs-number">24</span> --gateway <span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span> mynet<br><span class="hljs-number">0330</span>b879fcc8fb23eeb092cb66fd86f1796e7f0abe37df4978903cf8fd07217b<br><br>ubuntu <span class="hljs-keyword">in</span> ~ at <span class="hljs-number">3</span>BPlus<br>➜ ifconfig<br>br-<span class="hljs-number">0330</span>b879fcc8: flags=<span class="hljs-number">4099</span>&lt;UP,BROADCAST,MULTICAST&gt;  mtu <span class="hljs-number">1500</span><br>        inet <span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span>  netmask <span class="hljs-number">255.255</span>.<span class="hljs-number">255.0</span>  broadcast <span class="hljs-number">192.168</span>.<span class="hljs-number">0.255</span><br>        ether <span class="hljs-number">02</span>:<span class="hljs-number">42</span>:<span class="hljs-number">16</span>:<span class="hljs-number">0</span>c:c0:<span class="hljs-number">51</span>  txqueuelen <span class="hljs-number">0</span>  (Ethernet)<br>        RX packets <span class="hljs-number">0</span>  bytes <span class="hljs-number">0</span> (<span class="hljs-number">0.0</span> B)<br>        RX errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span>  overruns <span class="hljs-number">0</span>  frame <span class="hljs-number">0</span><br>        TX packets <span class="hljs-number">0</span>  bytes <span class="hljs-number">0</span> (<span class="hljs-number">0.0</span> B)<br>        TX errors <span class="hljs-number">0</span>  dropped <span class="hljs-number">0</span> overruns <span class="hljs-number">0</span>  carrier <span class="hljs-number">0</span>  collisions <span class="hljs-number">0</span><br><br><span class="hljs-comment"># Start the Alpine container and drop into a Shell prompt.</span><br>ubuntu <span class="hljs-keyword">in</span> ~ at <span class="hljs-number">3</span>BPlus<br>➜ docker container run --rm -it alpine sh<br><br><span class="hljs-comment"># Install the ping utility.</span><br>/ <span class="hljs-comment"># apk update &amp;&amp; apk add iputils</span><br>fetch https:<span class="hljs-regexp">//</span>dl-cdn.alpinelinux.org<span class="hljs-regexp">/alpine/</span>v3.<span class="hljs-number">14</span><span class="hljs-regexp">/main/</span>aarch64/APKINDEX.tar.gz<br>fetch https:<span class="hljs-regexp">//</span>dl-cdn.alpinelinux.org<span class="hljs-regexp">/alpine/</span>v3.<span class="hljs-number">14</span><span class="hljs-regexp">/community/</span>aarch64/APKINDEX.tar.gz<br>v3.<span class="hljs-number">14.2</span>-<span class="hljs-number">5</span>-gd4163d4c6c [https:<span class="hljs-regexp">//</span>dl-cdn.alpinelinux.org<span class="hljs-regexp">/alpine/</span>v3.<span class="hljs-number">14</span>/main]<br>v3.<span class="hljs-number">14.2</span>-<span class="hljs-number">4</span>-ga15b4dc067 [https:<span class="hljs-regexp">//</span>dl-cdn.alpinelinux.org<span class="hljs-regexp">/alpine/</span>v3.<span class="hljs-number">14</span>/community]<br>OK: <span class="hljs-number">14810</span> distinct packages available<br>(<span class="hljs-number">1</span>/<span class="hljs-number">2</span>) Installing libcap (<span class="hljs-number">2.50</span>-r0)<br>(<span class="hljs-number">2</span>/<span class="hljs-number">2</span>) Installing iputils (<span class="hljs-number">20210202</span>-r0)<br>Executing busybox-<span class="hljs-number">1.33</span>.<span class="hljs-number">1</span>-r3.trigger<br>OK: <span class="hljs-number">6</span> MiB <span class="hljs-keyword">in</span> <span class="hljs-number">16</span> packages<br><br><span class="hljs-comment"># Ping the custom IP address we set up.</span><br>/ <span class="hljs-comment"># ping 192.168.0.1</span><br><br><span class="hljs-comment"># You should see this output (hit CTRL+C to stop it)</span><br>PING <span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span> (<span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span>) <span class="hljs-number">56</span>(<span class="hljs-number">84</span>) bytes of data.<br><span class="hljs-number">64</span> bytes from <span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span>: icmp_seq=<span class="hljs-number">1</span> ttl=<span class="hljs-number">64</span> time=<span class="hljs-number">0.336</span> ms<br><span class="hljs-number">64</span> bytes from <span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span>: icmp_seq=<span class="hljs-number">2</span> ttl=<span class="hljs-number">64</span> time=<span class="hljs-number">0.293</span> ms<br>^C<br>--- <span class="hljs-number">192.168</span>.<span class="hljs-number">0.1</span> ping statistics ---<br><span class="hljs-number">2</span> packets transmitted, <span class="hljs-number">2</span> received, <span class="hljs-number">0</span>% packet loss, time <span class="hljs-number">1013</span>ms<br>rtt min<span class="hljs-regexp">/avg/m</span>ax<span class="hljs-regexp">/mdev = 0.293/</span><span class="hljs-number">0.314</span><span class="hljs-regexp">/0.336/</span><span class="hljs-number">0.021</span> ms<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #19</strong>: Show Total Disk Space Used by Docker</p>
+<figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs tap">ubuntu in ~ at 3BPlus<br>➜ docker system df<br>TYPE            TOTAL     ACTIVE    SIZE      RECLAIMABLE<br>Images         <span class="hljs-number"> 3 </span>       <span class="hljs-number"> 2 </span>        203.9MB   198.5MB (97%)<br>Containers     <span class="hljs-number"> 3 </span>       <span class="hljs-number"> 1 </span>        2.524MB   0B (0%)<br>Local Volumes  <span class="hljs-number"> 1 </span>       <span class="hljs-number"> 0 </span>        0B        0B<br>Build Cache    <span class="hljs-number"> 0 </span>       <span class="hljs-number"> 0 </span>        0B        0B<br><br><span class="hljs-comment"># -v flag (verbose) - will show the unique image size for each image</span><br>ubuntu in ~ at 3BPlus<br>➜ docker system df -v<br>Images space usage:<br><br>REPOSITORY            TAG       IMAGE ID       CREATED       SIZE      SHARED SIZE   UNIQUE SIZE   CONTAINERS<br>alpine                latest    bb3de5531c18  <span class="hljs-number"> 4 </span>days ago    5.337MB   0B            5.337MB       2<br>hello-world           latest    bc11b176a293  <span class="hljs-number"> 7 </span>weeks ago   9.136kB   0B            9.136kB       1<br>bahamat/unix-1st-ed   latest    37aa142d2113  <span class="hljs-number"> 5 </span>years ago   198.5MB   0B            198.5MB       0<br><br>Containers space usage:<br><br>CONTAINER ID   IMAGE         COMMAND            LOCAL VOLUMES   SIZE      CREATED       STATUS                   NAMES<br>9023720cdee7   alpine        &quot;sh&quot;              <span class="hljs-number"> 0 </span>              2.52MB   <span class="hljs-number"> 5 </span>hours ago   Up<span class="hljs-number"> 5 </span>hours               upbeat_kepler<br>9e272ab58362   alpine        &quot;sh -c &#x27;exit 1&#x27;&quot;  <span class="hljs-number"> 0 </span>              0B       <span class="hljs-number"> 6 </span>hours ago   Exited (1)<span class="hljs-number"> 6 </span>hours ago   naughty_blackburn<br>d95cc7e19d43   hello-world   &quot;/hello&quot;          <span class="hljs-number"> 0 </span>              0B       <span class="hljs-number"> 7 </span>weeks ago   Exited (0)<span class="hljs-number"> 7 </span>weeks ago   nifty_hellman<br><br>Local Volumes space usage:<br><br>VOLUME NAME   LINKS     SIZE<br>user_my-db   <span class="hljs-number"> 0 </span>        0B<br><br>Build cache usage: 0B<br><br>CACHE ID   CACHE TYPE   SIZE      CREATED   LAST USED   USAGE     SHARED<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #20</strong>: Docker Compose Stop vs Down</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># docker-compose stop</span><br>&gt; stop container, <span class="hljs-keyword">but</span> <span class="hljs-keyword">it</span> won&#x27;t remove them<br><br><span class="hljs-comment"># docker-compose down</span><br>&gt; stop container, removes <span class="hljs-keyword">the</span> stopped containers <span class="hljs-keyword">as</span> well <span class="hljs-keyword">as</span> any networks <span class="hljs-keyword">that</span> were created.<br><br><span class="hljs-comment"># docker-compose down -v</span><br>&gt; add remove all volumes too.<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #21</strong>: Difference between Docker Create, Start and Run</p>
+<figure class="highlight applescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs applescript"><span class="hljs-comment"># Create:</span><br>  adds a writeable container <span class="hljs-keyword">on</span> top <span class="hljs-keyword">of</span> your image <span class="hljs-keyword">and</span> sets <span class="hljs-keyword">it</span> up <span class="hljs-keyword">for</span> <span class="hljs-built_in">running</span> whatever command you specified <span class="hljs-keyword">in</span> you CMD. The container ID <span class="hljs-keyword">is</span> reported <span class="hljs-keyword">back</span> <span class="hljs-keyword">but</span> <span class="hljs-keyword">it</span>&#x27;s <span class="hljs-keyword">not</span> started.<br><br><span class="hljs-comment"># Start:</span><br>  will start any stopped container.<br><br><span class="hljs-comment"># Run:</span><br>  combination <span class="hljs-keyword">of</span> create <span class="hljs-keyword">and</span> start, It creates <span class="hljs-keyword">the</span> container <span class="hljs-keyword">and</span> starts <span class="hljs-keyword">it</span>.<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #22</strong>: Docker Mem Limit</p>
+<figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs node-repl"><span class="hljs-meta">&gt;</span> <span class="javascript">默认情况下容器使用的资源不受限制，可以使用主机内核调度器所允许的最大资源</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">限制容器不能过多的使用主机的内存，一旦内存检测到没有足够的内存可以分配，就会出现OOM(Out Of Memory Exception). 并开始随机Kill一些进程用于释放内存空间，docker尝试调整docker daemon 的OOM优先级进行缓解，内核在选择杀死的进程时会对所有的进程打分，直接杀死得分最高的进程，docker daemon的OOM优先级被降低</span><br></code></pre></td></tr></table></figure>
+<ul>
+<li><a href="/misc/code/script/show_process_score.sh">show_process_score.sh</a><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># 脚本输出得分最高的10个进程,并排序</span><br>  ➜ ./show_process_score.sh<br>  <span class="hljs-number">672</span>  <span class="hljs-number">1510</span> <span class="hljs-regexp">/usr/</span>bin/gnome-shell<br>  <span class="hljs-number">669</span>  <span class="hljs-number">1811</span> <span class="hljs-regexp">/usr/</span>libexec/gnome-initial-setup --existing-user<br>  <span class="hljs-number">668</span>  <span class="hljs-number">1010</span> <span class="hljs-regexp">/usr/</span>lib<span class="hljs-regexp">/xorg/</span>Xorg vt2 -displayfd <span class="hljs-number">3</span> -auth <span class="hljs-regexp">/run/u</span>se<br>  <span class="hljs-number">667</span>  <span class="hljs-number">2062</span> update-notifier<br>  <span class="hljs-number">667</span>  <span class="hljs-number">1760</span> <span class="hljs-regexp">/usr/</span>libexec<span class="hljs-regexp">/evolution-data-server/</span>evolution-alarm<br>  <span class="hljs-number">667</span>  <span class="hljs-number">1128</span> <span class="hljs-regexp">/usr/</span>libexec/goa-daemon<br>  <span class="hljs-number">666</span>   <span class="hljs-number">996</span> <span class="hljs-regexp">/usr/</span>libexec/tracker-miner-fs<br>  <span class="hljs-number">666</span>   <span class="hljs-number">994</span> <span class="hljs-regexp">/usr/</span>bin/pulseaudio --daemonize=no --log-target=jo<br>  <span class="hljs-number">666</span>   <span class="hljs-number">988</span> (sd-pam)<br>  <span class="hljs-number">666</span>   <span class="hljs-number">987</span> <span class="hljs-regexp">/lib/</span>systemd/systemd --user<br><br><span class="hljs-comment"># 降低OOM风险:</span><br>  - 通过测试掌握应用对内存的需求<br>  - 保证运行容器的主机有充足的内存<br>  - 限制容器可以使用的内存<br>  - 为主机配置Swap<br><br></code></pre></td></tr></table></figure></li>
+<li>压力测试工具 stress<figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs armasm"><span class="hljs-comment"># stress</span><br>&gt; a tool for generating workload. <span class="hljs-keyword">It</span> can produce CPU, memory, I/O, <span class="hljs-keyword">and</span> disk stress.<br></code></pre></td></tr></table></figure></li>
+<li><a href="/misc/code/devops/benchmark/stress.Dockerfile">stress.Dockerfile</a><figure class="highlight tap"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs tap"><span class="hljs-comment"># 创建镜像</span><br>➜ docker build -f stress.Dockerfile -t chyiyaqing/u-stress:latest .<br><br><span class="hljs-comment"># 限制内存使用上限(memory-swap值包含容器可用内存和可用swap;)</span><br>➜ docker run -it -m 300M --memory-swap -1 --name con1 chyiyaqing/u-stress /bin/bash<br>root@1a3df043e956:/<span class="hljs-comment"># stress --vm 1 --vm-bytes 500M</span><br>stress: info: [9] dispatching hogs:<span class="hljs-number"> 0 </span>cpu,<span class="hljs-number"> 0 </span>io,<span class="hljs-number"> 1 </span>vm,<span class="hljs-number"> 0 </span>hdd<br><br><span class="hljs-comment"># docker stats 查看</span><br>$ docker stats<br>CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O       BLOCK I/O     PIDS<br>1a3df043e956   con1      71.85%    300MiB / 300MiB     100.00%   6.71kB / 0B   3.45GB / 0B   3<br><br><span class="hljs-comment"># Top命令查看stress进程内存实际情况</span><br>chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 5s<br><span class="hljs-comment"># pgrep 命令查询stress命令相关进程</span><br>➜ pgrep stress<br>48622<br>48623<br><br>chyiyaqing in ~ at chyiyaqing-PowerEdge-R720<br>➜ top -p 48623<br>top - 22:40:23 up<span class="hljs-number"> 2 </span>days,  5:40, <span class="hljs-number"> 4 </span>users,  load average: 0.95, 0.47, 0.18<br>Tasks:  <span class="hljs-number"> 1 </span>total,  <span class="hljs-number"> 1 </span>running,  <span class="hljs-number"> 0 </span>sleeping,  <span class="hljs-number"> 0 </span>stopped,  <span class="hljs-number"> 0 </span>zombie<br>%Cpu(s):  0.1 us,  2.0 sy,  0.0 ni, 97.1 id,  0.8 wa,  0.0 hi,  0.0 si,  0.0 st<br>MiB Mem :  32106.2 total,  27283.4 free,   1420.6 used,   3402.2 buff/cache<br>MiB Swap:   2048.0 total,   1545.3 free,    502.7 used.  30224.1 avail Mem<br><br>    PID USER      PR  NI    VIRT    RES    SHR S  %CPU  %MEM     TIME+ COMMAND<br> <span class="hljs-number"> 48623 </span>root     <span class="hljs-number"> 20 </span> <span class="hljs-number"> 0 </span><span class="hljs-number"> 515868 </span>305460   <span class="hljs-number"> 272 </span>R  71.7   0.9   2:02.53 stress<br><br><span class="hljs-comment"># VIRT 进程虚拟内存大小; RES 实际分配物理内存大小</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>Docker Tip #23</strong>: Docker CPU Limit</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br></pre></td><td class="code"><pre><code class="hljs vim">&gt; 默认情况下容器可以不受限制的使用CPU/内存资源, 如果不对容器使用进行限制，一旦发生容器程序异常使用CPU/Mem情况，可能会把整个主机CPU/Mem资源耗尽.<br><br># 限制可用CPU个数<br>➜ docker run --rm -it --cpus=<span class="hljs-number">2</span> chyiyaqing/<span class="hljs-keyword">u</span>-stress /bin/bash<br><br>root@f11127fe7c50:/# stress -<span class="hljs-keyword">c</span> <span class="hljs-number">4</span><br>stres<span class="hljs-variable">s:</span> info: [<span class="hljs-number">9</span>] dispatching hog<span class="hljs-variable">s:</span> <span class="hljs-number">4</span> cpu, <span class="hljs-number">0</span> io, <span class="hljs-number">0</span> <span class="hljs-keyword">vm</span>, <span class="hljs-number">0</span> hdd<br><br># docker stats<br>CONTAINER ID   NAME                CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS<br>f11127fe7c50   competent_noether   <span class="hljs-number">198.98</span>%   <span class="hljs-number">1.695</span>MiB / <span class="hljs-number">31.35</span>GiB   <span class="hljs-number">0.01</span>%     <span class="hljs-number">39.7</span>kB / <span class="hljs-number">0</span>B   <span class="hljs-number">0</span>B / <span class="hljs-number">0</span>B     <span class="hljs-number">6</span><br><br># Top<br>Task<span class="hljs-variable">s:</span> <span class="hljs-number">468</span> total,   <span class="hljs-number">5</span> running, <span class="hljs-number">463</span> sleeping,   <span class="hljs-number">0</span> stopped,   <span class="hljs-number">0</span> zombie<br>%Cpu0  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu1  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu2  : <span class="hljs-number">50.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni, <span class="hljs-number">50.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span>     --<br>%Cpu3  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu4  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu5  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu6  :  <span class="hljs-number">5.0</span> us,  <span class="hljs-number">5.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni, <span class="hljs-number">90.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu7  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu8  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu9  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu10 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu11 : <span class="hljs-number">50.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni, <span class="hljs-number">50.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span>     --<br>%Cpu12 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu13 : <span class="hljs-number">47.4</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni, <span class="hljs-number">52.6</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span>     --<br>%Cpu14 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu15 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu16 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu17 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu18 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu19 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu20 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu21 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu22 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu23 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu24 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu25 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu26 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu27 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu28 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu29 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu30 :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu31 : <span class="hljs-number">50.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni, <span class="hljs-number">50.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span>     --<br>MiB Mem :  <span class="hljs-number">32106.2</span> total,  <span class="hljs-number">27901.2</span> free,   <span class="hljs-number">1119.0</span> used,   <span class="hljs-number">3086.0</span> buff/cache<br>MiB Swap:   <span class="hljs-number">2048.0</span> total,   <span class="hljs-number">2044.6</span> free,      <span class="hljs-number">3.4</span> used.  <span class="hljs-number">30537.0</span> avail Mem<br><br>查看Top真实情况不是两个CPU负载<span class="hljs-number">100</span>%, 而是容器消耗CPU总共<span class="hljs-number">200</span>%的负载，进程没有CPU数的限制，只能通过进程消耗CPU时间片统计出进程占用CPU的百分比<br><br># 指定固定CPU<br>  &gt; 通过--cpuset-cpus设置容器运行在几个固定的CPU上, 因为多核系统每个核心都有自己的缓存,频繁的调度进程在不同的核心上执行会带来缓存失效的开销<br>  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720<br>  ➜ docker run --rm -it --cpuset-cpus=<span class="hljs-string">&quot;0,1,2,3&quot;</span> chyiyaqing/<span class="hljs-keyword">u</span>-stress /bin/bash<br><br># 启动塔里测试命令<br>root@<span class="hljs-number">95110</span>b6915af:/# stress -<span class="hljs-keyword">c</span> <span class="hljs-number">10</span><br>stres<span class="hljs-variable">s:</span> info: [<span class="hljs-number">12</span>] dispatching hog<span class="hljs-variable">s:</span> <span class="hljs-number">4</span> cpu, <span class="hljs-number">0</span> io, <span class="hljs-number">0</span> <span class="hljs-keyword">vm</span>, <span class="hljs-number">0</span> hdd<br><br># docker stats<br>CONTAINER ID   NAME                 CPU %     MEM USAGE / LIMIT    MEM %     NET I/O      BLOCK I/O   PIDS<br><span class="hljs-number">39</span>b4ce536148   frosty_stonebraker   <span class="hljs-number">399.38</span>%   <span class="hljs-number">2.43</span>MiB / <span class="hljs-number">31.35</span>GiB   <span class="hljs-number">0.01</span>%     <span class="hljs-number">3.9</span>kB / <span class="hljs-number">0</span>B   <span class="hljs-number">0</span>B / <span class="hljs-number">0</span>B     <span class="hljs-number">12</span><br><br># Top<br>➜ top<br>top - <span class="hljs-number">23</span>:<span class="hljs-number">08</span>:<span class="hljs-number">19</span> <span class="hljs-keyword">up</span> <span class="hljs-number">2</span> days,  <span class="hljs-number">6</span>:<span class="hljs-number">08</span>,  <span class="hljs-number">4</span> users,  load average: <span class="hljs-number">6.97</span>, <span class="hljs-number">3.73</span>, <span class="hljs-number">2.01</span><br>Task<span class="hljs-variable">s:</span> <span class="hljs-number">496</span> total,  <span class="hljs-number">11</span> running, <span class="hljs-number">485</span> sleeping,   <span class="hljs-number">0</span> stopped,   <span class="hljs-number">0</span> zombie<br>%Cpu0  :<span class="hljs-number">100.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,  <span class="hljs-number">0.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu1  :<span class="hljs-number">100.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,  <span class="hljs-number">0.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu2  :<span class="hljs-number">100.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,  <span class="hljs-number">0.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu3  :<span class="hljs-number">100.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,  <span class="hljs-number">0.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu4  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni, <span class="hljs-number">97.7</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">2.3</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br><br># 设置CPU的权重<br>&gt; 设置CPU权重只有在容器争用CPU资源的情况下，CPU的权重才能让不同的容器分到不同的CPU用量 --cpu-shares 设置CPU权重，默认值为<span class="hljs-number">1024</span>,<br><br># 运行两个容器，指定使用CPU0，分别设置--cpu-shares <span class="hljs-number">512</span>,<span class="hljs-number">1024</span><br>  ➜ docker run --rm -it --cpuset-cpus=<span class="hljs-string">&quot;0&quot;</span> --cpu-shares=<span class="hljs-number">512</span> chyiyaqing/<span class="hljs-keyword">u</span>-stress /bin/bash<br>  ➜ docker run --rm -it --cpuset-cpus=<span class="hljs-string">&quot;0&quot;</span> --cpu-shares=<span class="hljs-number">1024</span> chyiyaqing/<span class="hljs-keyword">u</span>-stress /bin/bash<br><br># 两个容器都运行stress -<span class="hljs-keyword">c</span> <span class="hljs-number">4</span><br><br># top<br>➜ top<br>top - <span class="hljs-number">23</span>:<span class="hljs-number">14</span>:<span class="hljs-number">14</span> <span class="hljs-keyword">up</span> <span class="hljs-number">2</span> days,  <span class="hljs-number">6</span>:<span class="hljs-number">14</span>,  <span class="hljs-number">5</span> users,  load average: <span class="hljs-number">5.30</span>, <span class="hljs-number">5.25</span>, <span class="hljs-number">3.42</span><br>Task<span class="hljs-variable">s:</span> <span class="hljs-number">495</span> total,   <span class="hljs-number">9</span> running, <span class="hljs-number">486</span> sleeping,   <span class="hljs-number">0</span> stopped,   <span class="hljs-number">0</span> zombie<br>%Cpu0  :<span class="hljs-number">100.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,  <span class="hljs-number">0.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br>%Cpu1  :  <span class="hljs-number">0.0</span> us,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">sy</span>,  <span class="hljs-number">0.0</span> ni,<span class="hljs-number">100.0</span> id,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">wa</span>,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">hi</span>,  <span class="hljs-number">0.0</span> si,  <span class="hljs-number">0.0</span> <span class="hljs-keyword">st</span><br><br># docker stats<br>CONTAINER ID   NAME                CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O   PIDS<br>f9c8864fab87   beautiful_neumann   <span class="hljs-number">66.39</span>%    <span class="hljs-number">1.695</span>MiB / <span class="hljs-number">31.35</span>GiB   <span class="hljs-number">0.01</span>%     <span class="hljs-number">5.23</span>kB / <span class="hljs-number">0</span>B   <span class="hljs-number">0</span>B / <span class="hljs-number">0</span>B     <span class="hljs-number">6</span><br><span class="hljs-number">6</span>b69afc7fea5   pensive_vaughan     <span class="hljs-number">33.41</span>%    <span class="hljs-number">1.676</span>MiB / <span class="hljs-number">31.35</span>GiB   <span class="hljs-number">0.01</span>%     <span class="hljs-number">7.17</span>kB / <span class="hljs-number">0</span>B   <span class="hljs-number">0</span>B / <span class="hljs-number">0</span>B     <span class="hljs-number">6</span><br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #24</strong>: Docker import/export vs. load/save</p>
+<figure class="highlight vbnet"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs vbnet">➜ docker --help | grep -E <span class="hljs-string">&quot;(export|import|load|save)&quot;</span><br>export      Export a container<span class="hljs-comment">&#x27;s filesystem as a tar archive</span><br>import      Import the contents <span class="hljs-keyword">from</span> a tarball <span class="hljs-keyword">to</span> create a filesystem image<br>load        Load an image <span class="hljs-keyword">from</span> a tar archive <span class="hljs-built_in">or</span> STDIN<br>save        Save one <span class="hljs-built_in">or</span> more images <span class="hljs-keyword">to</span> a tar archive (streamed <span class="hljs-keyword">to</span> STDOUT <span class="hljs-keyword">by</span> <span class="hljs-keyword">default</span>)<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #25</strong>: Docker网络模式</p>
+<table>
+<thead>
+<tr>
+<th align="left">Docker 网络模式</th>
+<th align="left">配置</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">host模式</td>
+<td align="left">-net=host</td>
+<td align="left">容器和宿主机共享Network namespace</td>
+</tr>
+<tr>
+<td align="left">container 模式</td>
+<td align="left">-net=container:NAME_or_ID</td>
+<td align="left">容器与另外一个容器共享Network namespace, kubernetes中的pod就是多个容器共享一个Network namespace</td>
+</tr>
+<tr>
+<td align="left">none模式</td>
+<td align="left">-net=none</td>
+<td align="left">容器有独立的Network namespace,但并没有对其进行任何网络设置</td>
+</tr>
+<tr>
+<td align="left">bridge模式</td>
+<td align="left">-net=bridge</td>
+<td align="left">默认为该模式</td>
+</tr>
+</tbody></table>
+<figure class="highlight less"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs less"># 实现原理<br>  &gt; 宿主机虚拟一个<span class="hljs-selector-tag">Docker</span>容器网桥(docker0), <span class="hljs-selector-tag">Docker</span>启动一个容器时会根据<span class="hljs-selector-tag">Docker</span>网桥(docker0)的网段分配给容器一个<span class="hljs-selector-tag">IP</span>地址，称为<span class="hljs-selector-tag">Container-IP</span>,同时<span class="hljs-selector-tag">Docker</span>网桥是每个容器的默认网关.因为同一宿主机内的容器都接入同一网桥，这样容器之间就能够通过容器的<span class="hljs-selector-tag">Container-IP</span>直接通信.<br>  &gt; <span class="hljs-selector-tag">Docker</span>网桥是宿主主机虚拟出来的，并不是真是存在的网络设备，外部网络是无法寻址到，如果容器希望外部能够访问到，可以通过映射容器端口到宿主主机(端口映射),访问容器的时候就通过<span class="hljs-selector-attr">[宿主主机IP]</span>:<span class="hljs-selector-attr">[容器端口]</span>访问容器<br><br></code></pre></td></tr></table></figure>
+<ul>
+<li>host模式<br><img src="/misc/images/docker-network-host.png" srcset="/img/loading.gif" lazyload alt="Host模式"><figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs node-repl"><span class="hljs-meta">&gt;</span> <span class="javascript">容器使用host模式将使用宿主主机的IP和端口,容器的其他方面，文件系统、进程列表还是和宿主主机隔离</span><br><span class="hljs-meta">&gt;</span> <span class="javascript">使用host模式的容器可以直接使用宿主主机的IP地址与外界通信，容器内部的服务端口也可以使用宿主主机的端口，不需要进行NAT，host最大优势是网络性能比较好，但是docker host上已经使用的端口就不能再使用,网络隔离型不好</span><br></code></pre></td></tr></table></figure></li>
+<li>container模式<br><img src="/misc/images/docker-network-container.png" srcset="/img/loading.gif" lazyload alt="Container模式"><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs armasm">&gt; 新创建的容器和已经存在的一个容器共享一个Network Namespace.新创建的容器不会创建自己的网卡，配置自己的<span class="hljs-built_in">IP</span>，而是和指定的容器共享<span class="hljs-built_in">IP</span>和端口范围, 两个容器的进程可以通过lo网卡设备通信<br></code></pre></td></tr></table></figure></li>
+<li>none模式<br><img src="/misc/images/docker-network-none.png" srcset="/img/loading.gif" lazyload alt="None模式"><figure class="highlight fortran"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs fortran">&gt; <span class="hljs-keyword">None</span>模式,Docker容器拥有自己的Network Namespace,但是，并不为Docker容器进行任何网络配置，Docker容器没有网卡、IP、路由,需要自己对Docker容器添加网卡、配置IP<br>&gt; <span class="hljs-keyword">None</span>模式下只有lo回环网络，没有其他网卡，<span class="hljs-keyword">None</span>模式可以在容器创建时通过network=<span class="hljs-keyword">None</span>指定，这类网络没办法联网，封闭的网络能很好的保证容器的安全<br></code></pre></td></tr></table></figure></li>
+<li>bridge模式<br><img src="/misc/images/docker-network-bridge.png" srcset="/img/loading.gif" lazyload alt="Bridge模式"><figure class="highlight node-repl"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs node-repl"><span class="hljs-meta">&gt;</span> <span class="javascript">bridge模式是docker默认网络模式,不写--net参数就是bridge模式</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p><strong>Docker Tip #26</strong>: Alphine Linux Dockerfile</p>
+<figure class="highlight subunit"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs subunit">chyiyaqing in core at chyiyaqing-PowerEdge-R720 on  feat/adaptation-kingbases [!?] via 🐹 v1.17.1 on 🐳 v20.10.10<br>➜ docker run core:BF<span class="hljs-string">-9748</span><br><span class="hljs-keyword">Error </span>relocating /root/core/blocface-core: __vfprintf_chk: symbol not found<br><span class="hljs-keyword">Error </span>relocating /root/core/blocface-core: __fprintf_chk: symbol not found<br><br>在Alpine Linux上, not found错误是动态链接失败的典型特征，musl的ldd链接器存在一个相当混乱的错误，大多数Linux软件都是与glibc(GNUlibc库)相链接(libc提供了标准的C库和posixapi),大多数Linux发行版本都是基于glibc, alpineLinux是基于muslibc库(这是最小的实现，严格遵守POSIX).<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #27</strong>: 防止容器自动退出</p>
+<figure class="highlight gherkin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><code class="hljs gherkin">&gt; docker容器的生命周期是同容器中的前置进程相关在一起,前置进程运行结束后，容器便自动退出<br><br>下文使用alpine镜像做为基础镜像，创建一个alpine系统小容器,让其可以常驻运行，以便我们登陆交互执行<br><br>  <span class="hljs-comment"># 使用alpine系统镜像创建容器</span><br>  <span class="hljs-comment"># -i interactive=true 开启stdin</span><br>  <span class="hljs-comment"># -t tty=true 分配会话终端</span><br>  <span class="hljs-comment"># -d 守护模式 不加就直接进入容器中需要ctrl+p+q切出，</span><br><br>  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 9s<br>  ➜ docker run -it -d --name my_alpine alpine sh<br>  Unable to find image &#x27;alpine:latest&#x27; locally<br>  latest: Pulling from library/alpine<br>  a0d0a0d46f8b: Pull complete<br>  Digest: sha256:e1c082e3d3c45cccac829840a25941e679c25d438cc8412c2fa221cf1a824e6a<br>  Status: Downloaded newer image for alpine:latest<br>  78c0429dd98fe42addaa2071ffe1ca6c22295ea6d6d465ff1f970644f6234a37<br><br>  <span class="hljs-comment"># my_alpine 容器处于运行状态</span><br>  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 8s<br>  ➜ docker ps |<span class="hljs-string"> grep alpine</span><br><span class="hljs-string">  78c0429dd98f   alpine                                                          &quot;sh&quot;                     34 seconds ago   Up 34 seconds                                                         my_alpine</span><br><span class="hljs-string"></span><br><span class="hljs-string">  # 登入容器</span><br><span class="hljs-string">  chyiyaqing in ~ at chyiyaqing-PowerEdge-R720</span><br><span class="hljs-string">  ➜ docker exec -it my_alpine sh</span><br><span class="hljs-string"></span><br><span class="hljs-string">  # 查看 sh 会话数量</span><br><span class="hljs-string">  / # ps</span><br><span class="hljs-string">  PID   USER     TIME  COMMAND</span><br><span class="hljs-string">      1 root      0:00 sh</span><br><span class="hljs-string">      7 root      0:00 sh</span><br><span class="hljs-string">     13 root      0:00 ps</span><br><span class="hljs-string"></span><br><span class="hljs-string">  # alpine使用apk做为包管理</span><br><span class="hljs-string">  / # apk add sl</span><br><span class="hljs-string">  fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz</span><br><span class="hljs-string">  fetch https://dl-cdn.alpinelinux.org/alpine/v3.14/community/x86_64/APKINDEX.tar.gz</span><br><span class="hljs-string">  (1/3) Installing ncurses-terminfo-base (6.2_p20210612-r0)</span><br><span class="hljs-string">  (2/3) Installing ncurses-libs (6.2_p20210612-r0)</span><br><span class="hljs-string">  (3/3) Installing sl (5.02-r0)</span><br><span class="hljs-string">  Executing busybox-1.33.1-r3.trigger</span><br><span class="hljs-string">  OK: 6 MiB in 17 packages</span><br><span class="hljs-string">  / # sl</span><br><span class="hljs-string">            (@@@@)</span><br><span class="hljs-string"></span><br><span class="hljs-string">          (   )</span><br><span class="hljs-string">        ====        ________                ___________</span><br><span class="hljs-string">    _D _</span>|<span class="hljs-string">  </span>|<span class="hljs-string">_______/        \__I_I_____===__</span>|<span class="hljs-string">_________</span>|<br>     |<span class="hljs-string">(_)---  </span>|<span class="hljs-string">   H\________/ </span>|<span class="hljs-string">   </span>|<span class="hljs-string">        =</span>|<span class="hljs-string">___ ___</span>|<span class="hljs-string">      _________________</span><br><span class="hljs-string">     /     </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   H  </span>|<span class="hljs-string">  </span>|<span class="hljs-string">     </span>|<span class="hljs-string">   </span>|<span class="hljs-string">         </span>||<span class="hljs-string">_</span>|<span class="hljs-string"> </span>|<span class="hljs-string">_</span>||<span class="hljs-string">     _</span>|<span class="hljs-string">                \_____A</span><br><span class="hljs-string">    </span>|<span class="hljs-string">      </span>|<span class="hljs-string">  </span>|<span class="hljs-string">   H  </span>|<span class="hljs-string">__--------------------</span>|<span class="hljs-string"> [___] </span>|<span class="hljs-string">   =</span>|<span class="hljs-string">                        </span>|<br>    |<span class="hljs-string"> ________</span>|<span class="hljs-string">___H__/__</span>|<span class="hljs-string">_____/[][]~\_______</span>|<span class="hljs-string">       </span>|<span class="hljs-string">   -</span>|<span class="hljs-string">                        </span>|<br>    |<span class="hljs-string">/ </span>|<span class="hljs-string">   </span>|<span class="hljs-string">-----------I_____I [][] []  D   </span>|<span class="hljs-string">=======</span>|<span class="hljs-string">____</span>|<span class="hljs-string">________________________</span>|_<br>  __/ =|<span class="hljs-string"> o </span>|<span class="hljs-string">=-~O=====O=====O=====O\ ____Y___________</span>|<span class="hljs-string">__</span>|<span class="hljs-string">__________________________</span>|_<br>   |<span class="hljs-string">/-=</span>|<span class="hljs-string">___</span>|<span class="hljs-string">=    </span>||<span class="hljs-string">    </span>||<span class="hljs-string">    </span>||<span class="hljs-string">    </span>|<span class="hljs-string">_____/~\___/          </span>|<span class="hljs-string">_D__D__D_</span>|<span class="hljs-string">  </span>|<span class="hljs-string">_D__D__D_</span>|<br>    \_/      \__/  \__/  \__/  \__/      \_/               \_/   \_/    \_/   \_/<br><br><span class="hljs-comment"># 提交容器变更生成新的镜像</span><br>chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 2m 57s<br>➜ docker commit -m <span class="hljs-string">&quot;alpine with sl cmd&quot;</span> -a <span class="hljs-string">&quot;big_cat&quot;</span> my_alpine chyiyaqing/alpine_sl<br>sha256:79981bb43b0e638cc193570456ad93793a8cb481c8940e4fd899a0cc60a8bd46<br><br><span class="hljs-comment"># 发布到Docker Hub</span><br>chyiyaqing in ~ at chyiyaqing-PowerEdge-R720 took 10s<br>➜ docker push chyiyaqing/alpine_sl<br>Using default tag: latest<br>The push refers to repository [docker.io/chyiyaqing/alpine_sl]<br>102b73ff0977: Pushed<br>e2eb06d8af82: Mounted from library/alpine<br>latest: digest: sha256:500e9b9536a4fec460c487867d3cd7084da934ba37151aa122f4be438cc06d57 size: 739<br><br><span class="hljs-comment"># 停止/启动容器</span><br>$ docker stop/start  my_alpine<br></code></pre></td></tr></table></figure></li>
+<li><p><strong>Docker Tip #28</strong>: Docker目录空间</p>
+<figure class="highlight perl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><code class="hljs perl"><span class="hljs-comment"># 查看docker工作根目录</span><br>[hyperchain@mini <span class="hljs-keyword">package</span>]$ docker info | <span class="hljs-keyword">grep</span>  <span class="hljs-string">&#x27;Docker Root Dir&#x27;</span><br>Docker Root Dir: <span class="hljs-regexp">/var/li</span>b/docker<br><br><span class="hljs-comment"># 查看工作目录占用空间大小</span><br>[hyperchain@mini <span class="hljs-keyword">package</span>]$ sudo du -sh /var/lib/docker/<br><span class="hljs-number">65</span>G     /var/lib/docker/<br><br><span class="hljs-comment"># 查看docker占用磁盘空间</span><br>[hyperchain@mini <span class="hljs-keyword">package</span>]$ docker <span class="hljs-keyword">system</span> df<br>TYPE                TOTAL               ACTIVE              SIZE                RECLAIMABLE<br>Images              <span class="hljs-number">22</span>                  <span class="hljs-number">0</span>                   <span class="hljs-number">11.07</span>GB             <span class="hljs-number">11.07</span>GB (<span class="hljs-number">100</span>%)<br>Containers          <span class="hljs-number">0</span>                   <span class="hljs-number">0</span>                   0B                  0B<br>Local Volumes       <span class="hljs-number">120</span>                 <span class="hljs-number">0</span>                   <span class="hljs-number">56.7</span>GB              <span class="hljs-number">56.7</span>GB (<span class="hljs-number">100</span>%)<br>Build Cache         <span class="hljs-number">0</span>                   <span class="hljs-number">0</span>                   0B                  0B<br><br><span class="hljs-comment"># 清理docker没有被使用的docker镜像</span><br>[hyperchain@mini <span class="hljs-keyword">package</span>]$ docker <span class="hljs-keyword">system</span> prune -a<br>WARNING! This will remove:<br>        - all stopped containers<br>        - all networks <span class="hljs-keyword">not</span> used by at least one container<br>        - all dangling images<br>        - all dangling build cache<br>Are you sure you want to <span class="hljs-keyword">continue</span>? [<span class="hljs-keyword">y</span>/N] <span class="hljs-keyword">y</span><br>Total reclaimed space: 0B<br><br><span class="hljs-comment"># 停止docker服务</span><br>[hyperchain@mini <span class="hljs-keyword">package</span>]$ systemctl stop docker<br>==== AUTHENTICATING FOR org.freedesktop.systemd1.manage-units ====<br>Authentication is required to stop <span class="hljs-string">&#x27;docker.service&#x27;</span>.<br>Authenticating as: hyperchain<br>Password:<br>==== AUTHENTICATION COMPLETE ====<br>[hyperchain@mini <span class="hljs-keyword">package</span>]$<br><br><span class="hljs-comment"># 删除 volumnes</span><br>[hyperchain@mini <span class="hljs-keyword">package</span>]$ docker volume prune<br>WARNING! This will remove all <span class="hljs-keyword">local</span> volumes <span class="hljs-keyword">not</span> used by at least one container.<br>Are you sure you want to <span class="hljs-keyword">continue</span>? [<span class="hljs-keyword">y</span>/N] <span class="hljs-keyword">y</span><br>Deleted Volumes:<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Have-a-Fun"><a href="#Have-a-Fun" class="headerlink" title="Have a Fun"></a>Have a Fun</h2><ul>
+<li>Run the First Edition of Unix (1972) with Docker<blockquote>
+<p>Run a PDP-11 simulator through Docker to interact with Unix as it was back in 1972</p>
+</blockquote>
+<figure class="highlight stata"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs stata">$ docker <span class="hljs-keyword">run</span> --<span class="hljs-keyword">rm</span> -it bahamat/unix-1st-<span class="hljs-keyword">ed</span><br></code></pre></td></tr></table></figure></li>
+</ul>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Cloud-Native/">Cloud Native</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/02/echo-go-web-framework/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">echo-go-web-framework</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/01/hexo-next-gitalk/">
+                        <span class="hidden-mobile">hexo-next-gitalk</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chyi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="flag 命令行flag解析   flag 长短选项 12345678910111213141516func main() &amp;#123;	var name string  &#x2F;&#x2F; -flag: 仅支持布尔类型  &#x2F;&#x2F; -flag x: 仅支持非布尔类型  &#x2F;&#x2F; -flag&#x3D;x: 均支持  &#x2F;&#x2F; 长短选项 分开两次调用	flag.StringVar(&amp;name, &quot;name&amp;quot">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Go CLI Intro">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/11/Go-CLI-Intro/">
+<meta property="og:site_name" content="Stay Hungry Stay Foolish">
+<meta property="og:description" content="flag 命令行flag解析   flag 长短选项 12345678910111213141516func main() &amp;#123;	var name string  &#x2F;&#x2F; -flag: 仅支持布尔类型  &#x2F;&#x2F; -flag x: 仅支持非布尔类型  &#x2F;&#x2F; -flag&#x3D;x: 均支持  &#x2F;&#x2F; 长短选项 分开两次调用	flag.StringVar(&amp;name, &quot;name&amp;quot">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-09-11T10:16:25.000Z">
+<meta property="article:modified_time" content="2021-09-11T10:16:25.000Z">
+<meta property="article:author" content="chyi">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  <title>Go CLI Intro - Stay Hungry Stay Foolish</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chyidl.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Go CLI Intro">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-11 18:16" pubdate>
+        2021年9月11日 晚上
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      4.4k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      38 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Go CLI Intro</h1>
+            
+            <div class="markdown-body">
+              <h2 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h2><blockquote>
+<p>命令行flag解析</p>
+</blockquote>
+<ul>
+<li><p>flag 长短选项</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></div></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">func</span> main() &#123;<br>	var name string<br><br>  <span class="hljs-regexp">//</span> -flag: 仅支持布尔类型<br>  <span class="hljs-regexp">//</span> -flag x: 仅支持非布尔类型<br>  <span class="hljs-regexp">//</span> -flag=x: 均支持<br>  <span class="hljs-regexp">//</span> 长短选项 分开两次调用<br>	flag.StringVar(&amp;name, <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Golang flag tour&quot;</span>, <span class="hljs-string">&quot;help&quot;</span>)<br>	flag.StringVar(&amp;name, <span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-string">&quot;Golang flag tour&quot;</span>, <span class="hljs-string">&quot;help&quot;</span>)<br>	flag.Parse()<br><br>	log.Printf(<span class="hljs-string">&quot;name: %s&quot;</span>, name)<br>&#125;<br><br><span class="hljs-regexp">//</span> ➜ go run flag/demo.go -name=<span class="hljs-string">&#x27;hello world&#x27;</span> -n <span class="hljs-string">&#x27;hello world&#x27;</span><br><span class="hljs-regexp">//</span> <span class="hljs-number">2021</span><span class="hljs-regexp">/09/</span><span class="hljs-number">11</span> <span class="hljs-number">18</span>:<span class="hljs-number">26</span>:<span class="hljs-number">39</span> name: hello world<br></code></pre></td></tr></table></figure></li>
+<li><p>flag 子命令</p>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-keyword">func</span> main() &#123;<br>	var name string<br><br>	flag.Parse()<br>	args := flag.Args()<br>	<span class="hljs-keyword">if</span> len(args) &lt;= <span class="hljs-number">0</span> &#123;<br>		return<br>	&#125;<br><br>	switch args[<span class="hljs-number">0</span>] &#123;<br>	case <span class="hljs-string">&quot;go&quot;</span>:<br>		goCmd := flag.NewFlagSet(<span class="hljs-string">&quot;go&quot;</span>, flag.ExitOnError)<br>		goCmd.StringVar(&amp;name, <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Golang language&quot;</span>, <span class="hljs-string">&quot;help&quot;</span>)<br>		_ = goCmd.Parse(args[<span class="hljs-number">1</span>:])<br>	case <span class="hljs-string">&quot;py&quot;</span>:<br>		pyCmd := flag.NewFlagSet(<span class="hljs-string">&quot;py&quot;</span>, flag.ExitOnError)<br>		pyCmd.StringVar(&amp;name, <span class="hljs-string">&quot;name&quot;</span>, <span class="hljs-string">&quot;Python language&quot;</span>, <span class="hljs-string">&quot;help&quot;</span>)<br>		_ = pyCmd.Parse(args[<span class="hljs-number">1</span>:])<br>	&#125;<br><br>	log.Printf(<span class="hljs-string">&quot;name: %s&quot;</span>, name)<br>&#125;<br><br><span class="hljs-regexp">//</span> ➜ go run flag/flag_sub_cli.go go -name=golang<br><span class="hljs-regexp">//</span> <span class="hljs-number">2021</span><span class="hljs-regexp">/09/</span><span class="hljs-number">11</span> <span class="hljs-number">18</span>:<span class="hljs-number">39</span>:<span class="hljs-number">47</span> name: golang<br><span class="hljs-regexp">//</span><br><span class="hljs-regexp">//</span> ➜ go run flag/flag_sub_cli.go go -n=python<br><span class="hljs-regexp">//</span> flag provided but not defined: -n<br><span class="hljs-regexp">//</span> Usage of go:<br><span class="hljs-regexp">//</span>   -name string<br><span class="hljs-regexp">//</span>     	help (default <span class="hljs-string">&quot;Golang language&quot;</span>)<br><span class="hljs-regexp">//</span> <span class="hljs-keyword">exit</span> status <span class="hljs-number">2</span><br></code></pre></td></tr></table></figure></li>
+<li><p>flag 源码分析</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br></pre></td><td class="code"><pre><code class="hljs go"># flag.Parse<br><br><span class="hljs-comment">// CommandLine is the default set of command-line flags, parsed from os.Args.</span><br><span class="hljs-comment">// The top-level functions such as BoolVar, Arg, and so on are wrappers for the</span><br><span class="hljs-comment">// methods of CommandLine.</span><br><span class="hljs-keyword">var</span> CommandLine = NewFlagSet(os.Args[<span class="hljs-number">0</span>], ExitOnError)<br><br><span class="hljs-comment">// Parse parses the command-line flags from os.Args[1:]. Must be called</span><br><span class="hljs-comment">// after all flags are defined and before flags are accessed by the program.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-title">Parse</span><span class="hljs-params">()</span></span> &#123;<br>	<span class="hljs-comment">// Ignore errors; CommandLine is set for ExitOnError.</span><br>	CommandLine.Parse(os.Args[<span class="hljs-number">1</span>:])<br>&#125;<br><br># FlagSet.Parse<br>&gt; parse异常分流处理<br><span class="hljs-comment">// Parse parses flag definitions from the argument list, which should not</span><br><span class="hljs-comment">// include the command name. Must be called after all flags in the FlagSet</span><br><span class="hljs-comment">// are defined and before flags are accessed by the program.</span><br><span class="hljs-comment">// The return value will be ErrHelp if -help or -h were set but not defined.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(f *FlagSet)</span> <span class="hljs-title">Parse</span><span class="hljs-params">(arguments []<span class="hljs-keyword">string</span>)</span> <span class="hljs-title">error</span></span> &#123;<br>	f.parsed = <span class="hljs-literal">true</span><br>	f.args = arguments<br>	<span class="hljs-keyword">for</span> &#123;<br>		seen, err := f.parseOne()<br>		<span class="hljs-keyword">if</span> seen &#123;<br>			<span class="hljs-keyword">continue</span><br>		&#125;<br>		<span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">break</span><br>		&#125;<br>		<span class="hljs-keyword">switch</span> f.errorHandling &#123;<br>		<span class="hljs-keyword">case</span> ContinueOnError:<br>			<span class="hljs-keyword">return</span> err<br>		<span class="hljs-keyword">case</span> ExitOnError:<br>			<span class="hljs-keyword">if</span> err == ErrHelp &#123;<br>				os.Exit(<span class="hljs-number">0</span>)<br>			&#125;<br>			os.Exit(<span class="hljs-number">2</span>)<br>		<span class="hljs-keyword">case</span> PanicOnError:<br>			<span class="hljs-built_in">panic</span>(err)<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span><br>&#125;<br><br># FlagSet.parseOne<br><span class="hljs-comment">// parseOne parses one flag. It reports whether a flag was seen.</span><br><span class="hljs-function"><span class="hljs-keyword">func</span> <span class="hljs-params">(f *FlagSet)</span> <span class="hljs-title">parseOne</span><span class="hljs-params">()</span> <span class="hljs-params">(<span class="hljs-keyword">bool</span>, error)</span></span> &#123;<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(f.args) == <span class="hljs-number">0</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span><br>	&#125;<br>	s := f.args[<span class="hljs-number">0</span>]<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(s) &lt; <span class="hljs-number">2</span> || s[<span class="hljs-number">0</span>] != <span class="hljs-string">&#x27;-&#x27;</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span><br>	&#125;<br>	numMinuses := <span class="hljs-number">1</span><br>	<span class="hljs-keyword">if</span> s[<span class="hljs-number">1</span>] == <span class="hljs-string">&#x27;-&#x27;</span> &#123;<br>		numMinuses++<br>		<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(s) == <span class="hljs-number">2</span> &#123; <span class="hljs-comment">// &quot;--&quot; terminates the flags</span><br>			f.args = f.args[<span class="hljs-number">1</span>:]<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, <span class="hljs-literal">nil</span><br>		&#125;<br>	&#125;<br>	name := s[numMinuses:]<br>	<span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(name) == <span class="hljs-number">0</span> || name[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;-&#x27;</span> || name[<span class="hljs-number">0</span>] == <span class="hljs-string">&#x27;=&#x27;</span> &#123;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, f.failf(<span class="hljs-string">&quot;bad flag syntax: %s&quot;</span>, s)<br>	&#125;<br><br>	<span class="hljs-comment">// it&#x27;s a flag. does it have an argument?</span><br>	f.args = f.args[<span class="hljs-number">1</span>:]<br>	hasValue := <span class="hljs-literal">false</span><br>	value := <span class="hljs-string">&quot;&quot;</span><br>	<span class="hljs-keyword">for</span> i := <span class="hljs-number">1</span>; i &lt; <span class="hljs-built_in">len</span>(name); i++ &#123; <span class="hljs-comment">// equals cannot be first</span><br>		<span class="hljs-keyword">if</span> name[i] == <span class="hljs-string">&#x27;=&#x27;</span> &#123;<br>			value = name[i+<span class="hljs-number">1</span>:]<br>			hasValue = <span class="hljs-literal">true</span><br>			name = name[<span class="hljs-number">0</span>:i]<br>			<span class="hljs-keyword">break</span><br>		&#125;<br>	&#125;<br>	m := f.formal<br>	flag, alreadythere := m[name] <span class="hljs-comment">// BUG</span><br>	<span class="hljs-keyword">if</span> !alreadythere &#123;<br>		<span class="hljs-keyword">if</span> name == <span class="hljs-string">&quot;help&quot;</span> || name == <span class="hljs-string">&quot;h&quot;</span> &#123; <span class="hljs-comment">// special case for nice help message.</span><br>			f.usage()<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, ErrHelp<br>		&#125;<br>		<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, f.failf(<span class="hljs-string">&quot;flag provided but not defined: -%s&quot;</span>, name)<br>	&#125;<br><br>	<span class="hljs-keyword">if</span> fv, ok := flag.Value.(boolFlag); ok &amp;&amp; fv.IsBoolFlag() &#123; <span class="hljs-comment">// special case: doesn&#x27;t need an arg</span><br>		<span class="hljs-keyword">if</span> hasValue &#123;<br>			<span class="hljs-keyword">if</span> err := fv.Set(value); err != <span class="hljs-literal">nil</span> &#123;<br>				<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, f.failf(<span class="hljs-string">&quot;invalid boolean value %q for -%s: %v&quot;</span>, value, name, err)<br>			&#125;<br>		&#125; <span class="hljs-keyword">else</span> &#123;<br>			<span class="hljs-keyword">if</span> err := fv.Set(<span class="hljs-string">&quot;true&quot;</span>); err != <span class="hljs-literal">nil</span> &#123;<br>				<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, f.failf(<span class="hljs-string">&quot;invalid boolean flag %s: %v&quot;</span>, name, err)<br>			&#125;<br>		&#125;<br>	&#125; <span class="hljs-keyword">else</span> &#123;<br>		<span class="hljs-comment">// It must have a value, which might be the next argument.</span><br>		<span class="hljs-keyword">if</span> !hasValue &amp;&amp; <span class="hljs-built_in">len</span>(f.args) &gt; <span class="hljs-number">0</span> &#123;<br>			<span class="hljs-comment">// value is the next arg</span><br>			hasValue = <span class="hljs-literal">true</span><br>			value, f.args = f.args[<span class="hljs-number">0</span>], f.args[<span class="hljs-number">1</span>:]<br>		&#125;<br>		<span class="hljs-keyword">if</span> !hasValue &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, f.failf(<span class="hljs-string">&quot;flag needs an argument: -%s&quot;</span>, name)<br>		&#125;<br>		<span class="hljs-keyword">if</span> err := flag.Value.Set(value); err != <span class="hljs-literal">nil</span> &#123;<br>			<span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>, f.failf(<span class="hljs-string">&quot;invalid value %q for flag -%s: %v&quot;</span>, value, name, err)<br>		&#125;<br>	&#125;<br>	<span class="hljs-keyword">if</span> f.actual == <span class="hljs-literal">nil</span> &#123;<br>		f.actual = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*Flag)<br>	&#125;<br>	f.actual[name] = flag<br>	<span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>, <span class="hljs-literal">nil</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Cobra"><a href="#Cobra" class="headerlink" title="Cobra"></a>Cobra</h2>
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Programming-Language/">Programming Language</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/11/Ansible-Intro/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Ansible Intro</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/10/Go%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B/">
+                        <span class="hidden-mobile">Go Concurrency Patterns</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>

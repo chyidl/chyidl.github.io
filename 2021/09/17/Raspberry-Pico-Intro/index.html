@@ -1,0 +1,528 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
+  <link rel="icon" href="/img/favicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="chyi">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="Raspberry Pi Pico a microcontroller development board,   RP2040 1234&gt; new microcontroller chip designed by Raspberry Pi in the UK.  - dual-core Arm Cortex-M0+  - 264KB RAM  - 16MB off-chip Flash Mi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Raspberry Pico Intro">
+<meta property="og:url" content="http://chyidl.github.io/2021/09/17/Raspberry-Pico-Intro/">
+<meta property="og:site_name" content="Stay Hungry Stay Foolish">
+<meta property="og:description" content="Raspberry Pi Pico a microcontroller development board,   RP2040 1234&gt; new microcontroller chip designed by Raspberry Pi in the UK.  - dual-core Arm Cortex-M0+  - 264KB RAM  - 16MB off-chip Flash Mi">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://chyidl.github.io/misc/images/pico-pins.png">
+<meta property="article:published_time" content="2021-09-17T03:57:31.000Z">
+<meta property="article:modified_time" content="2021-09-17T03:57:31.000Z">
+<meta property="article:author" content="chyi">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://chyidl.github.io/misc/images/pico-pins.png">
+  
+  
+  <title>Raspberry Pico Intro - Stay Hungry Stay Foolish</title>
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+<!-- 自定义样式保持在最底部 -->
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    var CONFIG = {"hostname":"chyidl.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+</head>
+
+
+<body>
+  <header style="height: 70vh;">
+    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>Fluid</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+    <div class="banner" id="banner" parallax=true
+         style="background: url('/img/default.png') no-repeat center center;
+           background-size: cover;">
+      <div class="full-bg-img">
+        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+          <div class="page-header text-center fade-in-up">
+            <span class="h2" id="subtitle" title="Raspberry Pico Intro">
+              
+            </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2021-09-17 11:57" pubdate>
+        2021年9月17日 中午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      1.9k 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      16 分钟
+    </span>
+  
+
+  
+  
+</div>
+
+            
+          </div>
+
+          
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">Raspberry Pico Intro</h1>
+            
+            <div class="markdown-body">
+              <h1 id="Raspberry-Pi-Pico"><a href="#Raspberry-Pi-Pico" class="headerlink" title="Raspberry Pi Pico"></a>Raspberry Pi Pico</h1><blockquote>
+<p>a microcontroller development board,</p>
+</blockquote>
+<ul>
+<li><p>RP2040</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-quote">&gt; new microcontroller chip designed by Raspberry Pi in the UK.</span><br><span class="hljs-bullet">  -</span> dual-core Arm Cortex-M0+<br><span class="hljs-bullet">  -</span> 264KB RAM<br><span class="hljs-bullet">  -</span> 16MB off-chip Flash<br></code></pre></td></tr></table></figure></li>
+<li><p>Micro USB Port</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs routeros">- provide power make Pico <span class="hljs-builtin-name">run</span><br>- USB<span class="hljs-built_in"> port </span>talk <span class="hljs-keyword">to</span> pico<br></code></pre></td></tr></table></figure></li>
+<li><p>BOOTSEL</p>
+<figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs mipsasm">- <span class="hljs-keyword">BOOTSEL </span>is <span class="hljs-keyword">short </span>for <span class="hljs-keyword">boot </span>selection.<br></code></pre></td></tr></table></figure></li>
+</ul>
+<span id="more"></span>
+
+<h2 id="Raspberry-Pico’s-pins"><a href="#Raspberry-Pico’s-pins" class="headerlink" title="Raspberry Pico’s pins"></a>Raspberry Pico’s pins</h2><p><img src="/misc/images/pico-pins.png" srcset="/img/loading.gif" lazyload alt="The Raspberry Pi Pico&#39;s pins"></p>
+<ul>
+<li><p>Raspberry Pi Pico pins functions</p>
+<table>
+<thead>
+<tr>
+<th align="left">…</th>
+<th align="left">…</th>
+<th align="left">…</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">3V3</td>
+<td align="left">3.3 volts power</td>
+<td align="left">Pico 3.3V 从 VSYS 获取</td>
+</tr>
+<tr>
+<td align="left">VSYS</td>
+<td align="left">~2-5 volts power</td>
+<td align="left">连接Pico内部电源</td>
+</tr>
+<tr>
+<td align="left">VBUS</td>
+<td align="left">5 volts power</td>
+<td align="left">5V power taken from Pico’s micro USB port</td>
+</tr>
+<tr>
+<td align="left">GND</td>
+<td align="left">0 volts ground</td>
+<td align="left">地</td>
+</tr>
+<tr>
+<td align="left">GPxx</td>
+<td align="left">General-purpose input/output pin</td>
+<td align="left">通用GPIO口</td>
+</tr>
+<tr>
+<td align="left">GPxx_ADCx</td>
+<td align="left">GPIO/ADC input</td>
+<td align="left">普通GPIO口或ADC输入口</td>
+</tr>
+<tr>
+<td align="left">ADC_VREF</td>
+<td align="left">Analogue-to-digital coverter (ADC) voltage reference</td>
+<td align="left">模拟数字转换参考电压输入</td>
+</tr>
+<tr>
+<td align="left">AGND</td>
+<td align="left">Anaglogue-to-digital coverter (ADC) 0 volts ground</td>
+<td align="left">ADC输入电压参考0volts</td>
+</tr>
+<tr>
+<td align="left">RUN</td>
+<td align="left">Enable/disable Pico</td>
+<td align="left">启动/关闭Pico</td>
+</tr>
+</tbody></table>
+</li>
+<li><p>MicroPython - Hello, LED!</p>
+<figure class="highlight vhdl"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs vhdl">import machine<br>import utime<br><br># <span class="hljs-keyword">on</span>-board LED <span class="hljs-keyword">is</span> connected <span class="hljs-keyword">to</span> one <span class="hljs-keyword">of</span> RP2040<span class="hljs-symbol">&#x27;s</span> general-purpose input/output pins. GP25.<br>led_onboard = machine.Pin(<span class="hljs-number">25</span>, machine.Pin.<span class="hljs-keyword">OUT</span>)<br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    led_onboard.toggle()<br>    utime.sleep(<span class="hljs-number">1</span>)<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="MicroPython-on-Raspberry-Pi-Pico"><a href="#MicroPython-on-Raspberry-Pi-Pico" class="headerlink" title="MicroPython on Raspberry Pi Pico"></a>MicroPython on Raspberry Pi Pico</h2><ul>
+<li><p>Installing MicroPython</p>
+<figure class="highlight livecodeserver"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs livecodeserver">&gt; MicroPython is <span class="hljs-keyword">a</span> full implementation <span class="hljs-keyword">of</span> <span class="hljs-keyword">the</span> Python <span class="hljs-number">3</span> Programming language that runs directly <span class="hljs-keyword">on</span> <span class="hljs-title">embedded</span> <span class="hljs-title">hardware</span> <span class="hljs-title">like</span> <span class="hljs-title">Raspberry</span> <span class="hljs-title">Pi</span> <span class="hljs-title">Pico</span>.<br><span class="hljs-comment"># Hold BOOTSEL button down 3 seconds then let go</span><br>  /Volumes/RPI-RP2<br>  ➜ tree<br>  .<br>  ├── INDEX.HTM<br>  └── INFO_UF2.TXT  <span class="hljs-comment">-- hold information about your Pico</span><br><br>  <span class="hljs-number">0</span> <span class="hljs-built_in">directories</span>, <span class="hljs-number">2</span> <span class="hljs-built_in">files</span><br><br><span class="hljs-comment"># Darg-and-Drop MicroPython</span><br>  - Drag <span class="hljs-keyword">and</span> drop <span class="hljs-keyword">the</span> MicroPython UF2 onto <span class="hljs-keyword">the</span> RPI-RP2 volume, auto flash <span class="hljs-keyword">the</span> firmware onto its internal storage.<br></code></pre></td></tr></table></figure></li>
+<li><p>Programming with MicroPython</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs python">&gt; MicroPython <span class="hljs-keyword">is</span> a Python-compatible programming language developed specifically <span class="hljs-keyword">for</span> microcontrollers.<br><br><span class="hljs-comment"># Thonny - IDE</span><br>MicroPython v1<span class="hljs-number">.17</span> on <span class="hljs-number">2021</span>-09-02; Raspberry Pi Pico <span class="hljs-keyword">with</span> RP2040<br><span class="hljs-type">Type</span> <span class="hljs-string">&quot;help()&quot;</span> <span class="hljs-keyword">for</span> more information.<br><span class="hljs-meta">&gt;&gt;&gt; </span><span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;Hello, World!&quot;</span>)<br>Hello, World!<br>&gt;&gt;&gt;<br></code></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="Rust-on-Raspberry-Pi-Pico"><a href="#Rust-on-Raspberry-Pi-Pico" class="headerlink" title="Rust on Raspberry Pi Pico"></a>Rust on Raspberry Pi Pico</h2><h2 id="Getting-Started-with-FreeRTOS-on-the-Raspberry-Pi-Pico"><a href="#Getting-Started-with-FreeRTOS-on-the-Raspberry-Pi-Pico" class="headerlink" title="Getting Started with FreeRTOS on the Raspberry Pi Pico"></a>Getting Started with FreeRTOS on the Raspberry Pi Pico</h2><blockquote>
+<p>RTOS - Real Time Operating System</p>
+<blockquote>
+<p>Allows multiple tasks to execute “at the same time”<br>Schedules based on task priority<br>“Task Priority” allows the programmer to define what needs to happen first</p>
+</blockquote>
+</blockquote>
+
+            </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                  <div class="post-meta mr-3">
+                    <i class="iconfont icon-category"></i>
+                    
+                      <a class="hover-with-bg" href="/categories/Hardware/">Hardware</a>
+                    
+                  </div>
+                
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2021/09/18/Rust-language-Intro/">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">Rust language Intro</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2021/09/17/Blockchain-Intro/">
+                        <span class="hidden-mobile">Blockchain Intro</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v"
+                 for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+
+    
+  </main>
+
+  <footer class="text-center mt-5 py-3">
+  <div class="footer-content">
+     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  </div>
+  
+
+  
+
+  
+</footer>
+
+
+  <!-- SCRIPTS -->
+  
+  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
+<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+<!-- Plugins -->
+
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+  
+
+
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
+
+
+
+
+
+
+  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var title = document.getElementById('subtitle').title;
+      
+        typing(title);
+      
+    })(window, document);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 主题的启动项 保持在最底部 -->
+<script  src="/js/boot.js" ></script>
+
+
+</body>
+</html>
