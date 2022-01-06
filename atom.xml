@@ -6,7 +6,7 @@
   <link href="http://chyidl.github.io/atom.xml" rel="self"/>
   
   <link href="http://chyidl.github.io/"/>
-  <updated>2021-12-16T10:49:52.000Z</updated>
+  <updated>2022-01-05T08:15:09.000Z</updated>
   <id>http://chyidl.github.io/</id>
   
   <author>
@@ -15,6 +15,77 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Service Mesh And API Gateway</title>
+    <link href="http://chyidl.github.io/2022/01/05/Service-Mesh-And-API-Gateway/"/>
+    <id>http://chyidl.github.io/2022/01/05/Service-Mesh-And-API-Gateway/</id>
+    <published>2022-01-05T08:15:09.000Z</published>
+    <updated>2022-01-05T08:15:09.000Z</updated>
+    
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>南北&amp;东西流量</title>
+    <link href="http://chyidl.github.io/2022/01/05/%E5%8D%97%E5%8C%97-%E4%B8%9C%E8%A5%BF%E6%B5%81%E9%87%8F/"/>
+    <id>http://chyidl.github.io/2022/01/05/%E5%8D%97%E5%8C%97-%E4%B8%9C%E8%A5%BF%E6%B5%81%E9%87%8F/</id>
+    <published>2022-01-05T06:13:38.000Z</published>
+    <updated>2022-01-05T06:13:38.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;南北流量-amp-东西流量&quot;&gt;&lt;a href=&quot;#南北流量-amp-东西流量&quot; class=&quot;headerlink&quot; title=&quot;南北流量 &amp;amp; 东西流量&quot;&gt;&lt;/a&gt;南北流量 &amp;amp; 东西流量&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;南北流量和东西流量是数据中心环境中网络流量模式.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;ol&gt;
+&lt;li&gt;什么是南北向流量?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;2&quot;&gt;
+&lt;li&gt;什么是东西向流量?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;ol start=&quot;3&quot;&gt;
+&lt;li&gt;什么是动态流量?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;当我们访问web应用时，会发生一下类型的网络流量:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;1.客户端(位于数据中心一侧的浏览器)与负载均衡器(位于数据中心)之间的网络流量.&lt;br&gt;2.负载均衡器、应用服务器、数据库等之间的网络流量，他们都位于数据中心.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&quot;/misc/images/north-south-east-west-traffic.png&quot; alt=&quot;网络流量&quot;&gt;&lt;/p&gt;</summary>
+    
+    
+    
+    
+  </entry>
+  
+  <entry>
+    <title>Virsh Commands CheatSheet Intro</title>
+    <link href="http://chyidl.github.io/2021/12/28/Virsh-Commands-CheatSheet-Intro/"/>
+    <id>http://chyidl.github.io/2021/12/28/Virsh-Commands-CheatSheet-Intro/</id>
+    <published>2021-12-28T08:11:23.000Z</published>
+    <updated>2021-12-28T08:11:23.000Z</updated>
+    
+    
+    <summary type="html">&lt;h1 id=&quot;Virsh-Commands-CheatSheet&quot;&gt;&lt;a href=&quot;#Virsh-Commands-CheatSheet&quot; class=&quot;headerlink&quot; title=&quot;Virsh Commands CheatSheet&quot;&gt;&lt;/a&gt;Virsh Commands CheatSheet&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;Virsh interacts with Libviry which is a library aimed at providing a long-term stable C API. It currently supports Xen, QEMU, KVM, LXC, OpenVZ, VirtualBox and VMware ESX.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight xml&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs xml&quot;&gt;$ virsh [OPTION]… &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;command&lt;/span&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;hljs-tag&quot;&gt;&amp;lt;&lt;span class=&quot;hljs-name&quot;&gt;domain&lt;/span&gt;&amp;gt;&lt;/span&gt; [ARG]…&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;</summary>
+    
+    
+    
+    <category term="CLI" scheme="http://chyidl.github.io/categories/CLI/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>Kubernetes Volumes Intro</title>
@@ -103,7 +174,7 @@
 &lt;li&gt;&lt;p&gt;Protocol Overview&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;The protocol has two parts: a handshake and the data transfer.&lt;ul&gt;
-&lt;li&gt;The handshake from the client looks as follows&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
+&lt;li&gt;The handshake from the client looks as follows&lt;figure class=&quot;highlight&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;code class=&quot;hljs&quot;&gt;&lt;br&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
@@ -378,57 +449,6 @@
     <published>2021-10-15T11:05:48.000Z</published>
     <updated>2021-10-15T11:05:48.000Z</updated>
     
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Harbor Intro</title>
-    <link href="http://chyidl.github.io/2021/10/15/Harbor-Intro/"/>
-    <id>http://chyidl.github.io/2021/10/15/Harbor-Intro/</id>
-    <published>2021-10-15T07:14:53.000Z</published>
-    <updated>2021-10-15T07:14:53.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Harbor&quot;&gt;&lt;a href=&quot;#Harbor&quot; class=&quot;headerlink&quot; title=&quot;Harbor&quot;&gt;&lt;/a&gt;Harbor&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;Kubernetes 值得信赖的云原生镜像存储库(Image Registry)&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>NFS Mount Intro</title>
-    <link href="http://chyidl.github.io/2021/10/15/NFS-Mount-Intro/"/>
-    <id>http://chyidl.github.io/2021/10/15/NFS-Mount-Intro/</id>
-    <published>2021-10-15T05:24:29.000Z</published>
-    <updated>2021-10-15T05:24:29.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;NFS-or-Network-File-System&quot;&gt;&lt;a href=&quot;#NFS-or-Network-File-System&quot; class=&quot;headerlink&quot; title=&quot;NFS, or Network File System&quot;&gt;&lt;/a&gt;NFS, or Network File System&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;一种分布式文件系统协议，允许你在服务器上挂载远程目录，你可以管理不同位置的存储空间并从多客户端写入该空间. NFS提供一种相对标准和高效的方式来通过网络访问远程系统。并且适合访问共享资源的情况.&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Apache APISIX Intro</title>
-    <link href="http://chyidl.github.io/2021/10/13/Apache-APISIX-Intro/"/>
-    <id>http://chyidl.github.io/2021/10/13/Apache-APISIX-Intro/</id>
-    <published>2021-10-13T03:49:15.000Z</published>
-    <updated>2021-10-13T03:49:15.000Z</updated>
-    
-    
-    <summary type="html">&lt;h1 id=&quot;Apache-APISIX&quot;&gt;&lt;a href=&quot;#Apache-APISIX&quot; class=&quot;headerlink&quot; title=&quot;Apache APISIX&quot;&gt;&lt;/a&gt;Apache APISIX&lt;/h1&gt;&lt;blockquote&gt;
-&lt;p&gt;云原生微服务API网关，高性能、安全性、开源可扩展的服务平台&lt;br&gt;APISIX 基于Nginx, Etcd.与传统的API 网关相比，具有动态路由和热插拔加载，适合微服务系统下的API管理.&lt;/p&gt;
-&lt;/blockquote&gt;</summary>
     
     
     
