@@ -1,22 +1,26 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="chyi">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="Elasticsearch Elasticsearch是一个开源的分布式搜索与分析引擎，提供近实时搜索和聚合功能Elastic Stack主要应用于：搜索、日志管理、安全分析、指标分析、业务分析、应用性能监控等多个领域“Search is something that any application should have.”">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Elasticsearch Elasticsearch是一个开源的分布式搜索与分析引擎，提供近实时搜索和聚合功能Elastic Stack主要应用于：搜索、日志管理、安全分析、指标分析、业务分析、应用性能监控等多个领域“Search is something that any application should have.”">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Elasticsearch Tips &amp; Tracks">
 <meta property="og:url" content="http://chyidl.github.io/2021/09/03/Elasticsearch-Tips-Tracks/">
@@ -27,220 +31,276 @@
 <meta property="article:published_time" content="2021-09-03T09:11:03.000Z">
 <meta property="article:modified_time" content="2021-09-03T09:11:03.000Z">
 <meta property="article:author" content="chyi">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://chyidl.github.io/misc/images/Elastichsearch.png">
-  
-  
-  <title>Elasticsearch Tips &amp; Tracks - Stay Hungry Stay Foolish</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+<link rel="canonical" href="http://chyidl.github.io/2021/09/03/Elasticsearch-Tips-Tracks/">
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/09/03/Elasticsearch-Tips-Tracks/","path":"2021/09/03/Elasticsearch-Tips-Tracks/","title":"Elasticsearch Tips & Tracks"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Elasticsearch Tips & Tracks | Stay Hungry Stay Foolish</title>
   
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?516e4e6590bcf7090ded728a1abdd5aa"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"chyidl.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/chyidl" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stay Hungry Stay Foolish</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alaways be curious to learn more and achieve more.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Elasticsearch Tips &amp; Tracks">
-              
-            </span>
 
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-09-03 17:11" pubdate>
-        2021年9月3日 下午
-      </time>
-    </span>
-  
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
 </div>
 
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      11k 字
-    </span>
-  
+    </div>
+  </div>
 
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      88 分钟
-    </span>
-  
-
-  
-  
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-            
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Elasticsearch"><span class="nav-number">1.</span> <span class="nav-text">Elasticsearch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Elastic-Stack-%E7%94%9F%E6%80%81%E5%9C%88"><span class="nav-number">1.1.</span> <span class="nav-text">Elastic Stack 生态圈</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch-1"><span class="nav-number">1.2.</span> <span class="nav-text">Elasticsearch</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch-%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">1.3.</span> <span class="nav-text">Elasticsearch 基本概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch-%E5%8E%9F%E7%90%86"><span class="nav-number">1.4.</span> <span class="nav-text">Elasticsearch 原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch-%E8%81%9A%E5%90%88-Aggregation"><span class="nav-number">1.5.</span> <span class="nav-text">Elasticsearch 聚合 (Aggregation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Elasticsearch-%E5%88%86%E5%B8%83%E5%BC%8F%E7%BB%93%E6%9E%84"><span class="nav-number">1.6.</span> <span class="nav-text">Elasticsearch 分布式结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ELK-%E5%A4%A7%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90"><span class="nav-number">1.7.</span> <span class="nav-text">ELK 大数据分析</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chyi"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">chyi</p>
+  <div class="site-description" itemprop="description">ああ月sブログ</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chyidl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chyidl" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/chyiyaqing@gmail.com" title="E-Mail → chyiyaqing@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/ChyiYaqing" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;ChyiYaqing" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fas fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
           </div>
-
-          
         </div>
       </div>
     </div>
-  </header>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
-  <main>
+
+    </header>
+
     
-      
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Elasticsearch Tips &amp; Tracks</h1>
-            
-            <div class="markdown-body">
-              <h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><blockquote>
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/09/03/Elasticsearch-Tips-Tracks/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Elasticsearch Tips & Tracks
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-09-03 17:11:03" itemprop="dateCreated datePublished" datetime="2021-09-03T17:11:03+08:00">2021-09-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Middleware/" itemprop="url" rel="index"><span itemprop="name">Middleware</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>11k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>10 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Elasticsearch"><a href="#Elasticsearch" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h1><blockquote>
 <p>Elasticsearch是一个开源的分布式搜索与分析引擎，提供近实时搜索和聚合功能<br>Elastic Stack主要应用于：搜索、日志管理、安全分析、指标分析、业务分析、应用性能监控等多个领域<br>“Search is something that any application should have.”</p>
 </blockquote>
 <span id="more"></span>
@@ -271,7 +331,7 @@
 </blockquote>
 </li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></div></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 特性:</span><br><span class="hljs-bullet">  1.</span> 实时解析和转换数据<br><span class="hljs-code">    &gt; 从IP地址破译地理位置</span><br><span class="hljs-code">    &gt; 从PII数据匿名化，排除敏感字段</span><br><span class="hljs-code">  2. 可扩展</span><br><span class="hljs-code">  3. 可靠性安全性</span><br><span class="hljs-code">    &gt; Logstash 通过持久化队列保证至少将运行中的事件送达一次</span><br><span class="hljs-code">    &gt; 数据传输加密</span><br><span class="hljs-code">  4. 加密</span><br></code></pre></td></tr></table></figure>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 特性:</span></span><br><span class="line"><span class="bullet">  1.</span> 实时解析和转换数据</span><br><span class="line"><span class="code">    &gt; 从IP地址破译地理位置</span></span><br><span class="line"><span class="code">    &gt; 从PII数据匿名化，排除敏感字段</span></span><br><span class="line"><span class="code">  2. 可扩展</span></span><br><span class="line"><span class="code">  3. 可靠性安全性</span></span><br><span class="line"><span class="code">    &gt; Logstash 通过持久化队列保证至少将运行中的事件送达一次</span></span><br><span class="line"><span class="code">    &gt; 数据传输加密</span></span><br><span class="line"><span class="code">  4. 加密</span></span><br></pre></td></tr></table></figure>
 
 <ul>
 <li>Beats<blockquote>
@@ -286,7 +346,7 @@
 <blockquote>
 <p>Elasticsearch与数据库的集成</p>
 </blockquote>
-<p><img src="/misc/images/Elastichsearch.png" srcset="/img/loading.gif" lazyload alt="Elastichsearch"></p>
+<p><img src="/misc/images/Elastichsearch.png" alt="Elastichsearch"></p>
 <blockquote>
 <p>指标分析/日志分析</p>
 </blockquote>
@@ -295,41 +355,41 @@
 </ul>
 <h2 id="Elasticsearch-1"><a href="#Elasticsearch-1" class="headerlink" title="Elasticsearch"></a>Elasticsearch</h2><ul>
 <li><p>Elasticsearch 目录结构</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs ada">ubuntu <span class="hljs-keyword">in</span> ~/elasticsearch-<span class="hljs-number">7.14</span>.<span class="hljs-number">1</span> <span class="hljs-keyword">at</span> k8s-node1 took <span class="hljs-number">45</span>s<br>➜ tree -L <span class="hljs-number">1</span><br>.<br>├── bin                 <span class="hljs-comment">-- 脚本文件，包括启动elasticsearch,安装插件，运行统计数据</span><br>├── config              <span class="hljs-comment">-- elasticsearch.yml 集群配置文件，user, role based 相关配置</span><br>├── jdk                 <span class="hljs-comment">-- Java 运行环境</span><br>├── lib                 <span class="hljs-comment">-- Java 类库</span><br>├── LICENSE.txt<br>├── logs                <span class="hljs-comment">-- path.log 日志文件</span><br>├── modules             <span class="hljs-comment">-- 包含所有ES模块</span><br>├── NOTICE.txt<br>├── plugins             <span class="hljs-comment">-- 包含所有已安装插件</span><br>└── README.asciidoc<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">ubuntu <span class="keyword">in</span> ~/elasticsearch-<span class="number">7.14</span>.<span class="number">1</span> <span class="keyword">at</span> k8s-node1 took <span class="number">45</span>s</span><br><span class="line">➜ tree -L <span class="number">1</span></span><br><span class="line">.</span><br><span class="line">├── bin                 <span class="comment">-- 脚本文件，包括启动elasticsearch,安装插件，运行统计数据</span></span><br><span class="line">├── config              <span class="comment">-- elasticsearch.yml 集群配置文件，user, role based 相关配置</span></span><br><span class="line">├── jdk                 <span class="comment">-- Java 运行环境</span></span><br><span class="line">├── lib                 <span class="comment">-- Java 类库</span></span><br><span class="line">├── LICENSE.txt</span><br><span class="line">├── logs                <span class="comment">-- path.log 日志文件</span></span><br><span class="line">├── modules             <span class="comment">-- 包含所有ES模块</span></span><br><span class="line">├── NOTICE.txt</span><br><span class="line">├── plugins             <span class="comment">-- 包含所有已安装插件</span></span><br><span class="line">└── README.asciidoc</span><br></pre></td></tr></table></figure></li>
 <li><p>JVM 配置</p>
-<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs gcode"><span class="hljs-attr"># 修改JVM - config/jvm.options</span><br><span class="hljs-attr">  -Xms和Xms 最小最大内存设置成一样</span><br><span class="hljs-attr">  -Xmx不超过机器内存的50</span><span class="hljs-meta">%</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight gcode"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr"># 修改JVM - config/jvm.options</span></span><br><span class="line"><span class="attr">  -Xms和Xms 最小最大内存设置成一样</span></span><br><span class="line"><span class="attr">  -Xmx不超过机器内存的50</span><span class="meta">%</span></span><br></pre></td></tr></table></figure></li>
 <li><p>Run</p>
-<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs 1c">$ bin/elasticsearch<br><span class="hljs-symbol">~ took 11m 31s</span><br><span class="hljs-symbol">➜ curl http</span>:<span class="hljs-comment">//localhost:9200</span><br>&#123;<br>  <span class="hljs-string">&quot;name&quot;</span> : <span class="hljs-string">&quot;a714f28827d5&quot;</span>,<br>  <span class="hljs-string">&quot;cluster_name&quot;</span> : <span class="hljs-string">&quot;docker-cluster&quot;</span>,<br>  <span class="hljs-string">&quot;cluster_uuid&quot;</span> : <span class="hljs-string">&quot;96jmRuNUQxqFsGeWJjIo6g&quot;</span>,<br>  <span class="hljs-string">&quot;version&quot;</span> : &#123;<br>    <span class="hljs-string">&quot;number&quot;</span> : <span class="hljs-string">&quot;7.14.1&quot;</span>,<br>    <span class="hljs-string">&quot;build_flavor&quot;</span> : <span class="hljs-string">&quot;default&quot;</span>,<br>    <span class="hljs-string">&quot;build_type&quot;</span> : <span class="hljs-string">&quot;docker&quot;</span>,<br>    <span class="hljs-string">&quot;build_hash&quot;</span> : <span class="hljs-string">&quot;66b55ebfa59c92c15db3f69a335d500018b3331e&quot;</span>,<br>    <span class="hljs-string">&quot;build_date&quot;</span> : <span class="hljs-string">&quot;2021-08-26T09:01:05.390870785Z&quot;</span>,<br>    <span class="hljs-string">&quot;build_snapshot&quot;</span> : false,<br>    <span class="hljs-string">&quot;lucene_version&quot;</span> : <span class="hljs-string">&quot;8.9.0&quot;</span>,<br>    <span class="hljs-string">&quot;minimum_wire_compatibility_version&quot;</span> : <span class="hljs-string">&quot;6.8.0&quot;</span>,<br>    <span class="hljs-string">&quot;minimum_index_compatibility_version&quot;</span> : <span class="hljs-string">&quot;6.0.0-beta1&quot;</span><br>  &#125;,<br>  <span class="hljs-string">&quot;tagline&quot;</span> : <span class="hljs-string">&quot;You Know, for Search&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight 1c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">$ bin/elasticsearch</span><br><span class="line"><span class="symbol">~ took 11m 31s</span></span><br><span class="line"><span class="symbol">➜ curl http</span>:<span class="comment">//localhost:9200</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;name&quot;</span> : <span class="string">&quot;a714f28827d5&quot;</span>,</span><br><span class="line">  <span class="string">&quot;cluster_name&quot;</span> : <span class="string">&quot;docker-cluster&quot;</span>,</span><br><span class="line">  <span class="string">&quot;cluster_uuid&quot;</span> : <span class="string">&quot;96jmRuNUQxqFsGeWJjIo6g&quot;</span>,</span><br><span class="line">  <span class="string">&quot;version&quot;</span> : &#123;</span><br><span class="line">    <span class="string">&quot;number&quot;</span> : <span class="string">&quot;7.14.1&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_flavor&quot;</span> : <span class="string">&quot;default&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_type&quot;</span> : <span class="string">&quot;docker&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_hash&quot;</span> : <span class="string">&quot;66b55ebfa59c92c15db3f69a335d500018b3331e&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_date&quot;</span> : <span class="string">&quot;2021-08-26T09:01:05.390870785Z&quot;</span>,</span><br><span class="line">    <span class="string">&quot;build_snapshot&quot;</span> : false,</span><br><span class="line">    <span class="string">&quot;lucene_version&quot;</span> : <span class="string">&quot;8.9.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;minimum_wire_compatibility_version&quot;</span> : <span class="string">&quot;6.8.0&quot;</span>,</span><br><span class="line">    <span class="string">&quot;minimum_index_compatibility_version&quot;</span> : <span class="string">&quot;6.0.0-beta1&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="string">&quot;tagline&quot;</span> : <span class="string">&quot;You Know, for Search&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>Plugin 机制对系统扩展</p>
 <blockquote>
 <p>Discovery Plugin<br>Analysis Plugin<br>Security Plugin<br>Management Plugin<br>Ingest Plugin<br>Mapper Plugin<br>Backup Plugin</p>
 </blockquote>
-<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs clean">ubuntu <span class="hljs-keyword">in</span> ~ at k8s-node1 via 🐍 <span class="hljs-number">3.8</span><span class="hljs-number">.6</span><br>➜ elasticsearch-plugin install analysis-icu  # 分词插件<br>-&gt; Installing analysis-icu<br>-&gt; Downloading analysis-icu <span class="hljs-keyword">from</span> elastic<br>[=================================================] <span class="hljs-number">100</span>%<br>-&gt; Installed analysis-icu<br>-&gt; Please restart Elasticsearch to activate any plugins installed<br><br>ubuntu <span class="hljs-keyword">in</span> ~ at k8s-node1 via 🐍 <span class="hljs-number">3.8</span><span class="hljs-number">.6</span> took <span class="hljs-number">23</span>s<br>➜ elasticsearch-plugin list<br>analysis-icu<br><br>ubuntu <span class="hljs-keyword">in</span> ~ at k8s-node1 via 🐍 <span class="hljs-number">3.8</span><span class="hljs-number">.6</span><br>➜ curl http:<span class="hljs-comment">//localhost:9200/_cat/plugins</span><br>k8s-node1 analysis-icu <span class="hljs-number">7.14</span><span class="hljs-number">.1</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight clean"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">ubuntu <span class="keyword">in</span> ~ at k8s-node1 via 🐍 <span class="number">3.8</span><span class="number">.6</span></span><br><span class="line">➜ elasticsearch-plugin install analysis-icu  # 分词插件</span><br><span class="line">-&gt; Installing analysis-icu</span><br><span class="line">-&gt; Downloading analysis-icu <span class="keyword">from</span> elastic</span><br><span class="line">[=================================================] <span class="number">100</span>%</span><br><span class="line">-&gt; Installed analysis-icu</span><br><span class="line">-&gt; Please restart Elasticsearch to activate any plugins installed</span><br><span class="line"></span><br><span class="line">ubuntu <span class="keyword">in</span> ~ at k8s-node1 via 🐍 <span class="number">3.8</span><span class="number">.6</span> took <span class="number">23</span>s</span><br><span class="line">➜ elasticsearch-plugin list</span><br><span class="line">analysis-icu</span><br><span class="line"></span><br><span class="line">ubuntu <span class="keyword">in</span> ~ at k8s-node1 via 🐍 <span class="number">3.8</span><span class="number">.6</span></span><br><span class="line">➜ curl http:<span class="comment">//localhost:9200/_cat/plugins</span></span><br><span class="line">k8s-node1 analysis-icu <span class="number">7.14</span><span class="number">.1</span></span><br></pre></td></tr></table></figure></li>
 <li><p>多集群<br><a href="/misc/code/elasticsearch/docker-compose.yml">docker-compose.yml</a></p>
-<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs accesslog">➜ curl -X GET <span class="hljs-string">&quot;localhost:9200/_cat/nodes?v=true&amp;pretty&quot;</span><br>ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role   master name<br><span class="hljs-number">172.24.0.2</span>           <span class="hljs-number">41</span>          <span class="hljs-number">97</span>  <span class="hljs-number">85</span>    <span class="hljs-number">4</span>.<span class="hljs-number">28</span>    <span class="hljs-number">1</span>.<span class="hljs-number">24</span>     <span class="hljs-number">0</span>.<span class="hljs-number">43</span> cdfhilmrstw -      es01<br><span class="hljs-number">172.24.0.3</span>           <span class="hljs-number">56</span>          <span class="hljs-number">97</span>  <span class="hljs-number">85</span>    <span class="hljs-number">4</span>.<span class="hljs-number">28</span>    <span class="hljs-number">1</span>.<span class="hljs-number">24</span>     <span class="hljs-number">0</span>.<span class="hljs-number">43</span> cdfhilmrstw -      es03<br><span class="hljs-number">172.24.0.4</span>           <span class="hljs-number">27</span>          <span class="hljs-number">97</span>  <span class="hljs-number">85</span>    <span class="hljs-number">4</span>.<span class="hljs-number">28</span>    <span class="hljs-number">1</span>.<span class="hljs-number">24</span>     <span class="hljs-number">0</span>.<span class="hljs-number">43</span> cdfhilmrstw *      es02<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight accesslog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜ curl -X GET <span class="string">&quot;localhost:9200/_cat/nodes?v=true&amp;pretty&quot;</span></span><br><span class="line">ip         heap.percent ram.percent cpu load_1m load_5m load_15m node.role   master name</span><br><span class="line"><span class="number">172.24.0.2</span>           <span class="number">41</span>          <span class="number">97</span>  <span class="number">85</span>    <span class="number">4</span>.<span class="number">28</span>    <span class="number">1</span>.<span class="number">24</span>     <span class="number">0</span>.<span class="number">43</span> cdfhilmrstw -      es01</span><br><span class="line"><span class="number">172.24.0.3</span>           <span class="number">56</span>          <span class="number">97</span>  <span class="number">85</span>    <span class="number">4</span>.<span class="number">28</span>    <span class="number">1</span>.<span class="number">24</span>     <span class="number">0</span>.<span class="number">43</span> cdfhilmrstw -      es03</span><br><span class="line"><span class="number">172.24.0.4</span>           <span class="number">27</span>          <span class="number">97</span>  <span class="number">85</span>    <span class="number">4</span>.<span class="number">28</span>    <span class="number">1</span>.<span class="number">24</span>     <span class="number">0</span>.<span class="number">43</span> cdfhilmrstw *      es02</span><br></pre></td></tr></table></figure></li>
 <li><p>Kibana:</p>
-<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs powershell"><span class="hljs-variable">$</span> <span class="hljs-built_in">curl</span> http://localhost:<span class="hljs-number">5601</span><br><br><span class="hljs-comment"># Kibana Plugins 插件</span><br><span class="hljs-variable">$</span> kibana<span class="hljs-literal">-plugin</span> install<br><span class="hljs-variable">$</span> kibana<span class="hljs-literal">-plugin</span> list<br><span class="hljs-variable">$</span> kibana remove<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$</span> <span class="built_in">curl</span> http://localhost:<span class="number">5601</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Kibana Plugins 插件</span></span><br><span class="line"><span class="variable">$</span> kibana<span class="literal">-plugin</span> install</span><br><span class="line"><span class="variable">$</span> kibana<span class="literal">-plugin</span> list</span><br><span class="line"><span class="variable">$</span> kibana remove</span><br></pre></td></tr></table></figure></li>
 <li><p>Logstash:</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs"><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Elasticsearch-基本概念"><a href="#Elasticsearch-基本概念" class="headerlink" title="Elasticsearch 基本概念"></a>Elasticsearch 基本概念</h2><ul>
 <li><p>文档 Document</p>
 <blockquote>
 <p>Elasticsearch 是面向文档的，文档是所有可搜索数据的最小单位<br>文档会被序列化成JSON格式，保存在Elasticsearch中<br>每个文档都有一个Unique ID</p>
 </blockquote>
-<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs elm"># 文档元数据<span class="hljs-type">Metadata</span> - 标注文档的相关信息<br>  _index - 文档所属的索引名<br>  _<span class="hljs-keyword">type</span>  - 文档所属类型名<br>  _id    - 文档唯一<span class="hljs-type">ID</span><br>  _source - 文档原始<span class="hljs-type">JSON</span>数据<br>  _version - 文档的版本信息 <span class="hljs-comment">-- 解决并发读写冲突</span><br>  _score  - 相关性打分<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight elm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 文档元数据<span class="type">Metadata</span> - 标注文档的相关信息</span><br><span class="line">  _index - 文档所属的索引名</span><br><span class="line">  _<span class="keyword">type</span>  - 文档所属类型名</span><br><span class="line">  _id    - 文档唯一<span class="type">ID</span></span><br><span class="line">  _source - 文档原始<span class="type">JSON</span>数据</span><br><span class="line">  _version - 文档的版本信息 <span class="comment">-- 解决并发读写冲突</span></span><br><span class="line">  _score  - 相关性打分</span><br></pre></td></tr></table></figure></li>
 <li><p>索引 Index</p>
 <blockquote>
 <p>将文档写入Elasticsearch的过程叫索引indexing</p>
 </blockquote>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs avrasm"><span class="hljs-symbol">Mapping:</span> 定义包含的文档的字段名和字段类型<br><span class="hljs-symbol">Setting:</span> 定义不同数据分布<br><span class="hljs-symbol">Shard:</span> 索引中的数据分散在Shards上<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">Mapping:</span> 定义包含的文档的字段名和字段类型</span><br><span class="line"><span class="symbol">Setting:</span> 定义不同数据分布</span><br><span class="line"><span class="symbol">Shard:</span> 索引中的数据分散在Shards上</span><br></pre></td></tr></table></figure></li>
 <li><p>节点 Node</p>
 <blockquote>
 <p>节点是Elasticsearch 实例</p>
 </blockquote>
-<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs crmsh">-E node.<span class="hljs-attr">name=</span>node1<br>每个节点启动后，会分配一个UID，保存在data目录下<br><br><span class="hljs-comment"># Master-eligible nodes 和 Master Node</span><br>  <span class="hljs-number">1</span>. 节点启动默认是一个<span class="hljs-literal">Master</span>-eligible节点, -E node.<span class="hljs-literal">master</span>:<span class="hljs-literal">false</span> 禁止<br>  <span class="hljs-number">2</span>. <span class="hljs-literal">Master</span>-eligible节点可以参加选主流程，称为<span class="hljs-literal">Master</span>节点<br>  <span class="hljs-number">3</span>. 每个节点都保存集群状态，只有<span class="hljs-literal">master</span>节点才能修改集群状态<br><br><span class="hljs-comment"># 集群状态 Cluster State</span><br>  <span class="hljs-number">1</span>. 所有节点信息<br>  <span class="hljs-number">2</span>. 所有的索引和相关Mapping 与 Setting信息<br>  <span class="hljs-number">3</span>. 分片的路由信息<br><br><span class="hljs-comment"># Data Node &amp; Coordinating Node</span><br>  <span class="hljs-number">1</span>. Data <span class="hljs-keyword">Node</span><span class="hljs-title">: 可以保存数据的节点，保存分片数据</span><br><span class="hljs-title">  2</span>. Coordinating <span class="hljs-keyword">Node</span><span class="hljs-title">: 负责接受Client</span>请求，将请求分发到合适的节点，最终把结果汇集到一起<br><br><span class="hljs-comment"># Hot &amp; Warm Node</span><br><span class="hljs-comment"># Machine Learning Node</span><br><span class="hljs-comment"># Tribe Node</span><br></code></pre></td></tr></table></figure></li>
+<figure class="highlight crmsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">-E node.<span class="attr">name=</span>node1</span><br><span class="line">每个节点启动后，会分配一个UID，保存在data目录下</span><br><span class="line"></span><br><span class="line"><span class="comment"># Master-eligible nodes 和 Master Node</span></span><br><span class="line">  <span class="number">1</span>. 节点启动默认是一个<span class="literal">Master</span>-eligible节点, -E node.<span class="literal">master</span>:<span class="literal">false</span> 禁止</span><br><span class="line">  <span class="number">2</span>. <span class="literal">Master</span>-eligible节点可以参加选主流程，称为<span class="literal">Master</span>节点</span><br><span class="line">  <span class="number">3</span>. 每个节点都保存集群状态，只有<span class="literal">master</span>节点才能修改集群状态</span><br><span class="line"></span><br><span class="line"><span class="comment"># 集群状态 Cluster State</span></span><br><span class="line">  <span class="number">1</span>. 所有节点信息</span><br><span class="line">  <span class="number">2</span>. 所有的索引和相关Mapping 与 Setting信息</span><br><span class="line">  <span class="number">3</span>. 分片的路由信息</span><br><span class="line"></span><br><span class="line"><span class="comment"># Data Node &amp; Coordinating Node</span></span><br><span class="line">  <span class="number">1</span>. Data <span class="keyword">Node</span><span class="title">: 可以保存数据的节点，保存分片数据</span></span><br><span class="line"><span class="title">  2</span>. Coordinating <span class="keyword">Node</span><span class="title">: 负责接受Client</span>请求，将请求分发到合适的节点，最终把结果汇集到一起</span><br><span class="line"></span><br><span class="line"><span class="comment"># Hot &amp; Warm Node</span></span><br><span class="line"><span class="comment"># Machine Learning Node</span></span><br><span class="line"><span class="comment"># Tribe Node</span></span><br></pre></td></tr></table></figure></li>
 <li><p>分片 Primary Shard &amp; Replica Shard</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section">#主分片: 解决数据水平扩展的问题</span><br><span class="hljs-bullet">  1.</span> 一个分片是一个运行的Lucene的实例<br><span class="hljs-bullet">  2.</span> 主分片在索引创建时指定，后续不允许修改,使用 Reindex修改<br><br><span class="hljs-section">#副本: 解决数据高可用的问题</span><br><span class="hljs-bullet">  1.</span> 副本分片数，可以动态调整<br><span class="hljs-bullet">  2.</span> 增加副本数，可以在一定程度上提高服务的可用性 (读取的吞吐)<br><br><span class="hljs-section">#分片设定-容量规划</span><br><span class="hljs-bullet">  1.</span> 分片数设置过小:<br><span class="hljs-code">    a. 后续无法增加节点实现水平扩展</span><br><span class="hljs-code">    b. 单个分片的数据量过大，导致数据重新分配耗时</span><br><span class="hljs-code">  2. 分片设置过大:</span><br><span class="hljs-code">    a. 影响搜索结果的相关性打分，影响统计结果准确性</span><br><span class="hljs-code"></span><br><span class="hljs-section"># 查看集群状态</span><br>  Green: 主分片和副片正常<br>  Yellow: 主分片正常，副片不正常<br>  Red: 主分片未能分配<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">#主分片: 解决数据水平扩展的问题</span></span><br><span class="line"><span class="bullet">  1.</span> 一个分片是一个运行的Lucene的实例</span><br><span class="line"><span class="bullet">  2.</span> 主分片在索引创建时指定，后续不允许修改,使用 Reindex修改</span><br><span class="line"></span><br><span class="line"><span class="section">#副本: 解决数据高可用的问题</span></span><br><span class="line"><span class="bullet">  1.</span> 副本分片数，可以动态调整</span><br><span class="line"><span class="bullet">  2.</span> 增加副本数，可以在一定程度上提高服务的可用性 (读取的吞吐)</span><br><span class="line"></span><br><span class="line"><span class="section">#分片设定-容量规划</span></span><br><span class="line"><span class="bullet">  1.</span> 分片数设置过小:</span><br><span class="line"><span class="code">    a. 后续无法增加节点实现水平扩展</span></span><br><span class="line"><span class="code">    b. 单个分片的数据量过大，导致数据重新分配耗时</span></span><br><span class="line"><span class="code">  2. 分片设置过大:</span></span><br><span class="line"><span class="code">    a. 影响搜索结果的相关性打分，影响统计结果准确性</span></span><br><span class="line"><span class="code"></span></span><br><span class="line"><span class="section"># 查看集群状态</span></span><br><span class="line">  Green: 主分片和副片正常</span><br><span class="line">  Yellow: 主分片正常，副片不正常</span><br><span class="line">  Red: 主分片未能分配</span><br></pre></td></tr></table></figure></li>
 <li><p>Elasticsearch vs 关系型数据库 抽象与类比</p>
 </li>
 </ul>
@@ -363,13 +423,13 @@
 </tbody></table>
 <ul>
 <li><p>文档Document CRUD</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//</span>create document. 自动生成_id<br>POST users/_doc<br>&#123;<br>  <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;Mike&quot;</span>,<br>  <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;trying out Kibana&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>create document. 指定Id, 如果ID已经存在，报错<br>PUT users<span class="hljs-regexp">/_doc/</span><span class="hljs-number">1</span>?op_type=create<br>&#123;<br>  <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;Jack&quot;</span>,<br>  <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;trying out Elasticsearch&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>create document. 指定Id, 如果ID已经存在，报错<br>PUT users<span class="hljs-regexp">/_create/</span><span class="hljs-number">1</span><br>&#123;<br>  <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;Jack&quot;</span>,<br>  <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;trying out Elasticsearch&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span> Get the document by ID<br>GET users<span class="hljs-regexp">/_doc/</span><span class="hljs-number">1</span><br><br><span class="hljs-regexp">//</span> Index<br>PUT users<span class="hljs-regexp">/_doc/</span><span class="hljs-number">1</span><br>&#123;<br>  <span class="hljs-string">&quot;user&quot;</span>: <span class="hljs-string">&quot;Mike&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>Update 在原文档上增加字段<br>POST users<span class="hljs-regexp">/_update/</span><span class="hljs-number">1</span>/<br>&#123;<br>  <span class="hljs-string">&quot;doc&quot;</span>:&#123;<br>    <span class="hljs-string">&quot;message&quot;</span>: <span class="hljs-string">&quot;trying out Elasticsearch 3&quot;</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//</span>create document. 自动生成_id</span><br><span class="line">POST users/_doc</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;user&quot;</span>: <span class="string">&quot;Mike&quot;</span>,</span><br><span class="line">  <span class="string">&quot;message&quot;</span>: <span class="string">&quot;trying out Kibana&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>create document. 指定Id, 如果ID已经存在，报错</span><br><span class="line">PUT users<span class="regexp">/_doc/</span><span class="number">1</span>?op_type=create</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;user&quot;</span>: <span class="string">&quot;Jack&quot;</span>,</span><br><span class="line">  <span class="string">&quot;message&quot;</span>: <span class="string">&quot;trying out Elasticsearch&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>create document. 指定Id, 如果ID已经存在，报错</span><br><span class="line">PUT users<span class="regexp">/_create/</span><span class="number">1</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;user&quot;</span>: <span class="string">&quot;Jack&quot;</span>,</span><br><span class="line">  <span class="string">&quot;message&quot;</span>: <span class="string">&quot;trying out Elasticsearch&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> Get the document by ID</span><br><span class="line">GET users<span class="regexp">/_doc/</span><span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> Index</span><br><span class="line">PUT users<span class="regexp">/_doc/</span><span class="number">1</span></span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;user&quot;</span>: <span class="string">&quot;Mike&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>Update 在原文档上增加字段</span><br><span class="line">POST users<span class="regexp">/_update/</span><span class="number">1</span>/</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;doc&quot;</span>:&#123;</span><br><span class="line">    <span class="string">&quot;message&quot;</span>: <span class="string">&quot;trying out Elasticsearch 3&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><ul>
-<li>Bulk API<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs n1ql">1. 支持在一次API调用中，对不同的索引进行操作<br>2. 支持四种类型操作:<br>  <span class="hljs-keyword">Index</span><br>  <span class="hljs-keyword">Create</span><br>  <span class="hljs-keyword">Update</span><br>  <span class="hljs-keyword">Delete</span><br><span class="hljs-number">3.</span> 操作单条操作失败，不会影响其他操作<br><span class="hljs-number">4.</span> 返回结果包括每一条操作的执行结果<br><br>//Bulk操作<br>POST _bulk<br>&#123;<span class="hljs-string">&quot;index&quot;</span>: &#123;<span class="hljs-string">&quot;_index&quot;</span>: <span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;_id&quot;</span>: <span class="hljs-string">&quot;1&quot;</span>&#125;&#125;<br>&#123;<span class="hljs-string">&quot;field1&quot;</span>: <span class="hljs-string">&quot;value1&quot;</span>&#125;<br>&#123;<span class="hljs-string">&quot;delete&quot;</span>: &#123;<span class="hljs-string">&quot;_index&quot;</span>: <span class="hljs-string">&quot;test&quot;</span>, <span class="hljs-string">&quot;_id&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>&#125;&#125;<br>&#123;<span class="hljs-string">&quot;create&quot;</span>: &#123;<span class="hljs-string">&quot;_index&quot;</span>: <span class="hljs-string">&quot;test2&quot;</span>, <span class="hljs-string">&quot;_id&quot;</span>: <span class="hljs-string">&quot;3&quot;</span>&#125;&#125;<br>&#123;<span class="hljs-string">&quot;field1&quot;</span>: <span class="hljs-string">&quot;value3&quot;</span>&#125;<br>&#123;<span class="hljs-string">&quot;update&quot;</span>: &#123;<span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-string">&quot;1&quot;</span>, <span class="hljs-string">&quot;_index&quot;</span>: <span class="hljs-string">&quot;test&quot;</span>&#125;&#125;<br>&#123;<span class="hljs-string">&quot;doc&quot;</span>: &#123;<span class="hljs-string">&quot;field2&quot;</span>: <span class="hljs-string">&quot;value2&quot;</span>&#125;&#125;<br></code></pre></td></tr></table></figure></li>
+<li>Bulk API<figure class="highlight n1ql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">1. 支持在一次API调用中，对不同的索引进行操作</span><br><span class="line">2. 支持四种类型操作:</span><br><span class="line">  <span class="keyword">Index</span></span><br><span class="line">  <span class="keyword">Create</span></span><br><span class="line">  <span class="keyword">Update</span></span><br><span class="line">  <span class="keyword">Delete</span></span><br><span class="line"><span class="number">3.</span> 操作单条操作失败，不会影响其他操作</span><br><span class="line"><span class="number">4.</span> 返回结果包括每一条操作的执行结果</span><br><span class="line"></span><br><span class="line">//Bulk操作</span><br><span class="line">POST _bulk</span><br><span class="line">&#123;<span class="string">&quot;index&quot;</span>: &#123;<span class="string">&quot;_index&quot;</span>: <span class="string">&quot;test&quot;</span>, <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;1&quot;</span>&#125;&#125;</span><br><span class="line">&#123;<span class="string">&quot;field1&quot;</span>: <span class="string">&quot;value1&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;delete&quot;</span>: &#123;<span class="string">&quot;_index&quot;</span>: <span class="string">&quot;test&quot;</span>, <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;2&quot;</span>&#125;&#125;</span><br><span class="line">&#123;<span class="string">&quot;create&quot;</span>: &#123;<span class="string">&quot;_index&quot;</span>: <span class="string">&quot;test2&quot;</span>, <span class="string">&quot;_id&quot;</span>: <span class="string">&quot;3&quot;</span>&#125;&#125;</span><br><span class="line">&#123;<span class="string">&quot;field1&quot;</span>: <span class="string">&quot;value3&quot;</span>&#125;</span><br><span class="line">&#123;<span class="string">&quot;update&quot;</span>: &#123;<span class="string">&quot;_id&quot;</span>:<span class="string">&quot;1&quot;</span>, <span class="string">&quot;_index&quot;</span>: <span class="string">&quot;test&quot;</span>&#125;&#125;</span><br><span class="line">&#123;<span class="string">&quot;doc&quot;</span>: &#123;<span class="string">&quot;field2&quot;</span>: <span class="string">&quot;value2&quot;</span>&#125;&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 </li>
 <li><p>mget</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-regexp">//mg</span>et -- 批量读取<br><span class="hljs-regexp">//</span>可以减少网络连接，提高性能<br>GET _mget<br>&#123;<br>  <span class="hljs-string">&quot;docs&quot;</span>: [<br>    &#123;<span class="hljs-string">&quot;_index&quot;</span>: <span class="hljs-string">&quot;users&quot;</span>, <span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-number">1</span>&#125;,<br>    &#123;<span class="hljs-string">&quot;_index&quot;</span>: <span class="hljs-string">&quot;comment&quot;</span>, <span class="hljs-string">&quot;_id&quot;</span>:<span class="hljs-number">1</span>&#125;<br>    ]<br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="regexp">//mg</span>et -- 批量读取</span><br><span class="line"><span class="regexp">//</span>可以减少网络连接，提高性能</span><br><span class="line">GET _mget</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;docs&quot;</span>: [</span><br><span class="line">    &#123;<span class="string">&quot;_index&quot;</span>: <span class="string">&quot;users&quot;</span>, <span class="string">&quot;_id&quot;</span>:<span class="number">1</span>&#125;,</span><br><span class="line">    &#123;<span class="string">&quot;_index&quot;</span>: <span class="string">&quot;comment&quot;</span>, <span class="string">&quot;_id&quot;</span>:<span class="number">1</span>&#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Elasticsearch-原理"><a href="#Elasticsearch-原理" class="headerlink" title="Elasticsearch 原理"></a>Elasticsearch 原理</h2><ul>
 <li>图书和搜索引擎类比</li>
@@ -398,16 +458,16 @@
 <blockquote>
 <p>Elasticsearch的JSON文档中每个字段，都有自己的倒排索引</p>
 </blockquote>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 单词词典(Term Dictionary)</span><br><span class="hljs-quote">&gt; 记录所有文档的单词，记录单词到倒排列表的关联关系</span><br><span class="hljs-quote">&gt; 通过B+树或哈希链表实现，满足高性能的插入与查询</span><br><br><span class="hljs-section"># 倒排列表(Posting List)</span><br><span class="hljs-quote">&gt; 记录单词对应的文档结合</span><br><span class="hljs-bullet">  -</span> 倒排索引项(Posting)<br><span class="hljs-bullet">    -</span> 文档ID<br><span class="hljs-bullet">    -</span> 词频TF - 单词在文档出现的次数<br><span class="hljs-bullet">    -</span> 位置Position - 单词在文档中分词的位置，用于语句搜索 phrase query<br><span class="hljs-bullet">    -</span> 偏移Offset - 记录单词的开始结束位置，实现高量显示<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 单词词典(Term Dictionary)</span></span><br><span class="line"><span class="quote">&gt; 记录所有文档的单词，记录单词到倒排列表的关联关系</span></span><br><span class="line"><span class="quote">&gt; 通过B+树或哈希链表实现，满足高性能的插入与查询</span></span><br><span class="line"></span><br><span class="line"><span class="section"># 倒排列表(Posting List)</span></span><br><span class="line"><span class="quote">&gt; 记录单词对应的文档结合</span></span><br><span class="line"><span class="bullet">  -</span> 倒排索引项(Posting)</span><br><span class="line"><span class="bullet">    -</span> 文档ID</span><br><span class="line"><span class="bullet">    -</span> 词频TF - 单词在文档出现的次数</span><br><span class="line"><span class="bullet">    -</span> 位置Position - 单词在文档中分词的位置，用于语句搜索 phrase query</span><br><span class="line"><span class="bullet">    -</span> 偏移Offset - 记录单词的开始结束位置，实现高量显示</span><br></pre></td></tr></table></figure></li>
 <li><p>Elasticsearch 分词器</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># Analysis</span><br>  - Analysis: 文本分析是把全文本转换一系列单词 term/token的过程<br>  - Analysis是通过Analyzer实现<br><br><span class="hljs-comment"># Analyzer:</span><br>  - Character Filters: 针对原始文本处理<br>    - HTML strip - 去除html标签<br>    - Mapping - 字符串替换<br>    - Pattern repalce - 正则匹配替换<br><br>  - Tokenizer: 将原始的文本按照一定的规则，切分为词 term or token<br>    - whitespace<br>    - standard<br>    - uax_url_email<br>    - pattern<br>    - keyward<br>    - path hierarchy<br><br>  - Token Filter: 将切分的单词进行加工，小写，删除stopwords,增加同义词<br>    - Lowercase<br>    - stop<br><br><span class="hljs-comment"># Elasticsearch内置分词器</span><br><span class="hljs-regexp">//</span>默认分词器 standard<br><span class="hljs-regexp">//</span> 按词切分，小写处理<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;standard&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>Simple Analyzer<br><span class="hljs-regexp">//</span> 按照非字母切分，非字母被去除<br><span class="hljs-regexp">//</span> 小写处理<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;simple&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span> Whitespace Analyzer<br><span class="hljs-regexp">//</span> 按照空格切分<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;whitespace&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span> Stop Analyzer<br><span class="hljs-regexp">//</span> stop filter: 去除the, a, is 修饰性词<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;stop&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>Keyward Analyzer<br><span class="hljs-regexp">//</span>不分词，直接将输入当输出<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;keyword&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>正则表达式进行分词<br><span class="hljs-regexp">//</span>默认非字符的符号进行分隔<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;pattern&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span>english<br>GET _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;english&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>: <span class="hljs-string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span><br>&#125;<br><br><span class="hljs-regexp">//</span> analysis_icu<br><span class="hljs-regexp">//</span> elasticsearch-plugin install analysis_icu<br>POST _analyze<br>&#123;<br>  <span class="hljs-string">&quot;analyzer&quot;</span>: <span class="hljs-string">&quot;icu_analyzer&quot;</span>,<br>  <span class="hljs-string">&quot;text&quot;</span>:<span class="hljs-string">&quot;他说的确实在理&quot;</span><br>&#125;<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># Analysis</span></span><br><span class="line">  - Analysis: 文本分析是把全文本转换一系列单词 term/token的过程</span><br><span class="line">  - Analysis是通过Analyzer实现</span><br><span class="line"></span><br><span class="line"><span class="comment"># Analyzer:</span></span><br><span class="line">  - Character Filters: 针对原始文本处理</span><br><span class="line">    - HTML strip - 去除html标签</span><br><span class="line">    - Mapping - 字符串替换</span><br><span class="line">    - Pattern repalce - 正则匹配替换</span><br><span class="line"></span><br><span class="line">  - Tokenizer: 将原始的文本按照一定的规则，切分为词 term or token</span><br><span class="line">    - whitespace</span><br><span class="line">    - standard</span><br><span class="line">    - uax_url_email</span><br><span class="line">    - pattern</span><br><span class="line">    - keyward</span><br><span class="line">    - path hierarchy</span><br><span class="line"></span><br><span class="line">  - Token Filter: 将切分的单词进行加工，小写，删除stopwords,增加同义词</span><br><span class="line">    - Lowercase</span><br><span class="line">    - stop</span><br><span class="line"></span><br><span class="line"><span class="comment"># Elasticsearch内置分词器</span></span><br><span class="line"><span class="regexp">//</span>默认分词器 standard</span><br><span class="line"><span class="regexp">//</span> 按词切分，小写处理</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;standard&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>Simple Analyzer</span><br><span class="line"><span class="regexp">//</span> 按照非字母切分，非字母被去除</span><br><span class="line"><span class="regexp">//</span> 小写处理</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;simple&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> Whitespace Analyzer</span><br><span class="line"><span class="regexp">//</span> 按照空格切分</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;whitespace&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> Stop Analyzer</span><br><span class="line"><span class="regexp">//</span> stop filter: 去除the, a, is 修饰性词</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;stop&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>Keyward Analyzer</span><br><span class="line"><span class="regexp">//</span>不分词，直接将输入当输出</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;keyword&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>正则表达式进行分词</span><br><span class="line"><span class="regexp">//</span>默认非字符的符号进行分隔</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;pattern&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span>english</span><br><span class="line">GET _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;english&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>: <span class="string">&quot;2 running Quick brown-foxes leap over dogs in the summer evening.&quot;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="regexp">//</span> analysis_icu</span><br><span class="line"><span class="regexp">//</span> elasticsearch-plugin install analysis_icu</span><br><span class="line">POST _analyze</span><br><span class="line">&#123;</span><br><span class="line">  <span class="string">&quot;analyzer&quot;</span>: <span class="string">&quot;icu_analyzer&quot;</span>,</span><br><span class="line">  <span class="string">&quot;text&quot;</span>:<span class="string">&quot;他说的确实在理&quot;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 <li><p>Search API</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><code class="hljs awk"><span class="hljs-comment"># URI Search - 通过URI query实现搜索</span><br>  q: 指定查询语句, 使用Query String Syntax<br>  df: 默认字段, 不指定会对所有字段进行查询<br>  Sort: 排序/from 和 size 用于分页<br>  Profile: 查看查询是如何被执行<br><br>  <span class="hljs-number">1</span>. 指定字段 vs. 泛查询<br>  <span class="hljs-regexp">//</span>带profile 普通查询<br>  GET <span class="hljs-regexp">/movies/</span>_search?q=<span class="hljs-number">2012</span>&amp;df=title<br>  &#123;<br>    <span class="hljs-string">&quot;profile&quot;</span>: <span class="hljs-string">&quot;true&quot;</span><br>  &#125;<br><br>  <span class="hljs-regexp">//</span>带profile 泛查询<br>  GET <span class="hljs-regexp">/movies/</span>_search?q=<span class="hljs-number">2012</span><br>  &#123;<br>    <span class="hljs-string">&quot;profile&quot;</span>: <span class="hljs-string">&quot;true&quot;</span><br>  &#125;<br><br>  <span class="hljs-regexp">//</span>带profile 指定字段<br>  GET <span class="hljs-regexp">/movies/</span>_search?q=title:<span class="hljs-number">2012</span><br>  &#123;<br>    <span class="hljs-string">&quot;profile&quot;</span>: <span class="hljs-string">&quot;true&quot;</span><br>  &#125;<br><br>  <span class="hljs-number">2</span>. Term vs. Phrase<br>    <span class="hljs-comment"># Term: Beautiful Mind 等效于 Beautiful OR Mind</span><br>    <span class="hljs-comment"># Phrase: &quot;Beautifuk Mind&quot; 等效于 Beautiful And Mind, 前后顺序保持一致</span><br>  <span class="hljs-regexp">//</span>使用引号 查询<br>  GET <span class="hljs-regexp">/movies/</span>_search?q=title:<span class="hljs-string">&quot;Beautiful Mind&quot;</span><br>  &#123;<br>    <span class="hljs-string">&quot;profile&quot;</span>:<span class="hljs-string">&quot;true&quot;</span><br>  &#125;<br><br>  <span class="hljs-regexp">//</span>使用引号 Mind 泛 查询<br>  GET <span class="hljs-regexp">/movies/</span>_search?q=title:Beautiful Mind<br>  &#123;<br>    <span class="hljs-string">&quot;profile&quot;</span>:<span class="hljs-string">&quot;true&quot;</span><br>  &#125;<br><br>  <span class="hljs-regexp">//</span>使用引号 Bool 泛 查询<br>  GET <span class="hljs-regexp">/movies/</span>_search?q=title:(Beautiful Mind)<br>  &#123;<br>    <span class="hljs-string">&quot;profile&quot;</span>:<span class="hljs-string">&quot;true&quot;</span><br>  &#125;<br><br>  <span class="hljs-number">3</span>. 布尔操作<br>    AND <span class="hljs-regexp">/ OR /</span> NOT 或者 &amp;&amp; <span class="hljs-regexp">/ || /</span> !<br>    title:(matrix NOT reloaded)<br><br>  <span class="hljs-number">4</span>. 分组<br>    + 表示 must<br>    - 表示 must_not<br>    title:(+matrix -reloaded)<br><br>  <span class="hljs-number">5</span>. 范围查询<br>    []闭区间 &#123;&#125;开区间<br><br>  <span class="hljs-number">6</span>. 算数符号<br>    year:&gt;<span class="hljs-number">2010</span><br><br>  <span class="hljs-number">7</span>. 通配符查询(通配符查询效率低，占用内存大，不建议使用)<br>    ? 代表<span class="hljs-number">1</span>个字符<br>    * 代表<span class="hljs-number">0</span>或多个字符<br><br>  <span class="hljs-number">8</span>. 正则表达式<br>    title:[bt]oy<br><br>  <span class="hljs-number">9</span>. 模糊匹配与近似查询<br>    title:befutifl~<span class="hljs-number">1</span><br><br><span class="hljs-comment"># Request Body Search</span><br>  <span class="hljs-number">1</span>. 分页:<br>    from, size<br><br>  <span class="hljs-number">2</span>. sort:<br><br>  <span class="hljs-number">3</span>. _source filtering: 如果_source没有存储，就只返回匹配的文档的元数据<br><br>  <span class="hljs-number">4</span>. 脚本字段:<br><br>  <span class="hljs-number">5</span>. 查询表达式 - Match<br><br>  <span class="hljs-number">6</span>. Match<br><br><span class="hljs-comment"># Page Rank算法</span><br>  <span class="hljs-number">1</span>. 衡量相关性 Information Retrieval<br>    a. Precision (查准率) - 尽可能返回较少的无关文档<br>    b. Recall(查全率)     - 尽量返回较多的相关文档<br>    c. Ranking            - 是否能够按照相关度进行排序<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># URI Search - 通过URI query实现搜索</span></span><br><span class="line">  q: 指定查询语句, 使用Query String Syntax</span><br><span class="line">  df: 默认字段, 不指定会对所有字段进行查询</span><br><span class="line">  Sort: 排序/from 和 size 用于分页</span><br><span class="line">  Profile: 查看查询是如何被执行</span><br><span class="line"></span><br><span class="line">  <span class="number">1</span>. 指定字段 vs. 泛查询</span><br><span class="line">  <span class="regexp">//</span>带profile 普通查询</span><br><span class="line">  GET <span class="regexp">/movies/</span>_search?q=<span class="number">2012</span>&amp;df=title</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;profile&quot;</span>: <span class="string">&quot;true&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="regexp">//</span>带profile 泛查询</span><br><span class="line">  GET <span class="regexp">/movies/</span>_search?q=<span class="number">2012</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;profile&quot;</span>: <span class="string">&quot;true&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="regexp">//</span>带profile 指定字段</span><br><span class="line">  GET <span class="regexp">/movies/</span>_search?q=title:<span class="number">2012</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;profile&quot;</span>: <span class="string">&quot;true&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. Term vs. Phrase</span><br><span class="line">    <span class="comment"># Term: Beautiful Mind 等效于 Beautiful OR Mind</span></span><br><span class="line">    <span class="comment"># Phrase: &quot;Beautifuk Mind&quot; 等效于 Beautiful And Mind, 前后顺序保持一致</span></span><br><span class="line">  <span class="regexp">//</span>使用引号 查询</span><br><span class="line">  GET <span class="regexp">/movies/</span>_search?q=title:<span class="string">&quot;Beautiful Mind&quot;</span></span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;profile&quot;</span>:<span class="string">&quot;true&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="regexp">//</span>使用引号 Mind 泛 查询</span><br><span class="line">  GET <span class="regexp">/movies/</span>_search?q=title:Beautiful Mind</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;profile&quot;</span>:<span class="string">&quot;true&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="regexp">//</span>使用引号 Bool 泛 查询</span><br><span class="line">  GET <span class="regexp">/movies/</span>_search?q=title:(Beautiful Mind)</span><br><span class="line">  &#123;</span><br><span class="line">    <span class="string">&quot;profile&quot;</span>:<span class="string">&quot;true&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. 布尔操作</span><br><span class="line">    AND <span class="regexp">/ OR /</span> NOT 或者 &amp;&amp; <span class="regexp">/ || /</span> !</span><br><span class="line">    title:(matrix NOT reloaded)</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. 分组</span><br><span class="line">    + 表示 must</span><br><span class="line">    - 表示 must_not</span><br><span class="line">    title:(+matrix -reloaded)</span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. 范围查询</span><br><span class="line">    []闭区间 &#123;&#125;开区间</span><br><span class="line"></span><br><span class="line">  <span class="number">6</span>. 算数符号</span><br><span class="line">    year:&gt;<span class="number">2010</span></span><br><span class="line"></span><br><span class="line">  <span class="number">7</span>. 通配符查询(通配符查询效率低，占用内存大，不建议使用)</span><br><span class="line">    ? 代表<span class="number">1</span>个字符</span><br><span class="line">    * 代表<span class="number">0</span>或多个字符</span><br><span class="line"></span><br><span class="line">  <span class="number">8</span>. 正则表达式</span><br><span class="line">    title:[bt]oy</span><br><span class="line"></span><br><span class="line">  <span class="number">9</span>. 模糊匹配与近似查询</span><br><span class="line">    title:befutifl~<span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Request Body Search</span></span><br><span class="line">  <span class="number">1</span>. 分页:</span><br><span class="line">    from, size</span><br><span class="line"></span><br><span class="line">  <span class="number">2</span>. sort:</span><br><span class="line"></span><br><span class="line">  <span class="number">3</span>. _source filtering: 如果_source没有存储，就只返回匹配的文档的元数据</span><br><span class="line"></span><br><span class="line">  <span class="number">4</span>. 脚本字段:</span><br><span class="line"></span><br><span class="line">  <span class="number">5</span>. 查询表达式 - Match</span><br><span class="line"></span><br><span class="line">  <span class="number">6</span>. Match</span><br><span class="line"></span><br><span class="line"><span class="comment"># Page Rank算法</span></span><br><span class="line">  <span class="number">1</span>. 衡量相关性 Information Retrieval</span><br><span class="line">    a. Precision (查准率) - 尽可能返回较少的无关文档</span><br><span class="line">    b. Recall(查全率)     - 尽量返回较多的相关文档</span><br><span class="line">    c. Ranking            - 是否能够按照相关度进行排序</span><br></pre></td></tr></table></figure></li>
 <li><p>Mapping</p>
 <blockquote>
 <p>类似数据库中的scehma定义</p>
 </blockquote>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">1.</span> 定义索引中的字段名称<br><span class="hljs-number">2.</span> 定义字段的数据类型<br><span class="hljs-keyword">Mapping</span> 把<span class="hljs-type">JSON</span>文档映射成Lucene所需要的扁平格式<br>一个<span class="hljs-keyword">Mapping</span>属于一个索引的<span class="hljs-keyword">type</span><br><br># 四种不同级别的<span class="hljs-keyword">Index</span> <span class="hljs-keyword">Options</span> - 控制倒排索引记录的内容<br>  docs - 记录doc id<br>  freqs - 记录 doc id 和 term frequencies<br>  positions - 记录 doc id/term frequencies/term position<br>  offsets - 记录 doc id/term frequencies/term position/<span class="hljs-type">character</span> offsets<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 定义索引中的字段名称</span><br><span class="line"><span class="number">2.</span> 定义字段的数据类型</span><br><span class="line"><span class="keyword">Mapping</span> 把<span class="type">JSON</span>文档映射成Lucene所需要的扁平格式</span><br><span class="line">一个<span class="keyword">Mapping</span>属于一个索引的<span class="keyword">type</span></span><br><span class="line"></span><br><span class="line"># 四种不同级别的<span class="keyword">Index</span> <span class="keyword">Options</span> - 控制倒排索引记录的内容</span><br><span class="line">  docs - 记录doc id</span><br><span class="line">  freqs - 记录 doc id 和 term frequencies</span><br><span class="line">  positions - 记录 doc id/term frequencies/term position</span><br><span class="line">  offsets - 记录 doc id/term frequencies/term position/<span class="type">character</span> offsets</span><br></pre></td></tr></table></figure></li>
 <li><p>数据类型<br>JSON -&gt; Elasticsearch类型</p>
 <table>
 <thead>
@@ -447,219 +507,136 @@
 </tbody></table>
 </li>
 </ul>
-  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-section"># 简单类型:</span><br><span class="hljs-bullet">  1.</span> Text/Keyword<br><span class="hljs-bullet">  2.</span> Date<br><span class="hljs-bullet">  3.</span> Integer / Floating<br><span class="hljs-bullet">  4.</span> Boolean<br><span class="hljs-bullet">  5.</span> IPv4 &amp; IPv6<br><br><span class="hljs-section"># 复杂类型 - 对象和嵌套对象</span><br>  对象类型/嵌套类型<br><br><span class="hljs-section"># 特殊类型</span><br>  geo<span class="hljs-emphasis">_point &amp; geo_</span>shape / percolator<br></code></pre></td></tr></table></figure>
+  <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 简单类型:</span></span><br><span class="line"><span class="bullet">  1.</span> Text/Keyword</span><br><span class="line"><span class="bullet">  2.</span> Date</span><br><span class="line"><span class="bullet">  3.</span> Integer / Floating</span><br><span class="line"><span class="bullet">  4.</span> Boolean</span><br><span class="line"><span class="bullet">  5.</span> IPv4 &amp; IPv6</span><br><span class="line"></span><br><span class="line"><span class="section"># 复杂类型 - 对象和嵌套对象</span></span><br><span class="line">  对象类型/嵌套类型</span><br><span class="line"></span><br><span class="line"><span class="section"># 特殊类型</span></span><br><span class="line">  geo<span class="emphasis">_point &amp; geo_</span>shape / percolator</span><br></pre></td></tr></table></figure>
 
 <h2 id="Elasticsearch-聚合-Aggregation"><a href="#Elasticsearch-聚合-Aggregation" class="headerlink" title="Elasticsearch 聚合 (Aggregation)"></a>Elasticsearch 聚合 (Aggregation)</h2><blockquote>
 <p>Elasticsearch 除了搜索以外还提供针对ES数据进行统计分析</p>
 </blockquote>
 <ul>
-<li>集合分类<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs q"><span class="hljs-number">1.</span> Bucket Aggregation: 满足特定条件的文档集合<br>  <span class="hljs-built_in">group</span> <span class="hljs-keyword">by</span><br><br><span class="hljs-number">2.</span> Metric Aggregation: 数学运算，对文档字段统计分析<br>  <span class="hljs-built_in">min</span>/<span class="hljs-built_in">max</span>/<span class="hljs-built_in">sum</span>/<span class="hljs-built_in">avg</span>/cardinality<br><br><span class="hljs-number">3.</span> Pipeline Aggregation: 对聚合结果进行二次聚合<br><span class="hljs-number">4.</span> Matrix Aggregation: 支持多个字段的操作并提供结果矩阵<br></code></pre></td></tr></table></figure></li>
+<li>集合分类<figure class="highlight q"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> Bucket Aggregation: 满足特定条件的文档集合</span><br><span class="line">  <span class="built_in">group</span> <span class="keyword">by</span></span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> Metric Aggregation: 数学运算，对文档字段统计分析</span><br><span class="line">  <span class="built_in">min</span>/<span class="built_in">max</span>/<span class="built_in">sum</span>/<span class="built_in">avg</span>/cardinality</span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> Pipeline Aggregation: 对聚合结果进行二次聚合</span><br><span class="line"><span class="number">4.</span> Matrix Aggregation: 支持多个字段的操作并提供结果矩阵</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Elasticsearch-分布式结构"><a href="#Elasticsearch-分布式结构" class="headerlink" title="Elasticsearch 分布式结构"></a>Elasticsearch 分布式结构</h2><ul>
 <li><p>高可用</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 服务可用性 - 允许有节点停止服务<br><span class="hljs-bullet">2.</span> 数据可用性 - 部分节点丢失，不会丢失数据<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 服务可用性 - 允许有节点停止服务</span><br><span class="line"><span class="bullet">2.</span> 数据可用性 - 部分节点丢失，不会丢失数据</span><br></pre></td></tr></table></figure></li>
 <li><p>可扩展性</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs markdown"><span class="hljs-bullet">1.</span> 请求量提升/数据不断增加(将数据分布到所有节点上)<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> 请求量提升/数据不断增加(将数据分布到所有节点上)</span><br></pre></td></tr></table></figure></li>
 <li><p>Elasticsearch分布式架构</p>
-<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs pgsql"><span class="hljs-number">1.</span> 不同的集群通过不同的名字区分，-E <span class="hljs-keyword">cluster</span>.name=geektime<br></code></pre></td></tr></table></figure></li>
+<figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1.</span> 不同的集群通过不同的名字区分，-E <span class="keyword">cluster</span>.name=geektime</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="ELK-大数据分析"><a href="#ELK-大数据分析" class="headerlink" title="ELK 大数据分析"></a>ELK 大数据分析</h2>
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                  <div class="post-meta mr-3">
-                    <i class="iconfont icon-category"></i>
-                    
-                      <a class="hover-with-bg" href="/categories/Middleware/">Middleware</a>
-                    
-                  </div>
-                
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/09/03/golang-pkg-Tips-Tracks/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">golang pkg Tips & Tracks</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/09/03/Dev-Ops-Tips-Tracks/">
-                        <span class="hidden-mobile">Dev-Ops Tips & Tracks</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
 
     
-
     
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
     
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+    <footer class="post-footer">
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
     </div>
   </div>
-</div>
-    
 
-    
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/09/03/Dev-Ops-Tips-Tracks/" rel="prev" title="Dev-Ops Tips & Tracks">
+                  <i class="fa fa-chevron-left"></i> Dev-Ops Tips & Tracks
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/09/03/golang-pkg-Tips-Tracks/" rel="next" title="golang pkg Tips & Tracks">
+                  golang pkg Tips & Tracks <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chyidl</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">254k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
-  
+
+    </div>
+  </footer>
 
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-</footer>
+  <script src="https://embed.widgetpack.com/widget.js" async></script>
+  <script class="next-config" data-name="rating" type="application/json">{"enable":true,"id":32031,"color":"#fc6423"}</script>
+  <script src="/js/third-party/rating.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"01ac1cd8fd332180d1a349bd25c5e4f0"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>

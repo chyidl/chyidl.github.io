@@ -1,22 +1,26 @@
-
-
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
-
-
-
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/favicon.png">
-  <link rel="icon" href="/img/favicon.png">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
-  <meta http-equiv="x-ua-compatible" content="ie=edge">
-  
-  <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="chyi">
-  <meta name="keywords" content="">
-  
-    <meta name="description" content="Bash Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as the default shell on most linux distros.">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=EB+Garamond:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css" integrity="sha256-mUZM63G8m73Mcidfrv5E+Y61y7a12O5mW4ezU3bxqW4=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"chyidl.github.io","root":"/","images":"/images","scheme":"Pisces","version":"8.7.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":true,"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+<meta name="description" content="Bash Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as the default shell on most linux distros.">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bash Script CheetSheet">
 <meta property="og:url" content="http://chyidl.github.io/2021/10/09/Bash-Script-CheetSheet/">
@@ -27,429 +31,396 @@
 <meta property="article:modified_time" content="2021-10-09T07:06:37.000Z">
 <meta property="article:author" content="chyi">
 <meta property="article:tag" content="Shell">
-<meta name="twitter:card" content="summary_large_image">
-  
-  
-  <title>Bash Script CheetSheet - Stay Hungry Stay Foolish</title>
-
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
+<meta name="twitter:card" content="summary">
 
 
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+<link rel="canonical" href="http://chyidl.github.io/2021/10/09/Bash-Script-CheetSheet/">
 
-  
-    
-    
-      
-      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
-    
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://chyidl.github.io/2021/10/09/Bash-Script-CheetSheet/","path":"2021/10/09/Bash-Script-CheetSheet/","title":"Bash Script CheetSheet"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Bash Script CheetSheet | Stay Hungry Stay Foolish</title>
   
 
-  
-    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
-  
-
-
-<!-- 主题依赖的图标库，不要自行修改 -->
-
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_ba1fz6golrf.css">
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?516e4e6590bcf7090ded728a1abdd5aa"></script>
 
 
 
-<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
-
-
-<link  rel="stylesheet" href="/css/main.css" />
-
-<!-- 自定义样式保持在最底部 -->
-
-
-  <script id="fluid-configs">
-    var Fluid = window.Fluid || {};
-    var CONFIG = {"hostname":"chyidl.github.io","root":"/","version":"1.8.14","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"right","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"copy_btn":true,"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/search.xml"};
-  </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
-<meta name="generator" content="Hexo 5.4.0"><link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+<link rel="alternate" href="/atom.xml" title="Stay Hungry Stay Foolish" type="application/atom+xml">
 </head>
 
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+  <a target="_blank" rel="noopener" href="https://github.com/chyidl" class="github-corner" aria-label="View source on GitHub"><svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a><style>.github-corner:hover .octo-arm{animation:octocat-wave 560ms ease-in-out}@keyframes octocat-wave{0%,100%{transform:rotate(0)}20%,60%{transform:rotate(-25deg)}40%,80%{transform:rotate(10deg)}}@media (max-width:500px){.github-corner:hover .octo-arm{animation:none}.github-corner .octo-arm{animation:octocat-wave 560ms ease-in-out}}</style>
 
-<body>
-  <header style="height: 70vh;">
-    <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
-  <div class="container">
-    <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
-    </a>
-
-    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
-            data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <div class="animated-icon"><span></span><span></span><span></span></div>
-    </button>
-
-    <!-- Collapsible content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ml-auto text-center">
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/">
-                <i class="iconfont icon-home-fill"></i>
-                首页
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/archives/">
-                <i class="iconfont icon-archive-fill"></i>
-                归档
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/categories/">
-                <i class="iconfont icon-category-fill"></i>
-                分类
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/tags/">
-                <i class="iconfont icon-tags-fill"></i>
-                标签
-              </a>
-            </li>
-          
-        
-          
-          
-          
-          
-            <li class="nav-item">
-              <a class="nav-link" href="/about/">
-                <i class="iconfont icon-user-fill"></i>
-                关于
-              </a>
-            </li>
-          
-        
-        
-          <li class="nav-item" id="search-btn">
-            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
-              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
-            </a>
-          </li>
-        
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
-                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
-          </li>
-        
-      </ul>
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
     </div>
   </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Stay Hungry Stay Foolish</h1>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Alaways be curious to learn more and achieve more.</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
 </nav>
 
-    <div class="banner" id="banner" parallax=true
-         style="background: url('/img/default.png') no-repeat center center;
-           background-size: cover;">
-      <div class="full-bg-img">
-        <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
-          <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="Bash Script CheetSheet">
-              
-            </span>
 
-            
-              <div class="mt-3">
-  
-  
-    <span class="post-meta">
-      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-      <time datetime="2021-10-09 15:06" pubdate>
-        2021年10月9日 下午
-      </time>
-    </span>
-  
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
 </div>
 
-<div class="mt-1">
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-chart"></i>
-      15k 字
-    </span>
-  
+    </div>
+  </div>
 
-  
-    <span class="post-meta mr-2">
-      <i class="iconfont icon-clock-fill"></i>
-      
-      
-      126 分钟
-    </span>
-  
-
-  
-  
 </div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
 
-            
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Bash"><span class="nav-number">1.</span> <span class="nav-text">Bash</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Tips-amp-amp-Tracks"><span class="nav-number">1.1.</span> <span class="nav-text">Tips &amp;&amp; Tracks</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Refrence"><span class="nav-number">1.2.</span> <span class="nav-text">Refrence</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-overview">
+            <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="chyi"
+      src="/uploads/avatar.png">
+  <p class="site-author-name" itemprop="name">chyi</p>
+  <div class="site-description" itemprop="description">ああ月sブログ</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">76</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author site-overview-item animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/chyidl" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;chyidl" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/chyiyaqing@gmail.com" title="E-Mail → chyiyaqing@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/ChyiYaqing" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;ChyiYaqing" rel="noopener" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/atom.xml" title="RSS → &#x2F;atom.xml"><i class="fas fa-rss fa-fw"></i>RSS</a>
+      </span>
+  </div>
+
+
+
           </div>
-
-          
         </div>
       </div>
     </div>
-  </header>
+  </aside>
+  <div class="sidebar-dimmer"></div>
 
-  <main>
+
+    </header>
+
     
-      
+  <div class="back-to-top" role="button" aria-label="返回顶部">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
 
-<div class="container-fluid nopadding-x">
-  <div class="row nomargin-x">
-    <div class="d-none d-lg-block col-lg-2"></div>
-    <div class="col-lg-8 nopadding-x-md">
-      <div class="container nopadding-x-md" id="board-ctn">
-        <div class="py-5" id="board">
-          <article class="post-content mx-auto">
-            <!-- SEO header -->
-            <h1 style="display: none">Bash Script CheetSheet</h1>
-            
-            <div class="markdown-body">
-              <h1 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h1><blockquote>
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://chyidl.github.io/2021/10/09/Bash-Script-CheetSheet/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/uploads/avatar.png">
+      <meta itemprop="name" content="chyi">
+      <meta itemprop="description" content="ああ月sブログ">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Stay Hungry Stay Foolish">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Bash Script CheetSheet
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2021-10-09 15:06:37" itemprop="dateCreated datePublished" datetime="2021-10-09T15:06:37+08:00">2021-10-09</time>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="本文字数">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">本文字数：</span>
+      <span>15k</span>
+    </span>
+    <span class="post-meta-item" title="阅读时长">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">阅读时长 &asymp;</span>
+      <span>14 分钟</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="Bash"><a href="#Bash" class="headerlink" title="Bash"></a>Bash</h1><blockquote>
 <p>Bash is a name of the unix shell, which was also distributed as the shell for the GNU operating system and as the default shell on most linux distros.</p>
 </blockquote>
 <span id="more"></span>
 
-<figure class="highlight bash"><table><tr><td class="gutter"><div class="code-wrapper"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br></pre></div></td><td class="code"><pre><code class="hljs bash"><span class="hljs-meta">#!/usr/bin/env bash</span><br><span class="hljs-comment"># First line of the script is the shebang which tells the system how to execute</span><br><span class="hljs-comment"># the script</span><br><br><span class="hljs-comment"># Simple hello world example:</span><br><span class="hljs-built_in">echo</span> Hello world!  <span class="hljs-comment"># =&gt; Hello world!</span><br><br><span class="hljs-comment"># Each command starts on a new line, or after a semicolon:</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;This is the first line&#x27;</span>; <span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;This is the second line&#x27;</span><br><span class="hljs-comment"># =&gt; This is the first line</span><br><span class="hljs-comment"># =&gt; This is the second line</span><br><br><span class="hljs-comment"># Declaring a variable looks like this:</span><br>Variable=<span class="hljs-string">&quot;Some string&quot;</span><br><br><span class="hljs-comment"># Using the variable:</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$Variable</span>  <span class="hljs-comment"># =&gt; Some string</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$Variable</span>&quot;</span> <span class="hljs-comment"># =&gt; Some string</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&#x27;$Variable&#x27;</span> <span class="hljs-comment"># =&gt; $Variable</span><br><span class="hljs-comment"># When you use the variable itself - assign it, export it, or else - you write</span><br><span class="hljs-comment"># its name without $. If you want to use the variable&#x27;s value, you should use $.</span><br><span class="hljs-comment"># Not that &#x27; (single quote) wan&#x27;t expand the variables!</span><br><br><span class="hljs-comment"># Parameter expansion $&#123; &#125;:</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;Variable&#125;</span> <span class="hljs-comment"># =&gt; Some string</span><br><span class="hljs-comment"># This is a simple usage of parameter expansion</span><br><span class="hljs-comment"># Parameter Expansion gets a value from a variable.</span><br><span class="hljs-comment"># It &quot;expands&quot; or prints the value</span><br><span class="hljs-comment"># During the expansion time the value or parameter can be modified</span><br><span class="hljs-comment"># Below are other modifications that add onto this expansion</span><br><br><span class="hljs-comment"># String substitution in variables</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;Variable/Some/A&#125;</span> <span class="hljs-comment"># =&gt; A string</span><br><span class="hljs-comment"># This will substitute the first occurrence of &quot;Some&quot; with &quot;A&quot;</span><br><br><span class="hljs-comment"># Substring from a variable</span><br>Length=7<br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;Variable:0:Length&#125;</span> <span class="hljs-comment"># =&gt; Some st</span><br><span class="hljs-comment"># This will return only the first 7 characters of the value</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;Variable: -5&#125;</span> <span class="hljs-comment"># =&gt; tring</span><br><span class="hljs-comment"># This will return the last 5 characters (note the space before -5)</span><br><br><span class="hljs-comment"># String length</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;#Variable&#125;</span> <span class="hljs-comment"># =&gt; 11</span><br><br><span class="hljs-comment"># Indirect expansion</span><br>OtherVariable=<span class="hljs-string">&quot;Variable&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;!OtherVariable&#125;</span> <span class="hljs-comment"># =&gt; Some String</span><br><span class="hljs-comment"># This will expand the value of OtherVariable</span><br><br><span class="hljs-comment"># Default value for variable</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;Foo:-&quot;DefaultValueIfFooIsMissingOrEmpty&quot;&#125;</span><br><span class="hljs-comment"># =&gt; DefaultValueIfFooIsMissingOrEmpty</span><br><span class="hljs-comment"># This works for null (Foo=) and empty string (Foo=&quot;&quot;); zero (Foo=0) returns 0.</span><br><span class="hljs-comment"># Note that it only returns default value and doesn&#x27;t change variable value.</span><br><br><span class="hljs-comment"># Declare an array with 6 elements</span><br>array0=(one two three four five six)<br><span class="hljs-comment"># Print first element</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$array0</span> <span class="hljs-comment"># =&gt; &quot;one&quot;</span><br><span class="hljs-comment"># Print first element</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;array0[0]&#125;</span> <span class="hljs-comment"># =&gt; &quot;one&quot;</span><br><span class="hljs-comment"># Print all elements</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;array0[@]&#125;</span> <span class="hljs-comment"># =&gt; &quot;one two three four five six&quot;</span><br><span class="hljs-comment"># Print number of elements</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;#array0[@]&#125;</span> <span class="hljs-comment"># =&gt; &quot;6&quot;</span><br><span class="hljs-comment"># Print number of characters in third element</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;#array0[2]&#125;</span> <span class="hljs-comment"># =&gt; &quot;5&quot;</span><br><span class="hljs-comment"># Print 2 elements starting from forth</span><br><span class="hljs-built_in">echo</span> <span class="hljs-variable">$&#123;array0[@]:3:2&#125;</span> <span class="hljs-comment"># =&gt; &quot;four five&quot;</span><br><span class="hljs-comment"># Print all elements. Each of them on new line.</span><br><span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> <span class="hljs-string">&quot;<span class="hljs-variable">$&#123;array0[@]&#125;</span>&quot;</span>; <span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$i</span>&quot;</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-comment"># Brace Expansion &#123; &#125;</span><br><span class="hljs-comment"># Used to generate arbitrary strings</span><br><span class="hljs-built_in">echo</span> &#123;1..10&#125; <span class="hljs-comment"># =&gt; 1 2 3 4 5 6 7 8 9 10</span><br><span class="hljs-built_in">echo</span> &#123;a..z&#125; <span class="hljs-comment"># =&gt; a b c d e f g h i j k l m n o p q r s t u v w x y z</span><br><span class="hljs-comment"># This will output the range from the start value to the end value</span><br><br><span class="hljs-comment"># Built-in variables:</span><br><span class="hljs-comment"># There are some useful built-in variables, like</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Last program&#x27;s return value: $?&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Script&#x27;s PID: $$&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Number of arguments passed to script: <span class="hljs-variable">$#</span>&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;All arguments passed to script: <span class="hljs-variable">$@</span>&quot;</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Script&#x27;s arguments separated into different variables: <span class="hljs-variable">$1</span> <span class="hljs-variable">$2</span>...&quot;</span><br><br><span class="hljs-comment"># Now that we know how to echo and use variables,</span><br><span class="hljs-comment"># let&#x27;s learn some of the other basics of bash!</span><br><br><span class="hljs-comment"># Our current directory is available through the command `pwd`.</span><br><span class="hljs-comment"># `pwd` stands for &quot;print working directory&quot;.</span><br><span class="hljs-comment"># We can also use the built-in variable `$PWD`.</span><br><span class="hljs-comment"># Observe that the following are equivalent:</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;I&#x27;m in <span class="hljs-subst">$(pwd)</span>&quot;</span> <span class="hljs-comment"># execs `pwd` and interpolates output</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;I&#x27;m in <span class="hljs-variable">$PWD</span>&quot;</span> <span class="hljs-comment"># interpolates the variable</span><br><br><span class="hljs-comment"># If you get too much output in your terminal, or from a script, the command</span><br><span class="hljs-comment"># `clear` clears your screen</span><br>clear<br><span class="hljs-comment"># Ctrl-L also works for clearing output</span><br><br><span class="hljs-comment"># Reading a value from input:</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;What&#x27;s your name?&quot;</span><br><span class="hljs-built_in">read</span> Name <span class="hljs-comment"># Note that we didn&#x27;t need to declare a new variable</span><br><span class="hljs-built_in">echo</span> Hello, <span class="hljs-variable">$Name</span>!<br><br><span class="hljs-comment"># We have the usual if structure:</span><br><span class="hljs-comment"># use `man test` for more info about conditionals</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-variable">$Name</span> != <span class="hljs-variable">$USER</span> ]<br><span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Your name isn&#x27;t your username&quot;</span><br><span class="hljs-keyword">else</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Your name is your username&quot;</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-comment"># True if the value of $Name is not equal to the current user&#x27;s login username</span><br><br><span class="hljs-comment"># <span class="hljs-doctag">NOTE:</span> if $Name is empty, bash sees the above condition as:</span><br><span class="hljs-keyword">if</span> [ != <span class="hljs-variable">$USER</span> ]<br><span class="hljs-comment"># which is invalid syntax</span><br><span class="hljs-comment"># so the &quot;safe&quot; way to use potentially empty variables in bash is:</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$Name</span>&quot;</span> != <span class="hljs-variable">$USER</span> ] ...<br><span class="hljs-comment"># which, when $Name is empty, is seen by bash as:</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;&quot;</span> != <span class="hljs-variable">$USER</span> ] ...<br><span class="hljs-comment"># which works as expected</span><br><br><span class="hljs-comment"># There is also conditional execution</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Always executed&quot;</span> || <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Only executed if first command fails&quot;</span><br><span class="hljs-comment"># =&gt; Always executed</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Always executed&quot;</span> &amp;&amp; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Only executed if first command does NOT fail&quot;</span><br><span class="hljs-comment"># =&gt; Always executed</span><br><span class="hljs-comment"># =&gt; Only executed if first command does NOT fail</span><br><br><br><span class="hljs-comment"># To use &amp;&amp; and || with if statements, you need multiple pairs of square brackets:</span><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$Name</span>&quot;</span> == <span class="hljs-string">&quot;Steve&quot;</span> ] &amp;&amp; [ <span class="hljs-string">&quot;<span class="hljs-variable">$Age</span>&quot;</span> -eq 15 ]<br><span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This will run if <span class="hljs-variable">$Name</span> is Steve AND <span class="hljs-variable">$Age</span> is 15.&quot;</span><br><span class="hljs-keyword">fi</span><br><br><span class="hljs-keyword">if</span> [ <span class="hljs-string">&quot;<span class="hljs-variable">$Name</span>&quot;</span> == <span class="hljs-string">&quot;Daniya&quot;</span> ] || [ <span class="hljs-string">&quot;<span class="hljs-variable">$Name</span>&quot;</span> == <span class="hljs-string">&quot;Zach&quot;</span> ]<br><span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This will run if <span class="hljs-variable">$Name</span> is Daniya OR Zach.&quot;</span><br><span class="hljs-keyword">fi</span><br><br><span class="hljs-comment"># There is also the `=~` operator, which tests a string against a Regex pattern:</span><br>Email=me@example.com<br><span class="hljs-keyword">if</span> [[ <span class="hljs-string">&quot;<span class="hljs-variable">$Email</span>&quot;</span> =~ [a-z]+@[a-z]&#123;2,&#125;\.(com|net|org) ]]<br><span class="hljs-keyword">then</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Valid email!&quot;</span><br><span class="hljs-keyword">fi</span><br><span class="hljs-comment"># Note that =~ only works within double [[ ]] square brackets,</span><br><span class="hljs-comment"># which are subtly different from single [ ].</span><br><span class="hljs-comment"># See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.</span><br><br><span class="hljs-comment"># Redefine command `ping` as alias to send only 5 packets</span><br><span class="hljs-built_in">alias</span> ping=<span class="hljs-string">&#x27;ping -c 5&#x27;</span><br><span class="hljs-comment"># Escape the alias and use command with this name instead</span><br>\ping 192.168.1.1<br><span class="hljs-comment"># Print all aliases</span><br><span class="hljs-built_in">alias</span> -p<br><br><span class="hljs-comment"># Expressions are denoted with the following format:</span><br><span class="hljs-built_in">echo</span> $(( <span class="hljs-number">10</span> + <span class="hljs-number">5</span> )) <span class="hljs-comment"># =&gt; 15</span><br><br><span class="hljs-comment"># Unlike other programming languages, bash is a shell so it works in the context</span><br><span class="hljs-comment"># of a current directory. You can list files and directories in the current</span><br><span class="hljs-comment"># directory with the ls command:</span><br>ls <span class="hljs-comment"># Lists the files and subdirectories contained in the current directory</span><br><br><span class="hljs-comment"># This command has options that control its execution:</span><br>ls -l <span class="hljs-comment"># Lists every file and directory on a separate line</span><br>ls -t <span class="hljs-comment"># Sorts the directory contents by last-modified date (descending)</span><br>ls -R <span class="hljs-comment"># Recursively `ls` this directory and all of its subdirectories</span><br><br><span class="hljs-comment"># Results of the previous command can be passed to the next command as input.</span><br><span class="hljs-comment"># The `grep` command filters the input with provided patterns.</span><br><span class="hljs-comment"># That&#x27;s how we can list .txt files in the current directory:</span><br>ls -l | grep <span class="hljs-string">&quot;\.txt&quot;</span><br><br><span class="hljs-comment"># Use `cat` to print files to stdout:</span><br>cat file.txt<br><br><span class="hljs-comment"># We can also read the file using `cat`:</span><br>Contents=$(cat file.txt)<br><span class="hljs-comment"># &quot;\n&quot; prints a new line character</span><br><span class="hljs-comment"># &quot;-e&quot; to interpret the newline escape characters as escape characters</span><br><span class="hljs-built_in">echo</span> -e <span class="hljs-string">&quot;START OF FILE\n<span class="hljs-variable">$Contents</span>\nEND OF FILE&quot;</span><br><span class="hljs-comment"># =&gt; START OF FILE</span><br><span class="hljs-comment"># =&gt; [contents of file.txt]</span><br><span class="hljs-comment"># =&gt; END OF FILE</span><br><br><span class="hljs-comment"># Use `cp` to copy files or directories from one place to another.</span><br><span class="hljs-comment"># `cp` creates NEW versions of the sources,</span><br><span class="hljs-comment"># so editing the copy won&#x27;t affect the original (and vice versa).</span><br><span class="hljs-comment"># Note that it will overwrite the destination if it already exists.</span><br>cp srcFile.txt clone.txt<br>cp -r srcDirectory/ dst/ <span class="hljs-comment"># recursively copy</span><br><br><span class="hljs-comment"># Look into `scp` or `sftp` if you plan on exchanging files between computers.</span><br><span class="hljs-comment"># `scp` behaves very similarly to `cp`.</span><br><span class="hljs-comment"># `sftp` is more interactive.</span><br><br><span class="hljs-comment"># Use `mv` to move files or directories from one place to another.</span><br><span class="hljs-comment"># `mv` is similar to `cp`, but it deletes the source.</span><br><span class="hljs-comment"># `mv` is also useful for renaming files!</span><br>mv s0urc3.txt dst.txt <span class="hljs-comment"># sorry, l33t hackers...</span><br><br><span class="hljs-comment"># Since bash works in the context of a current directory, you might want to</span><br><span class="hljs-comment"># run your command in some other directory. We have cd for changing location:</span><br><span class="hljs-built_in">cd</span> ~    <span class="hljs-comment"># change to home directory</span><br><span class="hljs-built_in">cd</span>      <span class="hljs-comment"># also goes to home directory</span><br><span class="hljs-built_in">cd</span> ..   <span class="hljs-comment"># go up one directory</span><br>        <span class="hljs-comment"># (^^say, from /home/username/Downloads to /home/username)</span><br><span class="hljs-built_in">cd</span> /home/username/Documents   <span class="hljs-comment"># change to specified directory</span><br><span class="hljs-built_in">cd</span> ~/Documents/..    <span class="hljs-comment"># still in home directory..isn&#x27;t it??</span><br><span class="hljs-built_in">cd</span> -    <span class="hljs-comment"># change to last directory</span><br><span class="hljs-comment"># =&gt; /home/username/Documents</span><br><br><span class="hljs-comment"># Use subshells to work across directories</span><br>(<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;First, I&#x27;m here: <span class="hljs-variable">$PWD</span>&quot;</span>) &amp;&amp; (<span class="hljs-built_in">cd</span> someDir; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Then, I&#x27;m here: <span class="hljs-variable">$PWD</span>&quot;</span>)<br><span class="hljs-built_in">pwd</span> <span class="hljs-comment"># still in first directory</span><br><br><span class="hljs-comment"># Use `mkdir` to create new directories.</span><br>mkdir myNewDir<br><span class="hljs-comment"># The `-p` flag causes new intermediate directories to be created as necessary.</span><br>mkdir -p myNewDir/with/intermediate/directories<br><span class="hljs-comment"># if the intermediate directories didn&#x27;t already exist, running the above</span><br><span class="hljs-comment"># command without the `-p` flag would return an error</span><br><br><span class="hljs-comment"># You can redirect command input and output (stdin, stdout, and stderr).</span><br><span class="hljs-comment"># Read from stdin until ^EOF$ and overwrite hello.py with the lines</span><br><span class="hljs-comment"># between &quot;EOF&quot;:</span><br>cat &gt; hello.py &lt;&lt; <span class="hljs-string">EOF</span><br><span class="hljs-string">#!/usr/bin/env python</span><br><span class="hljs-string">from __future__ import print_function</span><br><span class="hljs-string">import sys</span><br><span class="hljs-string">print(&quot;#stdout&quot;, file=sys.stdout)</span><br><span class="hljs-string">print(&quot;#stderr&quot;, file=sys.stderr)</span><br><span class="hljs-string">for line in sys.stdin:</span><br><span class="hljs-string">    print(line, file=sys.stdout)</span><br><span class="hljs-string">EOF</span><br><span class="hljs-comment"># Variables will be expanded if the first &quot;EOF&quot; is not quoted</span><br><br><span class="hljs-comment"># Run the hello.py Python script with various stdin, stdout, and</span><br><span class="hljs-comment"># stderr redirections:</span><br>python hello.py &lt; <span class="hljs-string">&quot;input.in&quot;</span> <span class="hljs-comment"># pass input.in as input to the script</span><br><br>python hello.py &gt; <span class="hljs-string">&quot;output.out&quot;</span> <span class="hljs-comment"># redirect output from the script to output.out</span><br><br>python hello.py 2&gt; <span class="hljs-string">&quot;error.err&quot;</span> <span class="hljs-comment"># redirect error output to error.err</span><br><br>python hello.py &gt; <span class="hljs-string">&quot;output-and-error.log&quot;</span> 2&gt;&amp;1<br><span class="hljs-comment"># redirect both output and errors to output-and-error.log</span><br><br>python hello.py &gt; /dev/null 2&gt;&amp;1<br><span class="hljs-comment"># redirect all output and errors to the black hole, /dev/null, i.e., no output</span><br><br><span class="hljs-comment"># The output error will overwrite the file if it exists,</span><br><span class="hljs-comment"># if you want to append instead, use &quot;&gt;&gt;&quot;:</span><br>python hello.py &gt;&gt; <span class="hljs-string">&quot;output.out&quot;</span> 2&gt;&gt; <span class="hljs-string">&quot;error.err&quot;</span><br><br><span class="hljs-comment"># Overwrite output.out, append to error.err, and count lines:</span><br>info bash <span class="hljs-string">&#x27;Basic Shell Features&#x27;</span> <span class="hljs-string">&#x27;Redirections&#x27;</span> &gt; output.out 2&gt;&gt; error.err<br>wc -l output.out error.err<br><br><span class="hljs-comment"># Run a command and print its file descriptor (e.g. /dev/fd/123)</span><br><span class="hljs-comment"># see: man fd</span><br><span class="hljs-built_in">echo</span> &lt;(<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;#helloworld&quot;</span>)<br><br><span class="hljs-comment"># Overwrite output.out with &quot;#helloworld&quot;:</span><br>cat &gt; output.out &lt;(<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;#helloworld&quot;</span>)<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;#helloworld&quot;</span> &gt; output.out<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;#helloworld&quot;</span> | cat &gt; output.out<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;#helloworld&quot;</span> | tee output.out &gt;/dev/null<br><br><span class="hljs-comment"># Cleanup temporary files verbosely (add &#x27;-i&#x27; for interactive)</span><br><span class="hljs-comment"># WARNING: `rm` commands cannot be undone</span><br>rm -v output.out error.err output-and-error.log<br>rm -r tempDir/ <span class="hljs-comment"># recursively delete</span><br><span class="hljs-comment"># You can install the `trash-cli` Python package to have `trash`</span><br><span class="hljs-comment"># which puts files in the system trash and doesn&#x27;t delete them directly</span><br><span class="hljs-comment"># see https://pypi.org/project/trash-cli/ if you want to be careful</span><br><br><span class="hljs-comment"># Commands can be substituted within other commands using $( ):</span><br><span class="hljs-comment"># The following command displays the number of files and directories in the</span><br><span class="hljs-comment"># current directory.</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;There are <span class="hljs-subst">$(ls | wc -l)</span> items here.&quot;</span><br><br><span class="hljs-comment"># The same can be done using backticks `` but they can&#x27;t be nested -</span><br><span class="hljs-comment"># the preferred way is to use $( ).</span><br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;There are `ls | wc -l` items here.&quot;</span><br><br><span class="hljs-comment"># Bash uses a `case` statement that works similarly to switch in Java and C++:</span><br><span class="hljs-keyword">case</span> <span class="hljs-string">&quot;<span class="hljs-variable">$Variable</span>&quot;</span> <span class="hljs-keyword">in</span><br>    <span class="hljs-comment"># List patterns for the conditions you want to meet</span><br>    0) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;There is a zero.&quot;</span>;;<br>    1) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;There is a one.&quot;</span>;;<br>    *) <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;It is not null.&quot;</span>;;  <span class="hljs-comment"># match everything</span><br><span class="hljs-keyword">esac</span><br><br><span class="hljs-comment"># `for` loops iterate for as many arguments given:</span><br><span class="hljs-comment"># The contents of $Variable is printed three times.</span><br><span class="hljs-keyword">for</span> Variable <span class="hljs-keyword">in</span> &#123;1..3&#125;<br><span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$Variable</span>&quot;</span><br><span class="hljs-keyword">done</span><br><span class="hljs-comment"># =&gt; 1</span><br><span class="hljs-comment"># =&gt; 2</span><br><span class="hljs-comment"># =&gt; 3</span><br><br><br><span class="hljs-comment"># Or write it the &quot;traditional for loop&quot; way:</span><br><span class="hljs-keyword">for</span> ((a=1; a &lt;= 3; a++))<br><span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-variable">$a</span><br><span class="hljs-keyword">done</span><br><span class="hljs-comment"># =&gt; 1</span><br><span class="hljs-comment"># =&gt; 2</span><br><span class="hljs-comment"># =&gt; 3</span><br><br><span class="hljs-comment"># They can also be used to act on files..</span><br><span class="hljs-comment"># This will run the command `cat` on file1 and file2</span><br><span class="hljs-keyword">for</span> Variable <span class="hljs-keyword">in</span> file1 file2<br><span class="hljs-keyword">do</span><br>    cat <span class="hljs-string">&quot;<span class="hljs-variable">$Variable</span>&quot;</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-comment"># ..or the output from a command</span><br><span class="hljs-comment"># This will `cat` the output from `ls`.</span><br><span class="hljs-keyword">for</span> Output <span class="hljs-keyword">in</span> $(ls)<br><span class="hljs-keyword">do</span><br>    cat <span class="hljs-string">&quot;<span class="hljs-variable">$Output</span>&quot;</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-comment"># Bash can also accept patterns, like this to `cat`</span><br><span class="hljs-comment"># all the Markdown files in current directory</span><br><span class="hljs-keyword">for</span> Output <span class="hljs-keyword">in</span> ./*.markdown<br><span class="hljs-keyword">do</span><br>    cat <span class="hljs-string">&quot;<span class="hljs-variable">$Output</span>&quot;</span><br><span class="hljs-keyword">done</span><br><br><span class="hljs-comment"># while loop:</span><br><span class="hljs-keyword">while</span> [ <span class="hljs-literal">true</span> ]<br><span class="hljs-keyword">do</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;loop body here...&quot;</span><br>    <span class="hljs-built_in">break</span><br><span class="hljs-keyword">done</span><br><span class="hljs-comment"># =&gt; loop body here...</span><br><br><span class="hljs-comment"># You can also define functions</span><br><span class="hljs-comment"># Definition:</span><br><span class="hljs-keyword">function</span> <span class="hljs-function"><span class="hljs-title">foo</span></span> ()<br>&#123;<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Arguments work just like script arguments: <span class="hljs-variable">$@</span>&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;And: <span class="hljs-variable">$1</span> <span class="hljs-variable">$2</span>...&quot;</span><br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;This is a function&quot;</span><br>    <span class="hljs-built_in">return</span> 0<br>&#125;<br><span class="hljs-comment"># Call the function `foo` with two arguments, arg1 and arg2:</span><br>foo arg1 arg2<br><span class="hljs-comment"># =&gt; Arguments work just like script arguments: arg1 arg2</span><br><span class="hljs-comment"># =&gt; And: arg1 arg2...</span><br><span class="hljs-comment"># =&gt; This is a function</span><br><br><span class="hljs-comment"># or simply</span><br><span class="hljs-function"><span class="hljs-title">bar</span></span> ()<br>&#123;<br>    <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Another way to declare functions!&quot;</span><br>    <span class="hljs-built_in">return</span> 0<br>&#125;<br><span class="hljs-comment"># Call the function `bar` with no arguments:</span><br>bar <span class="hljs-comment"># =&gt; Another way to declare functions!</span><br><br><span class="hljs-comment"># Calling your function</span><br>foo <span class="hljs-string">&quot;My name is&quot;</span> <span class="hljs-variable">$Name</span><br><br><span class="hljs-comment"># There are a lot of useful commands you should learn:</span><br><span class="hljs-comment"># prints last 10 lines of file.txt</span><br>tail -n 10 file.txt<br><br><span class="hljs-comment"># prints first 10 lines of file.txt</span><br>head -n 10 file.txt<br><br><span class="hljs-comment"># sort file.txt&#x27;s lines</span><br>sort file.txt<br><br><span class="hljs-comment"># report or omit repeated lines, with -d it reports them</span><br>uniq -d file.txt<br><br><span class="hljs-comment"># prints only the first column before the &#x27;,&#x27; character</span><br>cut -d <span class="hljs-string">&#x27;,&#x27;</span> -f 1 file.txt<br><br><span class="hljs-comment"># replaces every occurrence of &#x27;okay&#x27; with &#x27;great&#x27; in file.txt</span><br><span class="hljs-comment"># (regex compatible)</span><br>sed -i <span class="hljs-string">&#x27;s/okay/great/g&#x27;</span> file.txt<br><span class="hljs-comment"># be aware that this -i flag means that file.txt will be changed</span><br><span class="hljs-comment"># -i or --in-place erase the input file (use --in-place=.backup to keep a back-up)</span><br><br><span class="hljs-comment"># print to stdout all lines of file.txt which match some regex</span><br><span class="hljs-comment"># The example prints lines which begin with &quot;foo&quot; and end in &quot;bar&quot;</span><br>grep <span class="hljs-string">&quot;^foo.*bar$&quot;</span> file.txt<br><br><span class="hljs-comment"># pass the option &quot;-c&quot; to instead print the number of lines matching the regex</span><br>grep -c <span class="hljs-string">&quot;^foo.*bar$&quot;</span> file.txt<br><br><span class="hljs-comment"># Other useful options are:</span><br>grep -r <span class="hljs-string">&quot;^foo.*bar$&quot;</span> someDir/ <span class="hljs-comment"># recursively `grep`</span><br>grep -n <span class="hljs-string">&quot;^foo.*bar$&quot;</span> file.txt <span class="hljs-comment"># give line numbers</span><br>grep -rI <span class="hljs-string">&quot;^foo.*bar$&quot;</span> someDir/ <span class="hljs-comment"># recursively `grep`, but ignore binary files</span><br><br><span class="hljs-comment"># perform the same initial search, but filter out the lines containing &quot;baz&quot;</span><br>grep <span class="hljs-string">&quot;^foo.*bar$&quot;</span> file.txt | grep -v <span class="hljs-string">&quot;baz&quot;</span><br><br><span class="hljs-comment"># if you literally want to search for the string,</span><br><span class="hljs-comment"># and not the regex, use `fgrep` (or `grep -F`)</span><br>fgrep <span class="hljs-string">&quot;foobar&quot;</span> file.txt<br><br><span class="hljs-comment"># The `trap` command allows you to execute a command whenever your script</span><br><span class="hljs-comment"># receives a signal. Here, `trap` will execute `rm` if it receives any of the</span><br><span class="hljs-comment"># three listed signals.</span><br><span class="hljs-built_in">trap</span> <span class="hljs-string">&quot;rm <span class="hljs-variable">$TEMP_FILE</span>; exit&quot;</span> SIGHUP SIGINT SIGTERM<br><br><span class="hljs-comment"># `sudo` is used to perform commands as the superuser</span><br><span class="hljs-comment"># usually it will ask interactively the password of superuser</span><br>NAME1=$(whoami)<br>NAME2=$(sudo whoami)<br><span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;Was <span class="hljs-variable">$NAME1</span>, then became more powerful <span class="hljs-variable">$NAME2</span>&quot;</span><br><br><span class="hljs-comment"># Read Bash shell built-ins documentation with the bash `help` built-in:</span><br><span class="hljs-built_in">help</span><br><span class="hljs-built_in">help</span> <span class="hljs-built_in">help</span><br><span class="hljs-built_in">help</span> <span class="hljs-keyword">for</span><br><span class="hljs-built_in">help</span> <span class="hljs-built_in">return</span><br><span class="hljs-built_in">help</span> <span class="hljs-built_in">source</span><br><span class="hljs-built_in">help</span> .<br><br><span class="hljs-comment"># Read Bash manpage documentation with `man`</span><br>apropos bash<br>man 1 bash<br>man bash<br><br><span class="hljs-comment"># Read info documentation with `info` (`?` for help)</span><br>apropos info | grep <span class="hljs-string">&#x27;^info.*(&#x27;</span><br>man info<br>info info<br>info 5 info<br><br><span class="hljs-comment"># Read bash info documentation:</span><br>info bash<br>info bash <span class="hljs-string">&#x27;Bash Features&#x27;</span><br>info bash 6<br>info --apropos bash<br></code></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br><span class="line">311</span><br><span class="line">312</span><br><span class="line">313</span><br><span class="line">314</span><br><span class="line">315</span><br><span class="line">316</span><br><span class="line">317</span><br><span class="line">318</span><br><span class="line">319</span><br><span class="line">320</span><br><span class="line">321</span><br><span class="line">322</span><br><span class="line">323</span><br><span class="line">324</span><br><span class="line">325</span><br><span class="line">326</span><br><span class="line">327</span><br><span class="line">328</span><br><span class="line">329</span><br><span class="line">330</span><br><span class="line">331</span><br><span class="line">332</span><br><span class="line">333</span><br><span class="line">334</span><br><span class="line">335</span><br><span class="line">336</span><br><span class="line">337</span><br><span class="line">338</span><br><span class="line">339</span><br><span class="line">340</span><br><span class="line">341</span><br><span class="line">342</span><br><span class="line">343</span><br><span class="line">344</span><br><span class="line">345</span><br><span class="line">346</span><br><span class="line">347</span><br><span class="line">348</span><br><span class="line">349</span><br><span class="line">350</span><br><span class="line">351</span><br><span class="line">352</span><br><span class="line">353</span><br><span class="line">354</span><br><span class="line">355</span><br><span class="line">356</span><br><span class="line">357</span><br><span class="line">358</span><br><span class="line">359</span><br><span class="line">360</span><br><span class="line">361</span><br><span class="line">362</span><br><span class="line">363</span><br><span class="line">364</span><br><span class="line">365</span><br><span class="line">366</span><br><span class="line">367</span><br><span class="line">368</span><br><span class="line">369</span><br><span class="line">370</span><br><span class="line">371</span><br><span class="line">372</span><br><span class="line">373</span><br><span class="line">374</span><br><span class="line">375</span><br><span class="line">376</span><br><span class="line">377</span><br><span class="line">378</span><br><span class="line">379</span><br><span class="line">380</span><br><span class="line">381</span><br><span class="line">382</span><br><span class="line">383</span><br><span class="line">384</span><br><span class="line">385</span><br><span class="line">386</span><br><span class="line">387</span><br><span class="line">388</span><br><span class="line">389</span><br><span class="line">390</span><br><span class="line">391</span><br><span class="line">392</span><br><span class="line">393</span><br><span class="line">394</span><br><span class="line">395</span><br><span class="line">396</span><br><span class="line">397</span><br><span class="line">398</span><br><span class="line">399</span><br><span class="line">400</span><br><span class="line">401</span><br><span class="line">402</span><br><span class="line">403</span><br><span class="line">404</span><br><span class="line">405</span><br><span class="line">406</span><br><span class="line">407</span><br><span class="line">408</span><br><span class="line">409</span><br><span class="line">410</span><br><span class="line">411</span><br><span class="line">412</span><br><span class="line">413</span><br><span class="line">414</span><br><span class="line">415</span><br><span class="line">416</span><br><span class="line">417</span><br><span class="line">418</span><br><span class="line">419</span><br><span class="line">420</span><br><span class="line">421</span><br><span class="line">422</span><br><span class="line">423</span><br><span class="line">424</span><br><span class="line">425</span><br><span class="line">426</span><br><span class="line">427</span><br><span class="line">428</span><br><span class="line">429</span><br><span class="line">430</span><br><span class="line">431</span><br><span class="line">432</span><br><span class="line">433</span><br><span class="line">434</span><br><span class="line">435</span><br><span class="line">436</span><br><span class="line">437</span><br><span class="line">438</span><br><span class="line">439</span><br><span class="line">440</span><br><span class="line">441</span><br><span class="line">442</span><br><span class="line">443</span><br><span class="line">444</span><br><span class="line">445</span><br><span class="line">446</span><br><span class="line">447</span><br><span class="line">448</span><br><span class="line">449</span><br><span class="line">450</span><br><span class="line">451</span><br><span class="line">452</span><br><span class="line">453</span><br><span class="line">454</span><br><span class="line">455</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/env bash</span></span><br><span class="line"><span class="comment"># First line of the script is the shebang which tells the system how to execute</span></span><br><span class="line"><span class="comment"># the script</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Simple hello world example:</span></span><br><span class="line"><span class="built_in">echo</span> Hello world!  <span class="comment"># =&gt; Hello world!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Each command starts on a new line, or after a semicolon:</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;This is the first line&#x27;</span>; <span class="built_in">echo</span> <span class="string">&#x27;This is the second line&#x27;</span></span><br><span class="line"><span class="comment"># =&gt; This is the first line</span></span><br><span class="line"><span class="comment"># =&gt; This is the second line</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Declaring a variable looks like this:</span></span><br><span class="line">Variable=<span class="string">&quot;Some string&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Using the variable:</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$Variable</span>  <span class="comment"># =&gt; Some string</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$Variable</span>&quot;</span> <span class="comment"># =&gt; Some string</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;$Variable&#x27;</span> <span class="comment"># =&gt; $Variable</span></span><br><span class="line"><span class="comment"># When you use the variable itself - assign it, export it, or else - you write</span></span><br><span class="line"><span class="comment"># its name without $. If you want to use the variable&#x27;s value, you should use $.</span></span><br><span class="line"><span class="comment"># Not that &#x27; (single quote) wan&#x27;t expand the variables!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Parameter expansion $&#123; &#125;:</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;Variable&#125;</span> <span class="comment"># =&gt; Some string</span></span><br><span class="line"><span class="comment"># This is a simple usage of parameter expansion</span></span><br><span class="line"><span class="comment"># Parameter Expansion gets a value from a variable.</span></span><br><span class="line"><span class="comment"># It &quot;expands&quot; or prints the value</span></span><br><span class="line"><span class="comment"># During the expansion time the value or parameter can be modified</span></span><br><span class="line"><span class="comment"># Below are other modifications that add onto this expansion</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># String substitution in variables</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;Variable/Some/A&#125;</span> <span class="comment"># =&gt; A string</span></span><br><span class="line"><span class="comment"># This will substitute the first occurrence of &quot;Some&quot; with &quot;A&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Substring from a variable</span></span><br><span class="line">Length=7</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;Variable:0:Length&#125;</span> <span class="comment"># =&gt; Some st</span></span><br><span class="line"><span class="comment"># This will return only the first 7 characters of the value</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;Variable: -5&#125;</span> <span class="comment"># =&gt; tring</span></span><br><span class="line"><span class="comment"># This will return the last 5 characters (note the space before -5)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># String length</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#Variable&#125;</span> <span class="comment"># =&gt; 11</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Indirect expansion</span></span><br><span class="line">OtherVariable=<span class="string">&quot;Variable&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;!OtherVariable&#125;</span> <span class="comment"># =&gt; Some String</span></span><br><span class="line"><span class="comment"># This will expand the value of OtherVariable</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Default value for variable</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;Foo:-&quot;DefaultValueIfFooIsMissingOrEmpty&quot;&#125;</span></span><br><span class="line"><span class="comment"># =&gt; DefaultValueIfFooIsMissingOrEmpty</span></span><br><span class="line"><span class="comment"># This works for null (Foo=) and empty string (Foo=&quot;&quot;); zero (Foo=0) returns 0.</span></span><br><span class="line"><span class="comment"># Note that it only returns default value and doesn&#x27;t change variable value.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Declare an array with 6 elements</span></span><br><span class="line">array0=(one two three four five six)</span><br><span class="line"><span class="comment"># Print first element</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$array0</span> <span class="comment"># =&gt; &quot;one&quot;</span></span><br><span class="line"><span class="comment"># Print first element</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;array0[0]&#125;</span> <span class="comment"># =&gt; &quot;one&quot;</span></span><br><span class="line"><span class="comment"># Print all elements</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;array0[@]&#125;</span> <span class="comment"># =&gt; &quot;one two three four five six&quot;</span></span><br><span class="line"><span class="comment"># Print number of elements</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#array0[@]&#125;</span> <span class="comment"># =&gt; &quot;6&quot;</span></span><br><span class="line"><span class="comment"># Print number of characters in third element</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;#array0[2]&#125;</span> <span class="comment"># =&gt; &quot;5&quot;</span></span><br><span class="line"><span class="comment"># Print 2 elements starting from forth</span></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$&#123;array0[@]:3:2&#125;</span> <span class="comment"># =&gt; &quot;four five&quot;</span></span><br><span class="line"><span class="comment"># Print all elements. Each of them on new line.</span></span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="string">&quot;<span class="variable">$&#123;array0[@]&#125;</span>&quot;</span>; <span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$i</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Brace Expansion &#123; &#125;</span></span><br><span class="line"><span class="comment"># Used to generate arbitrary strings</span></span><br><span class="line"><span class="built_in">echo</span> &#123;1..10&#125; <span class="comment"># =&gt; 1 2 3 4 5 6 7 8 9 10</span></span><br><span class="line"><span class="built_in">echo</span> &#123;a..z&#125; <span class="comment"># =&gt; a b c d e f g h i j k l m n o p q r s t u v w x y z</span></span><br><span class="line"><span class="comment"># This will output the range from the start value to the end value</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Built-in variables:</span></span><br><span class="line"><span class="comment"># There are some useful built-in variables, like</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Last program&#x27;s return value: $?&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Script&#x27;s PID: $$&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Number of arguments passed to script: <span class="variable">$#</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;All arguments passed to script: <span class="variable">$@</span>&quot;</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Script&#x27;s arguments separated into different variables: <span class="variable">$1</span> <span class="variable">$2</span>...&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Now that we know how to echo and use variables,</span></span><br><span class="line"><span class="comment"># let&#x27;s learn some of the other basics of bash!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Our current directory is available through the command `pwd`.</span></span><br><span class="line"><span class="comment"># `pwd` stands for &quot;print working directory&quot;.</span></span><br><span class="line"><span class="comment"># We can also use the built-in variable `$PWD`.</span></span><br><span class="line"><span class="comment"># Observe that the following are equivalent:</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;I&#x27;m in <span class="subst">$(pwd)</span>&quot;</span> <span class="comment"># execs `pwd` and interpolates output</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;I&#x27;m in <span class="variable">$PWD</span>&quot;</span> <span class="comment"># interpolates the variable</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># If you get too much output in your terminal, or from a script, the command</span></span><br><span class="line"><span class="comment"># `clear` clears your screen</span></span><br><span class="line">clear</span><br><span class="line"><span class="comment"># Ctrl-L also works for clearing output</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Reading a value from input:</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;What&#x27;s your name?&quot;</span></span><br><span class="line"><span class="built_in">read</span> Name <span class="comment"># Note that we didn&#x27;t need to declare a new variable</span></span><br><span class="line"><span class="built_in">echo</span> Hello, <span class="variable">$Name</span>!</span><br><span class="line"></span><br><span class="line"><span class="comment"># We have the usual if structure:</span></span><br><span class="line"><span class="comment"># use `man test` for more info about conditionals</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="variable">$Name</span> != <span class="variable">$USER</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Your name isn&#x27;t your username&quot;</span></span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Your name is your username&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># True if the value of $Name is not equal to the current user&#x27;s login username</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># <span class="doctag">NOTE:</span> if $Name is empty, bash sees the above condition as:</span></span><br><span class="line"><span class="keyword">if</span> [ != <span class="variable">$USER</span> ]</span><br><span class="line"><span class="comment"># which is invalid syntax</span></span><br><span class="line"><span class="comment"># so the &quot;safe&quot; way to use potentially empty variables in bash is:</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$Name</span>&quot;</span> != <span class="variable">$USER</span> ] ...</span><br><span class="line"><span class="comment"># which, when $Name is empty, is seen by bash as:</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;&quot;</span> != <span class="variable">$USER</span> ] ...</span><br><span class="line"><span class="comment"># which works as expected</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># There is also conditional execution</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Always executed&quot;</span> || <span class="built_in">echo</span> <span class="string">&quot;Only executed if first command fails&quot;</span></span><br><span class="line"><span class="comment"># =&gt; Always executed</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Always executed&quot;</span> &amp;&amp; <span class="built_in">echo</span> <span class="string">&quot;Only executed if first command does NOT fail&quot;</span></span><br><span class="line"><span class="comment"># =&gt; Always executed</span></span><br><span class="line"><span class="comment"># =&gt; Only executed if first command does NOT fail</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># To use &amp;&amp; and || with if statements, you need multiple pairs of square brackets:</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$Name</span>&quot;</span> == <span class="string">&quot;Steve&quot;</span> ] &amp;&amp; [ <span class="string">&quot;<span class="variable">$Age</span>&quot;</span> -eq 15 ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;This will run if <span class="variable">$Name</span> is Steve AND <span class="variable">$Age</span> is 15.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">&quot;<span class="variable">$Name</span>&quot;</span> == <span class="string">&quot;Daniya&quot;</span> ] || [ <span class="string">&quot;<span class="variable">$Name</span>&quot;</span> == <span class="string">&quot;Zach&quot;</span> ]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;This will run if <span class="variable">$Name</span> is Daniya OR Zach.&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># There is also the `=~` operator, which tests a string against a Regex pattern:</span></span><br><span class="line">Email=me@example.com</span><br><span class="line"><span class="keyword">if</span> [[ <span class="string">&quot;<span class="variable">$Email</span>&quot;</span> =~ [a-z]+@[a-z]&#123;2,&#125;\.(com|net|org) ]]</span><br><span class="line"><span class="keyword">then</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Valid email!&quot;</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"><span class="comment"># Note that =~ only works within double [[ ]] square brackets,</span></span><br><span class="line"><span class="comment"># which are subtly different from single [ ].</span></span><br><span class="line"><span class="comment"># See https://www.gnu.org/software/bash/manual/bashref.html#Conditional-Constructs for more on this.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Redefine command `ping` as alias to send only 5 packets</span></span><br><span class="line"><span class="built_in">alias</span> ping=<span class="string">&#x27;ping -c 5&#x27;</span></span><br><span class="line"><span class="comment"># Escape the alias and use command with this name instead</span></span><br><span class="line">\ping 192.168.1.1</span><br><span class="line"><span class="comment"># Print all aliases</span></span><br><span class="line"><span class="built_in">alias</span> -p</span><br><span class="line"></span><br><span class="line"><span class="comment"># Expressions are denoted with the following format:</span></span><br><span class="line"><span class="built_in">echo</span> $(( <span class="number">10</span> + <span class="number">5</span> )) <span class="comment"># =&gt; 15</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Unlike other programming languages, bash is a shell so it works in the context</span></span><br><span class="line"><span class="comment"># of a current directory. You can list files and directories in the current</span></span><br><span class="line"><span class="comment"># directory with the ls command:</span></span><br><span class="line">ls <span class="comment"># Lists the files and subdirectories contained in the current directory</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># This command has options that control its execution:</span></span><br><span class="line">ls -l <span class="comment"># Lists every file and directory on a separate line</span></span><br><span class="line">ls -t <span class="comment"># Sorts the directory contents by last-modified date (descending)</span></span><br><span class="line">ls -R <span class="comment"># Recursively `ls` this directory and all of its subdirectories</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Results of the previous command can be passed to the next command as input.</span></span><br><span class="line"><span class="comment"># The `grep` command filters the input with provided patterns.</span></span><br><span class="line"><span class="comment"># That&#x27;s how we can list .txt files in the current directory:</span></span><br><span class="line">ls -l | grep <span class="string">&quot;\.txt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use `cat` to print files to stdout:</span></span><br><span class="line">cat file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># We can also read the file using `cat`:</span></span><br><span class="line">Contents=$(cat file.txt)</span><br><span class="line"><span class="comment"># &quot;\n&quot; prints a new line character</span></span><br><span class="line"><span class="comment"># &quot;-e&quot; to interpret the newline escape characters as escape characters</span></span><br><span class="line"><span class="built_in">echo</span> -e <span class="string">&quot;START OF FILE\n<span class="variable">$Contents</span>\nEND OF FILE&quot;</span></span><br><span class="line"><span class="comment"># =&gt; START OF FILE</span></span><br><span class="line"><span class="comment"># =&gt; [contents of file.txt]</span></span><br><span class="line"><span class="comment"># =&gt; END OF FILE</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use `cp` to copy files or directories from one place to another.</span></span><br><span class="line"><span class="comment"># `cp` creates NEW versions of the sources,</span></span><br><span class="line"><span class="comment"># so editing the copy won&#x27;t affect the original (and vice versa).</span></span><br><span class="line"><span class="comment"># Note that it will overwrite the destination if it already exists.</span></span><br><span class="line">cp srcFile.txt clone.txt</span><br><span class="line">cp -r srcDirectory/ dst/ <span class="comment"># recursively copy</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Look into `scp` or `sftp` if you plan on exchanging files between computers.</span></span><br><span class="line"><span class="comment"># `scp` behaves very similarly to `cp`.</span></span><br><span class="line"><span class="comment"># `sftp` is more interactive.</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use `mv` to move files or directories from one place to another.</span></span><br><span class="line"><span class="comment"># `mv` is similar to `cp`, but it deletes the source.</span></span><br><span class="line"><span class="comment"># `mv` is also useful for renaming files!</span></span><br><span class="line">mv s0urc3.txt dst.txt <span class="comment"># sorry, l33t hackers...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Since bash works in the context of a current directory, you might want to</span></span><br><span class="line"><span class="comment"># run your command in some other directory. We have cd for changing location:</span></span><br><span class="line"><span class="built_in">cd</span> ~    <span class="comment"># change to home directory</span></span><br><span class="line"><span class="built_in">cd</span>      <span class="comment"># also goes to home directory</span></span><br><span class="line"><span class="built_in">cd</span> ..   <span class="comment"># go up one directory</span></span><br><span class="line">        <span class="comment"># (^^say, from /home/username/Downloads to /home/username)</span></span><br><span class="line"><span class="built_in">cd</span> /home/username/Documents   <span class="comment"># change to specified directory</span></span><br><span class="line"><span class="built_in">cd</span> ~/Documents/..    <span class="comment"># still in home directory..isn&#x27;t it??</span></span><br><span class="line"><span class="built_in">cd</span> -    <span class="comment"># change to last directory</span></span><br><span class="line"><span class="comment"># =&gt; /home/username/Documents</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use subshells to work across directories</span></span><br><span class="line">(<span class="built_in">echo</span> <span class="string">&quot;First, I&#x27;m here: <span class="variable">$PWD</span>&quot;</span>) &amp;&amp; (<span class="built_in">cd</span> someDir; <span class="built_in">echo</span> <span class="string">&quot;Then, I&#x27;m here: <span class="variable">$PWD</span>&quot;</span>)</span><br><span class="line"><span class="built_in">pwd</span> <span class="comment"># still in first directory</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Use `mkdir` to create new directories.</span></span><br><span class="line">mkdir myNewDir</span><br><span class="line"><span class="comment"># The `-p` flag causes new intermediate directories to be created as necessary.</span></span><br><span class="line">mkdir -p myNewDir/with/intermediate/directories</span><br><span class="line"><span class="comment"># if the intermediate directories didn&#x27;t already exist, running the above</span></span><br><span class="line"><span class="comment"># command without the `-p` flag would return an error</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># You can redirect command input and output (stdin, stdout, and stderr).</span></span><br><span class="line"><span class="comment"># Read from stdin until ^EOF$ and overwrite hello.py with the lines</span></span><br><span class="line"><span class="comment"># between &quot;EOF&quot;:</span></span><br><span class="line">cat &gt; hello.py &lt;&lt; <span class="string">EOF</span></span><br><span class="line"><span class="string">#!/usr/bin/env python</span></span><br><span class="line"><span class="string">from __future__ import print_function</span></span><br><span class="line"><span class="string">import sys</span></span><br><span class="line"><span class="string">print(&quot;#stdout&quot;, file=sys.stdout)</span></span><br><span class="line"><span class="string">print(&quot;#stderr&quot;, file=sys.stderr)</span></span><br><span class="line"><span class="string">for line in sys.stdin:</span></span><br><span class="line"><span class="string">    print(line, file=sys.stdout)</span></span><br><span class="line"><span class="string">EOF</span></span><br><span class="line"><span class="comment"># Variables will be expanded if the first &quot;EOF&quot; is not quoted</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Run the hello.py Python script with various stdin, stdout, and</span></span><br><span class="line"><span class="comment"># stderr redirections:</span></span><br><span class="line">python hello.py &lt; <span class="string">&quot;input.in&quot;</span> <span class="comment"># pass input.in as input to the script</span></span><br><span class="line"></span><br><span class="line">python hello.py &gt; <span class="string">&quot;output.out&quot;</span> <span class="comment"># redirect output from the script to output.out</span></span><br><span class="line"></span><br><span class="line">python hello.py 2&gt; <span class="string">&quot;error.err&quot;</span> <span class="comment"># redirect error output to error.err</span></span><br><span class="line"></span><br><span class="line">python hello.py &gt; <span class="string">&quot;output-and-error.log&quot;</span> 2&gt;&amp;1</span><br><span class="line"><span class="comment"># redirect both output and errors to output-and-error.log</span></span><br><span class="line"></span><br><span class="line">python hello.py &gt; /dev/null 2&gt;&amp;1</span><br><span class="line"><span class="comment"># redirect all output and errors to the black hole, /dev/null, i.e., no output</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The output error will overwrite the file if it exists,</span></span><br><span class="line"><span class="comment"># if you want to append instead, use &quot;&gt;&gt;&quot;:</span></span><br><span class="line">python hello.py &gt;&gt; <span class="string">&quot;output.out&quot;</span> 2&gt;&gt; <span class="string">&quot;error.err&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Overwrite output.out, append to error.err, and count lines:</span></span><br><span class="line">info bash <span class="string">&#x27;Basic Shell Features&#x27;</span> <span class="string">&#x27;Redirections&#x27;</span> &gt; output.out 2&gt;&gt; error.err</span><br><span class="line">wc -l output.out error.err</span><br><span class="line"></span><br><span class="line"><span class="comment"># Run a command and print its file descriptor (e.g. /dev/fd/123)</span></span><br><span class="line"><span class="comment"># see: man fd</span></span><br><span class="line"><span class="built_in">echo</span> &lt;(<span class="built_in">echo</span> <span class="string">&quot;#helloworld&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Overwrite output.out with &quot;#helloworld&quot;:</span></span><br><span class="line">cat &gt; output.out &lt;(<span class="built_in">echo</span> <span class="string">&quot;#helloworld&quot;</span>)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;#helloworld&quot;</span> &gt; output.out</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;#helloworld&quot;</span> | cat &gt; output.out</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;#helloworld&quot;</span> | tee output.out &gt;/dev/null</span><br><span class="line"></span><br><span class="line"><span class="comment"># Cleanup temporary files verbosely (add &#x27;-i&#x27; for interactive)</span></span><br><span class="line"><span class="comment"># WARNING: `rm` commands cannot be undone</span></span><br><span class="line">rm -v output.out error.err output-and-error.log</span><br><span class="line">rm -r tempDir/ <span class="comment"># recursively delete</span></span><br><span class="line"><span class="comment"># You can install the `trash-cli` Python package to have `trash`</span></span><br><span class="line"><span class="comment"># which puts files in the system trash and doesn&#x27;t delete them directly</span></span><br><span class="line"><span class="comment"># see https://pypi.org/project/trash-cli/ if you want to be careful</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Commands can be substituted within other commands using $( ):</span></span><br><span class="line"><span class="comment"># The following command displays the number of files and directories in the</span></span><br><span class="line"><span class="comment"># current directory.</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;There are <span class="subst">$(ls | wc -l)</span> items here.&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># The same can be done using backticks `` but they can&#x27;t be nested -</span></span><br><span class="line"><span class="comment"># the preferred way is to use $( ).</span></span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;There are `ls | wc -l` items here.&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bash uses a `case` statement that works similarly to switch in Java and C++:</span></span><br><span class="line"><span class="keyword">case</span> <span class="string">&quot;<span class="variable">$Variable</span>&quot;</span> <span class="keyword">in</span></span><br><span class="line">    <span class="comment"># List patterns for the conditions you want to meet</span></span><br><span class="line">    0) <span class="built_in">echo</span> <span class="string">&quot;There is a zero.&quot;</span>;;</span><br><span class="line">    1) <span class="built_in">echo</span> <span class="string">&quot;There is a one.&quot;</span>;;</span><br><span class="line">    *) <span class="built_in">echo</span> <span class="string">&quot;It is not null.&quot;</span>;;  <span class="comment"># match everything</span></span><br><span class="line"><span class="keyword">esac</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># `for` loops iterate for as many arguments given:</span></span><br><span class="line"><span class="comment"># The contents of $Variable is printed three times.</span></span><br><span class="line"><span class="keyword">for</span> Variable <span class="keyword">in</span> &#123;1..3&#125;</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;<span class="variable">$Variable</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># =&gt; 1</span></span><br><span class="line"><span class="comment"># =&gt; 2</span></span><br><span class="line"><span class="comment"># =&gt; 3</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Or write it the &quot;traditional for loop&quot; way:</span></span><br><span class="line"><span class="keyword">for</span> ((a=1; a &lt;= 3; a++))</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="variable">$a</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># =&gt; 1</span></span><br><span class="line"><span class="comment"># =&gt; 2</span></span><br><span class="line"><span class="comment"># =&gt; 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># They can also be used to act on files..</span></span><br><span class="line"><span class="comment"># This will run the command `cat` on file1 and file2</span></span><br><span class="line"><span class="keyword">for</span> Variable <span class="keyword">in</span> file1 file2</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    cat <span class="string">&quot;<span class="variable">$Variable</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># ..or the output from a command</span></span><br><span class="line"><span class="comment"># This will `cat` the output from `ls`.</span></span><br><span class="line"><span class="keyword">for</span> Output <span class="keyword">in</span> $(ls)</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    cat <span class="string">&quot;<span class="variable">$Output</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Bash can also accept patterns, like this to `cat`</span></span><br><span class="line"><span class="comment"># all the Markdown files in current directory</span></span><br><span class="line"><span class="keyword">for</span> Output <span class="keyword">in</span> ./*.markdown</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    cat <span class="string">&quot;<span class="variable">$Output</span>&quot;</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># while loop:</span></span><br><span class="line"><span class="keyword">while</span> [ <span class="literal">true</span> ]</span><br><span class="line"><span class="keyword">do</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;loop body here...&quot;</span></span><br><span class="line">    <span class="built_in">break</span></span><br><span class="line"><span class="keyword">done</span></span><br><span class="line"><span class="comment"># =&gt; loop body here...</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># You can also define functions</span></span><br><span class="line"><span class="comment"># Definition:</span></span><br><span class="line"><span class="keyword">function</span> <span class="function"><span class="title">foo</span></span> ()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Arguments work just like script arguments: <span class="variable">$@</span>&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;And: <span class="variable">$1</span> <span class="variable">$2</span>...&quot;</span></span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;This is a function&quot;</span></span><br><span class="line">    <span class="built_in">return</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># Call the function `foo` with two arguments, arg1 and arg2:</span></span><br><span class="line">foo arg1 arg2</span><br><span class="line"><span class="comment"># =&gt; Arguments work just like script arguments: arg1 arg2</span></span><br><span class="line"><span class="comment"># =&gt; And: arg1 arg2...</span></span><br><span class="line"><span class="comment"># =&gt; This is a function</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># or simply</span></span><br><span class="line"><span class="function"><span class="title">bar</span></span> ()</span><br><span class="line">&#123;</span><br><span class="line">    <span class="built_in">echo</span> <span class="string">&quot;Another way to declare functions!&quot;</span></span><br><span class="line">    <span class="built_in">return</span> 0</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># Call the function `bar` with no arguments:</span></span><br><span class="line">bar <span class="comment"># =&gt; Another way to declare functions!</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Calling your function</span></span><br><span class="line">foo <span class="string">&quot;My name is&quot;</span> <span class="variable">$Name</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># There are a lot of useful commands you should learn:</span></span><br><span class="line"><span class="comment"># prints last 10 lines of file.txt</span></span><br><span class="line">tail -n 10 file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># prints first 10 lines of file.txt</span></span><br><span class="line">head -n 10 file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># sort file.txt&#x27;s lines</span></span><br><span class="line">sort file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># report or omit repeated lines, with -d it reports them</span></span><br><span class="line">uniq -d file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># prints only the first column before the &#x27;,&#x27; character</span></span><br><span class="line">cut -d <span class="string">&#x27;,&#x27;</span> -f 1 file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># replaces every occurrence of &#x27;okay&#x27; with &#x27;great&#x27; in file.txt</span></span><br><span class="line"><span class="comment"># (regex compatible)</span></span><br><span class="line">sed -i <span class="string">&#x27;s/okay/great/g&#x27;</span> file.txt</span><br><span class="line"><span class="comment"># be aware that this -i flag means that file.txt will be changed</span></span><br><span class="line"><span class="comment"># -i or --in-place erase the input file (use --in-place=.backup to keep a back-up)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># print to stdout all lines of file.txt which match some regex</span></span><br><span class="line"><span class="comment"># The example prints lines which begin with &quot;foo&quot; and end in &quot;bar&quot;</span></span><br><span class="line">grep <span class="string">&quot;^foo.*bar$&quot;</span> file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># pass the option &quot;-c&quot; to instead print the number of lines matching the regex</span></span><br><span class="line">grep -c <span class="string">&quot;^foo.*bar$&quot;</span> file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Other useful options are:</span></span><br><span class="line">grep -r <span class="string">&quot;^foo.*bar$&quot;</span> someDir/ <span class="comment"># recursively `grep`</span></span><br><span class="line">grep -n <span class="string">&quot;^foo.*bar$&quot;</span> file.txt <span class="comment"># give line numbers</span></span><br><span class="line">grep -rI <span class="string">&quot;^foo.*bar$&quot;</span> someDir/ <span class="comment"># recursively `grep`, but ignore binary files</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># perform the same initial search, but filter out the lines containing &quot;baz&quot;</span></span><br><span class="line">grep <span class="string">&quot;^foo.*bar$&quot;</span> file.txt | grep -v <span class="string">&quot;baz&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># if you literally want to search for the string,</span></span><br><span class="line"><span class="comment"># and not the regex, use `fgrep` (or `grep -F`)</span></span><br><span class="line">fgrep <span class="string">&quot;foobar&quot;</span> file.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># The `trap` command allows you to execute a command whenever your script</span></span><br><span class="line"><span class="comment"># receives a signal. Here, `trap` will execute `rm` if it receives any of the</span></span><br><span class="line"><span class="comment"># three listed signals.</span></span><br><span class="line"><span class="built_in">trap</span> <span class="string">&quot;rm <span class="variable">$TEMP_FILE</span>; exit&quot;</span> SIGHUP SIGINT SIGTERM</span><br><span class="line"></span><br><span class="line"><span class="comment"># `sudo` is used to perform commands as the superuser</span></span><br><span class="line"><span class="comment"># usually it will ask interactively the password of superuser</span></span><br><span class="line">NAME1=$(whoami)</span><br><span class="line">NAME2=$(sudo whoami)</span><br><span class="line"><span class="built_in">echo</span> <span class="string">&quot;Was <span class="variable">$NAME1</span>, then became more powerful <span class="variable">$NAME2</span>&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># Read Bash shell built-ins documentation with the bash `help` built-in:</span></span><br><span class="line"><span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span> <span class="built_in">help</span></span><br><span class="line"><span class="built_in">help</span> <span class="keyword">for</span></span><br><span class="line"><span class="built_in">help</span> <span class="built_in">return</span></span><br><span class="line"><span class="built_in">help</span> <span class="built_in">source</span></span><br><span class="line"><span class="built_in">help</span> .</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read Bash manpage documentation with `man`</span></span><br><span class="line">apropos bash</span><br><span class="line">man 1 bash</span><br><span class="line">man bash</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read info documentation with `info` (`?` for help)</span></span><br><span class="line">apropos info | grep <span class="string">&#x27;^info.*(&#x27;</span></span><br><span class="line">man info</span><br><span class="line">info info</span><br><span class="line">info 5 info</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read bash info documentation:</span></span><br><span class="line">info bash</span><br><span class="line">info bash <span class="string">&#x27;Bash Features&#x27;</span></span><br><span class="line">info bash 6</span><br><span class="line">info --apropos bash</span><br></pre></td></tr></table></figure>
 
 <h2 id="Tips-amp-amp-Tracks"><a href="#Tips-amp-amp-Tracks" class="headerlink" title="Tips &amp;&amp; Tracks"></a>Tips &amp;&amp; Tracks</h2><ul>
-<li>set<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs routeros">&gt; <span class="hljs-builtin-name">set</span> 命令修改Shell环境的运行参数<br>  -x: <span class="hljs-builtin-name">Print</span> a trace of<span class="hljs-built_in"> simple </span>commands<br>  Using <span class="hljs-string">&#x27;+&#x27;</span> rather than <span class="hljs-string">&#x27;-&#x27;</span> causes these options <span class="hljs-keyword">to</span> be turned off.<br></code></pre></td></tr></table></figure></li>
+<li>set<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="builtin-name">set</span> 命令修改Shell环境的运行参数</span><br><span class="line">  -x: <span class="builtin-name">Print</span> a trace of<span class="built_in"> simple </span>commands</span><br><span class="line">  Using <span class="string">&#x27;+&#x27;</span> rather than <span class="string">&#x27;-&#x27;</span> causes these options <span class="keyword">to</span> be turned off.</span><br></pre></td></tr></table></figure></li>
 </ul>
 <h2 id="Refrence"><a href="#Refrence" class="headerlink" title="Refrence"></a>Refrence</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://devhints.io/bash">Bash scripting cheatsheet</a></li>
 <li><a target="_blank" rel="noopener" href="https://linuxhint.com/bash_operator_examples/">74 Bash Operators Examples</a></li>
 </ul>
 
-            </div>
-            <hr>
-            <div>
-              <div class="post-metas mb-3">
-                
-                
-                  <div class="post-meta">
-                    <i class="iconfont icon-tags"></i>
-                    
-                      <a class="hover-with-bg" href="/tags/Shell/">Shell</a>
-                    
-                  </div>
-                
-              </div>
-              
-                <p class="note note-warning">
-                  
-                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
-                  
-                </p>
-              
-              
-                <div class="post-prevnext">
-                  <article class="post-prev col-6">
-                    
-                    
-                      <a href="/2021/10/10/XMind-Intro/">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">XMind Intro</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
-                  </article>
-                  <article class="post-next col-6">
-                    
-                    
-                      <a href="/2021/10/09/Rust-vs-Go/">
-                        <span class="hidden-mobile">Rust vs. Go</span>
-                        <span class="visible-mobile">下一篇</span>
-                        <i class="iconfont icon-arrowright"></i>
-                      </a>
-                    
-                  </article>
-                </div>
-              
-            </div>
-
-            
-          </article>
-        </div>
-      </div>
     </div>
-    
-      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
-        <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
-  <div class="toc-body" id="toc-body"></div>
-</div>
-
-      </div>
-    
-  </div>
-</div>
-
-<!-- Custom -->
-
 
     
-
     
-      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
-        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
-      </a>
     
 
-    
-      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
-     aria-hidden="true">
-  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
-    <div class="modal-content">
-      <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
-        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body mx-3">
-        <div class="md-form mb-5">
-          <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v"
-                 for="local-search-input">关键词</label>
-        </div>
-        <div class="list-group" id="local-search-result"></div>
-      </div>
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Shell/" rel="tag"># Shell</a>
+          </div>
+
+        
+  <div class="post-widgets">
+    <div class="wp_rating">
+      <div id="wpac-rating"></div>
     </div>
   </div>
-</div>
-    
 
-    
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2021/10/09/Rust-vs-Go/" rel="prev" title="Rust vs. Go">
+                  <i class="fa fa-chevron-left"></i> Rust vs. Go
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2021/10/10/XMind-Intro/" rel="next" title="XMind Intro">
+                  XMind Intro <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    <div class="comments gitalk-container"></div>
+</div>
   </main>
 
-  <footer class="text-center mt-5 py-3">
-  <div class="footer-content">
-     <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 2021 – 
+  <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">chyidl</span>
+</div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="站点总字数">254k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="站点阅读时长">3:51</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
   </div>
-  
+
+    </div>
+  </footer>
 
   
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
 
   
-</footer>
+  <script src="https://embed.widgetpack.com/widget.js" async></script>
+  <script class="next-config" data-name="rating" type="application/json">{"enable":true,"id":32031,"color":"#fc6423"}</script>
+  <script src="/js/third-party/rating.js"></script>
+<script src="/js/third-party/search/local-search.js"></script>
 
-
-  <!-- SCRIPTS -->
-  
-  <script  src="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.js" ></script>
-  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nprogress@0/nprogress.min.css" />
-
-  <script>
-    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
-    NProgress.start()
-    window.addEventListener('load', function() {
-      NProgress.done();
-    })
-  </script>
-
-
-<script  src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js" ></script>
-<script  src="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
-
-<!-- Plugins -->
-
-
-  <script  src="/js/local-search.js" ></script>
 
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
-  
-
-
-
-  
-
-
-
-  
-    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
-  
-  
-    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
-  
-  
-    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
-  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 
 
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css" integrity="sha256-AJnUHL7dBv6PGaeyPQJcgQPDjt/Hn/PvYZde1iqfp8U=" crossorigin="anonymous">
 
-
-  <script  src="https://cdn.jsdelivr.net/npm/typed.js@2/lib/typed.min.js" ></script>
-  <script>
-    (function (window, document) {
-      var typing = Fluid.plugins.typing;
-      var title = document.getElementById('subtitle').title;
-      
-        typing(title);
-      
-    })(window, document);
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- 主题的启动项 保持在最底部 -->
-<script  src="/js/boot.js" ></script>
-
+<script class="next-config" data-name="gitalk" type="application/json">{"enable":true,"id":"location.pathname","github_id":"chyidl","repo":"blog-comments","client_id":"021081d3006495a297db","client_secret":"02b0b1f4e306283b5749fca963872c50632c47e2","admin_user":"chyidl","distraction_free_mode":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token","language":"zh-CN","js":{"url":"https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js","integrity":"sha256-Pmj85ojLaPOWwRtlMJwmezB/Qg8BzvJp5eTzvXaYAfA="},"path_md5":"37d49e594b642a8b8f967203d47951fe"}</script>
+<script src="/js/third-party/comments/gitalk.js"></script>
 
 </body>
 </html>
